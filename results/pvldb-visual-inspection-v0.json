@@ -1,0 +1,18 @@
+{
+  "artifact":"pvldb-visual-inspection-v0","date":"2026-09-22","pdf":"paper/pvldb2027/main.pdf","pages":[
+    {"page":1,"major_content":"Title, author placeholders, abstract, mandatory PVLDB blocks, Introduction","issues":["Real author metadata pending","Fallback fonts differ from intended acmart fonts"],"severity":"MEDIUM","future_action":"Supply author metadata and full TeX font packages."},
+    {"page":2,"major_content":"Introduction contributions and Background","issues":[],"severity":"NONE","future_action":"None."},
+    {"page":3,"major_content":"Background, Problem Formulation, start of semantics","issues":[],"severity":"NONE","future_action":"None."},
+    {"page":4,"major_content":"Statistics-sensitive semantics and start of CE-Replay","issues":["Short semantic-flow block is visually plain"],"severity":"LOW","future_action":"Integrate with final F4 or retain as compact text."},
+    {"page":5,"major_content":"F1 placeholder, CE-Replay interfaces, start of optimization","issues":["Placeholder carries no final visual detail","Caption is long"],"severity":"MEDIUM","future_action":"Design F1 and reassess caption length."},
+    {"page":6,"major_content":"Optimization, Methodology, start of RQ1","issues":["Section 7 begins late in left column while its artifacts float forward"],"severity":"LOW","future_action":"Reassess after final floats."},
+    {"page":7,"major_content":"Pseudocode, T1, F3 placeholder, start of RQ2","issues":["T1 headers are dense","Pseudocode is separated from Section 6 first reference","F3 is placeholder"],"severity":"MEDIUM","future_action":"Redesign T1/F3 and consider a compact algorithm environment."},
+    {"page":8,"major_content":"T2, F2 placeholder, RQ2/RQ3 prose","issues":["F2 is placeholder","Float ordering places T2 before F2, consistent with source references but visually dense"],"severity":"MEDIUM","future_action":"Render F2 and revisit float order."},
+    {"page":9,"major_content":"T3, T4, RQ3/RQ4, start of Discussion","issues":["Two dense wide tables dominate the page","Several narrow cells wrap heavily"],"severity":"HIGH","future_action":"Redesign T3/T4 without dropping evidence."},
+    {"page":10,"major_content":"F4 placeholder, T5, Discussion","issues":["F4 is placeholder","T5 is dense with strong wrapping"],"severity":"HIGH","future_action":"Co-design F4/T5 and shorten duplicated prose/captions."},
+    {"page":11,"major_content":"Discussion/limitations and Related Work","issues":[],"severity":"NONE","future_action":"None beyond ordinary copyediting."},
+    {"page":12,"major_content":"Related Work, Conclusion, start of artifact statement","issues":["Artifact statement is split across pages"],"severity":"MEDIUM","future_action":"Recover at least a quarter page in the next pass."},
+    {"page":13,"major_content":"Artifact statement continuation and References","issues":["Non-reference text appears on page 13, exceeding the 12-page rule by roughly a quarter page"],"severity":"HIGH","future_action":"Page-budget optimization must bring all non-reference text onto pages 1--12."}
+  ],
+  "clipped_text":false,"clipped_tables":false,"equation_overflow":false,"orphan_headings":false,"large_blank_regions":false,"url_overflow":false,"bibliography_overflow":false,"status":"PASS_WITH_ISSUES"
+}

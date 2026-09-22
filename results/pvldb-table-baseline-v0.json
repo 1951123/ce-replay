@@ -1,0 +1,9 @@
+{
+  "artifact":"pvldb-table-baseline-v0","date":"2026-09-22","font":"LaTeX small (not scriptsize/tiny)","tables":[
+    {"id":"T1","rows":3,"columns":9,"columns_span":"double","page":7,"rendered_footprint":"about 1.45 in","readability":"FAIR; dense headers and wrapping","overflow":"39.5 pt reported","duplicated_prose_nearby":"LOW","future_compression_potential":"MEDIUM","main_paper_necessity":"HIGH"},
+    {"id":"T2","rows":7,"columns":5,"columns_span":"double","page":8,"rendered_footprint":"about 1.55 in","readability":"GOOD","overflow":"No material table-wide excess reported","duplicated_prose_nearby":"MEDIUM","future_compression_potential":"LOW","main_paper_necessity":"HIGH"},
+    {"id":"T3","rows":3,"columns":7,"columns_span":"double","page":9,"rendered_footprint":"about 1.45 in","readability":"FAIR; long audit cells","overflow":"24.5 pt reported","duplicated_prose_nearby":"MEDIUM","future_compression_potential":"MEDIUM","main_paper_necessity":"HIGH"},
+    {"id":"T4","rows":4,"columns":6,"columns_span":"double","page":9,"rendered_footprint":"about 1.55 in","readability":"FAIR; dense exactness/work/runtime cells","overflow":"19.6 pt reported","duplicated_prose_nearby":"MEDIUM","future_compression_potential":"HIGH","main_paper_necessity":"HIGH"},
+    {"id":"T5","rows":3,"columns":8,"columns_span":"double","page":10,"rendered_footprint":"about 1.85 in","readability":"FAIR; strong wrapping but caveats remain visible","overflow":"24.4 pt reported","duplicated_prose_nearby":"MEDIUM","future_compression_potential":"MEDIUM","main_paper_necessity":"HIGH"}
+  ],"status":"PASS_WITH_LAYOUT_WARNINGS"
+}

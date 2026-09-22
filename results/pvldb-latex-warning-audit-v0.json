@@ -1,0 +1,8 @@
+{
+  "artifact":"pvldb-latex-warning-audit-v0","date":"2026-09-22","log":"paper/pvldb2027/build/main.log",
+  "counts":{"overfull_hboxes":23,"underfull_hboxes":41,"undefined_references":0,"undefined_citations":0,"multiply_defined_labels":0,"missing_figure_assets":0,"font_warnings":3,"package_conflicts":0,"template_warnings":1,"bibtex_warnings":21},
+  "cosmetic":["Most prose overfull boxes are 1--19 pt and arise from long compounds under the local fallback fonts.","Wide T1/T3/T4/T5 tabulars report 19--39 pt excess and need redesign in the next pass.","Underfull table cells reflect narrow fixed-width columns.","BibTeX reports incomplete publisher/address/page metadata already present in the frozen bibliography; no citation is unresolved."],
+  "submission_risk":["Twenty-three overfull boxes remain, including all five wide-table families; visual inspection found no clipping, but final submission should eliminate them.","The environment lacks libertine, inconsolata, and newtxmath packages requested by acmart, so fallback fonts make this a faithful structural baseline but not the final production typography."],
+  "submission_risk_template_violations":0,
+  "status":"PASS_WITH_WARNINGS"
+}

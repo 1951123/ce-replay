@@ -1,0 +1,10 @@
+{
+  "artifact":"pvldb-template-compliance-v0","date":"2026-09-22","target":"PVLDB Volume 20 / VLDB 2027 Regular Research Paper",
+  "official_template":{"repository":"https://github.com/vldbproceedings/VLDB-Template","commit":"39c95f5c6fcbe652a83be24e4eff8f2134cd3fbc","commit_date":"2026-07-13","acmart_version":"2.19 (2026/06/27)"},
+  "vendored_hashes":{"acmart.cls":"2f949e6e3f2a79f2cdc218b9dcdbaa7dd451adb4ee0be1af6dc7ebe00b318ea7","pvldb.sty":"52ad3948f3231b31d2ac90f470c1759e7f96add7b577ec4e267dfbdc87fc4eb2","ACM-Reference-Format.bst":"0590db3b8d255a3af91982ab710f3ace5fcaa52434020c9af8a4f141b00b68f3"},
+  "checks":{"official_current_template_used":true,"bundled_acmart_used":true,"bundled_pvldb_style_used":true,"template_files_unmodified":true,"usepackage_pvldb_retained":true,"vldbtopmatter_retained":true,"bibliography_style_correct":true,"artifact_availability_mechanism_present":true,"author_affiliation_mechanism_present":true,"margin_hacks":false,"font_hacks":false,"spacing_hacks":false,"page_limit_hacks":false},
+  "placeholder_fields":["author name","affiliation institution/city/country","author email","DOI","production page range"],
+  "artifact_url":"https://github.com/1951123/ce-replay",
+  "single_blind_ready":false,"single_blind_note":"Mechanism is present, but real author metadata is pending and must replace explicit placeholders before submission.",
+  "status":"PASS_WITH_PENDING_METADATA"
+}

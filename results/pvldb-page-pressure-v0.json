@@ -1,0 +1,13 @@
+{
+  "artifact":"pvldb-page-pressure-v0","date":"2026-09-22","non_reference_pages_estimate":12.25,"sources":[
+    {"rank":1,"type":"tables and table captions","section":"7--8","approximate_space":"about 2.0 pages across T1--T5","scientific_importance":"HIGH","compression_potential":"MEDIUM","safe_future_action":"Redesign column structure and remove prose duplicated by tables; preserve all core evidence."},
+    {"rank":2,"type":"figures and figure captions","section":"5, 7, 8","approximate_space":"about 2.4 pages across four placeholders and full captions","scientific_importance":"HIGH","compression_potential":"MEDIUM","safe_future_action":"Render real figures, then shorten captions without losing scope; combine visual and caption information deliberately."},
+    {"rank":3,"type":"evaluation prose","section":"8","approximate_space":"about 2.6 column equivalents in addition to floats","scientific_importance":"HIGH","compression_potential":"MEDIUM","safe_future_action":"Remove values already legible in tables while retaining each RQ answer and qualification."},
+    {"rank":4,"type":"introduction prose","section":"1","approximate_space":"about 2.65 columns","scientific_importance":"HIGH","compression_potential":"MEDIUM","safe_future_action":"Tighten contribution and evidence summaries without changing positioning."},
+    {"rank":5,"type":"mandatory top matter and abstract","section":"page 1","approximate_space":"about 1.35 columns plus title block","scientific_importance":"MANDATORY","compression_potential":"LOW","safe_future_action":"Leave unchanged; final author count may alter occupancy."},
+    {"rank":6,"type":"equations","section":"3","approximate_space":"about 0.5 column of vertical display overhead","scientific_importance":"HIGH","compression_potential":"LOW","safe_future_action":"Consider natural inline notation only where semantically identical and readable; do not remove equations."},
+    {"rank":7,"type":"whitespace and float effects","section":"6--10","approximate_space":"about 0.25--0.5 page, placement-sensitive","scientific_importance":"N/A","compression_potential":"MEDIUM","safe_future_action":"Re-evaluate after final figures/tables; use normal float placement, not spacing hacks."}
+  ],
+  "dominant_pressure":"Wide tables/figures plus their long captions, followed by Section 8 prose.",
+  "status":"PASS"
+}

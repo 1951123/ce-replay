@@ -1,0 +1,7 @@
+{
+  "artifact":"pvldb-typeset-content-preservation-v0","date":"2026-09-22","source":"docs/paper-full-draft-v3-polished.md","typeset":"paper/pvldb2027/main.tex",
+  "checks":{"abstract_preserved":true,"eleven_section_structure_preserved":true,"four_rqs_preserved":true,"four_contributions_preserved":true,"all_equations_preserved":true,"all_empirical_numbers_preserved":true,"all_citation_keys_preserved":true,"all_negative_results_preserved":true,"realization_qualifiers_preserved":true,"novelty_positioning_preserved":true,"local_optimum_scope_preserved":true,"candidate_payload_boundary_preserved":true},
+  "bibliography":{"entries":15,"cited_entries":15,"uncited_entries":0,"unresolved_citations":0},
+  "formatting_only_changes":["Markdown headings, emphasis, lists, code blocks, citations, tables, and display math converted to LaTeX syntax.","Short mathematical symbols were retained as displays; prose arrows were represented with standard LaTeX math arrows.","Wide pseudocode is a normal double-column float to avoid column overlap; its statements are unchanged.","F1--F4 descriptions became neutral occupancy placeholders with the complete frozen captions.","Table and figure mentions became LaTeX cross-references.","One bibliography howpublished field replaced Markdown backticks with LaTeX texttt syntax and escaped an underscore; bibliographic facts are unchanged."],
+  "scientific_changes":0,"empirical_number_changes":0,"citation_changes":0,"status":"PASS"
+}
