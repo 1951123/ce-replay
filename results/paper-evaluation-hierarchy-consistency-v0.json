@@ -1,0 +1,21 @@
+{
+  "experiment": "Evaluation-Hierarchy-Consolidation-v0",
+  "four_rqs_preserved": true,
+  "four_contributions_preserved": true,
+  "empirical_values_changed": 0,
+  "citations_added": 0,
+  "citations_removed": 0,
+  "negative_findings_removed": 0,
+  "realization_boundaries_preserved": true,
+  "local_global_optimization_boundary_preserved": true,
+  "candidate_payload_boundary_preserved": true,
+  "bounded_postgresql_semantic_scope_preserved": true,
+  "submission_readiness_regression": "PASS",
+  "markdown_latex_synchronization": "PASS",
+  "research_freeze": {
+    "tag": "research-freeze-v0",
+    "peeled_commit": "22cf494f954cffff86080236473ca847064dca74",
+    "status": "UNCHANGED"
+  },
+  "status": "PASS"
+}

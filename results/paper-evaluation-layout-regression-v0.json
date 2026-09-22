@@ -1,0 +1,39 @@
+{
+  "experiment": "Evaluation-Hierarchy-Consolidation-v0",
+  "pdf_pages": {"before": 12, "after": 12},
+  "non_reference_page_footprint": {"before": "approximately 11.2 pages", "after": "approximately 11.2 pages"},
+  "references_start_page": {"before": 12, "after": 12},
+  "remaining_page_margin": "unchanged; references begin on page 12 and the regular-paper body remains within the established project interpretation",
+  "figures": {
+    "F1": {"before": 5, "after": 5},
+    "F2": {"before": 8, "after": 8},
+    "F3": {"before": 7, "after": 7},
+    "F4": {"before": 9, "after": 9}
+  },
+  "tables": {
+    "T1": {"before": 7, "after": 7},
+    "T2": {"before": 7, "after": 7},
+    "T3": {"before": 8, "after": 8},
+    "T4": {"before": 8, "after": 8},
+    "T5": {"before": 9, "after": 9}
+  },
+  "page_7_audit": "PASS",
+  "page_8_audit": "PASS",
+  "page_9_audit": "PASS",
+  "float_order": "PASS",
+  "typesetting": {
+    "overfull_hboxes": 0,
+    "underfull_hboxes": 2,
+    "overfull_vboxes": 1,
+    "overfull_vbox_detail": "1.252pt page-output warning inherited from the established baseline; visually harmless",
+    "undefined_references": 0,
+    "undefined_citations": 0,
+    "duplicate_labels": 0,
+    "float_placement_warnings": 0,
+    "bibliography_warnings": 0,
+    "font_warnings": 0,
+    "missing_figure_warnings": 0
+  },
+  "strongest_remaining_layout_risk": "Pages 7-9 remain dense because they carry the full-width evidence queue, but artifact positions and readability are unchanged.",
+  "status": "PASS"
+}

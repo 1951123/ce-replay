@@ -1,5 +1,5 @@
-% Generated mechanically from docs/paper-full-draft-v5-submission-ready.md.
-% Scientific content remains synchronized with that submission-ready Markdown manuscript.
+% Generated mechanically from docs/paper-full-draft-v6-evaluation-hierarchy.md.
+% Scientific content remains synchronized with that evaluation-hierarchy Markdown manuscript.
 \documentclass[sigconf,nonacm]{acmart}
 
 %%% do not modify the following VLDB block %%
@@ -77,7 +77,7 @@ Candidate definition, payload, and realization are distinct. A definition identi
 
 \subsection{Why independent candidate scoring fails}
 
-Consider two overlapping MCV objects and one FD object. Adding the larger MCV object may cause it to win native selection, consume clauses that previously supported the smaller object, and suppress the FD stage. The same addition can help one query and hurt another, and its effect can change after another candidate is selected. A fixed singleton score cannot encode that state transition. The non-monotonicity measured in Section 8 makes this semantic concern operational rather than hypothetical.
+Consider two overlapping MCV objects and one FD object. Adding the larger MCV object may cause it to win native selection, consume clauses that previously supported the smaller object, and suppress the FD stage. The same addition can help one query and hurt another, and its effect can change after another candidate is selected. A fixed singleton score cannot encode that state transition. The non-monotonicity measured in Section 7 makes this semantic concern operational rather than hypothetical.
 
 \subsection{Design requirements}
 
@@ -263,7 +263,7 @@ The dependency oracle is derived from the executable state transitions rather th
 
 \subsection{Frozen and fresh realizations}
 
-Optimization is conditional on the frozen payload repository. Deployment invokes \texttt{ANALYZE} and creates a fresh realization whose values or availability may differ. \textbf{Semantic replay error} is the replay/native discrepancy for one matched realization. \textbf{Payload realization drift} is the difference between frozen and fresh outcomes. Figure~\ref{fig:f1} separates these quantities, and Section 8 reports them separately.
+Optimization is conditional on the frozen payload repository. Deployment invokes \texttt{ANALYZE} and creates a fresh realization whose values or availability may differ. \textbf{Semantic replay error} is the replay/native discrepancy for one matched realization. \textbf{Payload realization drift} is the difference between frozen and fresh outcomes. Figure~\ref{fig:f1} separates these quantities, and Section 7 reports them separately.
 
 \section{Semantics-Guided Physical Design}\label{sec:6}
 
@@ -302,13 +302,15 @@ Candidate-query incidence supplies an outer affected set. Within an affected que
 
 Global graph connectivity does not invalidate this strategy. A candidate can affect few queries even when chains of shared candidates place nearly the whole workload in one connected component. Conversely, a shared maintenance budget prevents disjoint query neighborhoods from becoming completely independent optimization problems because candidates can exchange budget through SWAP moves.
 
-Reduced semantic work is not synonymous with runtime improvement. Once control replay is avoided, numerical aggregation and move-loop overhead may dominate. Section 8 therefore reports exact trajectory preservation, replay-operation reduction, evaluator latency, and optimizer wall-clock separately.
+Reduced semantic work is not synonymous with runtime improvement. Once control replay is avoided, numerical aggregation and move-loop overhead may dominate. Section 7 therefore reports exact trajectory preservation, replay-operation reduction, evaluator latency, and optimizer wall-clock separately.
 
 \subsection{Deployment boundary}
 
 After search, selected definitions are created in recorded order and analyzed afresh. Fresh payloads are passed both to CE-Replay and native PostgreSQL for same-realization validation. Candidate-payload acquisition remains an offline input boundary and is not counted as recurring deployed maintenance.
 
-\section{Experimental Methodology}\label{sec:7}
+\section{Evaluation}\label{sec:7}
+
+\subsection{Experimental Setup}
 
 The evaluation asks four questions: whether replay matches native semantics, supports constrained design, preserves move values while reducing work, and keeps interacting mechanisms faithful after deployment. All semantic claims target PostgreSQL 16.14.
 
@@ -347,8 +349,6 @@ Recurring maintenance is instantiated with mechanism-weighted object counts fitt
 \end{figure*}
 
 The controls align with those questions. Raw native comparisons test semantic fidelity; exhaustive five-candidate Census and four restricted DMV searches test small-instance optimization; complete terminal ADD/DROP/SWAP audits establish neighborhood-local termination; and incremental-versus-control trajectories test move equivalence. Deployment then evaluates fresh same-realization fidelity separately from frozen-to-fresh drift.
-
-\section{Evaluation}\label{sec:8}
 
 \subsection{RQ1 --- Does replay match native PostgreSQL?}
 
@@ -473,7 +473,7 @@ For Census, all objects materialize and consume. Across 30 repeated \texttt{ANAL
 
 \textbf{Answer to RQ4.} CE-Replay composes directed MCV and FD semantics and remains faithful after fresh physical deployment on both workloads. Fresh realization can change values and availability, so semantic replay error and payload realization drift must remain separate.
 
-\section{Discussion and Limitations}\label{sec:9}
+\section{Discussion and Limitations}\label{sec:8}
 
 \subsection{Statistics as semantic physical design}
 
@@ -519,7 +519,7 @@ Fresh \texttt{ANALYZE} can change payloads or availability, and the optimizer is
 
 Finally, Census and DMV provide complementary sparse and dense evidence but do not establish universal workload generality. The target workload is supplied; unseen-workload generalization is outside the core problem.
 
-\section{Related Work}\label{sec:10}
+\section{Related Work}\label{sec:9}
 
 \subsection{Statistics management and multivariate-statistics discovery}
 
@@ -555,7 +555,7 @@ Prior work addresses statistics discovery and management, hypothetical and confi
 
 This positioning is deliberately bounded. The literature categories overlap, and the current search does not justify a priority claim. CE-Replay is neither a complete advisor pipeline nor a full PostgreSQL estimator: candidate-payload acquisition remains external, search remains replaceable and neighborhood-local, and semantic coverage remains the validated PostgreSQL 16.14 fragment.
 
-\section{Conclusion}\label{sec:11}
+\section{Conclusion}\label{sec:10}
 
 This paper studies extended-statistics design for a supplied target workload under a recurring maintenance constraint. Selection is necessary both because deployed objects consume maintenance capacity and because native estimator control makes candidate utility contextual and non-monotone.
 

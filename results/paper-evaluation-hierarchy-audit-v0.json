@@ -1,0 +1,30 @@
+{
+  "experiment": "Evaluation-Hierarchy-Consolidation-v0",
+  "baseline_commit": "835faf9e7cb003561668a8996affc2c00ad5531e",
+  "old_top_level_section_count": 11,
+  "new_top_level_section_count": 10,
+  "transformation": {
+    "old": "7 Experimental Methodology; 8 Evaluation (8.1-8.4 RQ1-RQ4); 9 Discussion and Limitations; 10 Related Work; 11 Conclusion",
+    "new": "7 Evaluation (7.1 Experimental Setup; 7.2-7.5 RQ1-RQ4); 8 Discussion and Limitations; 9 Related Work; 10 Conclusion"
+  },
+  "changed_manuscript_lines": {"added": 25, "removed": 25},
+  "substantive_prose_lines_changed": 0,
+  "minimal_transition_sentences_added": 0,
+  "section_number_cross_references_updated": 3,
+  "empirical_value_lines_changed": 0,
+  "citation_lines_changed": 0,
+  "figure_table_scientific_content_lines_changed": 0,
+  "rq_traceability": {"RQ1": "PASS", "RQ2": "PASS", "RQ3": "PASS", "RQ4": "PASS"},
+  "contribution_traceability": {
+    "all_four_preserved": "PASS",
+    "contribution_3_visibility": "PASS",
+    "evidence": "Section 6 remains top-level and connects semantic state, dependency/invalidation, physical-design search, incremental evaluation, Table 4, and the mixed wall-clock negative result."
+  },
+  "cross_reference_audit": {
+    "markdown": "PASS",
+    "latex": "PASS",
+    "stale_experimental_methodology_references": 0,
+    "classification": "Three prose references to the former Section 8 were mechanically updated to Section 7; heading and subsection numbers were mechanically synchronized; no unrelated numbered-section references remain."
+  },
+  "status": "PASS"
+}
