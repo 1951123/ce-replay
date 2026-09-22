@@ -1,0 +1,23 @@
+{
+  "artifact":"paper-citation-claim-audit-v0",
+  "date":"2026-09-22",
+  "document":"docs/paper-full-draft-v1-literature.md",
+  "claims":[
+    {"section":"1","claim":"Automatic statistics management, what-if interfaces, and reusable optimizer-response representations predate CE-Replay.","citations":["chaudhuri2001statistics","chaudhuri1998whatif","papadomanolakis2007inum","bruno2008cpqo"],"support_type":"prior-art existence","confidence":"HIGH","mode":"comparative","direct":true,"narrowed":true},
+    {"section":"2.1","claim":"Correlation discovery and PostgreSQL multivariate MCV/FD statistics address limitations of univariate independence.","citations":["ilyas2004cords","postgresql16docs"],"support_type":"background and semantic authority","confidence":"HIGH","mode":"descriptive","direct":true,"narrowed":true},
+    {"section":"2.2","claim":"Workload-aware statistics management, selective collection, and constrained physical design are established.","citations":["chaudhuri2001statistics","elhelw2007jits","bruno2008constrained"],"support_type":"prior-art existence","confidence":"HIGH","mode":"descriptive","direct":true,"narrowed":true},
+    {"section":"2.2","claim":"JITS, piggyback, and Redshift address complementary acquisition/refresh questions.","citations":["elhelw2007jits","zhu2004piggyback","pfeil2026redshift"],"support_type":"systems motivation","confidence":"HIGH","mode":"descriptive","direct":true,"narrowed":false},
+    {"section":"4.2-4.4","claim":"PostgreSQL MCV numerical and MCV/FD control semantics are native rather than paper inventions.","citations":["postgresql16docs","postgresql16source"],"support_type":"PostgreSQL semantic authority","confidence":"HIGH","mode":"descriptive","direct":true,"narrowed":false},
+    {"section":"9.5","claim":"Selective and incremental collection are complementary to payload acquisition/refresh.","citations":["elhelw2007jits","zhu2004piggyback","pfeil2026redshift"],"support_type":"future-work context","confidence":"HIGH","mode":"descriptive","direct":true,"narrowed":true},
+    {"section":"10.1","claim":"Automatic statistics management, correlation discovery, and selective acquisition are established.","citations":["chaudhuri2001statistics","ilyas2004cords","elhelw2007jits"],"support_type":"method description","confidence":"HIGH","mode":"comparative","direct":true,"narrowed":true},
+    {"section":"10.1","claim":"Statistics refresh has piggyback and incremental approaches.","citations":["zhu2004piggyback","pfeil2026redshift"],"support_type":"method description","confidence":"HIGH","mode":"descriptive","direct":true,"narrowed":false},
+    {"section":"10.2","claim":"What-if and constrained physical design are established.","citations":["chaudhuri1998whatif","bruno2008constrained"],"support_type":"historical context","confidence":"HIGH","mode":"comparative","direct":true,"narrowed":true},
+    {"section":"10.2","claim":"INUM and C-PQO reuse/parameterize optimizer response across configurations.","citations":["papadomanolakis2007inum","bruno2008cpqo"],"support_type":"method description","confidence":"HIGH","mode":"comparative","direct":true,"narrowed":true},
+    {"section":"10.3","claim":"Incremental query re-optimization maintains optimizer search/pruning state after cost/cardinality changes.","citations":["liu2016incremental"],"support_type":"method description","confidence":"HIGH","mode":"comparative","direct":true,"narrowed":true},
+    {"section":"10.4","claim":"MSCN, DeepDB, and FactorJoin illustrate distinct alternative CE models.","citations":["kipf2019learned","hilprecht2020deepdb","wu2023factorjoin"],"support_type":"taxonomy","confidence":"HIGH","mode":"comparative","direct":true,"narrowed":true},
+    {"section":"10.5","claim":"The examined literature categories overlap and do not justify a priority claim.","citations":["chaudhuri2001statistics","papadomanolakis2007inum","bruno2008cpqo","liu2016incremental"],"support_type":"positioning synthesis","confidence":"MEDIUM","mode":"comparative","direct":true,"narrowed":true}
+  ],
+  "weak_support_flags":[],
+  "uncited_external_claims":0,
+  "status":"PASS"
+}

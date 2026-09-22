@@ -1,0 +1,33 @@
+{
+  "artifact":"paper-novelty-positioning-audit-v0",
+  "date":"2026-09-22",
+  "document":"docs/paper-full-draft-v1-literature.md",
+  "prohibited_implications":{
+    "automatic_statistics_management_claimed_new":0,
+    "multicolumn_discovery_claimed_new":0,
+    "hypothetical_design_evaluation_claimed_new":0,
+    "resource_constrained_physical_design_claimed_new":0,
+    "avoiding_repeated_optimizer_calls_claimed_new":0,
+    "configuration_parametric_representation_claimed_new":0,
+    "generic_incremental_dependency_evaluation_claimed_new":0,
+    "postgresql_mcv_fd_semantics_claimed_invented":0,
+    "learned_ce_characterized_only_as_workload_trained":0,
+    "prior_physical_design_called_pure_black_box":0,
+    "priority_words_first_only_unprecedented":0,
+    "unsupported_literature_wide_negative_claims":0
+  },
+  "contributions_preserved":4,
+  "narrowing_actions":[
+    "Contribution 1 now binds the constrained formulation to execution of supported native CE semantics.",
+    "Contribution 3 now names statistics-semantic dependencies and statistics-design moves.",
+    "Introduction recognizes automatic statistics management, what-if evaluation, INUM, and C-PQO.",
+    "Related Work distinguishes represented computation rather than claiming generic specialization/reuse novelty.",
+    "Learned CE comparison includes query-driven, data-driven, and factor-graph examples.",
+    "PostgreSQL MCV/FD rules are explicitly native semantics, not inventions."
+  ],
+  "positive_positioning":"CE-Replay focuses on the interface between statistics physical design and the supported statistics-sensitive native CE computation, making that computation executable under hypothetical statistics states for both workload-objective evaluation and statistics-semantic dependency exposure.",
+  "strongest_novelty_threat":"C-PQO and INUM already build reusable representations for evaluating many physical configurations without repeated full optimizer calls.",
+  "bounded_distinction":"CE-Replay represents the supported statistics-sensitive estimator control/numerical computation and its dependencies, rather than plan/cost response across access-structure configurations.",
+  "priority_claim_made":false,
+  "status":"PASS"
+}

@@ -1,0 +1,26 @@
+{
+  "artifact":"paper-citation-map-v0",
+  "date":"2026-09-22",
+  "source_manuscript":"docs/paper-full-draft-v0.md",
+  "integrated_manuscript":"docs/paper-full-draft-v1-literature.md",
+  "original_placeholder_count":14,
+  "resolved_count":14,
+  "unresolved_count":0,
+  "placeholders":[
+    {"id":"P1","location":"1 Introduction","claim":"Optimizer what-if interfaces for physical design.","category":"hypothetical design","citations":["chaudhuri1998whatif","bruno2008cpqo"],"support":"Direct method descriptions.","narrowed":true,"status":"RESOLVED"},
+    {"id":"P2","location":"1 Introduction","claim":"INUM-style optimizer response specialization.","category":"response reuse","citations":["papadomanolakis2007inum","bruno2008cpqo"],"support":"Direct reusable/parametric optimizer representations.","narrowed":true,"status":"RESOLVED"},
+    {"id":"P3","location":"2.1 Background","claim":"Classical independence and correlation challenge.","category":"CE background","citations":["ilyas2004cords"],"support":"CORDS directly motivates correlation discovery against independence assumptions.","narrowed":true,"status":"RESOLVED"},
+    {"id":"P4","location":"2.1 Background","claim":"PostgreSQL extended MCV/FD statistics.","category":"DBMS semantics","citations":["postgresql16docs"],"support":"Official versioned documentation.","narrowed":false,"status":"RESOLVED"},
+    {"id":"P5","location":"2.2 Background","claim":"Related index/materialized-view physical design.","category":"physical design","citations":["chaudhuri1998whatif","bruno2008constrained"],"support":"Foundational what-if and constrained-design publications.","narrowed":true,"status":"RESOLVED"},
+    {"id":"P6","location":"10.1 former skeleton","claim":"Persistent structures selected under workload/resource constraints.","category":"physical design","citations":["bruno2008constrained"],"support":"Direct constrained physical-design formulation.","narrowed":false,"status":"RESOLVED"},
+    {"id":"P7","location":"10.2 former skeleton","claim":"Native what-if interfaces evaluate configurations.","category":"hypothetical design","citations":["chaudhuri1998whatif"],"support":"Direct description of hypothetical index evaluation.","narrowed":false,"status":"RESOLVED"},
+    {"id":"P8","location":"10.2 former skeleton","claim":"INUM reuses optimizer plan/cost response.","category":"optimizer reuse","citations":["papadomanolakis2007inum"],"support":"Official paper directly describes cache-and-reuse model.","narrowed":false,"status":"RESOLVED"},
+    {"id":"P9","location":"10.2 former skeleton","claim":"Configuration-parametric evaluation.","category":"parametric representation","citations":["bruno2008cpqo"],"support":"Direct compact configuration-space representation.","narrowed":true,"status":"RESOLVED"},
+    {"id":"P10","location":"10.4 v1","claim":"Alternative learned/query-driven CE.","category":"cardinality estimation","citations":["kipf2019learned"],"support":"Representative supervised query-driven CE.","narrowed":false,"status":"RESOLVED"},
+    {"id":"P11","location":"10.4 v1","claim":"Data-driven CE does not require workload-query training.","category":"cardinality estimation","citations":["hilprecht2020deepdb"],"support":"DeepDB directly establishes data-driven alternative.","narrowed":true,"status":"RESOLVED"},
+    {"id":"P12","location":"10.4 v1","claim":"Modern join CE framework.","category":"cardinality estimation","citations":["wu2023factorjoin"],"support":"FactorJoin directly describes learned conditional distributions/factor graph.","narrowed":false,"status":"RESOLVED"},
+    {"id":"P13","location":"10.1 v1","claim":"Workload-driven multivariate statistics selection/discovery.","category":"statistics management","citations":["chaudhuri2001statistics","ilyas2004cords","elhelw2007jits"],"support":"Direct statistics management, discovery, and acquisition methods.","narrowed":true,"status":"RESOLVED"},
+    {"id":"P14","location":"10.1 v1","claim":"Automatic statistics creation/maintenance ecosystem.","category":"statistics lifecycle","citations":["chaudhuri2001statistics","elhelw2007jits","zhu2004piggyback","pfeil2026redshift"],"support":"Selection plus selective, piggyback, and incremental refresh methods.","narrowed":true,"status":"RESOLVED"}
+  ],
+  "status":"PASS"
+}
