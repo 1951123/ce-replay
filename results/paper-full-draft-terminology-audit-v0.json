@@ -1,0 +1,24 @@
+{
+  "artifact":"paper-full-draft-terminology-audit-v0",
+  "date":"2026-09-22",
+  "document":"docs/paper-full-draft-v0.md",
+  "canonical_terms":["target workload","candidate statistic","selected design","physical realization","frozen payload repository","fresh payload realization","CE-Replay","objective oracle","dependency oracle","semantic replay error","payload realization drift","recurring maintenance cost","contextual marginal","local optimum","supported semantic fragment"],
+  "replacements_made":[
+    {"from":"training workload","to":"target workload","count":0,"note":"Not introduced."},
+    {"from":"CE replay / CEReplay / CE-replay","to":"CE-Replay","count":"all named uses normalized"},
+    {"from":"optimal design","to":"selected design or neighborhood local optimum","count":"all workload-scale uses normalized"},
+    {"from":"fresh error","to":"semantic replay error or payload realization drift","count":"all uses separated"},
+    {"from":"storage/byte cost as primary resource","to":"recurring maintenance cost","count":"byte proxy retained only historically"}
+  ],
+  "intentionally_retained_generic_uses":[
+    "replay is used generically for control/query replay operations when CE-Replay is not the named representation.",
+    "statistics is retained in established compounds such as extended statistics and statistics-sensitive semantics.",
+    "optimization names the problem/process and does not imply global optimality.",
+    "native is retained with PostgreSQL, fragment, instrumentation, or same-realization context."
+  ],
+  "conflicting_forms_remaining":[],
+  "inline_math_delimiters":0,
+  "notation_entries_used":14,
+  "query_weight_symbol_introduced":false,
+  "status":"PASS"
+}

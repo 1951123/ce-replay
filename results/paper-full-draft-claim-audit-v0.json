@@ -1,0 +1,30 @@
+{
+  "artifact":"paper-full-draft-claim-audit-v0",
+  "date":"2026-09-22",
+  "document":"docs/paper-full-draft-v0.md",
+  "checks":{
+    "full_postgresql_ce_overclaim":0,
+    "full_instance_global_optimum_overclaim":0,
+    "universal_speedup_claim":0,
+    "universal_maintenance_coefficient_claim":0,
+    "learned_model_mischaracterization":0,
+    "unseen_workload_generalization_overclaim":0,
+    "execution_time_improvement_claim":0,
+    "frozen_fresh_conflation":0,
+    "dmv_provenance_overclaim":0,
+    "dmv_zero_truth_omission":0,
+    "unsupported_priority_claim":0,
+    "automatic_source_compilation_claim":0,
+    "realization_robust_optimization_claim":0
+  },
+  "exactness_audit":"All exactness language is tied to supported semantics, audited move equality, or explicit small/restricted exhaustive instances.",
+  "optimality_audit":"Full workload designs are called neighborhood local optima; mathematical and restricted exhaustive optima are distinguished.",
+  "runtime_audit":"Control replay, query replay, evaluator latency, and optimizer wall-clock are separated; mixed slowdown is visible.",
+  "realization_audit":"DMV baseline, optimization, and fresh realizations are not paired numerically; DMV frozen-to-fresh drift is explicitly unavailable.",
+  "abstract_promise_audit":"All six abstract claims are present in Sections 3-9 and no new promise was introduced.",
+  "introduction_promise_audit":"All nine introduction paragraphs map to frozen technical/evaluation/discussion sections.",
+  "conclusion_audit":"Every conclusion statement appears earlier; no new evidence or interpretation is introduced.",
+  "frozen_source_factual_errors":[],
+  "unsupported_claims":[],
+  "status":"PASS"
+}

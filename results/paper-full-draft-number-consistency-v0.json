@@ -1,0 +1,25 @@
+{
+  "artifact":"paper-full-draft-number-consistency-v0",
+  "date":"2026-09-22",
+  "document":"docs/paper-full-draft-v0.md",
+  "numbers":[
+    {"id":"N1","metric":"Census query count","canonical":"468","source":"paper-evaluation-number-audit-v0 / Section 7","appearances":["Abstract","Introduction","T1","T2","T5"],"format":"integer","status":"CONSISTENT"},
+    {"id":"N2","metric":"DMV query count","canonical":"1,965","source":"paper-evaluation-number-audit-v0 / Section 7","appearances":["Abstract","Introduction","T1","T2","T5"],"format":"comma-separated integer","status":"CONSISTENT"},
+    {"id":"N3","metric":"Structural pair candidates","canonical":{"Census":"2,253","DMV":"36"},"source":"paper-evaluation-number-audit-v0 / T1","appearances":["T1","Section 7","T3"],"format":"comma-separated integer","status":"CONSISTENT"},
+    {"id":"N4","metric":"Fresh fidelity counts","canonical":{"Census":"468/468","DMV":"1,965/1,965"},"source":"Maintenance-Design-Deploy-v0; DMV-Deploy-v0","appearances":["Abstract","Introduction","T2","T5"],"format":"matched/total","status":"CONSISTENT"},
+    {"id":"N5","metric":"Maximum fresh semantic error","canonical":{"Census":"6.92e-16","DMV":"2.43422e-14"},"source":"paper-evaluation-number-audit-v0 / T5","appearances":["T2","T5"],"format":"scientific notation","status":"CONSISTENT"},
+    {"id":"N6","metric":"Harmful singleton additions","canonical":{"Census":"1,560/3,011","DMV":"45/70"},"source":"Statistics-Nonmonotonicity-v0; DMV-Baseline-and-Nonmonotonicity-v0","appearances":["F2 caption"],"format":"count/eligible count","status":"CONSISTENT"},
+    {"id":"N7","metric":"Improving removals from complete design","canonical":{"Census":"317","DMV":"17"},"source":"same as N6","appearances":["F2 caption"],"format":"integer","status":"CONSISTENT"},
+    {"id":"N8","metric":"Maintenance coefficients","canonical":{"Census_MCV_ms":"1.874997","Census_FD_ms":"2.717261","DMV_MCV_ms":"3.903845","DMV_FD_ms":"5.907345"},"source":"Analyze-Cost-Model-v0; DMV-Analyze-Cost-Model-v0","appearances":["F3 caption"],"format":"six decimals, ms/object","status":"CONSISTENT"},
+    {"id":"N9","metric":"Census selected design and loss","canonical":{"design":"276 MCV + 7 FD","budget":"286.144","cost":"286.143","loss":"787.809381"},"source":"Maintenance-Budget-Optimize-v0","appearances":["T3","T5","Section 8.2"],"format":"frozen audited precision","status":"CONSISTENT"},
+    {"id":"N10","metric":"DMV selected design and loss","canonical":{"design":"11 MCV + 12 FD","budget":"43.724603","cost":"29.158543","unused":"14.566060","loss":"7.83651388676e298"},"source":"DMV-Maintenance-Budget-Optimize-v0","appearances":["T3","T5"],"format":"frozen audited precision; zero-truth caveat adjacent","status":"CONSISTENT"},
+    {"id":"N11","metric":"Incremental control reductions","canonical":{"Census_MCV":"171.31×","Census_mixed":"154.61×","DMV_avoided":"67.91%"},"source":"Semantic-Optimizer-v0; Compositional-Semantic-Optimizer-v0; DMV-Maintenance-Budget-Optimize-v0","appearances":["T4"],"format":"audited rounding","status":"CONSISTENT"},
+    {"id":"N12","metric":"Mixed evaluator runtime","canonical":{"semantic_s":"145.68","control_s":"45.05","slowdown":"3.23×"},"source":"Compositional-Semantic-Optimizer-v0","appearances":["T4","Sections 8.3 and 9.3 qualitative"],"format":"two decimals","status":"CONSISTENT"},
+    {"id":"N13","metric":"Deployment cost prediction error","canonical":{"Census":"7.20%","DMV":"21.4295%"},"source":"Maintenance-Design-Deploy-v0; DMV-Deploy-v0","appearances":["T5"],"format":"source rounding retained","status":"CONSISTENT"},
+    {"id":"N14","metric":"Census frozen-to-fresh loss drift","canonical":{"frozen":"787.809381","fresh":"811.553725","relative":"+3.0140%"},"source":"Maintenance-Design-Deploy-v0","appearances":["T5"],"format":"paired same design","status":"CONSISTENT"},
+    {"id":"N15","metric":"Repeated Census comparisons","canonical":"14,040/14,040 across 30 realizations","source":"Repeated-Analyze-Robustness-v0","appearances":["Section 8.4"],"format":"matched/total and integer runs","status":"CONSISTENT"}
+  ],
+  "new_percentages_calculated":0,
+  "incompatible_realization_comparisons":0,
+  "status":"PASS"
+}

@@ -1,0 +1,23 @@
+{
+  "artifact":"paper-reviewer-adversarial-audit-v0",
+  "date":"2026-09-22",
+  "objections":[
+    {"id":1,"objection":"Why not invoke native PostgreSQL for every hypothetical design?","answered":true,"where":["Introduction","Sections 5.2, 5.3, 6.2"],"wording_action":"Retain native as semantic validation oracle and emphasize dependency exposure.","unsupported_claim":false,"new_evidence":"NO"},
+    {"id":2,"objection":"Acquiring hypothetical payloads may dominate design cost.","answered":true,"where":["Sections 3, 5.4, 6.3, 9.5, Limitations"],"wording_action":"Keep it an explicit offline boundary, not a solved capability.","unsupported_claim":false,"new_evidence":"FUTURE WORK"},
+    {"id":3,"objection":"The workload-scale designs are not globally optimal.","answered":true,"where":["Sections 3, 6.1, 8.2, 9.7"],"wording_action":"Use neighborhood local optimum consistently.","unsupported_claim":false,"new_evidence":"OPTIONAL CAMERA-READY EXPERIMENT"},
+    {"id":4,"objection":"Two workloads are insufficient for broad generality.","answered":true,"where":["Introduction","Sections 7, 9.7"],"wording_action":"Frame as complementary replication, not representativeness.","unsupported_claim":false,"new_evidence":"FUTURE WORK"},
+    {"id":5,"objection":"Lower q-error may not improve plan quality or runtime.","answered":true,"where":["Sections 3, 9.7, Conclusion"],"wording_action":"Retain CE-loss objective boundary prominently.","unsupported_claim":false,"new_evidence":"FUTURE WORK"},
+    {"id":6,"objection":"Hand-coded semantics may be brittle across PostgreSQL versions and mechanisms.","answered":true,"where":["Sections 5.2, 9.6, 9.7"],"wording_action":"Describe source-informed validation and deny automatic compilation.","unsupported_claim":false,"new_evidence":"FUTURE WORK"},
+    {"id":7,"objection":"Maintenance coefficients are not portable and deployment prediction is imperfect.","answered":true,"where":["Figure F3","Table T5","Sections 9.4, 9.7"],"wording_action":"Keep environment-specific first-order proxy language.","unsupported_claim":false,"new_evidence":"NO"},
+    {"id":8,"objection":"Frozen-payload optimization may be invalid after sampling drift.","answered":true,"where":["Sections 5.4, 8.4, 9.5, 9.7"],"wording_action":"Separate semantic fidelity from realization uncertainty; do not imply ranking stability.","unsupported_claim":false,"new_evidence":"FUTURE WORK"},
+    {"id":9,"objection":"The mixed semantic evaluator is slower than its control, weakening the efficiency claim.","answered":true,"where":["T4","Sections 8.3, 9.3"],"wording_action":"Claim semantic-work reduction, not universal runtime speedup.","unsupported_claim":false,"new_evidence":"OPTIONAL CAMERA-READY EXPERIMENT"},
+    {"id":10,"objection":"DMV aggregate loss is pathological because two truths are zero.","answered":true,"where":["Section 7","T3 context","Section 9.7"],"wording_action":"Preserve raw objective for consistency and mark nonzero-truth loss diagnostic only.","unsupported_claim":false,"new_evidence":"NO"},
+    {"id":11,"objection":"Missing DMV frozen provenance prevents a full deployment comparison.","answered":true,"where":["T5","Sections 8.4, 9.7"],"wording_action":"State paired drift unavailable while preserving independently supported fresh claims.","unsupported_claim":false,"new_evidence":"LIMITATION"},
+    {"id":12,"objection":"The semantic scope is too narrow to establish a general physical-design method.","answered":true,"where":["Introduction","Sections 5.2, 9.6, 9.7, Conclusion"],"wording_action":"Make bounded PostgreSQL evidence and architectural abstraction distinct.","unsupported_claim":false,"new_evidence":"FUTURE WORK"}
+  ],
+  "strongest_objection_id":2,
+  "strongest_objection_reason":"The method assumes a frozen payload repository, and acquiring payloads for a large candidate universe may be a substantial end-to-end systems cost not solved by CE-Replay.",
+  "requires_new_evidence_for_current_claims":false,
+  "optional_camera_ready_items":["Additional global-bound evidence on larger restricted instances.","Optimize the mixed evaluator's numerical aggregation and report an implementation follow-up without changing semantic claims."],
+  "status":"PASS WITH EXPLICIT LIMITATIONS"
+}
