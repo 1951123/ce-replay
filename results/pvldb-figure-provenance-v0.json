@@ -1,0 +1,45 @@
+{
+  "experiment": "PVLDB-Figure-Provenance-v0",
+  "freeze": "research-freeze-v0@22cf494f954cffff86080236473ca847064dca74",
+  "figures": {
+    "F1": {
+      "type": "conceptual",
+      "components": [
+        {"visual_component": "fixed workload, CE context, candidate definitions, budget", "manuscript_concept": "physical-design inputs", "source_section": "3 and 5.1", "scope": "architecture-level", "status": "implemented input"},
+        {"visual_component": "offline frozen payload repository", "manuscript_concept": "candidate-payload boundary", "source_section": "3, 5.1, 6.3", "scope": "architecture-level", "status": "external acquisition boundary"},
+        {"visual_component": "central CE-Replay block", "manuscript_concept": "design-parametric executable supported CE semantics", "source_section": "4 and 5", "scope": "PostgreSQL 16.14 supported fragment", "status": "implemented"},
+        {"visual_component": "objective and semantic-dependency interfaces", "manuscript_concept": "dual replay interfaces", "source_section": "5.3 and 6", "scope": "architecture-level", "status": "implemented"},
+        {"visual_component": "maintenance-feasible ADD/DROP/SWAP search", "manuscript_concept": "replaceable neighborhood-local consumer", "source_section": "6.1", "scope": "current optimizer", "status": "implemented"},
+        {"visual_component": "fresh deployment and paired replay/native branch", "manuscript_concept": "same-realization validation distinct from payload drift", "source_section": "5.4, 6.3, 8.4", "scope": "PostgreSQL-specific deployment", "status": "implemented"}
+      ],
+      "source": "docs/paper-figure-1-spec-v0.md"
+    },
+    "F2": {
+      "type": "empirical",
+      "elements": [
+        {"panel": "Census", "visual_element": "empty/all/optimized bars", "semantic_meaning": "aggregate frozen q-error loss by reported state", "source_file": "results/paper-evaluation-figure-table-data-v0.json", "source_field": "F2.panels.Census_nonmonotonicity_realization.empty/all_statistics/optimized_subset", "transformation": "direct bar coordinate; display rounding to integer", "claim": "more statistics need not improve loss"},
+        {"panel": "Census", "visual_element": "harmful/improving annotation", "semantic_meaning": "singleton direction counts", "source_file": "results/paper-evaluation-figure-table-data-v0.json", "source_field": "harmful_singletons/tested_singletons/improving_removals_from_all", "transformation": "none", "claim": "non-monotone inclusion"},
+        {"panel": "DMV", "visual_element": "empty/all-MCV/all-FD/all-statistics bars and annotations", "semantic_meaning": "frozen baseline loss and direction counts", "source_file": "results/paper-evaluation-figure-table-data-v0.json", "source_field": "F2.panels.DMV_baseline_realization", "transformation": "direct bar coordinate; display rounding to integer", "claim": "non-monotonicity also appears in the dense workload"}
+      ]
+    },
+    "F3": {
+      "type": "empirical",
+      "elements": [
+        {"panel": "Census", "visual_element": "pure-MCV/FD measured points", "semantic_meaning": "mean ANALYZE latency per frozen configuration", "source_file": "results/census_analyze_cost_model_v0.csv", "source_field": "group by n_mcv,n_fd,kind; mean seconds", "transformation": "seconds to milliseconds; measured repetitions averaged; pure families only", "claim": "first-order mechanism-aware cost proxy"},
+        {"panel": "Census", "visual_element": "fit lines", "semantic_meaning": "reported pure-mechanism slopes", "source_file": "results/paper-evaluation-figure-table-data-v0.json", "source_field": "F3.panels.Census empty_mean_seconds/mcv_only_slope_ms/fd_only_slope_ms", "transformation": "intercept plus slope times object count", "claim": "mechanisms have different measured slopes"},
+        {"panel": "DMV", "visual_element": "pure-MCV/FD points and fit lines", "semantic_meaning": "measured configuration means and reported pure slopes", "source_file": "results/dmv_analyze_cost_model_v0.csv; results/paper-evaluation-figure-table-data-v0.json", "source_field": "measured rows grouped by counts/family; F3 DMV slopes", "transformation": "warmup filtered; seconds to milliseconds; repetitions averaged", "claim": "coefficients differ by environment"},
+        {"panel": "DMV", "visual_element": "combined-model annotation", "semantic_meaning": "reported combined coefficients and R-squared", "source_file": "results/paper-evaluation-figure-table-data-v0.json", "source_field": "combined_mcv_ms/combined_fd_ms/combined_r2", "transformation": "display rounding only", "claim": "environment-specific first-order combined proxy"}
+      ]
+    },
+    "F4": {
+      "type": "hybrid",
+      "elements": [
+        {"panel": "mechanism", "visual_element": "MCV to residual state to FD", "semantic_meaning": "directed clause-consumption composition", "source_file": "docs/paper-full-draft-v4-page-budget.md", "source_field": "Sections 4.4 and 8.4", "transformation": "conceptual encoding", "claim": "MCV can suppress FD reachability"},
+        {"panel": "Census", "visual_element": "independent/joint stacked bars", "semantic_meaning": "consumed versus suppressed selected FDs", "source_file": "results/paper-evaluation-figure-table-data-v0.json", "source_field": "F4.data.Census independent_selected_fd/independent_never_consumed_fd/joint_selected_fd/joint_consumed_fd", "transformation": "independent consumed = 97 - 72; stacked partition", "claim": "joint selection avoids many suppressed FDs"},
+        {"panel": "DMV", "visual_element": "all/optimized/fresh stacked bars", "semantic_meaning": "FD consumption across frozen and fresh states", "source_file": "results/paper-evaluation-figure-table-data-v0.json", "source_field": "F4.data.DMV all_state_usable_fd/all_state_consumed_fd/optimized_selected_fd/optimized_consumed_fd/fresh_materialized_fd/fresh_consumed_fd", "transformation": "stacked partition; no frozen/fresh loss reconstruction", "claim": "composition survives fresh deployment"}
+      ]
+    }
+  },
+  "untraceable_values": 0,
+  "status": "PASS"
+}

@@ -1,0 +1,17 @@
+{
+  "experiment": "PVLDB-Final-Figure-Page-Budget-v0",
+  "baseline": {"non_reference_extent": 11.0, "reference_start": "page 12 top", "total_pages": 12},
+  "final": {"non_reference_extent": 11.0, "reference_start": "page 12 top; anchor emitted at page 11 end", "total_pages": 12, "overfull_hboxes": 0, "overfull_vboxes": 1, "underfull_issues": 13},
+  "figures": {
+    "F1": {"width_in": 6.6, "height_in": 2.2, "caption_words_before": 104, "caption_words_after": 104, "float_movement": "none material"},
+    "F2": {"width_in": 6.6, "height_in": 2.05, "caption_words_before": 62, "caption_words_after": 62, "float_movement": "none material"},
+    "F3": {"width_in": 6.6, "height_in": 2.05, "caption_words_before": 62, "caption_words_after": 62, "float_movement": "none material"},
+    "F4": {"width_in": 6.6, "height_in": 2.15, "caption_words_before": 59, "caption_words_after": 59, "float_movement": "none material"}
+  },
+  "caption_words_before_total": 287,
+  "caption_words_after_total": 287,
+  "practical_margin_pages": 1.0,
+  "author_block_page_budget_risk": false,
+  "page_budget_materially_changed": false,
+  "status": "PASS"
+}

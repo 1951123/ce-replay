@@ -1,0 +1,14 @@
+{
+  "experiment": "PVLDB-Cross-Figure-Consistency-v0",
+  "terminology": {"workload": true, "design": true, "candidate": true, "payload": true, "replay": true, "native": true, "frozen": true, "fresh": true, "MCV": true, "FD": true, "maintenance": true, "objective": true},
+  "visual_semantics": {
+    "blue": "MCV, replay, or frozen executable context",
+    "orange": "FD, deployment/control, or suppressed state",
+    "gray": "neutral/native/context",
+    "hatching": "empirical category distinction independent of color",
+    "frozen_fresh_reversal": false,
+    "mcv_fd_reversal": false
+  },
+  "conflicts": [],
+  "status": "PASS"
+}

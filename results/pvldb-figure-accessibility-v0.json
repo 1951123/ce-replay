@@ -1,0 +1,11 @@
+{
+  "experiment": "PVLDB-Figure-Accessibility-v0",
+  "figures": {
+    "F1": {"grayscale": "PASS", "color_independent": true, "smallest_text_pt": 5.8, "smallest_marker_pt": null, "line_distinction": "solid/dashed plus labels", "legend": "not used", "direct_labels": "PASS WITH NOTE", "normal_pdf_zoom": "PASS WITH NOTE", "printed_page": "PASS WITH NOTE", "verdict": "PASS WITH NOTE", "note": "Minor arrow labels are small; primary blocks and boundaries remain readable."},
+    "F2": {"grayscale": "PASS", "color_independent": true, "smallest_text_pt": 6.1, "smallest_marker_pt": null, "line_distinction": "distinct hatch patterns and direct labels", "legend": "not required", "direct_labels": "PASS", "normal_pdf_zoom": "PASS", "printed_page": "PASS", "verdict": "PASS"},
+    "F3": {"grayscale": "PASS", "color_independent": true, "smallest_text_pt": 6.1, "smallest_marker_pt": 18, "line_distinction": "circle/solid versus square/dashed", "legend": "PASS", "direct_labels": "PASS", "normal_pdf_zoom": "PASS WITH NOTE", "printed_page": "PASS WITH NOTE", "verdict": "PASS WITH NOTE", "note": "Fit annotations are secondary and smaller than axis/legend text."},
+    "F4": {"grayscale": "PASS", "color_independent": true, "smallest_text_pt": 6.2, "smallest_marker_pt": null, "line_distinction": "opposing hatches plus direct consumed/selected labels", "legend": "PASS", "direct_labels": "PASS", "normal_pdf_zoom": "PASS", "printed_page": "PASS", "verdict": "PASS"}
+  },
+  "failures": 0,
+  "status": "PASS"
+}

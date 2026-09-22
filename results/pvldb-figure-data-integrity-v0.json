@@ -1,0 +1,13 @@
+{
+  "experiment": "PVLDB-Figure-Data-Integrity-v0",
+  "figures": {
+    "F1": {"empirical": false, "category_count": null, "series_count": null, "source_values_verified": true, "displayed_values_verified": true, "sorting": "not applicable", "filtering": "not applicable", "aggregation": "not applicable", "rounding": "not applicable", "omitted_points": 0, "axis_transformations": "none"},
+    "F2": {"empirical": true, "category_count": 7, "series_count": 2, "source_values_verified": true, "displayed_values_verified": true, "sorting": "fixed semantic state order", "filtering": "none among specified headline states", "aggregation": "none", "rounding": "loss labels rounded to nearest integer; bar coordinates retain full source values", "omitted_points": 0, "axis_transformations": "independent linear y axes by workload"},
+    "F3": {"empirical": true, "category_count": 30, "series_count": 4, "source_values_verified": true, "displayed_values_verified": true, "sorting": "object count ascending", "filtering": "DMV warmups excluded as specified; all 12 Census and 18 DMV pure-mechanism configurations shown; 11 mixed configurations and two empty baselines intentionally not drawn as points, while the DMV mixed model is reported by its frozen annotation", "aggregation": "repetitions averaged within each frozen configuration", "rounding": "slope annotations to three decimals and R-squared to three decimals", "omitted_points": 13, "omission_explained": true, "axis_transformations": "seconds converted to milliseconds; linear axes"},
+    "F4": {"empirical": true, "category_count": 5, "series_count": 2, "source_values_verified": true, "displayed_values_verified": true, "sorting": "semantic state order", "filtering": "no paired DMV frozen/fresh loss plotted because provenance is unavailable", "aggregation": "selected objects partitioned into consumed and suppressed", "rounding": "none", "omitted_points": 0, "axis_transformations": "independent linear count axes by workload"}
+  },
+  "unexplained_omitted_points": 0,
+  "untraceable_values": 0,
+  "changed_empirical_values": 0,
+  "status": "PASS"
+}

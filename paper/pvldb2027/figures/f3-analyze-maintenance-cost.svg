@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="475.2pt" height="147.6pt" viewBox="0 0 475.2 147.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>build_figures.py</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 147.6 
+L 475.2 147.6 
+L 475.2 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 35.64 115.128 
+L 223.653913 115.128 
+L 223.653913 29.52 
+L 35.64 29.52 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 44.186087 115.128 
+L 44.186087 29.52 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m7abdeb7184" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m7abdeb7184" x="44.186087" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="44.186087" y="126.595" transform="rotate(-0 44.186087 126.595)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 82.11812 115.128 
+L 82.11812 29.52 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="82.11812" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="82.11812" y="126.595" transform="rotate(-0 82.11812 126.595)">500</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 120.050152 115.128 
+L 120.050152 29.52 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="120.050152" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="120.050152" y="126.595" transform="rotate(-0 120.050152 126.595)">1000</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 157.982185 115.128 
+L 157.982185 29.52 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="157.982185" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="157.982185" y="126.595" transform="rotate(-0 157.982185 126.595)">1500</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 195.914218 115.128 
+L 195.914218 29.52 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="195.914218" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="195.914218" y="126.595" transform="rotate(-0 195.914218 126.595)">2000</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font: 7px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="129.646957" y="137.048781" transform="rotate(-0 129.646957 137.048781)">Deployed objects (pure-mechanism configurations)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11">
+      <path d="M 35.64 97.163615 
+L 223.653913 97.163615 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <defs>
+       <path id="m4303fef3e0" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4303fef3e0" x="35.64" y="97.163615" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: end" x="28.64" y="99.397115" transform="rotate(-0 28.64 99.397115)">1000</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_13">
+      <path d="M 35.64 78.740634 
+L 223.653913 78.740634 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m4303fef3e0" x="35.64" y="78.740634" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: end" x="28.64" y="80.974134" transform="rotate(-0 28.64 80.974134)">2000</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_15">
+      <path d="M 35.64 60.317654 
+L 223.653913 60.317654 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m4303fef3e0" x="35.64" y="60.317654" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: end" x="28.64" y="62.551154" transform="rotate(-0 28.64 62.551154)">3000</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_17">
+      <path d="M 35.64 41.894673 
+L 223.653913 41.894673 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m4303fef3e0" x="35.64" y="41.894673" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: end" x="28.64" y="44.128173" transform="rotate(-0 28.64 44.128173)">4000</text>
+     </g>
+    </g>
+    <g id="text_11">
+     <text style="font: 7px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="11.097563" y="72.324" transform="rotate(-90 11.097563 72.324)">Mean ANALYZE latency (ms)</text>
+    </g>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="mc2afb9e4a1" d="M 0 2.12132 
+C 0.562581 2.12132 1.102195 1.897805 1.5 1.5 
+C 1.897805 1.102195 2.12132 0.562581 2.12132 0 
+C 2.12132 -0.562581 1.897805 -1.102195 1.5 -1.5 
+C 1.102195 -1.897805 0.562581 -2.12132 0 -2.12132 
+C -0.562581 -2.12132 -1.102195 -1.897805 -1.5 -1.5 
+C -1.897805 -1.102195 -2.12132 -0.562581 -2.12132 0 
+C -2.12132 0.562581 -1.897805 1.102195 -1.5 1.5 
+C -1.102195 1.897805 -0.562581 2.12132 0 2.12132 
+z
+" style="stroke: #3b6ea8; stroke-width: 0.8"/>
+    </defs>
+    <g clip-path="url(#p41bdcbcdb5)">
+     <use xlink:href="#mc2afb9e4a1" x="47.97929" y="109.44069" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="51.772493" y="107.835305" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="59.3589" y="104.237726" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="82.11812" y="94.608391" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="120.050152" y="76.260921" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="195.914218" y="42.293182" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="215.107826" y="33.435262" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+    </g>
+   </g>
+   <g id="PathCollection_2">
+    <defs>
+     <path id="m03db938645" d="M -2.12132 2.12132 
+L 2.12132 2.12132 
+L 2.12132 -2.12132 
+L -2.12132 -2.12132 
+z
+" style="stroke: #d88936; stroke-width: 0.8"/>
+    </defs>
+    <g clip-path="url(#p41bdcbcdb5)">
+     <use xlink:href="#m03db938645" x="47.97929" y="108.558546" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="51.772493" y="105.99261" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="59.3589" y="100.619135" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="82.11812" y="86.092628" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="101.691048" y="72.963593" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+    </g>
+   </g>
+   <g id="line2d_19">
+    <path d="M 44.186087 111.236727 
+L 215.107826 33.411273 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke: #3b6ea8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 44.186087 111.236727 
+L 101.691048 73.291212 
+" clip-path="url(#p41bdcbcdb5)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #d88936"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 35.64 115.128 
+L 35.64 29.52 
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 35.64 115.128 
+L 223.653913 115.128 
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_12">
+    <!-- MCV $R^2$=.995 · FD $R^2$=.996 -->
+    <g style="fill: #666666" transform="translate(150.475635 110.275899)">
+     <text>
+      <tspan style="font: 6.1px 'Linux Libertine O'" x="0 5.11264 9.049194 13.022308 22.087252 25.438799 26.779421 29.613009 32.446596 35.280184 36.803606 38.327029 39.850451 42.80591 47.077608 56.142552 59.494099 60.834721 63.668309 66.501896" y="-0.5093750000000004">MCV =.995 · FD =.996</tspan>
+      <tspan style="font: oblique 6.1px 'DejaVu Sans'" x="14.545731 48.601031" y="-0.5093750000000004">RR</tspan>
+      <tspan style="font: 4.27px 'DejaVu Sans'" x="19.206925 53.262225" y="-2.8390625000000003">22</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_13">
+    <text style="font: 700 8px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="129.646957" y="23.52" transform="rotate(-0 129.646957 23.52)">Census environment</text>
+   </g>
+   <g id="legend_1">
+    <g id="PathCollection_3">
+     <g>
+      <use xlink:href="#mc2afb9e4a1" x="47.8" y="38.08" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     </g>
+    </g>
+    <g id="text_14">
+     <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: start" x="59.32" y="39.76" transform="rotate(-0 59.32 39.76)">MCV measured</text>
+    </g>
+    <g id="line2d_21">
+     <path d="M 41.4 46.698 
+L 47.8 46.698 
+L 54.2 46.698 
+" style="fill: none; stroke: #3b6ea8; stroke-linecap: square"/>
+    </g>
+    <g id="text_15">
+     <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: start" x="59.32" y="48.938" transform="rotate(-0 59.32 48.938)">MCV fit: 1.875 ms/object</text>
+    </g>
+    <g id="PathCollection_4">
+     <g>
+      <use xlink:href="#m03db938645" x="47.8" y="56.436" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     </g>
+    </g>
+    <g id="text_16">
+     <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: start" x="59.32" y="58.116" transform="rotate(-0 59.32 58.116)">FD measured</text>
+    </g>
+    <g id="line2d_22">
+     <path d="M 41.4 65.054 
+L 47.8 65.054 
+L 54.2 65.054 
+" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #d88936"/>
+    </g>
+    <g id="text_17">
+     <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: start" x="59.32" y="67.294" transform="rotate(-0 59.32 67.294)">FD fit: 2.717 ms/object</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 280.058087 115.128 
+L 468.072 115.128 
+L 468.072 29.52 
+L 280.058087 29.52 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_6">
+     <g id="line2d_23">
+      <path d="M 288.604174 115.128 
+L 288.604174 29.52 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="288.604174" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="288.604174" y="126.595" transform="rotate(-0 288.604174 126.595)">0</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_25">
+      <path d="M 312.343304 115.128 
+L 312.343304 29.52 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="312.343304" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="312.343304" y="126.595" transform="rotate(-0 312.343304 126.595)">5</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_27">
+      <path d="M 336.082435 115.128 
+L 336.082435 29.52 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="336.082435" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="336.082435" y="126.595" transform="rotate(-0 336.082435 126.595)">10</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_29">
+      <path d="M 359.821565 115.128 
+L 359.821565 29.52 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="359.821565" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="359.821565" y="126.595" transform="rotate(-0 359.821565 126.595)">15</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_31">
+      <path d="M 383.560696 115.128 
+L 383.560696 29.52 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="383.560696" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="383.560696" y="126.595" transform="rotate(-0 383.560696 126.595)">20</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_33">
+      <path d="M 407.299826 115.128 
+L 407.299826 29.52 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="407.299826" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="407.299826" y="126.595" transform="rotate(-0 407.299826 126.595)">25</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_35">
+      <path d="M 431.038957 115.128 
+L 431.038957 29.52 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_36">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="431.038957" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="431.038957" y="126.595" transform="rotate(-0 431.038957 126.595)">30</text>
+     </g>
+    </g>
+    <g id="xtick_13">
+     <g id="line2d_37">
+      <path d="M 454.778087 115.128 
+L 454.778087 29.52 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_38">
+      <g>
+       <use xlink:href="#m7abdeb7184" x="454.778087" y="115.128" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_25">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="454.778087" y="126.595" transform="rotate(-0 454.778087 126.595)">35</text>
+     </g>
+    </g>
+    <g id="text_26">
+     <text style="font: 7px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="374.065043" y="137.048781" transform="rotate(-0 374.065043 137.048781)">Deployed objects (pure-mechanism configurations)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_5">
+     <g id="line2d_39">
+      <path d="M 280.058087 98.672594 
+L 468.072 98.672594 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_40">
+      <g>
+       <use xlink:href="#m4303fef3e0" x="280.058087" y="98.672594" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: end" x="273.058087" y="100.906094" transform="rotate(-0 273.058087 100.906094)">150</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_41">
+      <path d="M 280.058087 80.796772 
+L 468.072 80.796772 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_42">
+      <g>
+       <use xlink:href="#m4303fef3e0" x="280.058087" y="80.796772" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_28">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: end" x="273.058087" y="83.030272" transform="rotate(-0 273.058087 83.030272)">200</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_43">
+      <path d="M 280.058087 62.920949 
+L 468.072 62.920949 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_44">
+      <g>
+       <use xlink:href="#m4303fef3e0" x="280.058087" y="62.920949" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_29">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: end" x="273.058087" y="65.154449" transform="rotate(-0 273.058087 65.154449)">250</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_45">
+      <path d="M 280.058087 45.045127 
+L 468.072 45.045127 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #dddddd; stroke-width: 0.45; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_46">
+      <g>
+       <use xlink:href="#m4303fef3e0" x="280.058087" y="45.045127" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_30">
+      <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: end" x="273.058087" y="47.278627" transform="rotate(-0 273.058087 47.278627)">300</text>
+     </g>
+    </g>
+    <g id="text_31">
+     <text style="font: 7px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="258.491649" y="72.324" transform="rotate(-90 258.491649 72.324)">Mean ANALYZE latency (ms)</text>
+    </g>
+   </g>
+   <g id="PathCollection_5">
+    <g clip-path="url(#p3ff704117e)">
+     <use xlink:href="#mc2afb9e4a1" x="307.595478" y="105.337054" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="326.586783" y="99.941228" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="345.578087" y="89.060493" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="364.569391" y="84.890889" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="383.560696" y="76.288106" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="402.552" y="74.112539" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="421.543304" y="71.431194" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="440.534609" y="67.547322" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     <use xlink:href="#mc2afb9e4a1" x="459.525913" y="53.113103" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+    </g>
+   </g>
+   <g id="PathCollection_6">
+    <g clip-path="url(#p3ff704117e)">
+     <use xlink:href="#m03db938645" x="307.595478" y="87.966576" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="326.586783" y="90.510524" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="345.578087" y="83.812587" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="364.569391" y="73.094281" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="383.560696" y="69.584426" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="402.552" y="60.65179" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="421.543304" y="43.533365" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="440.534609" y="41.325364" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     <use xlink:href="#m03db938645" x="450.030261" y="33.411273" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+    </g>
+   </g>
+   <g id="line2d_47">
+    <path d="M 288.604174 111.236727 
+L 459.525913 58.450233 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke: #3b6ea8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_48">
+    <path d="M 288.604174 111.236727 
+L 450.030261 41.231014 
+" clip-path="url(#p3ff704117e)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #d88936"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 280.058087 115.128 
+L 280.058087 29.52 
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 280.058087 115.128 
+L 468.072 115.128 
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_32">
+    <text style="fill: #666666; font: 6.1px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif" transform="translate(363.626456 103.738986)">combined: 3.904 ms/MCV + 5.907 ms/FD</text>
+    <!-- $R^2$=.975 -->
+    <g style="fill: #666666" transform="translate(443.510722 110.275899)">
+     <text>
+      <tspan style="font: oblique 6.1px 'DejaVu Sans'" x="0" y="-0.5093750000000004">R</tspan>
+      <tspan style="font: 4.27px 'DejaVu Sans'" x="4.661194" y="-2.8390625000000003">2</tspan>
+      <tspan style="font: 6.1px 'Linux Libertine O'" x="7.541521 10.893069 12.23369 15.067278 17.900866" y="-0.5093750000000004">=.975</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_33">
+    <text style="font: 700 8px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="374.065043" y="23.52" transform="rotate(-0 374.065043 23.52)">DMV environment</text>
+   </g>
+   <g id="legend_2">
+    <g id="PathCollection_7">
+     <g>
+      <use xlink:href="#mc2afb9e4a1" x="292.218087" y="38.08" style="fill: #ffffff; stroke: #3b6ea8; stroke-width: 0.8"/>
+     </g>
+    </g>
+    <g id="text_34">
+     <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: start" x="303.738087" y="39.76" transform="rotate(-0 303.738087 39.76)">MCV measured</text>
+    </g>
+    <g id="line2d_49">
+     <path d="M 285.818087 46.698 
+L 292.218087 46.698 
+L 298.618087 46.698 
+" style="fill: none; stroke: #3b6ea8; stroke-linecap: square"/>
+    </g>
+    <g id="text_35">
+     <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: start" x="303.738087" y="48.938" transform="rotate(-0 303.738087 48.938)">MCV fit: 4.101 ms/object</text>
+    </g>
+    <g id="PathCollection_8">
+     <g>
+      <use xlink:href="#m03db938645" x="292.218087" y="56.436" style="fill: #ffffff; stroke: #d88936; stroke-width: 0.8"/>
+     </g>
+    </g>
+    <g id="text_36">
+     <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: start" x="303.738087" y="58.116" transform="rotate(-0 303.738087 58.116)">FD measured</text>
+    </g>
+    <g id="line2d_50">
+     <path d="M 285.818087 65.054 
+L 292.218087 65.054 
+L 298.618087 65.054 
+" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #d88936"/>
+    </g>
+    <g id="text_37">
+     <text style="font: 6.4px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: start" x="303.738087" y="67.294" transform="rotate(-0 303.738087 67.294)">FD fit: 5.759 ms/object</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_38">
+   <text style="font: 700 8.2px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="237.6" y="11.627344" transform="rotate(-0 237.6 11.627344)">First-order maintenance proxies differ by mechanism and environment</text>
+  </g>
+  <g id="text_39">
+   <text style="fill: #666666; font: 6.1px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="237.6" y="142.434" transform="rotate(-0 237.6 142.434)">Aggregate environment-specific fits; not universal PostgreSQL constants or per-candidate costs.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p41bdcbcdb5">
+   <rect x="35.64" y="29.52" width="188.013913" height="85.608"/>
+  </clipPath>
+  <clipPath id="p3ff704117e">
+   <rect x="280.058087" y="29.52" width="188.013913" height="85.608"/>
+  </clipPath>
+ </defs>
+</svg>

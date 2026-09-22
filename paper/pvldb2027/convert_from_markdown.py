@@ -55,17 +55,17 @@ def figure_latex(line: str) -> str:
     title = title.rstrip(".")
     body = re.sub(r"\s*\*\(Production note:.*?\)\*\s*$", "", body)
     height = FIGURE_HEIGHTS[fid]
-    placeholder = {
-        "F1": "Two-loop CE-Replay architecture placeholder\\\\[4pt]Frozen hypothetical design above; fresh deployment and native validation below",
-        "F2": "Two-panel non-monotonicity placeholder\\\\[4pt]Census (left) and DMV (right), with independent raw-loss scales",
-        "F3": "Two-panel maintenance-model placeholder\\\\[4pt]Census (left) and DMV (right), with environment-specific fits",
-        "F4": "Composition-and-evidence placeholder\\\\[4pt]Directed MCV-to-FD state flow above; consumption evidence below",
+    asset = {
+        "F1": "figures/f1-ce-replay-architecture.pdf",
+        "F2": "figures/f2-cross-workload-nonmonotonicity.pdf",
+        "F3": "figures/f3-analyze-maintenance-cost.pdf",
+        "F4": "figures/f4-mcv-fd-composition.pdf",
     }[fid]
     return "\n".join([
         r"\begin{figure*}[t]", r"\centering",
-        f"\\fbox{{\\parbox[c][{height}][c]{{0.94\\textwidth}}{{\\centering\\textbf{{{placeholder}}}}}}}",
+        f"\\includegraphics[width=\\textwidth,height={height},keepaspectratio]{{{asset}}}",
         f"\\caption{{\\textbf{{{inline(title)}.}} {inline(body)}}}",
-        f"\\Description{{Neutral occupancy placeholder for {fid}; final figure artwork is not part of this baseline.}}",
+        f"\\Description{{Final vector figure {fid}; its visual content is described by the caption and repository figure plan.}}",
         f"\\label{{fig:{fid.lower()}}}", r"\end{figure*}"])
 
 

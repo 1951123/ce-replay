@@ -229,9 +229,9 @@ The representation is not merely a second implementation of one fixed cardinalit
 
 \begin{figure*}[t]
 \centering
-\fbox{\parbox[c][2.20in][c]{0.94\textwidth}{\centering\textbf{Two-loop CE-Replay architecture placeholder\\[4pt]Frozen hypothetical design above; fresh deployment and native validation below}}}
+\includegraphics[width=\textwidth,height=2.20in,keepaspectratio]{figures/f1-ce-replay-architecture.pdf}
 \caption{\textbf{CE-Replay physical-design pipeline.} For a supplied target workload, workload-fixed estimator context and an offline frozen candidate-payload repository specialize the supported PostgreSQL 16.14 statistics-sensitive base-restriction fragment while leaving design-dependent MCV selection, clause consumption, FD applicability, and numerical updates executable. CE-Replay exposes an objective oracle and a semantic dependency oracle to maintenance-feasible ADD/DROP/SWAP search. The selected physical state is then created with its recorded PostgreSQL realization and analyzed afresh. Fresh payloads feed both CE-Replay and native PostgreSQL for same-realization semantic validation; equality between frozen and fresh payloads is not assumed.}
-\Description{Neutral occupancy placeholder for F1; final figure artwork is not part of this baseline.}
+\Description{Final vector figure F1; its visual content is described by the caption and repository figure plan.}
 \label{fig:f1}
 \end{figure*}
 
@@ -338,9 +338,9 @@ Recurring maintenance is instantiated with mechanism-weighted object counts fitt
 
 \begin{figure*}[t]
 \centering
-\fbox{\parbox[c][2.05in][c]{0.94\textwidth}{\centering\textbf{Two-panel maintenance-model placeholder\\[4pt]Census (left) and DMV (right), with environment-specific fits}}}
+\includegraphics[width=\textwidth,height=2.05in,keepaspectratio]{figures/f3-analyze-maintenance-cost.pdf}
 \caption{\textbf{Mechanism-aware recurring ANALYZE cost.} Separate workload panels relate deployed mechanism composition to aggregate \texttt{ANALYZE} latency. Census slopes are 1.874997 ms/MCV and 2.717261 ms/FD; the DMV combined model estimates 3.903845 ms/MCV and 5.907345 ms/FD. Fits and deployment errors are environment-specific, not portable PostgreSQL constants.}
-\Description{Neutral occupancy placeholder for F3; final figure artwork is not part of this baseline.}
+\Description{Final vector figure F3; its visual content is described by the caption and repository figure plan.}
 \label{fig:f3}
 \end{figure*}
 
@@ -382,9 +382,9 @@ RQ2 first asks whether selection remains necessary before capacity becomes bindi
 
 \begin{figure*}[t]
 \centering
-\fbox{\parbox[c][2.05in][c]{0.94\textwidth}{\centering\textbf{Two-panel non-monotonicity placeholder\\[4pt]Census (left) and DMV (right), with independent raw-loss scales}}}
+\includegraphics[width=\textwidth,height=2.05in,keepaspectratio]{figures/f2-cross-workload-nonmonotonicity.pdf}
 \caption{\textbf{Cross-workload non-monotonicity.} Separate, independently scaled panels compare empty and complete states. Census has 1,560 harmful singleton additions among 3,011 candidates and 317 improving removals; DMV has 45 harmful additions among 70 usable candidates and 17 improving removals. This is contextual evidence from two frozen realizations, not a universal workload property.}
-\Description{Neutral occupancy placeholder for F2; final figure artwork is not part of this baseline.}
+\Description{Final vector figure F2; its visual content is described by the caption and repository figure plan.}
 \label{fig:f2}
 \end{figure*}
 
@@ -443,9 +443,9 @@ RQ4 asks whether the directed MCV-to-FD interaction survives complete design and
 
 \begin{figure*}[t]
 \centering
-\fbox{\parbox[c][2.15in][c]{0.94\textwidth}{\centering\textbf{Composition-and-evidence placeholder\\[4pt]Directed MCV-to-FD state flow above; consumption evidence below}}}
+\includegraphics[width=\textwidth,height=2.15in,keepaspectratio]{figures/f4-mcv-fd-composition.pdf}
 \caption{\textbf{Directed MCV-to-FD composition and FD consumption.} MCV clause consumption feeds FD residual state. Census independent optimization selects 97 FDs, 72 unused after composition; joint optimization selects 54, all consumed. DMV all-statistics consumes zero of 34 usable FDs; optimization consumes all 12 selected frozen FDs and all 11 materialized fresh FDs.}
-\Description{Neutral occupancy placeholder for F4; final figure artwork is not part of this baseline.}
+\Description{Final vector figure F4; its visual content is described by the caption and repository figure plan.}
 \label{fig:f4}
 \end{figure*}
 

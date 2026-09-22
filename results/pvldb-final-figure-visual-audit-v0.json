@@ -1,0 +1,13 @@
+{
+  "experiment": "PVLDB-Final-Figure-Visual-Audit-v0",
+  "inspection": {"standalone_color": true, "standalone_grayscale": true, "compiled_pdf_all_pages": true, "normal_page_zoom": true, "double_column_width": true},
+  "figures": {
+    "F1": {"standalone": "PASS WITH NOTE", "in_paper": "PASS WITH NOTE", "float_order": "PASS", "caption_wrap": "PASS", "defects": [], "note": "Minor feedback labels are deliberately secondary; primary blocks and two-loop boundary remain clear."},
+    "F2": {"standalone": "PASS", "in_paper": "PASS", "float_order": "PASS", "caption_wrap": "PASS", "defects": []},
+    "F3": {"standalone": "PASS WITH NOTE", "in_paper": "PASS WITH NOTE", "float_order": "PASS", "caption_wrap": "PASS", "defects": [], "note": "Secondary fit annotations are compact; axes, points, fits, and environment qualifier are readable."},
+    "F4": {"standalone": "PASS", "in_paper": "PASS", "float_order": "PASS", "caption_wrap": "PASS", "defects": []}
+  },
+  "surrounding_pages": {"whitespace": "PASS", "section_continuity": "PASS", "table_collisions": 0, "orphan_headings": 0, "visible_overflow": 0},
+  "visible_figure_layout_defects": 0,
+  "status": "PASS"
+}

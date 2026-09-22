@@ -1,0 +1,11 @@
+{
+  "experiment": "PVLDB-Figure-Role-Audit-v1",
+  "figures": {
+    "F1": {"question": "How do frozen hypothetical evaluation and fresh validation differ?", "why_figure": "Shows dual loops, feedback, and realization boundary", "rq": "method foundation for RQ1-RQ4", "contribution": "1-3", "takeaway": "CE-Replay is the executable representation used by search and separately validated after deployment.", "not_supported": "automatic extraction, full PostgreSQL replay, global optimization, solved payload acquisition", "duplicates_other_artifact": false, "necessary_in_main_paper": true},
+    "F2": {"question": "Is selection needed apart from budget scarcity?", "why_figure": "Shows direction reversals across multiple statistics states and workloads", "rq": "RQ2", "contribution": "4", "takeaway": "Adding statistics can worsen frozen workload CE loss.", "not_supported": "all statistics are harmful, global optimum, cross-workload loss comparison", "duplicates_other_artifact": false, "necessary_in_main_paper": true},
+    "F3": {"question": "How is recurring maintenance capacity instantiated?", "why_figure": "Shows measured configuration trends and mechanism-specific fitted slopes", "rq": "RQ2 methodology", "contribution": "1 and 4", "takeaway": "A first-order mechanism-weighted proxy fits each measured environment, with nonportable coefficients.", "not_supported": "universal or per-candidate PostgreSQL cost", "duplicates_other_artifact": false, "necessary_in_main_paper": true},
+    "F4": {"question": "Does MCV consumption suppress FD use, and can joint selection restore it?", "why_figure": "Connects directed semantic state to consumed/suppressed object counts", "rq": "RQ4", "contribution": "2 and 4", "takeaway": "Composition-aware selected states avoid suppressed FDs and survive fresh deployment.", "not_supported": "global optimality or available paired DMV drift", "duplicates_other_artifact": false, "necessary_in_main_paper": true}
+  },
+  "distinct_roles": true,
+  "status": "PASS"
+}

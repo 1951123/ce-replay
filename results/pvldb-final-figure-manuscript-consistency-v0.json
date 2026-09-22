@@ -1,0 +1,18 @@
+{
+  "experiment": "PVLDB-Final-Figure-Manuscript-Consistency-v0",
+  "baseline_commit": "595d2c910bca7afc4f4d70efd210fe649781a3af",
+  "abstract_changed": false,
+  "four_rqs_changed": false,
+  "four_contributions_changed": false,
+  "empirical_numbers_changed": 0,
+  "citations_changed": 0,
+  "negative_results_preserved": true,
+  "novelty_positioning_preserved": true,
+  "realization_boundaries_preserved": true,
+  "local_optimum_boundary_preserved": true,
+  "candidate_payload_boundary_preserved": true,
+  "caption_text_changed": false,
+  "surrounding_prose_changed": false,
+  "scientific_changes": 0,
+  "status": "PASS"
+}

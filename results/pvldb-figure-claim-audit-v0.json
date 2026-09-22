@@ -1,0 +1,11 @@
+{
+  "experiment": "PVLDB-Figure-Claim-Audit-v0",
+  "figures": {
+    "F1": {"claims": ["design-parametric supported semantics", "objective and dependency interfaces", "separate fresh validation"], "sections": ["3", "4", "5", "6"], "evidence": "figure specification and implementation architecture", "strengthens_beyond_manuscript": false, "global_optimum": false, "runtime_speedup": false, "general_dbms_support": false, "candidate_acquisition": false, "conflates_semantic_error_and_payload_drift": false, "hides_relevant_negative_result": false},
+    "F2": {"claims": ["statistics-set inclusion is non-monotone in two frozen realizations"], "sections": ["8.2"], "evidence": "frozen nonmonotonicity artifacts", "strengthens_beyond_manuscript": false, "global_optimum": false, "runtime_speedup": false, "general_dbms_support": false, "candidate_acquisition": false, "conflates_semantic_error_and_payload_drift": false, "hides_relevant_negative_result": false},
+    "F3": {"claims": ["mechanism-weighted counts are an environment-specific first-order maintenance proxy"], "sections": ["7", "9.4"], "evidence": "frozen ANALYZE cost CSVs/models", "strengthens_beyond_manuscript": false, "global_optimum": false, "runtime_speedup": false, "general_dbms_support": false, "candidate_acquisition": false, "conflates_semantic_error_and_payload_drift": false, "hides_relevant_negative_result": false},
+    "F4": {"claims": ["MCV changes FD reachability", "composition-aware states consume selected FDs", "fresh DMV composition survives"], "sections": ["4.4", "8.4"], "evidence": "frozen composition and deployment artifacts", "strengthens_beyond_manuscript": false, "global_optimum": false, "runtime_speedup": false, "general_dbms_support": false, "candidate_acquisition": false, "conflates_semantic_error_and_payload_drift": false, "hides_relevant_negative_result": false}
+  },
+  "prohibited_implications": 0,
+  "status": "PASS"
+}
