@@ -16,9 +16,9 @@
   },
   "doi_registry_checks": {
     "verified": 10,
-    "legacy_resolver_anomaly": 1,
-    "note": "The canonical DOI for Constrained Physical Design Tuning is confirmed by PVLDB/DBLP-style records but currently returns 404 at doi.org; the official PVLDB PDF is available."
+    "legacy_resolver_anomaly": 0,
+    "note": "All ten DOI-bearing bibliography entries resolve; publisher endpoints may return bot-restriction responses to automated checks."
   },
   "broken_link_count": 0,
-  "status": "PASS WITH ONE DOCUMENTED LEGACY DOI RESOLVER ANOMALY"
+  "status": "PASS"
 }

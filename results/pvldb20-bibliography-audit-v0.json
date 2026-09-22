@@ -14,7 +14,7 @@
     "papadomanolakis2007inum": "VERIFIED",
     "bruno2008cpqo": "VERIFIED",
     "liu2016incremental": "VERIFIED",
-    "bruno2008constrained": "VERIFIED; canonical legacy DOI is registered in bibliographic sources but its resolver currently returns 404; official PVLDB PDF remains available",
+    "bruno2008constrained": "VERIFIED; DOI corrected to 10.14778/1453856.1453863 and resolves to the ACM record",
     "zhu2004piggyback": "VERIFIED",
     "pfeil2026redshift": "VERIFIED AGAINST CURRENT AMAZON SCIENCE RECORD; final PVLDB issue/DOI metadata remains unavailable",
     "kipf2019learned": "VERIFIED",
@@ -24,7 +24,8 @@
     "postgresql16source": "VERIFIED"
   },
   "change_log": [
-    "Added authoritative ICDE 2007 page range 516--525 to elhelw2007jits."
+    "Added authoritative ICDE 2007 page range 516--525 to elhelw2007jits.",
+    "Corrected the bruno2008constrained DOI from 10.14778/1453856.1453857 to 10.14778/1453856.1453863."
   ],
   "bibtex_warnings": "Publisher/address warnings for proceedings entries and incomplete final venue metadata for the 2026 Redshift prepublication remain non-fatal; no citation is unresolved.",
   "status": "PASS WITH DOCUMENTED EXTERNAL METADATA LIMIT"

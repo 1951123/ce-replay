@@ -19,7 +19,7 @@ Final positive positioning:
 | `papadomanolakis2007inum` | MUST | Official VLDB proceedings PDF | Optimizer-information reuse across index configurations |
 | `bruno2008cpqo` | MUST | ACM DOI 10.1145/1376616.1376710; Microsoft Research | Compact configuration-parametric optimizer representation |
 | `liu2016incremental` | MUST | ACM DOI 10.1145/2882903.2915212; PMC full text | Incremental optimizer/search-state recomputation |
-| `bruno2008constrained` | MUST | PVLDB DOI 10.14778/1453856.1453857 | Resource-constrained physical-design formulation |
+| `bruno2008constrained` | MUST | PVLDB DOI 10.14778/1453856.1453863 | Resource-constrained physical-design formulation |
 | `zhu2004piggyback` | SHOULD | Oxford Academic DOI 10.1093/comjnl/47.2.221 | On-the-fly/piggyback statistics collection |
 | `pfeil2026redshift` | OPTIONAL | Amazon Science official publication page | Modern incremental statistics refresh; no CE-Replay coefficient support |
 | `kipf2019learned` | SHOULD | Official CIDR proceedings PDF/program | Representative query-driven learned CE |

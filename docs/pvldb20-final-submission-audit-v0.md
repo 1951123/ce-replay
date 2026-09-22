@@ -20,7 +20,7 @@ The clean build produces 12 US-Letter pages. Every page was inspected, including
 
 ## Figures, tables, and bibliography
 
-F1--F4 and T1--T5 retain their numbering, captions, values, units, and scientific roles. DMV raw zero-truth qualification remains visible. All 15 bibliography entries are cited, every citation resolves internally, there are no duplicate or unused keys, and the citation set is unchanged. One authoritative metadata correction adds pages 516--525 to the JITS ICDE 2007 entry. The current Amazon Science record for the 2026 Redshift paper does not yet provide final PVLDB issue/pages/DOI metadata; this is documented rather than guessed.
+F1--F4 and T1--T5 retain their numbering, captions, values, units, and scientific roles. DMV raw zero-truth qualification remains visible. All 15 bibliography entries are cited, every citation resolves internally, there are no duplicate or unused keys, and the citation set is unchanged. Authoritative metadata corrections add pages 516--525 to the JITS ICDE 2007 entry and correct the DOI for *Constrained Physical Design Tuning* to `10.14778/1453856.1453863`. The current Amazon Science record for the 2026 Redshift paper does not yet provide final PVLDB issue/pages/DOI metadata; this is documented rather than guessed.
 
 ## Artifact and repository
 
