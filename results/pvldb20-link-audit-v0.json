@@ -1,0 +1,24 @@
+{
+  "audit": "PVLDB-Final-Submission-Package-v0",
+  "repository_url": {"status": 200, "public": true},
+  "default_branch": "main",
+  "research_freeze_tag": {
+    "annotated_tag_object": "c97ae5671374f5439c3823ba5a8ee9bda38a829c",
+    "peeled_commit": "22cf494f954cffff86080236473ca847064dca74",
+    "status": "PASS"
+  },
+  "readme": 200,
+  "reproducibility_index": 200,
+  "bibliography_urls": {
+    "reachable": 4,
+    "bot_restricted_but_officially_indexed": 1,
+    "broken": 0
+  },
+  "doi_registry_checks": {
+    "verified": 10,
+    "legacy_resolver_anomaly": 1,
+    "note": "The canonical DOI for Constrained Physical Design Tuning is confirmed by PVLDB/DBLP-style records but currently returns 404 at doi.org; the official PVLDB PDF is available."
+  },
+  "broken_link_count": 0,
+  "status": "PASS WITH ONE DOCUMENTED LEGACY DOI RESOLVER ANOMALY"
+}

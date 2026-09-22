@@ -40,10 +40,10 @@ The repository preserves experiment outputs as evidence. Reproduction may requir
 ## Status
 
 - Experimental phase: frozen.
-- Paper architecture: frozen.
-- Technical Core, Sections 3–6: frozen.
-- Methodology and Evaluation, Sections 7–8: frozen.
-- Introduction, Discussion, Related Work, and final paper assembly: not yet drafted in this snapshot.
+- Research evidence baseline: immutable at tag `research-freeze-v0`.
+- Ten-section submission manuscript: assembled and scientifically frozen.
+- PVLDB typesetting source and build instructions: `paper/pvldb2027/`.
+- Final submission upload remains gated on human-supplied author and CMT metadata; no identity is inferred from repository metadata.
 
 ## Provenance boundary
 

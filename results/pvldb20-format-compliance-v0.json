@@ -1,0 +1,50 @@
+{
+  "audit": "PVLDB-Final-Submission-Package-v0",
+  "verified_on": "2026-09-22",
+  "official_sources": [
+    "https://www.vldb.org/2027/formatting-guidelines.html",
+    "https://www.vldb.org/2027/submission-guidelines.html",
+    "https://www.vldb.org/2027/call-for-research-track.html",
+    "https://github.com/vldbproceedings/VLDB-Template"
+  ],
+  "template_revision": "39c95f5c6fcbe652a83be24e4eff8f2134cd3fbc",
+  "template_revision_date": "2026-07-13",
+  "local_template_byte_identical": true,
+  "category": "Regular Research Paper",
+  "title": "CE-Replay: Executable Cardinality-Estimation Semantics for Statistics Physical Design",
+  "rules": {
+    "body_page_limit": "12 pages excluding references",
+    "appendices": "count toward body limit",
+    "acknowledgements": "count toward body limit",
+    "review_model": "single-blind; author names and affiliations required",
+    "supplemental": "public supplemental material required, or a compelling explanation",
+    "mandatory_abstract_deadline": "25th of preceding month",
+    "paper_deadline": "1st of month at 5:00 PM Pacific Time",
+    "monthly_cap": 2,
+    "volume_20_yearly_cap": 12
+  },
+  "template_items": {
+    "document_class": "PASS",
+    "acmart_class": "PASS",
+    "pvldb_style": "PASS",
+    "vldbtopmatter": "PASS",
+    "bibliography_style": "PASS",
+    "copyright_block": "PASS",
+    "artifact_availability_block": "PASS",
+    "author_block": "AUTHOR INPUT REQUIRED",
+    "doi_pages_issue_metadata": "SUBMISSION-STAGE PLACEHOLDER",
+    "ccs_concepts": "NOT APPLICABLE: absent from current official sample",
+    "keywords": "NOT APPLICABLE: absent from current official sample",
+    "camera_ready_publication_metadata": "CAMERA-READY ONLY"
+  },
+  "page_limit": {
+    "total_pages": 12,
+    "body_footprint": "approximately 11.2 pages",
+    "references_start_page": 12,
+    "appendices": 0,
+    "acknowledgements": 0,
+    "status": "PASS"
+  },
+  "author_metadata": "BLOCKED — AUTHOR INPUT REQUIRED",
+  "status": "CONDITIONAL PASS"
+}
