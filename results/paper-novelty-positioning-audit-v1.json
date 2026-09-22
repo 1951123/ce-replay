@@ -1,0 +1,21 @@
+{
+  "artifact":"paper-novelty-positioning-audit-v1",
+  "date":"2026-09-22",
+  "document":"docs/paper-full-draft-v2-positioning.md",
+  "unsupported_negative_prior_art_claims":0,
+  "artificially_narrowed_prior_art_scope":0,
+  "absence_inferred_from_nonmention":0,
+  "engineering_reimplementation_objection_addressed":true,
+  "computation_layer_distinction_explicit":true,
+  "monotonicity_contrast_status":"VERIFIED_AND_INCLUDED",
+  "monotonicity_verification":{"source":"chaudhuri2001statistics","authority":"official Microsoft Research copy of the ICDE paper","location":"Section 4.1, cost-monotonicity assumption for SPJ selectivity variables","scope_guardrail":"The manuscript distinguishes optimizer cost over selectivity variables from PostgreSQL q-error under extended-statistics set inclusion."},
+  "contribution_3_exactness_scope_clear":true,
+  "contribution_3_changed":true,
+  "contribution_3_change_reason":"The Introduction now calls CE-Replay a validated objective oracle and ties incremental equality to audited full-replay move values within the supported setting, avoiding two adjacent uses of exact with different implicit scopes. Formal exactness statements remain where assumptions are explicit.",
+  "contributions_preserved":4,
+  "priority_claim_made":false,
+  "positive_positioning":"CE-Replay represents the supported statistics-sensitive native estimator computation as executable over hypothetical statistics states and exposes objective and statistics-semantic dependency interfaces.",
+  "strongest_novelty_threat":"INUM and C-PQO already demonstrate reusable, configuration-parametric representations of optimizer behavior, so generic hypothetical evaluation, response reuse, and avoidance of repeated optimizer calls cannot carry the novelty argument.",
+  "bounded_distinction":"The defensible distinction is the positively documented computation layer: optimizer plan/cost behavior over physical configurations versus bounded executable statistics-sensitive estimator computation and its design-relevant state transitions.",
+  "status":"PASS"
+}

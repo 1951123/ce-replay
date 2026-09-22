@@ -1,0 +1,34 @@
+{
+  "artifact":"paper-positioning-hardening-consistency-v0",
+  "date":"2026-09-22",
+  "baseline":"docs/paper-full-draft-v1-literature.md",
+  "revised":"docs/paper-full-draft-v2-positioning.md",
+  "changed_sections":["1","5","10"],
+  "checks":{
+    "abstract_unchanged":true,
+    "exactly_four_contributions":true,
+    "four_rqs_unchanged":true,
+    "sections_7_8_content_identical":true,
+    "section_2_unchanged":true,
+    "section_9_unchanged":true,
+    "empirical_numbers_changed":0,
+    "new_empirical_numbers_added":0,
+    "new_experiment_claim_added":false,
+    "new_workload_generalization_claim_added":false,
+    "global_optimum_claim_added":false,
+    "complete_postgresql_ce_claim_added":false,
+    "candidate_acquisition_claim_added":false,
+    "dmv_provenance_caveat_unchanged":true,
+    "dmv_zero_truth_caveat_unchanged":true,
+    "mixed_runtime_negative_result_unchanged":true,
+    "research_freeze_v0_unchanged":true
+  },
+  "research_freeze_expected":"22cf494f954cffff86080236473ca847064dca74",
+  "research_freeze_actual":"22cf494f954cffff86080236473ca847064dca74",
+  "manuscript_change_summary":{
+    "1":"Removed a broad negative what-if comparison and clarified Contribution 3 exactness scope.",
+    "5":"Added a bounded design-parametric-versus-fixed-native-execution distinction.",
+    "10":"Added a source-verified and guarded monotonicity contrast; broadened the INUM/C-PQO configuration wording while distinguishing represented computation."
+  },
+  "status":"PASS"
+}
