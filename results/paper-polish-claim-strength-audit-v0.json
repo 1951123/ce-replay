@@ -1,0 +1,7 @@
+{
+  "artifact":"paper-polish-claim-strength-audit-v0","date":"2026-09-22","baseline":"docs/paper-full-draft-v2-positioning.md","polished":"docs/paper-full-draft-v3-polished.md",
+  "new_implications":{"priority":0,"general_postgresql_support":0,"general_dbms_support":0,"workload_generalization":0,"global_optimality":0,"query_runtime_improvement":0,"guaranteed_speedup":0,"end_to_end_candidate_acquisition":0,"realization_robustness":0,"universal_maintenance_coefficients":0,"complete_ce_emulation":0,"automatic_semantic_extraction":0,"automatic_source_compilation":0,"prior_art_incapability":0},
+  "necessary_qualifications_deleted":0,
+  "verified_boundaries":["PostgreSQL 16.14 supported fragment","supplied target workload","frozen payload repository","matched-realization native validation","neighborhood-local workload-scale search","environment-specific maintenance model","external candidate-payload acquisition","semantic work distinct from wall-clock time","DMV zero-truth and provenance caveats"],
+  "status":"PASS"
+}

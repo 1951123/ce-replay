@@ -1,0 +1,11 @@
+{
+  "artifact":"paper-length-budget-v0","date":"2026-09-22","counting_method":"Regex word tokens in Markdown source; counts include headings, captions, tables, and artifact statement but exclude formula punctuation.",
+  "v2":{"Abstract":185,"1":779,"2":430,"3":424,"4":558,"5":694,"6":366,"7":445,"8":1273,"9":775,"10":778,"11":207,"total_main_text":6914,"whole_markdown_document":6976},
+  "v3":{"Abstract":185,"1":748,"2":429,"3":424,"4":558,"5":691,"6":368,"7":472,"8":1320,"9":767,"10":778,"11":207,"total_main_text":6947,"whole_markdown_document":7009},
+  "net_change":33,
+  "concentration":{"likely_long_sections":["8","1","9","10"],"likely_short_sections":["6","11"],"interpretation":"Section 8 is appropriately largest because it answers four RQs. Related Work and Discussion should be tested under typesetting before compression."},
+  "appendix_migration_candidates":["secondary validation fixtures","maintenance fit details and extended budget curves","repeated-ANALYZE distributions","terminal-neighborhood traces","supplementary locality statistics","payload schemas"],
+  "likely_page_pressure_sources":["display equations in Section 3","Figures F1-F4","Tables T1-T5","references"],
+  "final_page_count_estimated":false,
+  "status":"PASS"
+}

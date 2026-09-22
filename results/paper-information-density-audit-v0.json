@@ -1,0 +1,16 @@
+{
+  "artifact":"paper-information-density-audit-v0","date":"2026-09-22","flags":[
+    {"section":"1","paragraph":"semantic necessity","issue":"multiple control mechanisms plus result qualification","action":"COMPRESS","reason":"Shortened while preserving the harmful-addition evidence and semantic chain.","improved":true},
+    {"section":"1","paragraph":"evidence summary","issue":"dense list of evidence and limitations","action":"SPLIT","reason":"Kept as one compact overview because expansion would lengthen the Introduction; sentence roles were clarified.","improved":true},
+    {"section":"3","paragraph":"notation sequence","issue":"many short definition paragraphs","action":"KEEP","reason":"Display-math constraint and symbol scoping favor local definitions.","improved":false},
+    {"section":"5","paragraph":"Figure F1 caption","issue":"high qualification density","action":"MOVE DETAIL TO APPENDIX LATER","reason":"The caption is self-contained but production formatting may move implementation notes out of the paper.","improved":false},
+    {"section":"7","paragraph":"workload candidate counts","issue":"numerical density overlaps Table T1","action":"MOVE DETAIL TO APPENDIX LATER","reason":"Payload-availability counts are reproducibility details, but they still ground the current design universe.","improved":false},
+    {"section":"7","paragraph":"Figure F3 caption","issue":"four precise coefficients plus interpretation","action":"MOVE DETAIL TO TABLE","reason":"Retained for the frozen draft; next format pass can place full fit coefficients in an appendix/table.","improved":false},
+    {"section":"8.1","paragraph":"post-Table T2 interpretation","issue":"chronological validation summary","action":"COMPRESS","reason":"Already concise; retained because it identifies fresh deployment as the strongest closure.","improved":false},
+    {"section":"8.2","paragraph":"post-Table T3 results","issue":"many composition, budget, and loss values","action":"MOVE DETAIL TO TABLE","reason":"Core comparative numbers remain necessary; extended budget-curve detail is an appendix candidate.","improved":false},
+    {"section":"8.3","paragraph":"post-Table T4 interpretation","issue":"multiple regimes and one negative runtime result","action":"SPLIT","reason":"Kept together to compare sparse and dense topology, with a clearer question-first lead-in.","improved":true},
+    {"section":"8.4","paragraph":"post-Table T5 deployment evidence","issue":"repeated-ANALYZE detail and DMV provenance caveat share a paragraph","action":"SPLIT","reason":"Existing workload-separated sentences preserve the comparison; full distributions should move later.","improved":true},
+    {"section":"9.3","paragraph":"locality and runtime","issue":"two related but distinct negative conclusions","action":"COMPRESS","reason":"Recast slowdown as the limit of the locality opportunity without hiding it.","improved":true},
+    {"section":"9.7","paragraph":"limitations","issue":"high qualification density","action":"KEEP","reason":"Consolidation is intentional and avoids scattering disclaimers throughout the paper.","improved":false}
+  ],"summary":{"paragraphs_flagged":12,"paragraphs_improved":6,"appendix_later_candidates":5},"status":"PASS"
+}

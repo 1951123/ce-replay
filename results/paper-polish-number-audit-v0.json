@@ -1,0 +1,10 @@
+{
+  "artifact":"paper-polish-number-audit-v0","date":"2026-09-22","baseline":"docs/paper-full-draft-v2-positioning.md","polished":"docs/paper-full-draft-v3-polished.md",
+  "counting_method":"Token-level comparison of decimal, scientific-notation, percentage, and comma-grouped numeric literals, including section/table identifiers.",
+  "numbers_retained":"All numeric-token multiplicities from v2 are identical in v3.",
+  "numbers_removed_from_prose":[],
+  "numbers_moved":[],
+  "numbers_changed":[],
+  "new_derived_percentages":0,
+  "status":"PASS"
+}

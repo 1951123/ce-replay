@@ -1,0 +1,22 @@
+{
+  "artifact":"paper-repetition-audit-v0","date":"2026-09-22","document":"docs/paper-full-draft-v3-polished.md",
+  "concepts":[
+    {"concept":"CE-Replay definition","sections":["1","3","5","9","10","11"],"necessary":true,"canonical_section":"5","removed_or_compressed":2,"retained":"Introduction states the idea; Section 5 defines it; Discussion, positioning, and conclusion use shorter role-specific summaries."},
+    {"concept":"workload-specialized","sections":["1","3","5","9","11"],"necessary":true,"canonical_section":"5.1","removed_or_compressed":0,"retained":"Used where scope or representation structure matters."},
+    {"concept":"design-parametric","sections":["1","3","4","5","9","11"],"necessary":true,"canonical_section":"5.1","removed_or_compressed":1,"retained":"Repeated to distinguish the representation from one fixed native execution."},
+    {"concept":"native semantics","sections":["1","2","4","5","8","9","10","11"],"necessary":true,"canonical_section":"4","removed_or_compressed":1,"retained":"Local use identifies provenance, validation target, or positioning boundary."},
+    {"concept":"objective oracle","sections":["1","5","6","9","11"],"necessary":true,"canonical_section":"5.3","removed_or_compressed":1,"retained":"Introduction previews it; optimizer consumes it; Discussion interprets it."},
+    {"concept":"statistics-semantic dependency oracle","sections":["1","5","6","9","10","11"],"necessary":true,"canonical_section":"5.3","removed_or_compressed":1,"retained":"Repeated at method, consumer, and prior-work boundaries."},
+    {"concept":"candidate definition versus payload","sections":["2","3","5","7","9"],"necessary":true,"canonical_section":"3","removed_or_compressed":1,"retained":"Background gives intuition; formal and realization sections require the distinction."},
+    {"concept":"frozen versus fresh realization","sections":["3","5","6","7","8","9","11"],"necessary":true,"canonical_section":"5.4","removed_or_compressed":1,"retained":"Method defines it, evaluation operationalizes it, and Discussion interprets it."},
+    {"concept":"semantic error versus payload drift","sections":["5","7","8","9","11"],"necessary":true,"canonical_section":"5.4","removed_or_compressed":0,"retained":"This boundary is essential to deployment validity and remains visible at each relevant result."},
+    {"concept":"MCV-before-FD composition","sections":["1","4","5","7","8","9","11"],"necessary":true,"canonical_section":"4.4","removed_or_compressed":1,"retained":"Repeated only to connect semantics, representation, and RQ4 evidence."},
+    {"concept":"non-monotonicity","sections":["1","2","4","8","9","10","11"],"necessary":true,"canonical_section":"8.2","removed_or_compressed":2,"retained":"Motivation, evidence, interpretation, and scoped historical contrast serve distinct roles."},
+    {"concept":"maintenance constraint","sections":["1","2","3","6","7","8","9","10","11"],"necessary":true,"canonical_section":"3","removed_or_compressed":2,"retained":"The resource argument remains separate from semantic selection throughout."},
+    {"concept":"local versus global optimum","sections":["1","3","6","7","8","9","10"],"necessary":true,"canonical_section":"6.1","removed_or_compressed":0,"retained":"Repeated where a reader might otherwise overread a result."},
+    {"concept":"semantic work versus wall-clock time","sections":["1","6","8","9","11"],"necessary":true,"canonical_section":"8.3","removed_or_compressed":1,"retained":"The negative result remains prominent in evaluation and interpretation."},
+    {"concept":"candidate-payload acquisition limitation","sections":["1","2","3","6","9","10","11"],"necessary":true,"canonical_section":"9.5","removed_or_compressed":1,"retained":"Kept at system-boundary and positioning locations."}
+  ],
+  "summary":{"concepts_identified":15,"repetitions_compressed_or_removed":15,"repetitions_intentionally_retained":31},
+  "status":"PASS"
+}
