@@ -5,7 +5,7 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "docs/paper-full-draft-v4-page-budget.md"
+SOURCE = ROOT / "docs/paper-full-draft-v5-submission-ready.md"
 OUTPUT = Path(__file__).resolve().parent / "main.tex"
 
 FIGURE_HEIGHTS = {"F1": "2.20in", "F2": "2.05in", "F3": "2.05in", "F4": "2.15in"}
@@ -147,8 +147,8 @@ def convert() -> str:
     return "\n".join(out)
 
 
-PREAMBLE = r"""% Generated mechanically from docs/paper-full-draft-v4-page-budget.md.
-% Scientific content remains synchronized with that page-budget Markdown manuscript.
+PREAMBLE = r"""% Generated mechanically from docs/paper-full-draft-v5-submission-ready.md.
+% Scientific content remains synchronized with that submission-ready Markdown manuscript.
 \documentclass[sigconf,nonacm]{acmart}
 
 %%% do not modify the following VLDB block %%

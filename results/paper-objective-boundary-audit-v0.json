@@ -1,0 +1,17 @@
+{
+  "audit": "paper-objective-boundary-audit-v0",
+  "checks": {
+    "q_error_primary_objective": true,
+    "runtime_surrogate_claim": false,
+    "causal_runtime_claim": false,
+    "dmv_zero_truth_handling_scientifically_changed": false,
+    "positive_floor_preserved": true,
+    "two_zero_truth_queries_retained": true,
+    "nonzero_truth_loss_diagnostic_only": true,
+    "optimization_used_preserved_raw_objective": true,
+    "cross_workload_raw_loss_comparison": false,
+    "plan_runtime_scope_explicit": true
+  },
+  "locations": ["Section 3", "Section 7", "Table 3 caption", "Sections 9.7 and 6.2"],
+  "status": "PASS"
+}

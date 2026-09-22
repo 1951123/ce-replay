@@ -1,0 +1,17 @@
+{
+  "audit": "paper-representation-contract-audit-v0",
+  "manuscript": "docs/paper-full-draft-v5-submission-ready.md",
+  "checks": {
+    "workload_specialization": {"explicit": true, "location": "Section 5 opening and 5.1"},
+    "design_parametricity": {"explicit": true, "location": "Section 5 opening and 5.1"},
+    "executable_state_transitions": {"explicit": true, "location": "Sections 4.5, 5, and 5.1"},
+    "objective_interface": {"explicit": true, "location": "Sections 5 and 5.3"},
+    "semantic_dependency_interface": {"explicit": true, "location": "Sections 5 and 5.3"},
+    "counterfactual_dependency_requirement": {"explicit": true, "location": "Sections 5 opening and 5.3"},
+    "dependency_not_post_hoc_metadata": {"explicit": true, "location": "Section 5.3"},
+    "automatic_semantic_extraction_claim": false,
+    "full_postgresql_ce_claim": false,
+    "manual_engineering_boundary_preserved": true
+  },
+  "status": "PASS"
+}

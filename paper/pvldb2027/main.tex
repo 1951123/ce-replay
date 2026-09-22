@@ -1,5 +1,5 @@
-% Generated mechanically from docs/paper-full-draft-v4-page-budget.md.
-% Scientific content remains synchronized with that page-budget Markdown manuscript.
+% Generated mechanically from docs/paper-full-draft-v5-submission-ready.md.
+% Scientific content remains synchronized with that submission-ready Markdown manuscript.
 \documentclass[sigconf,nonacm]{acmart}
 
 %%% do not modify the following VLDB block %%
@@ -179,6 +179,8 @@ C(Y,\rho) \le B.
 
 This notation defines a mathematical optimum, not a guarantee of the workload-scale algorithm. The evaluated solver fixes recorded precedence and terminates at a local optimum of an audited ADD/DROP/SWAP neighborhood. The objective is CE loss, not query latency, plan quality, or throughput.
 
+CE loss is the direct objective for the computation represented here: extended statistics change the estimator's information state, and CE-Replay executes that statistics-sensitive CE layer. A plan-quality or runtime objective would additionally couple replay to planner search, the cost model, and execution effects outside the current representation. Those objectives remain important, but this paper neither treats q-error as a latency surrogate nor claims that reducing it improves runtime.
+
 \section{Statistics-Sensitive CE Semantics}\label{sec:4}
 
 \subsection{Running example}
@@ -223,7 +225,7 @@ Changing one candidate can alter applicability, MCV winners, consumed clauses, l
 
 CE-Replay is the conceptual center of the method. It turns the supported statistics-sensitive estimator fragment into an executable representation evaluated repeatedly under hypothetical physical states. It is not the search algorithm, the complete DBMS, or the native estimator itself.
 
-The representation is not merely a second implementation of one fixed cardinality calculation. PostgreSQL normally resolves the estimator under one concrete catalog and statistics state; CE-Replay preserves selected parts of that native computation as explicit functions of hypothetical physical statistics states. Design-dependent applicability, selection, consumption, and composition remain executable rather than being frozen into one observed estimate or planner execution. This manually source-informed, bounded, design-parametric form supplies both the objective interface and the statistics-semantic dependency interface used by physical-design search.
+The representation contract combines three properties. First, workload-fixed estimator context is specialized for the supplied workload. Second, design-dependent applicability, winner selection, clause consumption, residual state, numerical updates, FD reachability, and relevant precedence remain executable across hypothetical designs rather than being resolved into one observed calculation. Third, those same state transitions supply both objective evaluation and statistics-semantic dependency/invalidation information. CE-Replay is therefore not merely a second implementation of one fixed cardinality calculation: its manually engineered, bounded representation retains the counterfactual structure needed to evaluate alternative statistics states and invalidate design moves safely.
 
 \textbf{Figure~\ref{fig:f1}} separates the two loops needed to interpret the method correctly. The upper loop combines frozen workload context and an offline frozen payload repository to evaluate hypothetical designs and return objective values and semantic dependencies to search. Only the selected state enters the lower loop, where deployment creates definitions in recorded order, fresh \texttt{ANALYZE} produces a new payload realization, and CE-Replay is compared with native PostgreSQL on that same realization.
 
@@ -257,7 +259,7 @@ Native instrumentation exposes the supported estimator at a raw/pre-clamp bounda
 
 The objective oracle returns the replayed estimate and, after ground-truth scoring, the target-workload loss. It is exact only relative to the validated semantics and supplied realization. It does not predict truth.
 
-The dependency oracle reports which queries, semantic dimensions, and downstream mechanisms a design move may affect. It distinguishes \textbf{realized dependencies}, exercised in the current trace, from \textbf{structural/counterfactual dependencies}, which can change a future trace even when current outputs coincide. State sufficient to continue one execution is not necessarily safe for arbitrary extension; current-output equivalence is not counterfactual equivalence.
+The dependency oracle is derived from the executable state transitions rather than attached as post hoc metadata. It reports which queries, semantic dimensions, and downstream mechanisms a design move may affect, distinguishing \textbf{realized dependencies} exercised in the current trace from \textbf{structural/counterfactual dependencies} that can change a future trace even when current outputs coincide. State sufficient to continue one execution is not necessarily safe for arbitrary extension; current-output equivalence is not counterfactual-state equivalence.
 
 \subsection{Frozen and fresh realizations}
 
@@ -376,7 +378,7 @@ Raw instrumentation removes rounded plan rows as an observation artifact. Scalar
 
 \textbf{Answer to RQ1.} Within the explicitly supported PostgreSQL 16.14 statistics-sensitive base-restriction fragment and matched payload realization, CE-Replay matches native estimates to the reported floating-point tolerances. This result does not cover joins, full planner search, arbitrary predicates, other mechanisms, or other PostgreSQL versions.
 
-\subsection{RQ2 --- Does replay drive useful resource-constrained design?}
+\subsection{RQ2 --- Can replay drive resource-constrained statistics design?}
 
 RQ2 first asks whether selection remains necessary before capacity becomes binding. \textbf{Figure~\ref{fig:f2}} answers that question by separating semantic harm from maintenance scarcity.
 
@@ -396,14 +398,14 @@ Having established semantic need, \textbf{Table~\ref{tab:t3}} asks what the opti
 \begin{table*}[t]
 \centering
 \small
-\caption{Maintenance-budget design outcomes. Local optimum is limited to the audited ADD/DROP/SWAP neighborhood under fixed payload and precedence.}
+\caption{Maintenance-budget design outcomes. Local optimum is limited to the audited ADD/DROP/SWAP neighborhood under fixed payload and precedence. DMV [ZT] is the preserved raw objective, dominated by two zero-truth queries under the positive floor; optimization used it, while nonzero-truth loss is diagnostic only.}
 \label{tab:t3}
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
 \toprule
 Workload & Usable universe & Selected design & Budget; cost / unused & Frozen loss & Terminal audit \\
 \midrule
 Census & 2,253 MCV + 758 FD & 276 MCV + 7 FD & 286.144; 286.143 / 0.001 & 787.809381 & 565,031 moves; local optimum \\
-DMV optimization realization & 36 MCV + 34 FD & 11 MCV + 12 FD & 43.724603; 29.158543 / 14.566060 & 7.83651388676e298 & 47 ADD, 23 DROP, 1,081 SWAP; local optimum \\
+DMV optimization realization & 36 MCV + 34 FD & 11 MCV + 12 FD & 43.724603; 29.158543 / 14.566060 & 7.83651388676e298 [ZT] & 47 ADD, 23 DROP, 1,081 SWAP; local optimum \\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -437,9 +439,9 @@ Census contains a giant component despite sparse degree, so connected-component 
 
 \textbf{Answer to RQ3.} Realized and structural/counterfactual dependencies enable exact audited incremental move evaluation in sparse and dense regimes. Topology controls the opportunity, and semantic-work reduction does not guarantee wall-clock improvement.
 
-\subsection{RQ4 --- Do interacting mechanisms survive deployment?}
+\subsection{RQ4 --- Does replay preserve interacting semantics after physical deployment?}
 
-RQ4 asks whether the directed MCV-to-FD interaction survives complete design and physical deployment. \textbf{Figure~\ref{fig:f4}} links that mechanism to observed FD reachability.
+RQ4 asks whether replay preserves the directed MCV-to-FD interaction through complete design and physical deployment. \textbf{Figure~\ref{fig:f4}} links that mechanism to observed FD reachability.
 
 \begin{figure*}[t]
 \centering
@@ -535,7 +537,7 @@ Hypothetical evaluation and constrained design are established foundations. Auto
 
 INUM caches and reuses optimizer-derived plan information to estimate query cost across index configurations with far fewer optimizer calls ~\cite{papadomanolakis2007inum}. C-PQO constructs a compact representation of optimizer behavior that can produce plans for arbitrary physical configurations after a specialized optimizer invocation ~\cite{bruno2008cpqo}. These systems are close conceptual neighbors: they show that avoiding repeated optimizer calls and constructing configuration-parametric representations are established ideas.
 
-The distinction is the represented computation. INUM and C-PQO represent optimizer plan/cost behavior over hypothetical physical-design configurations. CE-Replay specializes the supported statistics-sensitive estimator computation itself, leaving applicability, winner selection, clause consumption, payload-dependent numerical updates, and cross-mechanism state executable. This difference supports a statistics-design objective and dependencies internal to the CE computation; it is not a claim that prior physical-design tools are black boxes or lack response reuse.
+The distinction is the represented computation and the interface it exposes. INUM and C-PQO represent optimizer plan/cost behavior over hypothetical physical-design configurations. CE-Replay specializes the supported statistics-sensitive estimator computation itself, leaving applicability, winner selection, clause consumption, payload-dependent numerical updates, and downstream mechanism reachability executable. Those state transitions expose the statistics-semantic dependencies needed both to evaluate the CE objective and to invalidate incremental statistics-design moves safely. This is not a claim that prior physical-design tools are black boxes, lack response reuse, or cannot expose dependencies; the methodological point is that this represented computation supplies the dependency structure required by the present statistics-design problem.
 
 \subsection{Incremental optimization}
 
@@ -549,7 +551,7 @@ CE-Replay does not learn a replacement cardinality estimator or a surrogate mapp
 
 \subsection{Positioning of CE-Replay}
 
-Prior work addresses statistics discovery and management, hypothetical and configuration-parametric physical-design evaluation, incremental optimizer maintenance, and alternative cardinality estimators. CE-Replay focuses on the interface between statistics physical design and the supported statistics-sensitive native CE computation. It makes that computation executable under hypothetical statistics states and uses the same representation both to evaluate workload CE loss and to expose statistics-semantic dependencies for design moves.
+Prior work addresses statistics discovery and management, hypothetical and configuration-parametric physical-design evaluation, incremental optimizer maintenance, and alternative cardinality estimators. CE-Replay focuses on the interface between statistics physical design and the supported statistics-sensitive native CE computation. Keeping its internal state transitions executable under hypothetical statistics states is what lets one representation provide both workload CE evaluation and safe design-move invalidation.
 
 This positioning is deliberately bounded. The literature categories overlap, and the current search does not justify a priority claim. CE-Replay is neither a complete advisor pipeline nor a full PostgreSQL estimator: candidate-payload acquisition remains external, search remains replaceable and neighborhood-local, and semantic coverage remains the validated PostgreSQL 16.14 fragment.
 

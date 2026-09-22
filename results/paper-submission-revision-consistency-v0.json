@@ -1,0 +1,22 @@
+{
+  "audit": "paper-submission-revision-consistency-v0",
+  "baseline_commit": "561b9da55c6b988a89bb98fd3b26ccf0d5d74341",
+  "four_rqs_preserved": true,
+  "rq_scientific_meanings_preserved": true,
+  "four_contributions_preserved": true,
+  "empirical_numbers_changed": 0,
+  "formatting_only_value_movements": 1,
+  "new_experiments": 0,
+  "new_literature_sources": 0,
+  "citations_added": 0,
+  "citations_removed": 0,
+  "negative_findings_removed": 0,
+  "realization_boundaries_preserved": true,
+  "local_global_optimization_boundary_preserved": true,
+  "candidate_payload_boundary_preserved": true,
+  "abstract_changed": false,
+  "title_changed": false,
+  "research_freeze_expected": "22cf494f954cffff86080236473ca847064dca74",
+  "research_freeze_unchanged": true,
+  "status": "PASS"
+}

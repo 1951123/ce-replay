@@ -1,0 +1,18 @@
+{
+  "audit": "paper-positioning-regression-audit-v0",
+  "manuscript": "docs/paper-full-draft-v5-submission-ready.md",
+  "introduced_claim_counts": {
+    "first": 0,
+    "first_system": 0,
+    "uniquely": 0,
+    "unlike_all_prior_work": 0,
+    "prior_work_cannot": 0,
+    "prior_systems_are_black_boxes": 0,
+    "no_prior_configuration_parametric_evaluation": 0,
+    "no_prior_incremental_dependency_maintenance": 0
+  },
+  "inum_cpqo_description": "Respectfully preserved as close conceptual neighbors establishing reusable/configuration-parametric optimizer plan/cost representations.",
+  "priority_claim": false,
+  "new_literature": 0,
+  "status": "PASS"
+}
