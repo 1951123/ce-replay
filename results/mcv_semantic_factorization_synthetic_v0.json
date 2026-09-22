@@ -1,0 +1,83 @@
+{
+  "experiment": "MCV-Semantic-Factorization-v0 synthetic fixtures",
+  "two_factor_frozen_fixture": {
+    "query": "query.4",
+    "candidate_ids": [
+      230,
+      448
+    ],
+    "columns": [
+      [
+        "dincome2",
+        "isex"
+      ],
+      [
+        "dincome7",
+        "drearning"
+      ]
+    ],
+    "dependency_edges": 0,
+    "factors": [
+      [
+        230
+      ],
+      [
+        448
+      ]
+    ],
+    "designs": [
+      {
+        "mask": 0,
+        "direct_hex": "0x1.e27de9be30550p+17",
+        "factorized_hex": "0x1.e27de9be30550p+17",
+        "bitwise": true,
+        "relative_error": 0.0
+      },
+      {
+        "mask": 1,
+        "direct_hex": "0x1.eb64f94489014p+17",
+        "factorized_hex": "0x1.eb64f94489014p+17",
+        "bitwise": true,
+        "relative_error": 0.0
+      },
+      {
+        "mask": 2,
+        "direct_hex": "0x1.dfdf53052eec6p+17",
+        "factorized_hex": "0x1.dfdf53052eec6p+17",
+        "bitwise": true,
+        "relative_error": 0.0
+      },
+      {
+        "mask": 3,
+        "direct_hex": "0x1.e8ba03012bb2ep+17",
+        "factorized_hex": "0x1.e8ba03012bb2ep+17",
+        "bitwise": true,
+        "relative_error": 0.0
+      }
+    ],
+    "background_invariance_tests": 4,
+    "background_failures": 0
+  },
+  "expression_scope_fixture": {
+    "candidate_a": {
+      "stxkeys": [
+        "a"
+      ],
+      "expressions": [
+        "lower(t)"
+      ]
+    },
+    "candidate_b": {
+      "stxkeys": [
+        "b"
+      ],
+      "expressions": [
+        "lower(t)"
+      ]
+    },
+    "plain_attribute_keys_overlap": false,
+    "complete_semantic_scope_overlap": true,
+    "factorization_result": "one factor",
+    "reason": "shared expression clause creates a conservative dependency edge"
+  }
+}

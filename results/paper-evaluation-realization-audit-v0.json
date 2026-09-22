@@ -1,0 +1,40 @@
+{
+  "artifact": "paper-evaluation-realization-audit-v0",
+  "date": "2026-09-22",
+  "comparison_classes": ["SAME_REALIZATION", "CROSS_REALIZATION_DESCRIPTIVE_ONLY", "SAME_FRESH_REALIZATION_REPLAY_NATIVE", "UNAVAILABLE_DUE_TO_PROVENANCE"],
+  "objective_comparisons": [
+    {"id":"R1","workload":"Census","left":"empty loss 11808.960379","right":"all-statistics loss 10932.295550","classification":"SAME_REALIZATION","same_realization":true,"valid":true,"source":"Statistics-Nonmonotonicity-v0","qualification":"Frozen nonmonotonicity realization."},
+    {"id":"R2","workload":"Census","left":"all-statistics loss 10932.295550","right":"optimized subset loss 805.316472","classification":"SAME_REALIZATION","same_realization":true,"valid":true,"source":"Statistics-Nonmonotonicity-v0","qualification":"All three displayed F2 Census states are evaluated by the same frozen evaluator."},
+    {"id":"R3","workload":"DMV","left":"empty loss 87276.581132","right":"all-MCV loss 92850.151303","classification":"SAME_REALIZATION","same_realization":true,"valid":true,"source":"DMV-Baseline-and-Nonmonotonicity-v0","qualification":"DMV baseline target-100 realization."},
+    {"id":"R4","workload":"DMV","left":"empty loss 87276.581132","right":"all-FD loss 95404.855146","classification":"SAME_REALIZATION","same_realization":true,"valid":true,"source":"DMV-Baseline-and-Nonmonotonicity-v0","qualification":"DMV baseline target-100 realization."},
+    {"id":"R5","workload":"DMV","left":"all-MCV loss 92850.151303","right":"all-mixed loss 92850.151303","classification":"SAME_REALIZATION","same_realization":true,"valid":true,"source":"DMV-Baseline-and-Nonmonotonicity-v0","qualification":"Equality is explained by complete FD suppression in this state."},
+    {"id":"R6","workload":"Census","left":"old byte-budget design loss 805.316472","right":"maintenance-budget design loss 787.809381","classification":"SAME_REALIZATION","same_realization":true,"valid":true,"source":"Maintenance-Budget-Optimize-v0","qualification":"Direct frozen resource-model comparison; 2.1739% reduction is source-defined."},
+    {"id":"R7","workload":"DMV","left":"25% budget optimized state","right":"50%, 75%, and 100% budget optimized states","classification":"SAME_REALIZATION","same_realization":true,"valid":true,"source":"DMV-Maintenance-Budget-Optimize-v0","qualification":"Same internally consistent optimization realization; neighborhood-search outcomes, not global optima."},
+    {"id":"R8","workload":"DMV","left":"baseline empty/all losses around 8.7e4-9.5e4","right":"optimization loss around 7.84e298","classification":"CROSS_REALIZATION_DESCRIPTIVE_ONLY","same_realization":false,"valid":false,"source":"DMV-Baseline-and-Nonmonotonicity-v0 vs DMV-Maintenance-Budget-Optimize-v0","qualification":"No numerical comparison appears in main text; artifacts use different payload/simple-selectivity realizations."},
+    {"id":"R9","workload":"Census","left":"independent composition loss 813.942274","right":"joint composition loss 806.443575","classification":"SAME_REALIZATION","same_realization":true,"valid":true,"source":"CE-Replay-Optimize-v4","qualification":"0.9213% source-defined improvement within one frozen composition experiment."},
+    {"id":"CENSUS_DEPLOY","workload":"Census","left":"frozen loss 787.809381","right":"fresh replay/native loss 811.553725","classification":"CROSS_REALIZATION_DESCRIPTIVE_ONLY","same_realization":false,"valid":true,"source":"Maintenance-Design-Deploy-v0","qualification":"Valid paired frozen-to-fresh realization-drift comparison because both vectors/context were preserved; not a semantic-error comparison or optimization improvement."},
+    {"id":"CENSUS_FRESH_SEMANTIC","workload":"Census","left":"fresh replay loss 811.553725","right":"fresh native loss 811.553725","classification":"SAME_FRESH_REALIZATION_REPLAY_NATIVE","same_realization":true,"valid":true,"source":"Maintenance-Design-Deploy-v0","qualification":"Measures semantic replay error for identical fresh payload."},
+    {"id":"DMV_FRESH_SEMANTIC","workload":"DMV","left":"fresh replay aggregate","right":"fresh native aggregate","classification":"SAME_FRESH_REALIZATION_REPLAY_NATIVE","same_realization":true,"valid":true,"source":"DMV-Deploy-v0","qualification":"1965/1965 query comparisons; same fresh payload."},
+    {"id":"DMV_PAIRED_DRIFT","workload":"DMV","left":"frozen per-query estimates","right":"fresh per-query estimates","classification":"UNAVAILABLE_DUE_TO_PROVENANCE","same_realization":false,"valid":false,"source":"DMV-Frozen-Provenance-Recovery-v0","qualification":"Frozen vector, baseline rows, and clause-level simple selectivities were not persisted; do not reconstruct from another realization."},
+    {"id":"CROSS_WORKLOAD_RAW_LOSS","workload":"Census vs DMV","left":"Census aggregate q-error","right":"DMV aggregate q-error","classification":"CROSS_REALIZATION_DESCRIPTIVE_ONLY","same_realization":false,"valid":false,"source":"Objective boundary","qualification":"Prohibited comparison; DMV floor-based objective is dominated by two zero-truth queries."}
+  ],
+  "dmv_provenance": {
+    "frozen_per_query_baseline_recoverable": false,
+    "missing_inputs": ["1965 frozen per-query estimates/q-errors", "baseline relation rows", "clause-level simple selectivities"],
+    "unavailable_analyses": ["exact frozen zero-truth contributions", "frozen nonzero-truth diagnostic loss", "paired frozen-to-fresh per-query estimate-drift distribution"],
+    "classification": "artifact/provenance incompleteness",
+    "does_not_invalidate": ["physical deployment and OID order", "fresh payload materialization/consumption", "1965/1965 same-fresh-realization replay/native comparisons", "fresh MCV+FD composition"]
+  },
+  "dmv_zero_truth": {
+    "query_count": 2,
+    "query_ids": ["dmv.173", "dmv.943"],
+    "objective_floor_policy": "The frozen q-error implementation uses a positive floor of 1e-300 for zero values.",
+    "effect": "Positive estimates for the zero-truth queries numerically dominate the raw aggregate objective.",
+    "available_nonzero_truth_diagnostic": {"fresh_deployment_loss":85014.8083461},
+    "optimization_objective_changed_retroactively": false,
+    "cross_workload_raw_loss_comparison_allowed": false
+  },
+  "invalid_cross_realization_comparisons_found_and_removed": 1,
+  "removed_comparison": "No baseline-realization DMV objective is numerically compared with the later optimization realization; only qualitative replicated properties are combined.",
+  "status": "PASS"
+}

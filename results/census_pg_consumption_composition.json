@@ -1,0 +1,186 @@
+{
+  "postgres_version": 160015,
+  "statistics_target": 1000,
+  "experiment_a_consumption": [
+    {
+      "scenario": "q184_overlap",
+      "qid": "query.184",
+      "oid_order": [
+        "good",
+        "middle",
+        "bad"
+      ],
+      "predicted_sequence": [
+        "good"
+      ],
+      "full_estimate": 45,
+      "payload_ablations": [
+        {
+          "masked": "good",
+          "estimate": 1280,
+          "changed_from_full": true,
+          "deviation_from_full": 28.444444444444443
+        },
+        {
+          "masked": "middle",
+          "estimate": 45,
+          "changed_from_full": false,
+          "deviation_from_full": 1.0
+        },
+        {
+          "masked": "bad",
+          "estimate": 45,
+          "changed_from_full": false,
+          "deviation_from_full": 1.0
+        }
+      ]
+    },
+    {
+      "scenario": "q274_disjoint",
+      "qid": "query.274",
+      "oid_order": [
+        "left",
+        "right"
+      ],
+      "predicted_sequence": [
+        "left",
+        "right"
+      ],
+      "full_estimate": 179,
+      "payload_ablations": [
+        {
+          "masked": "left",
+          "estimate": 18111,
+          "changed_from_full": true,
+          "deviation_from_full": 101.17877094972067
+        },
+        {
+          "masked": "right",
+          "estimate": 502,
+          "changed_from_full": true,
+          "deviation_from_full": 2.804469273743017
+        }
+      ]
+    }
+  ],
+  "experiment_b_composition": [
+    {
+      "scenario": "q184_disjoint",
+      "qid": "query.184",
+      "actual": 13,
+      "trials": [
+        {
+          "order": [
+            "a",
+            "b"
+          ],
+          "same_sample_baseline": 54023,
+          "same_sample_singletons": {
+            "a": 47,
+            "b": 57633
+          },
+          "observed": 50,
+          "ratio_prediction": 50.1406993317661,
+          "deviation_factor": 1.002813986635322,
+          "relative_error": 0.00281398663532201
+        },
+        {
+          "order": [
+            "b",
+            "a"
+          ],
+          "same_sample_baseline": 53918,
+          "same_sample_singletons": {
+            "a": 34,
+            "b": 57519
+          },
+          "observed": 36,
+          "ratio_prediction": 36.270744463815426,
+          "deviation_factor": 1.0075206795504286,
+          "relative_error": 0.0075206795504284924
+        }
+      ]
+    },
+    {
+      "scenario": "q62_disjoint",
+      "qid": "query.62",
+      "actual": 45,
+      "trials": [
+        {
+          "order": [
+            "a",
+            "b"
+          ],
+          "same_sample_baseline": 93550,
+          "same_sample_singletons": {
+            "a": 28,
+            "b": 105058
+          },
+          "observed": 31,
+          "ratio_prediction": 31.44440406199893,
+          "deviation_factor": 1.0143356149031912,
+          "relative_error": 0.014335614903191319
+        },
+        {
+          "order": [
+            "b",
+            "a"
+          ],
+          "same_sample_baseline": 93659,
+          "same_sample_singletons": {
+            "a": 74,
+            "b": 105122
+          },
+          "observed": 83,
+          "ratio_prediction": 83.05691924961829,
+          "deviation_factor": 1.0006857740917867,
+          "relative_error": 0.0006857740917866182
+        }
+      ]
+    },
+    {
+      "scenario": "q274_disjoint",
+      "qid": "query.274",
+      "actual": 470,
+      "trials": [
+        {
+          "order": [
+            "a",
+            "b"
+          ],
+          "same_sample_baseline": 50777,
+          "same_sample_singletons": {
+            "a": 500,
+            "b": 18008
+          },
+          "observed": 177,
+          "ratio_prediction": 177.32437914803947,
+          "deviation_factor": 1.0018326505538953,
+          "relative_error": 0.0018326505538953056
+        },
+        {
+          "order": [
+            "b",
+            "a"
+          ],
+          "same_sample_baseline": 50594,
+          "same_sample_singletons": {
+            "a": 510,
+            "b": 17805
+          },
+          "observed": 179,
+          "ratio_prediction": 179.47879195161482,
+          "deviation_factor": 1.0026748153721499,
+          "relative_error": 0.0026748153721498523
+        }
+      ]
+    }
+  ],
+  "composition_summary": {
+    "observations": 6,
+    "median_deviation_factor": 1.0027444010037359,
+    "max_deviation_factor": 1.0143356149031912,
+    "within_10_percent_factor": 6,
+    "within_20_percent_factor": 6
+  }
+}

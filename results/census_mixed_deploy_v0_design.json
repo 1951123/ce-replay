@@ -1,0 +1,2936 @@
+{
+  "experiment": "Mixed-Deploy-v0-design",
+  "source_optimizer": "results/census_compositional_semantic_optimizer_v0.json",
+  "source_sha256": "76d697743d006b19000974c220970d8693ca9db57864fef8730c483dad2ebb7f",
+  "selected_mcv": [
+    4,
+    14,
+    16,
+    29,
+    32,
+    33,
+    40,
+    50,
+    52,
+    59,
+    65,
+    68,
+    82,
+    86,
+    96,
+    107,
+    109,
+    112,
+    126,
+    145,
+    156,
+    172,
+    173,
+    190,
+    197,
+    198,
+    221,
+    226,
+    245,
+    263,
+    270,
+    271,
+    275,
+    291,
+    294,
+    295,
+    296,
+    336,
+    353,
+    357,
+    361,
+    385,
+    389,
+    399,
+    410,
+    413,
+    420,
+    422,
+    424,
+    440,
+    444,
+    447,
+    468,
+    523,
+    530,
+    532,
+    538,
+    544,
+    551,
+    553,
+    565,
+    588,
+    600,
+    601,
+    623,
+    628,
+    629,
+    630,
+    635,
+    644,
+    648,
+    665,
+    674,
+    691,
+    703,
+    751,
+    753,
+    789,
+    799,
+    809,
+    813,
+    824,
+    826,
+    832,
+    833,
+    835,
+    838,
+    841,
+    843,
+    846,
+    858,
+    869,
+    879,
+    880,
+    885,
+    919,
+    936,
+    937,
+    939,
+    940,
+    941,
+    953,
+    960,
+    970,
+    973,
+    976,
+    984,
+    987,
+    990,
+    1000,
+    1018,
+    1025,
+    1044,
+    1045,
+    1052,
+    1056,
+    1063,
+    1074,
+    1075,
+    1076,
+    1082,
+    1101,
+    1103,
+    1111,
+    1158,
+    1197,
+    1203,
+    1205,
+    1213,
+    1216,
+    1254,
+    1263,
+    1269,
+    1279,
+    1281,
+    1311,
+    1314,
+    1318,
+    1324,
+    1325,
+    1326,
+    1351,
+    1358,
+    1365,
+    1377,
+    1380,
+    1389,
+    1406,
+    1412,
+    1415,
+    1429,
+    1456,
+    1463,
+    1467,
+    1473,
+    1493,
+    1510,
+    1512,
+    1518,
+    1552,
+    1558,
+    1561,
+    1595,
+    1606,
+    1649,
+    1663,
+    1676,
+    1703,
+    1711,
+    1713,
+    1730,
+    1757,
+    1783,
+    1784,
+    1800,
+    1808,
+    1815,
+    1826,
+    1834,
+    1835,
+    1860,
+    1870,
+    1875,
+    1876,
+    1880,
+    1885,
+    1918,
+    1946,
+    1962,
+    1999,
+    2003,
+    2004,
+    2023,
+    2043,
+    2066,
+    2087,
+    2088,
+    2107,
+    2142,
+    2148,
+    2174,
+    2190,
+    2201,
+    2210,
+    2211
+  ],
+  "selected_fd": [
+    0,
+    3,
+    14,
+    20,
+    22,
+    24,
+    43,
+    57,
+    69,
+    90,
+    97,
+    107,
+    115,
+    118,
+    125,
+    141,
+    151,
+    180,
+    185,
+    191,
+    195,
+    200,
+    219,
+    223,
+    227,
+    230,
+    244,
+    276,
+    319,
+    361,
+    399,
+    443,
+    451,
+    461,
+    467,
+    488,
+    501,
+    504,
+    523,
+    542,
+    545,
+    556,
+    581,
+    593,
+    599,
+    612,
+    621,
+    623,
+    624,
+    629,
+    643,
+    679,
+    683,
+    714,
+    736,
+    752
+  ],
+  "selected_mcv_count": 205,
+  "selected_fd_count": 56,
+  "target": 100,
+  "order_policy": {
+    "mcv": "source oid_rank ascending",
+    "fd": "source oid_rank ascending",
+    "cross_mechanism": "MCV objects then FD objects; stages consume mechanisms separately"
+  },
+  "mcv": [
+    {
+      "id": 4,
+      "columns": [
+        "dweek89",
+        "iworklwk"
+      ],
+      "oid_rank": 4,
+      "frozen_cost": 288
+    },
+    {
+      "id": 14,
+      "columns": [
+        "ddepart",
+        "iworklwk"
+      ],
+      "oid_rank": 14,
+      "frozen_cost": 410
+    },
+    {
+      "id": 16,
+      "columns": [
+        "dhispanic",
+        "ifeb55"
+      ],
+      "oid_rank": 16,
+      "frozen_cost": 304
+    },
+    {
+      "id": 29,
+      "columns": [
+        "idisabl2",
+        "iyearsch"
+      ],
+      "oid_rank": 29,
+      "frozen_cost": 876
+    },
+    {
+      "id": 32,
+      "columns": [
+        "ifeb55",
+        "irspouse"
+      ],
+      "oid_rank": 32,
+      "frozen_cost": 322
+    },
+    {
+      "id": 33,
+      "columns": [
+        "ifeb55",
+        "iworklwk"
+      ],
+      "oid_rank": 33,
+      "frozen_cost": 196
+    },
+    {
+      "id": 40,
+      "columns": [
+        "iremplpar",
+        "irspouse"
+      ],
+      "oid_rank": 40,
+      "frozen_cost": 840
+    },
+    {
+      "id": 50,
+      "columns": [
+        "dincome4",
+        "dincome5"
+      ],
+      "oid_rank": 50,
+      "frozen_cost": 170
+    },
+    {
+      "id": 52,
+      "columns": [
+        "dincome5",
+        "irrelchld"
+      ],
+      "oid_rank": 52,
+      "frozen_cost": 170
+    },
+    {
+      "id": 59,
+      "columns": [
+        "dweek89",
+        "imobillim"
+      ],
+      "oid_rank": 59,
+      "frozen_cost": 244
+    },
+    {
+      "id": 65,
+      "columns": [
+        "idisabl2",
+        "irrelchld"
+      ],
+      "oid_rank": 65,
+      "frozen_cost": 196
+    },
+    {
+      "id": 68,
+      "columns": [
+        "ifertil",
+        "iimmigr"
+      ],
+      "oid_rank": 68,
+      "frozen_cost": 1012
+    },
+    {
+      "id": 82,
+      "columns": [
+        "irownchld",
+        "irspouse"
+      ],
+      "oid_rank": 82,
+      "frozen_cost": 300
+    },
+    {
+      "id": 86,
+      "columns": [
+        "dage",
+        "dincome5"
+      ],
+      "oid_rank": 86,
+      "frozen_cost": 414
+    },
+    {
+      "id": 96,
+      "columns": [
+        "ddepart",
+        "iriders"
+      ],
+      "oid_rank": 96,
+      "frozen_cost": 594
+    },
+    {
+      "id": 107,
+      "columns": [
+        "dhours",
+        "ilooking"
+      ],
+      "oid_rank": 107,
+      "frozen_cost": 278
+    },
+    {
+      "id": 109,
+      "columns": [
+        "dincome1",
+        "isubfam2"
+      ],
+      "oid_rank": 109,
+      "frozen_cost": 270
+    },
+    {
+      "id": 112,
+      "columns": [
+        "dincome4",
+        "ivietnam"
+      ],
+      "oid_rank": 112,
+      "frozen_cost": 170
+    },
+    {
+      "id": 126,
+      "columns": [
+        "doccup",
+        "idisabl1"
+      ],
+      "oid_rank": 126,
+      "frozen_cost": 488
+    },
+    {
+      "id": 145,
+      "columns": [
+        "dyrsserv",
+        "isex"
+      ],
+      "oid_rank": 145,
+      "frozen_cost": 218
+    },
+    {
+      "id": 156,
+      "columns": [
+        "ifeb55",
+        "irvetserv"
+      ],
+      "oid_rank": 156,
+      "frozen_cost": 430
+    },
+    {
+      "id": 172,
+      "columns": [
+        "imobility",
+        "iothrserv"
+      ],
+      "oid_rank": 172,
+      "frozen_cost": 174
+    },
+    {
+      "id": 173,
+      "columns": [
+        "imobility",
+        "iyearsch"
+      ],
+      "oid_rank": 173,
+      "frozen_cost": 964
+    },
+    {
+      "id": 190,
+      "columns": [
+        "dage",
+        "dhour89"
+      ],
+      "oid_rank": 190,
+      "frozen_cost": 936
+    },
+    {
+      "id": 197,
+      "columns": [
+        "dancstry1",
+        "ilang1"
+      ],
+      "oid_rank": 197,
+      "frozen_cost": 646
+    },
+    {
+      "id": 198,
+      "columns": [
+        "dancstry1",
+        "iyearsch"
+      ],
+      "oid_rank": 198,
+      "frozen_cost": 2208
+    },
+    {
+      "id": 221,
+      "columns": [
+        "dhours",
+        "idisabl2"
+      ],
+      "oid_rank": 221,
+      "frozen_cost": 278
+    },
+    {
+      "id": 226,
+      "columns": [
+        "dincome1",
+        "iwork89"
+      ],
+      "oid_rank": 226,
+      "frozen_cost": 252
+    },
+    {
+      "id": 245,
+      "columns": [
+        "dincome5",
+        "ifertil"
+      ],
+      "oid_rank": 245,
+      "frozen_cost": 532
+    },
+    {
+      "id": 263,
+      "columns": [
+        "dindustry",
+        "imobillim"
+      ],
+      "oid_rank": 263,
+      "frozen_cost": 548
+    },
+    {
+      "id": 270,
+      "columns": [
+        "doccup",
+        "ilang1"
+      ],
+      "oid_rank": 270,
+      "frozen_cost": 488
+    },
+    {
+      "id": 271,
+      "columns": [
+        "doccup",
+        "iremplpar"
+      ],
+      "oid_rank": 271,
+      "frozen_cost": 804
+    },
+    {
+      "id": 275,
+      "columns": [
+        "dpoverty",
+        "isept80"
+      ],
+      "oid_rank": 275,
+      "frozen_cost": 218
+    },
+    {
+      "id": 291,
+      "columns": [
+        "iclass",
+        "irrelchld"
+      ],
+      "oid_rank": 291,
+      "frozen_cost": 378
+    },
+    {
+      "id": 294,
+      "columns": [
+        "idisabl1",
+        "irrelchld"
+      ],
+      "oid_rank": 294,
+      "frozen_cost": 196
+    },
+    {
+      "id": 295,
+      "columns": [
+        "idisabl1",
+        "iwork89"
+      ],
+      "oid_rank": 295,
+      "frozen_cost": 200
+    },
+    {
+      "id": 296,
+      "columns": [
+        "idisabl2",
+        "ilang1"
+      ],
+      "oid_rank": 296,
+      "frozen_cost": 244
+    },
+    {
+      "id": 336,
+      "columns": [
+        "imobillim",
+        "isept80"
+      ],
+      "oid_rank": 336,
+      "frozen_cost": 174
+    },
+    {
+      "id": 353,
+      "columns": [
+        "itmpabsnt",
+        "iworklwk"
+      ],
+      "oid_rank": 353,
+      "frozen_cost": 270
+    },
+    {
+      "id": 357,
+      "columns": [
+        "dage",
+        "dincome1"
+      ],
+      "oid_rank": 357,
+      "frozen_cost": 756
+    },
+    {
+      "id": 361,
+      "columns": [
+        "dage",
+        "imilitary"
+      ],
+      "oid_rank": 361,
+      "frozen_cost": 580
+    },
+    {
+      "id": 385,
+      "columns": [
+        "ddepart",
+        "irlabor"
+      ],
+      "oid_rank": 385,
+      "frozen_cost": 400
+    },
+    {
+      "id": 389,
+      "columns": [
+        "ddepart",
+        "iyearwrk"
+      ],
+      "oid_rank": 389,
+      "frozen_cost": 408
+    },
+    {
+      "id": 399,
+      "columns": [
+        "dhour89",
+        "dindustry"
+      ],
+      "oid_rank": 399,
+      "frozen_cost": 1484
+    },
+    {
+      "id": 410,
+      "columns": [
+        "dhours",
+        "iavail"
+      ],
+      "oid_rank": 410,
+      "frozen_cost": 278
+    },
+    {
+      "id": 413,
+      "columns": [
+        "dincome1",
+        "ilooking"
+      ],
+      "oid_rank": 413,
+      "frozen_cost": 384
+    },
+    {
+      "id": 420,
+      "columns": [
+        "dincome2",
+        "dincome8"
+      ],
+      "oid_rank": 420,
+      "frozen_cost": 170
+    },
+    {
+      "id": 422,
+      "columns": [
+        "dincome2",
+        "iclass"
+      ],
+      "oid_rank": 422,
+      "frozen_cost": 466
+    },
+    {
+      "id": 424,
+      "columns": [
+        "dincome2",
+        "ilooking"
+      ],
+      "oid_rank": 424,
+      "frozen_cost": 218
+    },
+    {
+      "id": 440,
+      "columns": [
+        "dincome5",
+        "iwork89"
+      ],
+      "oid_rank": 440,
+      "frozen_cost": 196
+    },
+    {
+      "id": 444,
+      "columns": [
+        "dincome6",
+        "imeans"
+      ],
+      "oid_rank": 444,
+      "frozen_cost": 378
+    },
+    {
+      "id": 447,
+      "columns": [
+        "dincome6",
+        "irspouse"
+      ],
+      "oid_rank": 447,
+      "frozen_cost": 388
+    },
+    {
+      "id": 468,
+      "columns": [
+        "dindustry",
+        "irrelchld"
+      ],
+      "oid_rank": 468,
+      "frozen_cost": 522
+    },
+    {
+      "id": 523,
+      "columns": [
+        "iclass",
+        "iperscare"
+      ],
+      "oid_rank": 523,
+      "frozen_cost": 448
+    },
+    {
+      "id": 530,
+      "columns": [
+        "idisabl1",
+        "irspouse"
+      ],
+      "oid_rank": 530,
+      "frozen_cost": 414
+    },
+    {
+      "id": 532,
+      "columns": [
+        "idisabl1",
+        "iyearsch"
+      ],
+      "oid_rank": 532,
+      "frozen_cost": 964
+    },
+    {
+      "id": 538,
+      "columns": [
+        "idisabl2",
+        "iriders"
+      ],
+      "oid_rank": 538,
+      "frozen_cost": 278
+    },
+    {
+      "id": 544,
+      "columns": [
+        "ienglish",
+        "ilang1"
+      ],
+      "oid_rank": 544,
+      "frozen_cost": 230
+    },
+    {
+      "id": 551,
+      "columns": [
+        "ifertil",
+        "imobillim"
+      ],
+      "oid_rank": 551,
+      "frozen_cost": 588
+    },
+    {
+      "id": 553,
+      "columns": [
+        "ifertil",
+        "irrelchld"
+      ],
+      "oid_rank": 553,
+      "frozen_cost": 456
+    },
+    {
+      "id": 565,
+      "columns": [
+        "ilang1",
+        "imobillim"
+      ],
+      "oid_rank": 565,
+      "frozen_cost": 244
+    },
+    {
+      "id": 588,
+      "columns": [
+        "imeans",
+        "ischool"
+      ],
+      "oid_rank": 588,
+      "frozen_cost": 540
+    },
+    {
+      "id": 600,
+      "columns": [
+        "iperscare",
+        "iworklwk"
+      ],
+      "oid_rank": 600,
+      "frozen_cost": 288
+    },
+    {
+      "id": 601,
+      "columns": [
+        "irelat1",
+        "irrelchld"
+      ],
+      "oid_rank": 601,
+      "frozen_cost": 548
+    },
+    {
+      "id": 623,
+      "columns": [
+        "isex",
+        "itmpabsnt"
+      ],
+      "oid_rank": 623,
+      "frozen_cost": 266
+    },
+    {
+      "id": 628,
+      "columns": [
+        "dage",
+        "dweek89"
+      ],
+      "oid_rank": 628,
+      "frozen_cost": 550
+    },
+    {
+      "id": 629,
+      "columns": [
+        "dage",
+        "iavail"
+      ],
+      "oid_rank": 629,
+      "frozen_cost": 440
+    },
+    {
+      "id": 630,
+      "columns": [
+        "dage",
+        "iclass"
+      ],
+      "oid_rank": 630,
+      "frozen_cost": 1234
+    },
+    {
+      "id": 635,
+      "columns": [
+        "dage",
+        "irpob"
+      ],
+      "oid_rank": 635,
+      "frozen_cost": 1366
+    },
+    {
+      "id": 644,
+      "columns": [
+        "dancstry1",
+        "iimmigr"
+      ],
+      "oid_rank": 644,
+      "frozen_cost": 986
+    },
+    {
+      "id": 648,
+      "columns": [
+        "dancstry1",
+        "irpob"
+      ],
+      "oid_rank": 648,
+      "frozen_cost": 1242
+    },
+    {
+      "id": 665,
+      "columns": [
+        "dancstry2",
+        "irspouse"
+      ],
+      "oid_rank": 665,
+      "frozen_cost": 664
+    },
+    {
+      "id": 674,
+      "columns": [
+        "ddepart",
+        "irrelchld"
+      ],
+      "oid_rank": 674,
+      "frozen_cost": 296
+    },
+    {
+      "id": 691,
+      "columns": [
+        "dhour89",
+        "doccup"
+      ],
+      "oid_rank": 691,
+      "frozen_cost": 958
+    },
+    {
+      "id": 703,
+      "columns": [
+        "dhour89",
+        "iyearwrk"
+      ],
+      "oid_rank": 703,
+      "frozen_cost": 496
+    },
+    {
+      "id": 751,
+      "columns": [
+        "dincome5",
+        "dincome7"
+      ],
+      "oid_rank": 751,
+      "frozen_cost": 170
+    },
+    {
+      "id": 753,
+      "columns": [
+        "dincome5",
+        "dtravtime"
+      ],
+      "oid_rank": 753,
+      "frozen_cost": 410
+    },
+    {
+      "id": 789,
+      "columns": [
+        "dindustry",
+        "iremplpar"
+      ],
+      "oid_rank": 789,
+      "frozen_cost": 886
+    },
+    {
+      "id": 799,
+      "columns": [
+        "doccup",
+        "irownchld"
+      ],
+      "oid_rank": 799,
+      "frozen_cost": 418
+    },
+    {
+      "id": 809,
+      "columns": [
+        "dpob",
+        "irpob"
+      ],
+      "oid_rank": 809,
+      "frozen_cost": 500
+    },
+    {
+      "id": 813,
+      "columns": [
+        "dpoverty",
+        "imobillim"
+      ],
+      "oid_rank": 813,
+      "frozen_cost": 288
+    },
+    {
+      "id": 824,
+      "columns": [
+        "dpwgt1",
+        "iwwii"
+      ],
+      "oid_rank": 824,
+      "frozen_cost": 244
+    },
+    {
+      "id": 826,
+      "columns": [
+        "drearning",
+        "dweek89"
+      ],
+      "oid_rank": 826,
+      "frozen_cost": 366
+    },
+    {
+      "id": 832,
+      "columns": [
+        "drearning",
+        "iyearsch"
+      ],
+      "oid_rank": 832,
+      "frozen_cost": 1500
+    },
+    {
+      "id": 833,
+      "columns": [
+        "drpincome",
+        "idisabl1"
+      ],
+      "oid_rank": 833,
+      "frozen_cost": 388
+    },
+    {
+      "id": 835,
+      "columns": [
+        "drpincome",
+        "ifertil"
+      ],
+      "oid_rank": 835,
+      "frozen_cost": 922
+    },
+    {
+      "id": 838,
+      "columns": [
+        "dtravtime",
+        "dweek89"
+      ],
+      "oid_rank": 838,
+      "frozen_cost": 546
+    },
+    {
+      "id": 841,
+      "columns": [
+        "dtravtime",
+        "itmpabsnt"
+      ],
+      "oid_rank": 841,
+      "frozen_cost": 330
+    },
+    {
+      "id": 843,
+      "columns": [
+        "dweek89",
+        "ilang1"
+      ],
+      "oid_rank": 843,
+      "frozen_cost": 244
+    },
+    {
+      "id": 846,
+      "columns": [
+        "dweek89",
+        "isubfam1"
+      ],
+      "oid_rank": 846,
+      "frozen_cost": 314
+    },
+    {
+      "id": 858,
+      "columns": [
+        "dyrsserv",
+        "irvetserv"
+      ],
+      "oid_rank": 858,
+      "frozen_cost": 478
+    },
+    {
+      "id": 869,
+      "columns": [
+        "iclass",
+        "imobillim"
+      ],
+      "oid_rank": 869,
+      "frozen_cost": 448
+    },
+    {
+      "id": 879,
+      "columns": [
+        "idisabl1",
+        "iremplpar"
+      ],
+      "oid_rank": 879,
+      "frozen_cost": 714
+    },
+    {
+      "id": 880,
+      "columns": [
+        "idisabl1",
+        "irownchld"
+      ],
+      "oid_rank": 880,
+      "frozen_cost": 196
+    },
+    {
+      "id": 885,
+      "columns": [
+        "idisabl2",
+        "iperscare"
+      ],
+      "oid_rank": 885,
+      "frozen_cost": 222
+    },
+    {
+      "id": 919,
+      "columns": [
+        "ilang1",
+        "iworklwk"
+      ],
+      "oid_rank": 919,
+      "frozen_cost": 266
+    },
+    {
+      "id": 936,
+      "columns": [
+        "imeans",
+        "iwork89"
+      ],
+      "oid_rank": 936,
+      "frozen_cost": 426
+    },
+    {
+      "id": 937,
+      "columns": [
+        "imeans",
+        "iworklwk"
+      ],
+      "oid_rank": 937,
+      "frozen_cost": 448
+    },
+    {
+      "id": 939,
+      "columns": [
+        "imilitary",
+        "imobillim"
+      ],
+      "oid_rank": 939,
+      "frozen_cost": 274
+    },
+    {
+      "id": 940,
+      "columns": [
+        "imilitary",
+        "iperscare"
+      ],
+      "oid_rank": 940,
+      "frozen_cost": 274
+    },
+    {
+      "id": 941,
+      "columns": [
+        "imilitary",
+        "iragechld"
+      ],
+      "oid_rank": 941,
+      "frozen_cost": 348
+    },
+    {
+      "id": 953,
+      "columns": [
+        "imobillim",
+        "irrelchld"
+      ],
+      "oid_rank": 953,
+      "frozen_cost": 196
+    },
+    {
+      "id": 960,
+      "columns": [
+        "iperscare",
+        "irrelchld"
+      ],
+      "oid_rank": 960,
+      "frozen_cost": 218
+    },
+    {
+      "id": 970,
+      "columns": [
+        "iremplpar",
+        "irrelchld"
+      ],
+      "oid_rank": 970,
+      "frozen_cost": 512
+    },
+    {
+      "id": 973,
+      "columns": [
+        "iriders",
+        "iwork89"
+      ],
+      "oid_rank": 973,
+      "frozen_cost": 296
+    },
+    {
+      "id": 976,
+      "columns": [
+        "irownchld",
+        "ischool"
+      ],
+      "oid_rank": 976,
+      "frozen_cost": 266
+    },
+    {
+      "id": 984,
+      "columns": [
+        "irrelchld",
+        "irspouse"
+      ],
+      "oid_rank": 984,
+      "frozen_cost": 300
+    },
+    {
+      "id": 987,
+      "columns": [
+        "irspouse",
+        "ischool"
+      ],
+      "oid_rank": 987,
+      "frozen_cost": 484
+    },
+    {
+      "id": 990,
+      "columns": [
+        "irspouse",
+        "iwork89"
+      ],
+      "oid_rank": 990,
+      "frozen_cost": 414
+    },
+    {
+      "id": 1000,
+      "columns": [
+        "isubfam2",
+        "iwwii"
+      ],
+      "oid_rank": 1000,
+      "frozen_cost": 148
+    },
+    {
+      "id": 1018,
+      "columns": [
+        "dancstry1",
+        "dancstry2"
+      ],
+      "oid_rank": 1018,
+      "frozen_cost": 614
+    },
+    {
+      "id": 1025,
+      "columns": [
+        "dancstry1",
+        "icitizen"
+      ],
+      "oid_rank": 1025,
+      "frozen_cost": 856
+    },
+    {
+      "id": 1044,
+      "columns": [
+        "dancstry2",
+        "iremplpar"
+      ],
+      "oid_rank": 1044,
+      "frozen_cost": 968
+    },
+    {
+      "id": 1045,
+      "columns": [
+        "dancstry2",
+        "irownchld"
+      ],
+      "oid_rank": 1045,
+      "frozen_cost": 362
+    },
+    {
+      "id": 1052,
+      "columns": [
+        "ddepart",
+        "dhours"
+      ],
+      "oid_rank": 1052,
+      "frozen_cost": 796
+    },
+    {
+      "id": 1056,
+      "columns": [
+        "ddepart",
+        "doccup"
+      ],
+      "oid_rank": 1056,
+      "frozen_cost": 936
+    },
+    {
+      "id": 1063,
+      "columns": [
+        "ddepart",
+        "imilitary"
+      ],
+      "oid_rank": 1063,
+      "frozen_cost": 594
+    },
+    {
+      "id": 1074,
+      "columns": [
+        "dhour89",
+        "dhours"
+      ],
+      "oid_rank": 1074,
+      "frozen_cost": 884
+    },
+    {
+      "id": 1075,
+      "columns": [
+        "dhour89",
+        "dincome7"
+      ],
+      "oid_rank": 1075,
+      "frozen_cost": 362
+    },
+    {
+      "id": 1076,
+      "columns": [
+        "dhour89",
+        "drearning"
+      ],
+      "oid_rank": 1076,
+      "frozen_cost": 594
+    },
+    {
+      "id": 1082,
+      "columns": [
+        "dhour89",
+        "imilitary"
+      ],
+      "oid_rank": 1082,
+      "frozen_cost": 550
+    },
+    {
+      "id": 1101,
+      "columns": [
+        "dincome1",
+        "iclass"
+      ],
+      "oid_rank": 1101,
+      "frozen_cost": 896
+    },
+    {
+      "id": 1103,
+      "columns": [
+        "dincome1",
+        "imarital"
+      ],
+      "oid_rank": 1103,
+      "frozen_cost": 612
+    },
+    {
+      "id": 1111,
+      "columns": [
+        "dincome1",
+        "iworklwk"
+      ],
+      "oid_rank": 1111,
+      "frozen_cost": 384
+    },
+    {
+      "id": 1158,
+      "columns": [
+        "dincome5",
+        "irpob"
+      ],
+      "oid_rank": 1158,
+      "frozen_cost": 462
+    },
+    {
+      "id": 1197,
+      "columns": [
+        "dincome8",
+        "iwork89"
+      ],
+      "oid_rank": 1197,
+      "frozen_cost": 218
+    },
+    {
+      "id": 1203,
+      "columns": [
+        "dindustry",
+        "ischool"
+      ],
+      "oid_rank": 1203,
+      "frozen_cost": 772
+    },
+    {
+      "id": 1205,
+      "columns": [
+        "dindustry",
+        "iwork89"
+      ],
+      "oid_rank": 1205,
+      "frozen_cost": 636
+    },
+    {
+      "id": 1213,
+      "columns": [
+        "doccup",
+        "irlabor"
+      ],
+      "oid_rank": 1213,
+      "frozen_cost": 808
+    },
+    {
+      "id": 1216,
+      "columns": [
+        "doccup",
+        "iyearwrk"
+      ],
+      "oid_rank": 1216,
+      "frozen_cost": 772
+    },
+    {
+      "id": 1254,
+      "columns": [
+        "drearning",
+        "itmpabsnt"
+      ],
+      "oid_rank": 1254,
+      "frozen_cost": 502
+    },
+    {
+      "id": 1263,
+      "columns": [
+        "drpincome",
+        "irpob"
+      ],
+      "oid_rank": 1263,
+      "frozen_cost": 1002
+    },
+    {
+      "id": 1269,
+      "columns": [
+        "dtravtime",
+        "imobillim"
+      ],
+      "oid_rank": 1269,
+      "frozen_cost": 304
+    },
+    {
+      "id": 1279,
+      "columns": [
+        "dweek89",
+        "imarital"
+      ],
+      "oid_rank": 1279,
+      "frozen_cost": 428
+    },
+    {
+      "id": 1281,
+      "columns": [
+        "dweek89",
+        "iyearwrk"
+      ],
+      "oid_rank": 1281,
+      "frozen_cost": 352
+    },
+    {
+      "id": 1311,
+      "columns": [
+        "iclass",
+        "itmpabsnt"
+      ],
+      "oid_rank": 1311,
+      "frozen_cost": 584
+    },
+    {
+      "id": 1314,
+      "columns": [
+        "idisabl1",
+        "imarital"
+      ],
+      "oid_rank": 1314,
+      "frozen_cost": 340
+    },
+    {
+      "id": 1318,
+      "columns": [
+        "idisabl1",
+        "iriders"
+      ],
+      "oid_rank": 1318,
+      "frozen_cost": 322
+    },
+    {
+      "id": 1324,
+      "columns": [
+        "idisabl2",
+        "imobillim"
+      ],
+      "oid_rank": 1324,
+      "frozen_cost": 222
+    },
+    {
+      "id": 1325,
+      "columns": [
+        "idisabl2",
+        "irelat1"
+      ],
+      "oid_rank": 1325,
+      "frozen_cost": 728
+    },
+    {
+      "id": 1326,
+      "columns": [
+        "idisabl2",
+        "irownchld"
+      ],
+      "oid_rank": 1326,
+      "frozen_cost": 196
+    },
+    {
+      "id": 1351,
+      "columns": [
+        "ifertil",
+        "iwwii"
+      ],
+      "oid_rank": 1351,
+      "frozen_cost": 434
+    },
+    {
+      "id": 1358,
+      "columns": [
+        "ikorean",
+        "irlabor"
+      ],
+      "oid_rank": 1358,
+      "frozen_cost": 274
+    },
+    {
+      "id": 1365,
+      "columns": [
+        "ilang1",
+        "imarital"
+      ],
+      "oid_rank": 1365,
+      "frozen_cost": 340
+    },
+    {
+      "id": 1377,
+      "columns": [
+        "ilooking",
+        "iyearwrk"
+      ],
+      "oid_rank": 1377,
+      "frozen_cost": 572
+    },
+    {
+      "id": 1380,
+      "columns": [
+        "imarital",
+        "ischool"
+      ],
+      "oid_rank": 1380,
+      "frozen_cost": 366
+    },
+    {
+      "id": 1389,
+      "columns": [
+        "imilitary",
+        "imobility"
+      ],
+      "oid_rank": 1389,
+      "frozen_cost": 318
+    },
+    {
+      "id": 1406,
+      "columns": [
+        "iperscare",
+        "iwork89"
+      ],
+      "oid_rank": 1406,
+      "frozen_cost": 222
+    },
+    {
+      "id": 1412,
+      "columns": [
+        "irelat1",
+        "irvetserv"
+      ],
+      "oid_rank": 1412,
+      "frozen_cost": 874
+    },
+    {
+      "id": 1415,
+      "columns": [
+        "irelat1",
+        "iyearwrk"
+      ],
+      "oid_rank": 1415,
+      "frozen_cost": 1386
+    },
+    {
+      "id": 1429,
+      "columns": [
+        "irlabor",
+        "ischool"
+      ],
+      "oid_rank": 1429,
+      "frozen_cost": 414
+    },
+    {
+      "id": 1456,
+      "columns": [
+        "isex",
+        "iwwii"
+      ],
+      "oid_rank": 1456,
+      "frozen_cost": 170
+    },
+    {
+      "id": 1463,
+      "columns": [
+        "iwork89",
+        "iworklwk"
+      ],
+      "oid_rank": 1463,
+      "frozen_cost": 288
+    },
+    {
+      "id": 1467,
+      "columns": [
+        "dage",
+        "drpincome"
+      ],
+      "oid_rank": 1467,
+      "frozen_cost": 756
+    },
+    {
+      "id": 1473,
+      "columns": [
+        "dage",
+        "irspouse"
+      ],
+      "oid_rank": 1473,
+      "frozen_cost": 896
+    },
+    {
+      "id": 1493,
+      "columns": [
+        "ddepart",
+        "itmpabsnt"
+      ],
+      "oid_rank": 1493,
+      "frozen_cost": 304
+    },
+    {
+      "id": 1510,
+      "columns": [
+        "dhour89",
+        "isex"
+      ],
+      "oid_rank": 1510,
+      "frozen_cost": 362
+    },
+    {
+      "id": 1512,
+      "columns": [
+        "dhour89",
+        "iwork89"
+      ],
+      "oid_rank": 1512,
+      "frozen_cost": 256
+    },
+    {
+      "id": 1518,
+      "columns": [
+        "dhours",
+        "imarital"
+      ],
+      "oid_rank": 1518,
+      "frozen_cost": 748
+    },
+    {
+      "id": 1552,
+      "columns": [
+        "dincome4",
+        "idisabl1"
+      ],
+      "oid_rank": 1552,
+      "frozen_cost": 218
+    },
+    {
+      "id": 1558,
+      "columns": [
+        "dincome4",
+        "irlabor"
+      ],
+      "oid_rank": 1558,
+      "frozen_cost": 362
+    },
+    {
+      "id": 1561,
+      "columns": [
+        "dincome4",
+        "isex"
+      ],
+      "oid_rank": 1561,
+      "frozen_cost": 170
+    },
+    {
+      "id": 1595,
+      "columns": [
+        "dincome7",
+        "ivietnam"
+      ],
+      "oid_rank": 1595,
+      "frozen_cost": 170
+    },
+    {
+      "id": 1606,
+      "columns": [
+        "dindustry",
+        "drearning"
+      ],
+      "oid_rank": 1606,
+      "frozen_cost": 1260
+    },
+    {
+      "id": 1649,
+      "columns": [
+        "drearning",
+        "iworklwk"
+      ],
+      "oid_rank": 1649,
+      "frozen_cost": 410
+    },
+    {
+      "id": 1663,
+      "columns": [
+        "dtravtime",
+        "idisabl2"
+      ],
+      "oid_rank": 1663,
+      "frozen_cost": 304
+    },
+    {
+      "id": 1676,
+      "columns": [
+        "dyrsserv",
+        "ifertil"
+      ],
+      "oid_rank": 1676,
+      "frozen_cost": 526
+    },
+    {
+      "id": 1703,
+      "columns": [
+        "iclass",
+        "imarital"
+      ],
+      "oid_rank": 1703,
+      "frozen_cost": 896
+    },
+    {
+      "id": 1711,
+      "columns": [
+        "idisabl1",
+        "irelat1"
+      ],
+      "oid_rank": 1711,
+      "frozen_cost": 750
+    },
+    {
+      "id": 1713,
+      "columns": [
+        "idisabl2",
+        "imilitary"
+      ],
+      "oid_rank": 1713,
+      "frozen_cost": 252
+    },
+    {
+      "id": 1730,
+      "columns": [
+        "iimmigr",
+        "irpob"
+      ],
+      "oid_rank": 1730,
+      "frozen_cost": 692
+    },
+    {
+      "id": 1757,
+      "columns": [
+        "imeans",
+        "irlabor"
+      ],
+      "oid_rank": 1757,
+      "frozen_cost": 434
+    },
+    {
+      "id": 1783,
+      "columns": [
+        "iperscare",
+        "irspouse"
+      ],
+      "oid_rank": 1783,
+      "frozen_cost": 392
+    },
+    {
+      "id": 1784,
+      "columns": [
+        "iperscare",
+        "ischool"
+      ],
+      "oid_rank": 1784,
+      "frozen_cost": 292
+    },
+    {
+      "id": 1800,
+      "columns": [
+        "irelat1",
+        "iyearsch"
+      ],
+      "oid_rank": 1800,
+      "frozen_cost": 2170
+    },
+    {
+      "id": 1808,
+      "columns": [
+        "iriders",
+        "irlabor"
+      ],
+      "oid_rank": 1808,
+      "frozen_cost": 378
+    },
+    {
+      "id": 1815,
+      "columns": [
+        "irlabor",
+        "iworklwk"
+      ],
+      "oid_rank": 1815,
+      "frozen_cost": 388
+    },
+    {
+      "id": 1826,
+      "columns": [
+        "ischool",
+        "itmpabsnt"
+      ],
+      "oid_rank": 1826,
+      "frozen_cost": 296
+    },
+    {
+      "id": 1834,
+      "columns": [
+        "iwork89",
+        "iyearwrk"
+      ],
+      "oid_rank": 1834,
+      "frozen_cost": 308
+    },
+    {
+      "id": 1835,
+      "columns": [
+        "iworklwk",
+        "iyearwrk"
+      ],
+      "oid_rank": 1835,
+      "frozen_cost": 506
+    },
+    {
+      "id": 1860,
+      "columns": [
+        "ddepart",
+        "ilooking"
+      ],
+      "oid_rank": 1860,
+      "frozen_cost": 278
+    },
+    {
+      "id": 1870,
+      "columns": [
+        "dhour89",
+        "irlabor"
+      ],
+      "oid_rank": 1870,
+      "frozen_cost": 664
+    },
+    {
+      "id": 1875,
+      "columns": [
+        "dhours",
+        "drearning"
+      ],
+      "oid_rank": 1875,
+      "frozen_cost": 748
+    },
+    {
+      "id": 1876,
+      "columns": [
+        "dhours",
+        "idisabl1"
+      ],
+      "oid_rank": 1876,
+      "frozen_cost": 388
+    },
+    {
+      "id": 1880,
+      "columns": [
+        "dhours",
+        "imobillim"
+      ],
+      "oid_rank": 1880,
+      "frozen_cost": 300
+    },
+    {
+      "id": 1885,
+      "columns": [
+        "dincome1",
+        "dindustry"
+      ],
+      "oid_rank": 1885,
+      "frozen_cost": 1260
+    },
+    {
+      "id": 1918,
+      "columns": [
+        "dincome4",
+        "dyrsserv"
+      ],
+      "oid_rank": 1918,
+      "frozen_cost": 218
+    },
+    {
+      "id": 1946,
+      "columns": [
+        "dindustry",
+        "iriders"
+      ],
+      "oid_rank": 1946,
+      "frozen_cost": 948
+    },
+    {
+      "id": 1962,
+      "columns": [
+        "dpob",
+        "icitizen"
+      ],
+      "oid_rank": 1962,
+      "frozen_cost": 396
+    },
+    {
+      "id": 1999,
+      "columns": [
+        "drpincome",
+        "idisabl2"
+      ],
+      "oid_rank": 1999,
+      "frozen_cost": 366
+    },
+    {
+      "id": 2003,
+      "columns": [
+        "drpincome",
+        "itmpabsnt"
+      ],
+      "oid_rank": 2003,
+      "frozen_cost": 480
+    },
+    {
+      "id": 2004,
+      "columns": [
+        "drpincome",
+        "iwork89"
+      ],
+      "oid_rank": 2004,
+      "frozen_cost": 388
+    },
+    {
+      "id": 2023,
+      "columns": [
+        "dyrsserv",
+        "ischool"
+      ],
+      "oid_rank": 2023,
+      "frozen_cost": 270
+    },
+    {
+      "id": 2043,
+      "columns": [
+        "idisabl1",
+        "ischool"
+      ],
+      "oid_rank": 2043,
+      "frozen_cost": 292
+    },
+    {
+      "id": 2066,
+      "columns": [
+        "ilooking",
+        "iragechld"
+      ],
+      "oid_rank": 2066,
+      "frozen_cost": 428
+    },
+    {
+      "id": 2087,
+      "columns": [
+        "imilitary",
+        "iwwii"
+      ],
+      "oid_rank": 2087,
+      "frozen_cost": 226
+    },
+    {
+      "id": 2088,
+      "columns": [
+        "imobility",
+        "irpob"
+      ],
+      "oid_rank": 2088,
+      "frozen_cost": 642
+    },
+    {
+      "id": 2107,
+      "columns": [
+        "iremplpar",
+        "irlabor"
+      ],
+      "oid_rank": 2107,
+      "frozen_cost": 814
+    },
+    {
+      "id": 2142,
+      "columns": [
+        "dhour89",
+        "drpincome"
+      ],
+      "oid_rank": 2142,
+      "frozen_cost": 682
+    },
+    {
+      "id": 2148,
+      "columns": [
+        "dhours",
+        "iyearwrk"
+      ],
+      "oid_rank": 2148,
+      "frozen_cost": 408
+    },
+    {
+      "id": 2174,
+      "columns": [
+        "dindustry",
+        "doccup"
+      ],
+      "oid_rank": 2174,
+      "frozen_cost": 1254
+    },
+    {
+      "id": 2190,
+      "columns": [
+        "drearning",
+        "ilooking"
+      ],
+      "oid_rank": 2190,
+      "frozen_cost": 410
+    },
+    {
+      "id": 2201,
+      "columns": [
+        "dtravtime",
+        "iyearwrk"
+      ],
+      "oid_rank": 2201,
+      "frozen_cost": 434
+    },
+    {
+      "id": 2210,
+      "columns": [
+        "icitizen",
+        "irownchld"
+      ],
+      "oid_rank": 2210,
+      "frozen_cost": 292
+    },
+    {
+      "id": 2211,
+      "columns": [
+        "icitizen",
+        "irpob"
+      ],
+      "oid_rank": 2211,
+      "frozen_cost": 320
+    }
+  ],
+  "fd": [
+    {
+      "id": 0,
+      "columns": [
+        "dincome2",
+        "dweek89"
+      ],
+      "oid_rank": 0,
+      "frozen_cost": 27
+    },
+    {
+      "id": 3,
+      "columns": [
+        "iremplpar",
+        "ivietnam"
+      ],
+      "oid_rank": 3,
+      "frozen_cost": 41
+    },
+    {
+      "id": 14,
+      "columns": [
+        "ifertil",
+        "ilang1"
+      ],
+      "oid_rank": 14,
+      "frozen_cost": 27
+    },
+    {
+      "id": 20,
+      "columns": [
+        "dincome1",
+        "imilitary"
+      ],
+      "oid_rank": 20,
+      "frozen_cost": 27
+    },
+    {
+      "id": 22,
+      "columns": [
+        "dincome7",
+        "iperscare"
+      ],
+      "oid_rank": 22,
+      "frozen_cost": 27
+    },
+    {
+      "id": 24,
+      "columns": [
+        "idisabl2",
+        "itmpabsnt"
+      ],
+      "oid_rank": 24,
+      "frozen_cost": 27
+    },
+    {
+      "id": 43,
+      "columns": [
+        "dincome3",
+        "iperscare"
+      ],
+      "oid_rank": 43,
+      "frozen_cost": 27
+    },
+    {
+      "id": 57,
+      "columns": [
+        "ifeb55",
+        "ilang1"
+      ],
+      "oid_rank": 57,
+      "frozen_cost": 27
+    },
+    {
+      "id": 69,
+      "columns": [
+        "iperscare",
+        "iyearsch"
+      ],
+      "oid_rank": 69,
+      "frozen_cost": 27
+    },
+    {
+      "id": 90,
+      "columns": [
+        "dincome3",
+        "idisabl2"
+      ],
+      "oid_rank": 90,
+      "frozen_cost": 27
+    },
+    {
+      "id": 97,
+      "columns": [
+        "dincome7",
+        "imilitary"
+      ],
+      "oid_rank": 97,
+      "frozen_cost": 27
+    },
+    {
+      "id": 107,
+      "columns": [
+        "dyrsserv",
+        "imobility"
+      ],
+      "oid_rank": 107,
+      "frozen_cost": 27
+    },
+    {
+      "id": 115,
+      "columns": [
+        "idisabl2",
+        "iwwii"
+      ],
+      "oid_rank": 115,
+      "frozen_cost": 27
+    },
+    {
+      "id": 118,
+      "columns": [
+        "ifeb55",
+        "irownchld"
+      ],
+      "oid_rank": 118,
+      "frozen_cost": 41
+    },
+    {
+      "id": 125,
+      "columns": [
+        "ikorean",
+        "imobility"
+      ],
+      "oid_rank": 125,
+      "frozen_cost": 27
+    },
+    {
+      "id": 141,
+      "columns": [
+        "irownchld",
+        "iwwii"
+      ],
+      "oid_rank": 141,
+      "frozen_cost": 41
+    },
+    {
+      "id": 151,
+      "columns": [
+        "ddepart",
+        "imobility"
+      ],
+      "oid_rank": 151,
+      "frozen_cost": 27
+    },
+    {
+      "id": 180,
+      "columns": [
+        "dincome7",
+        "ilang1"
+      ],
+      "oid_rank": 180,
+      "frozen_cost": 27
+    },
+    {
+      "id": 185,
+      "columns": [
+        "dincome8",
+        "iyearsch"
+      ],
+      "oid_rank": 185,
+      "frozen_cost": 27
+    },
+    {
+      "id": 191,
+      "columns": [
+        "dyrsserv",
+        "ifeb55"
+      ],
+      "oid_rank": 191,
+      "frozen_cost": 27
+    },
+    {
+      "id": 195,
+      "columns": [
+        "iavail",
+        "iperscare"
+      ],
+      "oid_rank": 195,
+      "frozen_cost": 27
+    },
+    {
+      "id": 200,
+      "columns": [
+        "iclass",
+        "iremplpar"
+      ],
+      "oid_rank": 200,
+      "frozen_cost": 41
+    },
+    {
+      "id": 219,
+      "columns": [
+        "ikorean",
+        "irvetserv"
+      ],
+      "oid_rank": 219,
+      "frozen_cost": 27
+    },
+    {
+      "id": 223,
+      "columns": [
+        "ilang1",
+        "iperscare"
+      ],
+      "oid_rank": 223,
+      "frozen_cost": 27
+    },
+    {
+      "id": 227,
+      "columns": [
+        "imarital",
+        "iperscare"
+      ],
+      "oid_rank": 227,
+      "frozen_cost": 27
+    },
+    {
+      "id": 230,
+      "columns": [
+        "imay75880",
+        "imilitary"
+      ],
+      "oid_rank": 230,
+      "frozen_cost": 27
+    },
+    {
+      "id": 244,
+      "columns": [
+        "imobility",
+        "irvetserv"
+      ],
+      "oid_rank": 244,
+      "frozen_cost": 27
+    },
+    {
+      "id": 276,
+      "columns": [
+        "ddepart",
+        "iavail"
+      ],
+      "oid_rank": 276,
+      "frozen_cost": 41
+    },
+    {
+      "id": 319,
+      "columns": [
+        "dweek89",
+        "imilitary"
+      ],
+      "oid_rank": 319,
+      "frozen_cost": 27
+    },
+    {
+      "id": 361,
+      "columns": [
+        "ilang1",
+        "iwwii"
+      ],
+      "oid_rank": 361,
+      "frozen_cost": 27
+    },
+    {
+      "id": 399,
+      "columns": [
+        "irvetserv",
+        "isept80"
+      ],
+      "oid_rank": 399,
+      "frozen_cost": 27
+    },
+    {
+      "id": 443,
+      "columns": [
+        "dincome2",
+        "iperscare"
+      ],
+      "oid_rank": 443,
+      "frozen_cost": 27
+    },
+    {
+      "id": 451,
+      "columns": [
+        "dincome4",
+        "iperscare"
+      ],
+      "oid_rank": 451,
+      "frozen_cost": 27
+    },
+    {
+      "id": 461,
+      "columns": [
+        "dincome6",
+        "iperscare"
+      ],
+      "oid_rank": 461,
+      "frozen_cost": 27
+    },
+    {
+      "id": 467,
+      "columns": [
+        "dincome8",
+        "iperscare"
+      ],
+      "oid_rank": 467,
+      "frozen_cost": 27
+    },
+    {
+      "id": 488,
+      "columns": [
+        "icitizen",
+        "iimmigr"
+      ],
+      "oid_rank": 488,
+      "frozen_cost": 41
+    },
+    {
+      "id": 501,
+      "columns": [
+        "ienglish",
+        "imobility"
+      ],
+      "oid_rank": 501,
+      "frozen_cost": 27
+    },
+    {
+      "id": 504,
+      "columns": [
+        "ifeb55",
+        "iyearwrk"
+      ],
+      "oid_rank": 504,
+      "frozen_cost": 27
+    },
+    {
+      "id": 523,
+      "columns": [
+        "imilitary",
+        "isept80"
+      ],
+      "oid_rank": 523,
+      "frozen_cost": 27
+    },
+    {
+      "id": 542,
+      "columns": [
+        "irlabor",
+        "isept80"
+      ],
+      "oid_rank": 542,
+      "frozen_cost": 27
+    },
+    {
+      "id": 545,
+      "columns": [
+        "irownchld",
+        "ivietnam"
+      ],
+      "oid_rank": 545,
+      "frozen_cost": 41
+    },
+    {
+      "id": 556,
+      "columns": [
+        "dage",
+        "ivietnam"
+      ],
+      "oid_rank": 556,
+      "frozen_cost": 27
+    },
+    {
+      "id": 581,
+      "columns": [
+        "dpob",
+        "iimmigr"
+      ],
+      "oid_rank": 581,
+      "frozen_cost": 41
+    },
+    {
+      "id": 593,
+      "columns": [
+        "dyrsserv",
+        "ikorean"
+      ],
+      "oid_rank": 593,
+      "frozen_cost": 27
+    },
+    {
+      "id": 599,
+      "columns": [
+        "dyrsserv",
+        "ivietnam"
+      ],
+      "oid_rank": 599,
+      "frozen_cost": 27
+    },
+    {
+      "id": 612,
+      "columns": [
+        "ienglish",
+        "ischool"
+      ],
+      "oid_rank": 612,
+      "frozen_cost": 27
+    },
+    {
+      "id": 621,
+      "columns": [
+        "ikorean",
+        "iremplpar"
+      ],
+      "oid_rank": 621,
+      "frozen_cost": 41
+    },
+    {
+      "id": 623,
+      "columns": [
+        "ilang1",
+        "imilitary"
+      ],
+      "oid_rank": 623,
+      "frozen_cost": 27
+    },
+    {
+      "id": 624,
+      "columns": [
+        "imarital",
+        "imobility"
+      ],
+      "oid_rank": 624,
+      "frozen_cost": 27
+    },
+    {
+      "id": 629,
+      "columns": [
+        "imeans",
+        "imilitary"
+      ],
+      "oid_rank": 629,
+      "frozen_cost": 41
+    },
+    {
+      "id": 643,
+      "columns": [
+        "iperscare",
+        "iwwii"
+      ],
+      "oid_rank": 643,
+      "frozen_cost": 27
+    },
+    {
+      "id": 679,
+      "columns": [
+        "dincome3",
+        "iyearwrk"
+      ],
+      "oid_rank": 679,
+      "frozen_cost": 27
+    },
+    {
+      "id": 683,
+      "columns": [
+        "dincome7",
+        "iyearwrk"
+      ],
+      "oid_rank": 683,
+      "frozen_cost": 27
+    },
+    {
+      "id": 714,
+      "columns": [
+        "idisabl1",
+        "isept80"
+      ],
+      "oid_rank": 714,
+      "frozen_cost": 27
+    },
+    {
+      "id": 736,
+      "columns": [
+        "iragechld",
+        "iremplpar"
+      ],
+      "oid_rank": 736,
+      "frozen_cost": 27
+    },
+    {
+      "id": 752,
+      "columns": [
+        "iragechld",
+        "isex"
+      ],
+      "oid_rank": 752,
+      "frozen_cost": 41
+    }
+  ],
+  "frozen_loss": 805.3164717666307,
+  "frozen_storage": 105060,
+  "cross_sensitive_accepted_moves": [
+    {
+      "round": 0,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          7
+        ],
+        [
+          "mcv",
+          33
+        ]
+      ],
+      "mcv_boundary_changed": 9,
+      "fd_trace_changed": 1
+    },
+    {
+      "round": 1,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          469
+        ],
+        [
+          "mcv",
+          648
+        ]
+      ],
+      "mcv_boundary_changed": 5,
+      "fd_trace_changed": 0
+    },
+    {
+      "round": 2,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          1153
+        ],
+        [
+          "mcv",
+          1303
+        ]
+      ],
+      "mcv_boundary_changed": 2,
+      "fd_trace_changed": 0
+    },
+    {
+      "round": 3,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          908
+        ],
+        [
+          "mcv",
+          2210
+        ]
+      ],
+      "mcv_boundary_changed": 5,
+      "fd_trace_changed": 1
+    },
+    {
+      "round": 4,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          763
+        ],
+        [
+          "mcv",
+          2066
+        ]
+      ],
+      "mcv_boundary_changed": 5,
+      "fd_trace_changed": 0
+    },
+    {
+      "round": 5,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          942
+        ],
+        [
+          "mcv",
+          824
+        ]
+      ],
+      "mcv_boundary_changed": 7,
+      "fd_trace_changed": 0
+    },
+    {
+      "round": 6,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          1061
+        ],
+        [
+          "mcv",
+          447
+        ]
+      ],
+      "mcv_boundary_changed": 5,
+      "fd_trace_changed": 0
+    },
+    {
+      "round": 7,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          734
+        ],
+        [
+          "mcv",
+          773
+        ]
+      ],
+      "mcv_boundary_changed": 4,
+      "fd_trace_changed": 0
+    },
+    {
+      "round": 8,
+      "move": [
+        "swap",
+        [
+          "fd",
+          254
+        ],
+        [
+          "fd",
+          200
+        ]
+      ],
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 1
+    },
+    {
+      "round": 9,
+      "move": [
+        "swap",
+        [
+          "fd",
+          127
+        ],
+        [
+          "fd",
+          118
+        ]
+      ],
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 2
+    },
+    {
+      "round": 10,
+      "move": [
+        "swap",
+        [
+          "fd",
+          544
+        ],
+        [
+          "fd",
+          125
+        ]
+      ],
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 2
+    },
+    {
+      "round": 11,
+      "move": [
+        "swap",
+        [
+          "fd",
+          568
+        ],
+        [
+          "fd",
+          57
+        ]
+      ],
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 3
+    },
+    {
+      "round": 12,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          1756
+        ],
+        [
+          "fd",
+          629
+        ]
+      ],
+      "mcv_boundary_changed": 1,
+      "fd_trace_changed": 1
+    },
+    {
+      "round": 13,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          1313
+        ],
+        [
+          "mcv",
+          630
+        ]
+      ],
+      "mcv_boundary_changed": 5,
+      "fd_trace_changed": 0
+    },
+    {
+      "round": 14,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          1303
+        ],
+        [
+          "mcv",
+          1311
+        ]
+      ],
+      "mcv_boundary_changed": 3,
+      "fd_trace_changed": 0
+    },
+    {
+      "round": 15,
+      "move": [
+        "swap",
+        [
+          "fd",
+          88
+        ],
+        [
+          "fd",
+          623
+        ]
+      ],
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 1
+    },
+    {
+      "round": 16,
+      "move": [
+        "swap",
+        [
+          "fd",
+          297
+        ],
+        [
+          "fd",
+          3
+        ]
+      ],
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 5
+    },
+    {
+      "round": 17,
+      "move": [
+        "swap",
+        [
+          "mcv",
+          773
+        ],
+        [
+          "mcv",
+          112
+        ]
+      ],
+      "mcv_boundary_changed": 9,
+      "fd_trace_changed": 1
+    },
+    {
+      "round": 18,
+      "move": [
+        "toggle",
+        [
+          "fd",
+          90
+        ],
+        null
+      ],
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 1
+    }
+  ]
+}

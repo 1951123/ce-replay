@@ -1,0 +1,275 @@
+{
+  "artifact": "Research-Convergence-Audit-v1",
+  "core_scope": "Fixed target workload statistics physical design; PostgreSQL 16.14 supported base-restriction MCV+FD fragment",
+  "categories": ["CORE-SEMANTICS", "CORE-OPTIMIZATION", "CORE-INCREMENTAL", "CORE-COMPOSITION-DEPLOYMENT", "SUPPORTING", "NEGATIVE-RESULT", "ROBUSTNESS-SENSITIVITY", "GENERALIZATION-FUTURE"],
+  "necessity_levels": {"N1": "Essential", "N2": "Important supporting", "N3": "Appendix / optional", "N4": "Future-paper material"},
+  "experiments": [
+    {
+      "name": "Census locality analysis",
+      "artifacts": ["results/census_locality.md", "results/census_locality_arity2.json", "results/census_locality_arity2_3.json"],
+      "primary_category": "NEGATIVE-RESULT", "necessity": "N3", "rq": ["RQ3"],
+      "claim": "Strict connected-component decomposition is ineffective, while affected-query locality remains useful.",
+      "scope": "Census query-candidate graph, pair and pair+triple candidate constructions.",
+      "strongest_result": "Two components; the giant contains 467/468 queries and all 2,253 pair candidates; mean pair-candidate degree 4.44.",
+      "does_not_establish": "No general statement about other workloads or treewidth.", "main_paper": false, "paper_section": "Appendix: rejected decompositions", "subsumed_by": null
+    },
+    {
+      "name": "PostgreSQL creation/OID-order probe",
+      "artifacts": ["results/census_pg_order_query184.json", "results/census_pg_order_query184.md"],
+      "primary_category": "SUPPORTING", "necessity": "N2", "rq": ["RQ1", "RQ4"],
+      "claim": "For overlapping MCV objects, physical creation/OID precedence can change the native estimate for a fixed selected set.",
+      "scope": "PostgreSQL Census query.184 order probes.",
+      "strongest_result": "Opposite creation orders for the same selected set produced radically different estimates.",
+      "does_not_establish": "Precedence is not a universal DBMS design variable and arbitrary order optimization is not validated for the final mixed system.", "main_paper": true, "paper_section": "Semantic model / PostgreSQL realization", "subsumed_by": null
+    },
+    {
+      "name": "First-applicable pilot",
+      "artifacts": ["results/census_pg_first_applicable_pilot.json", "results/census_pg_first_applicable_pilot.md"],
+      "primary_category": "NEGATIVE-RESULT", "necessity": "N3", "rq": ["RQ1"],
+      "claim": "A static first-statistic-wins model is insufficient; disjoint statistics compose and eligibility changes dynamically.",
+      "scope": "Three Census query fixtures.",
+      "strongest_result": "First-singleton prediction failed by as much as 98.91x.",
+      "does_not_establish": "It is a hypothesis probe, not the final semantics.", "main_paper": false, "paper_section": "Appendix: semantic discovery", "subsumed_by": "CE-Replay-IR-v1-B"
+    },
+    {
+      "name": "MCV consumption/composition validation",
+      "artifacts": ["results/census_pg_consumption_composition.json", "results/census_pg_consumption_composition.md"],
+      "primary_category": "CORE-SEMANTICS", "necessity": "N2", "rq": ["RQ1"],
+      "claim": "Dynamic winner consumption plus sequential numerical composition explains overlapping and disjoint MCV fixtures.",
+      "scope": "Instrumented PostgreSQL MCV fixtures; rounded native observations.",
+      "strongest_result": "Masking identified consumed winners; composed prediction within 1.0143x of rounded observations.",
+      "does_not_establish": "Rounded observations do not prove floating-point semantic exactness.", "main_paper": false, "paper_section": "Appendix: semantic validation", "subsumed_by": "CE-Replay-IR-v1-B"
+    },
+    {
+      "name": "CE-Replay-IR-v0",
+      "artifacts": ["results/census_ce_replay_ir_v0.json", "results/census_ce_replay_ir_v0.md"],
+      "primary_category": "SUPPORTING", "necessity": "N3", "rq": ["RQ1"],
+      "claim": "A design-parametric GreedyCover replay can enumerate all subsets of a five-candidate fixture.",
+      "scope": "Five MCV candidates; response values partly probed.",
+      "strongest_result": "32/32 designs within 5%; maximum relative error 1.08087%.",
+      "does_not_establish": "Payload-derived semantics or raw native exactness.", "main_paper": false, "paper_section": "Research path only", "subsumed_by": "CE-Replay-IR-v1-B"
+    },
+    {
+      "name": "CE-Replay-IR-v1-A",
+      "artifacts": ["results/census_ce_replay_ir_v1.json", "results/census_ce_replay_ir_v1.md"],
+      "primary_category": "CORE-SEMANTICS", "necessity": "N2", "rq": ["RQ1"],
+      "claim": "MCV numerical responses can be derived from serialized native payload fields rather than singleton response probes.",
+      "scope": "Four targets, 32 subsets each, rounded/clamped observation boundary.",
+      "strongest_result": "128/128 within 5%; maximum apparent error 1.7495%.",
+      "does_not_establish": "The residual observation error prevented a raw exactness claim.", "main_paper": false, "paper_section": "Appendix / implementation evolution", "subsumed_by": "CE-Replay-IR-v1-B"
+    },
+    {
+      "name": "CE-Replay-IR-v1-B native raw validation",
+      "artifacts": ["results/census_ce_replay_ir_v1b_instrumented_target100.json", "results/census_ce_replay_ir_v1b_instrumented_target500.json", "results/census_ce_replay_ir_v1b_instrumented_target1000.json", "results/census_ce_replay_ir_v1b_instrumented_target2000.json", "results/census_ce_replay_v1b_optimize_v0.md"],
+      "primary_category": "CORE-SEMANTICS", "necessity": "N1", "rq": ["RQ1"],
+      "claim": "Serialized MCV payloads plus executable replay match native pre-clamp supported CE at floating-point precision.",
+      "scope": "PostgreSQL 16.14, base-relation MCV fixture, 4 targets x 32 designs.",
+      "strongest_result": "128/128 matches; maximum relative error 5.55e-16 before clamp_row_est().",
+      "does_not_establish": "Full PostgreSQL CE, joins, parameterized paths, or unsupported predicate/statistics families.", "main_paper": true, "paper_section": "E1 Native semantic fidelity", "subsumed_by": null
+    },
+    {
+      "name": "CE-Replay-Optimize-v0",
+      "artifacts": ["results/census_ce_replay_optimize_v0.json", "results/census_ce_replay_v1b_optimize_v0.md"],
+      "primary_category": "CORE-OPTIMIZATION", "necessity": "N1", "rq": ["RQ2"],
+      "claim": "Replay can serve as an offline objective evaluator whose global optimum matches exhaustive native PostgreSQL on a controlled design universe.",
+      "scope": "One query, five MCV candidates, all 32 designs and all feasible budget thresholds.",
+      "strongest_result": "Replay and native exhaustive optima agree at every threshold; deployed rows within 2.70e-16.",
+      "does_not_establish": "Global optimality at workload scale.", "main_paper": true, "paper_section": "E2 Controlled optimization correctness", "subsumed_by": null
+    },
+    {
+      "name": "CE-Replay-Optimize-v1",
+      "artifacts": ["results/census_ce_replay_optimize_v1_full_pairs.json", "results/census_ce_replay_optimize_v1_runtime.json", "results/census_ce_replay_optimize_v1.md"],
+      "primary_category": "CORE-OPTIMIZATION", "necessity": "N1", "rq": ["RQ2", "RQ3"],
+      "claim": "Design-dependent replay evaluation changes design quality at the complete Census pair universe and dependency-local toggles avoid all-query replay.",
+      "scope": "468 Census queries, 2,253 pair MCV candidates, frozen target-100 payloads.",
+      "strongest_result": "Full-scale losses random/singleton/marginal/local = 4922.86/6966.36/812.67/806.26; incremental toggle 47.7x wall-time and 107.3x replay-count reduction; 3,276/3,276 native matches.",
+      "does_not_establish": "The 806.26 design is not a global optimum; naive SWAP took 278.677s.", "main_paper": true, "paper_section": "E3 Workload-scale physical design", "subsumed_by": null
+    },
+    {
+      "name": "CE-Replay-Optimize-v2",
+      "artifacts": ["results/census_ce_replay_optimize_v2.json", "results/census_ce_replay_optimize_v2.md"],
+      "primary_category": "NEGATIVE-RESULT", "necessity": "N3", "rq": ["RQ3"],
+      "claim": "Short semantic neighborhoods alone miss global budget exchanges; precedence refinement can matter.",
+      "scope": "Census MCV local-search and reachable precedence experiments.",
+      "strongest_result": "58.23% of 3,768 improving swaps were disconnected budget exchanges; precedence refinement reached 802.113.",
+      "does_not_establish": "A complete joint selection/precedence optimum.", "main_paper": false, "paper_section": "Appendix: search ablations", "subsumed_by": null
+    },
+    {
+      "name": "CE-Replay-Optimize-v3 alternating selection/precedence",
+      "artifacts": ["results/census_ce_replay_optimize_v3.json", "results/census_ce_replay_optimize_v3.md"],
+      "primary_category": "SUPPORTING", "necessity": "N3", "rq": ["RQ2", "RQ4"],
+      "claim": "Selection and PostgreSQL MCV precedence are coupled in the tested frozen design.",
+      "scope": "MCV-only Census alternating local refinement.",
+      "strongest_result": "Loss 812.671 to 795.512 in four alternating rounds.",
+      "does_not_establish": "Global optimality or final mixed-system precedence optimization.", "main_paper": false, "paper_section": "Appendix: PostgreSQL realization", "subsumed_by": null
+    },
+    {
+      "name": "MCV-Deploy-v0",
+      "artifacts": ["results/census_mcv_deploy_v0.json", "results/census_mcv_deploy_v0.md"],
+      "primary_category": "CORE-COMPOSITION-DEPLOYMENT", "necessity": "N2", "rq": ["RQ4"],
+      "claim": "Fresh physical MCV deployment preserves replay/native semantics while payload realization changes objective value.",
+      "scope": "209 MCV objects, PostgreSQL 16 Census deployment.",
+      "strongest_result": "468/468 matches, max semantic error 5.64e-15; frozen/fresh loss 795.512/813.802 (+2.2992%).",
+      "does_not_establish": "Mixed-mechanism deployment or design-ranking robustness.", "main_paper": false, "paper_section": "Appendix: MCV-only deployment", "subsumed_by": "Mixed-Deploy-v0"
+    },
+    {
+      "name": "FD-Semantics-v0",
+      "artifacts": ["results/fd_semantics_v0.json", "results/fd_semantics_v0.md"],
+      "primary_category": "CORE-SEMANTICS", "necessity": "N1", "rq": ["RQ1", "RQ4"],
+      "claim": "PostgreSQL dependency selection/application is externally executable and MCV-to-FD composition is directed through estimated clauses.",
+      "scope": "PostgreSQL 16.14 synthetic base-restriction scenarios; FD equality/IN/OR/boolean/exact-expression applicability probes.",
+      "strongest_result": "13 subset/order scenarios match native with maximum relative error 0; direct MCV-first FD-suppression validation.",
+      "does_not_establish": "Workload-scale arbitrary expressions, joins, or all FD tie cases.", "main_paper": true, "paper_section": "E1 Native semantic fidelity / E5 composition", "subsumed_by": null
+    },
+    {
+      "name": "CE-Replay-Optimize-v4 joint MCV+FD",
+      "artifacts": ["results/census_ce_replay_optimize_v4.json", "results/census_ce_replay_optimize_v4.md"],
+      "primary_category": "CORE-COMPOSITION-DEPLOYMENT", "necessity": "N1", "rq": ["RQ2", "RQ4"],
+      "claim": "Joint native semantics materially changes mixed physical design and prevents budget waste on suppressed FD objects.",
+      "scope": "468 Census queries, 2,253 MCV and 758 FD candidates, fixed frozen precedence.",
+      "strongest_result": "Joint loss 806.444 vs independent 813.942; independent selected 97 FDs, 72 never consumed; joint selected 54, none unconsumed.",
+      "does_not_establish": "Global optimality or arbitrary precedence optimization.", "main_paper": true, "paper_section": "E5 Multi-mechanism composition", "subsumed_by": null
+    },
+    {
+      "name": "CE-Semantic-State-v0",
+      "artifacts": ["results/census_ce_semantic_state_v0.json", "results/census_ce_semantic_state_v0.md"],
+      "primary_category": "NEGATIVE-RESULT", "necessity": "N3", "rq": ["RQ3"],
+      "claim": "Execution-sufficient projected state is not restart-sufficient under arbitrary design extension.",
+      "scope": "Frozen Census MCV state equivalence and extension counterexamples.",
+      "strongest_result": "A lower-OID addition exposes previously irrelevant selected state and invalidates projected-state merging.",
+      "does_not_establish": "No impossibility result for every richer state representation.", "main_paper": false, "paper_section": "Appendix: invalidation proof motivation", "subsumed_by": null
+    },
+    {
+      "name": "MCV-Commutativity-v0",
+      "artifacts": ["results/census_mcv_commutativity_v0.json", "results/census_mcv_commutativity_v0.md", "results/mcv_commutativity_synthetic_v0.json"],
+      "primary_category": "NEGATIVE-RESULT", "necessity": "N3", "rq": ["RQ3"],
+      "claim": "Some MCV actions commute, but canonical OID execution means partial-order reduction does not reduce the tested outer design search.",
+      "scope": "Census MCV pairs plus expression counterexample fixture.",
+      "strongest_result": "31.37% of enabled pairs commute; disjointness is exact in the Census fragment.",
+      "does_not_establish": "A useful global design-space reduction.", "main_paper": false, "paper_section": "Appendix: rejected reductions", "subsumed_by": null
+    },
+    {
+      "name": "MCV-Semantic-Factorization-v0",
+      "artifacts": ["results/census_mcv_semantic_factorization_v0.json", "results/census_mcv_semantic_factorization_v0.md", "results/mcv_semantic_factorization_synthetic_v0.json"],
+      "primary_category": "NEGATIVE-RESULT", "necessity": "N3", "rq": ["RQ3"],
+      "claim": "Numerical contribution factors, but Census query-local candidate control graphs do not yield nontrivial factor decomposition.",
+      "scope": "Frozen Census MCV plus nontrivial synthetic factor fixture.",
+      "strongest_result": "3,374,717 designs reconstructed within tolerance; every nonempty Census candidate graph remains one factor.",
+      "does_not_establish": "Factorization is useless on other workloads.", "main_paper": false, "paper_section": "Appendix: rejected reductions", "subsumed_by": null
+    },
+    {
+      "name": "Semantic-Move-Pruning-v0",
+      "artifacts": ["results/census_semantic_move_pruning_v0.json", "results/census_semantic_move_pruning_v0.md"],
+      "primary_category": "CORE-INCREMENTAL", "necessity": "N2", "rq": ["RQ3"],
+      "claim": "Cached counterfactual toggle responses and safe bounds reproduce the best move in an audited round with far fewer control replays.",
+      "scope": "One MCV-only Census SWAP round.",
+      "strongest_result": "Same best SWAP, zero false positives, 95.29% cache-eligible, 25.19x fewer control replays.",
+      "does_not_establish": "Cross-round cache validity or end-to-end optimizer correctness.", "main_paper": false, "paper_section": "Appendix / E4 detail", "subsumed_by": "Semantic-Optimizer-v0"
+    },
+    {
+      "name": "Semantic-Optimizer-v0",
+      "artifacts": ["results/census_semantic_optimizer_v0.json", "results/census_semantic_optimizer_v0.md"],
+      "primary_category": "CORE-INCREMENTAL", "necessity": "N1", "rq": ["RQ3"],
+      "claim": "Structural invalidation preserves the complete exhaustive current-neighborhood MCV trajectory and materially reduces control replay and runtime.",
+      "scope": "Deterministic MCV-only Census ADD/DROP/SWAP trajectory.",
+      "strongest_result": "17 accepted moves plus terminal round identical; 171.31x fewer control replays and 3.51x phase speedup; zero false prunes/fast paths.",
+      "does_not_establish": "Global optimum or mixed-mechanism runtime speedup.", "main_paper": true, "paper_section": "E4 Semantic incremental evaluation", "subsumed_by": null
+    },
+    {
+      "name": "Compositional-Semantic-Optimizer-v0",
+      "artifacts": ["results/census_compositional_semantic_optimizer_v0.json", "results/census_compositional_semantic_optimizer_v0.md"],
+      "primary_category": "CORE-INCREMENTAL", "necessity": "N1", "rq": ["RQ3", "RQ4"],
+      "claim": "Mechanism-aware incremental evaluation preserves the mixed MCV+FD current-neighborhood trajectory and exposes exact directed reuse boundaries.",
+      "scope": "Frozen mixed Census design, fixed precedence, ADD/DROP/SWAP best improvement.",
+      "strongest_result": "19 accepted moves and terminal trajectory identical; 95.13% numerical-only; 58.89x locality then 154.61x mechanism control-work reductions.",
+      "does_not_establish": "Wall-clock acceleration: semantic implementation took 145.68s versus 45.05s oracle.", "main_paper": true, "paper_section": "E4/E5 Mixed semantic incremental evaluation", "subsumed_by": null
+    },
+    {
+      "name": "Mixed-Deploy-v0",
+      "artifacts": ["results/census_mixed_deploy_v0.json", "results/census_mixed_deploy_v0.md", "results/census_mixed_deploy_v0_design.json"],
+      "primary_category": "CORE-COMPOSITION-DEPLOYMENT", "necessity": "N1", "rq": ["RQ4"],
+      "claim": "The final fixed-precedence mixed design can be physically realized; replay matches native fresh CE while frozen-to-fresh payload drift remains separate.",
+      "scope": "205 MCV + 56 FD selected Census design, PostgreSQL 16.14 fresh deployment.",
+      "strongest_result": "Frozen/fresh/native loss 805.316/819.191/819.191; 468/468 within 1e-12, max 8.05e-16; semantic loss error zero.",
+      "does_not_establish": "Frozen objective predicts fresh objective exactly, or arbitrary intermediate native traces absent instrumentation.", "main_paper": true, "paper_section": "E6 Physical deployment", "subsumed_by": null
+    },
+    {
+      "name": "Research-Synthesis-v0",
+      "artifacts": ["results/research-evidence-matrix-v0.json"],
+      "primary_category": "SUPPORTING", "necessity": "N3", "rq": [],
+      "claim": "Historical evidence was assembled and exactness layers were first separated.",
+      "scope": "Artifacts through Mixed-Deploy-v0.",
+      "strongest_result": "Twenty-one experiments summarized with semantic/move/search exactness distinction.",
+      "does_not_establish": "It is synthesis, not new empirical evidence.", "main_paper": false, "paper_section": "Internal research record", "subsumed_by": "Research-Convergence-Audit-v1"
+    },
+    {
+      "name": "Repeated-Analyze-Robustness-v0",
+      "artifacts": ["results/census_repeated_analyze_robustness_v0.json", "results/census_repeated_analyze_robustness_v0.md"],
+      "primary_category": "ROBUSTNESS-SENSITIVITY", "necessity": "N2", "rq": ["RQ4"],
+      "claim": "Replay remains exact across payload realizations while ANALYZE sampling creates objective variance and occasional FD availability changes.",
+      "scope": "Thirty ANALYZE realizations of one fixed 205-MCV/56-FD design.",
+      "strongest_result": "14,040/14,040 matches within 1e-12; loss CV 1.835%; 462 stable control, 6 varying FD control.",
+      "does_not_establish": "Design-ranking instability or a need to redefine the core objective stochastically.", "main_paper": true, "paper_section": "E7 Sensitivity (short; details appendix)", "subsumed_by": null
+    },
+    {
+      "name": "Workload-Generalization-v0",
+      "artifacts": ["results/census_workload_generalization_v0.json", "results/census_workload_generalization_v0.md"],
+      "primary_category": "GENERALIZATION-FUTURE", "necessity": "N4", "rq": [],
+      "claim": "Fixed-payload train-selected designs often transfer to randomly held-out query instances, imperfectly.",
+      "scope": "Ten deterministic 80/20 IID Census splits with global candidate-universe leakage.",
+      "strongest_result": "9/10 positive splits; mean held-out oracle-gap recovery 44.47%; 412/216/312 improved/neutral/regressed instances.",
+      "does_not_establish": "Core fixed-workload correctness, unseen templates, distribution shift, or deployment robustness.", "main_paper": false, "paper_section": "Future-work archive", "subsumed_by": null
+    },
+    {
+      "name": "Generalization-Mechanism-Analysis-v0",
+      "artifacts": ["results/census_generalization_mechanism_analysis_v0.json", "results/census_generalization_mechanism_analysis_v0.md"],
+      "primary_category": "GENERALIZATION-FUTURE", "necessity": "N4", "rq": [],
+      "claim": "Held-out positive and harmful transfer can be traced through actual MCV/FD consumption; harmful and missing-benefit effects separate.",
+      "scope": "Offline analysis of the same 940 IID held-out instances.",
+      "strongest_result": "One-removal diagnostic repairs 93.87% of negative magnitude; best missing add recovers 89.87% of positive train-oracle gap.",
+      "does_not_establish": "A feasible robust/generalization-aware design or causal independence of candidate effects.", "main_paper": false, "paper_section": "Future-work archive", "subsumed_by": null
+    },
+    {
+      "name": "Budget-Generalization-Curve-v0",
+      "artifacts": ["results/census_budget_generalization_curve_v0.json", "results/census_budget_generalization_curve_v0.md"],
+      "primary_category": "GENERALIZATION-FUTURE", "necessity": "N4", "rq": [],
+      "claim": "Statistics budget acts as workload-adaptation capacity under train/test interpretation, with non-monotonic held-out behavior.",
+      "scope": "Seven budgets x ten existing IID splits, frozen payload.",
+      "strongest_result": "21/60 train-improving/test-worsening transitions; 100% budget best in 2/10 splits.",
+      "does_not_establish": "That high budget is globally harmful or that the core target workload is a training set.", "main_paper": false, "paper_section": "Future-work archive", "subsumed_by": null
+    },
+    {
+      "name": "Census structural-group audit",
+      "artifacts": ["results/census_structural_distance_generalization_v0.md"],
+      "primary_category": "GENERALIZATION-FUTURE", "necessity": "N4", "rq": [],
+      "claim": "Exact statistics-relevant query signatures do not repeat, so group-disjoint template evaluation is vacuous on Census.",
+      "scope": "468 Census queries; S1 columns, S2 operator classes, S3 exact supported predicate structure.",
+      "strongest_result": "468 groups and 468 singletons at S1, S2, and S3.",
+      "does_not_establish": "Absence of a shared generator or absence of partial semantic overlap.", "main_paper": false, "paper_section": "Future-work archive", "subsumed_by": null
+    },
+    {
+      "name": "Structural-Distance-Generalization-v0",
+      "artifacts": ["results/census_structural_distance_generalization_v0.json", "results/census_structural_distance_generalization_v0.md"],
+      "primary_category": "GENERALIZATION-FUTURE", "necessity": "N4", "rq": [],
+      "claim": "Existing nearest-query and union-coverage metrics do not explain held-out transfer; optimizer selection is the main observed filter.",
+      "scope": "Offline structural analysis of 940 held-out IID instances.",
+      "strongest_result": "Column coverage 100%, candidate coverage mean 96.97%, structural-transfer correlations near zero; selected coverage-consumption Spearman 0.644.",
+      "does_not_establish": "Causal effects of structural distance or justification for a similarity embargo.", "main_paper": false, "paper_section": "Future-work archive", "subsumed_by": null
+    }
+  ],
+  "minimum_evidence_chain": [
+    "CE-Replay-IR-v1-B native raw validation + FD-Semantics-v0",
+    "CE-Replay-Optimize-v0",
+    "CE-Replay-Optimize-v1",
+    "Semantic-Optimizer-v0",
+    "CE-Replay-Optimize-v4 joint MCV+FD",
+    "Compositional-Semantic-Optimizer-v0",
+    "Mixed-Deploy-v0"
+  ],
+  "exactness": {
+    "semantic": "Floating-point agreement with native raw supported CE is established for tested PostgreSQL 16.14 base-restriction MCV/FD settings, not all PostgreSQL CE.",
+    "move_evaluation": "Complete tested ADD/DROP/SWAP current-neighborhood trajectories match exhaustive corresponding move evaluators.",
+    "search_optimality": "Global optimum is established only for explicitly exhaustive small universes; workload-scale results are deterministic local optima/heuristics."
+  },
+  "one_recommended_new_experiment": "A second real database/workload end-to-end replication inside the same supported MCV+FD fragment, including semantic fidelity, fixed-workload optimization against simple baselines, and fresh native deployment."
+}

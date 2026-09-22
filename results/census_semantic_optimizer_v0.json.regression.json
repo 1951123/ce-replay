@@ -1,0 +1,22 @@
+{
+  "round": 1,
+  "oracle": [
+    -0.4207230374294031,
+    [
+      "swap",
+      170,
+      389
+    ]
+  ],
+  "semantic": [
+    -0.4207230374294031,
+    [
+      "swap",
+      170,
+      389
+    ]
+  ],
+  "false_safe_prunes": 0,
+  "fast_false_positives": 2771,
+  "max_move_error": 0.09297941329668902
+}

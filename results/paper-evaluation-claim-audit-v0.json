@@ -1,0 +1,62 @@
+{
+  "artifact": "paper-evaluation-claim-audit-v0",
+  "date": "2026-09-22",
+  "claims": [
+    {"id":"E1","section":"7.1","claim":"Raw/pre-clamp native instrumentation avoids treating rounded Plan Rows as semantic error.","classification":"DIRECT_MEASUREMENT","support":["CE-Replay-IR-v1-B"],"status":"SUPPORTED"},
+    {"id":"E2","section":"7.2","claim":"Census and DMV are complementary sparse/large-universe and dense/IN-heavy regimes.","classification":"CROSS_WORKLOAD_REPLICATION","support":["Census locality analysis","DMV-Fit-Audit-v0"],"status":"SUPPORTED"},
+    {"id":"E3","section":"7.5","claim":"Mechanism-aware object counts are first-order maintenance proxies with environment-specific coefficients.","classification":"CROSS_WORKLOAD_REPLICATION","support":["Analyze-Cost-Model-v0","DMV-Analyze-Cost-Model-v0"],"status":"SUPPORTED"},
+    {"id":"E4","section":"8.1","claim":"CE-Replay matches native PostgreSQL inside the supported fragment across controlled tests and fresh deployments.","classification":"SAME_REALIZATION_NATIVE_VALIDATION","support":["CE-Replay-IR-v1-B","FD-Semantics-v0","MCV-ScalarArray-Semantics-v0","DMV-Baseline-and-Nonmonotonicity-v0","Maintenance-Design-Deploy-v0","DMV-Deploy-v0"],"status":"SUPPORTED"},
+    {"id":"E5","section":"8.1","claim":"The ScalarArray extension expands canonical DMV coverage from 52 to 1965 queries without breaking scalar regressions.","classification":"DIRECT_MEASUREMENT","support":["MCV-ScalarArray-Semantics-v0"],"status":"SUPPORTED"},
+    {"id":"E6","section":"8.2","claim":"Statistics-set inclusion is empirically non-monotone on both workloads.","classification":"CROSS_WORKLOAD_REPLICATION","support":["Statistics-Nonmonotonicity-v0","DMV-Baseline-and-Nonmonotonicity-v0"],"status":"SUPPORTED"},
+    {"id":"E7","section":"8.2","claim":"Semantic necessity and recurring-resource necessity are independent motivations for selection.","classification":"WITHIN_REALIZATION_COMPARISON","support":["Statistics-Nonmonotonicity-v0","DMV-Baseline-and-Nonmonotonicity-v0","Analyze-Cost-Model-v0","DMV-Analyze-Cost-Model-v0"],"status":"SUPPORTED"},
+    {"id":"E8","section":"8.2","claim":"Changing Census from byte proxy to maintenance resource materially changes design composition and loss.","classification":"WITHIN_REALIZATION_COMPARISON","support":["Maintenance-Budget-Optimize-v0"],"status":"SUPPORTED"},
+    {"id":"E9","section":"8.2","claim":"DMV local search leaves capacity unused rather than accepting non-improving statistics.","classification":"WITHIN_REALIZATION_COMPARISON","support":["DMV-Maintenance-Budget-Optimize-v0"],"status":"SUPPORTED"},
+    {"id":"E10","section":"8.2","claim":"Empty-design singleton utility does not determine contextual contribution.","classification":"WITHIN_REALIZATION_COMPARISON","support":["DMV-Maintenance-Budget-Optimize-v0"],"status":"SUPPORTED"},
+    {"id":"E11","section":"8.2","claim":"Global optimality is established only on small/restricted audits; workload-scale results are neighborhood local optima.","classification":"LIMITATION","support":["CE-Replay-Optimize-v0","Maintenance-Budget-Optimize-v0","DMV-Maintenance-Budget-Optimize-v0"],"status":"SUPPORTED"},
+    {"id":"E12","section":"8.3","claim":"Sparse degree can coexist with a giant component, so local invalidation does not require global decomposition.","classification":"NEGATIVE_RESULT","support":["Census locality analysis"],"status":"SUPPORTED"},
+    {"id":"E13","section":"8.3","claim":"Incremental MCV evaluation preserves the full audited trajectory while reducing control replay and runtime.","classification":"DIRECT_MEASUREMENT","support":["Semantic-Optimizer-v0"],"status":"SUPPORTED"},
+    {"id":"E14","section":"8.3","claim":"Mixed semantic evaluation preserves trajectory and reduces control work but is slower wall-clock than the algebraic oracle.","classification":"NEGATIVE_RESULT","support":["Compositional-Semantic-Optimizer-v0"],"status":"SUPPORTED"},
+    {"id":"E15","section":"8.3","claim":"Dense DMV still permits meaningful replay-work avoidance, without proving a runtime speedup.","classification":"DIRECT_MEASUREMENT","support":["DMV-Maintenance-Budget-Optimize-v0"],"status":"SUPPORTED"},
+    {"id":"E16","section":"8.3","claim":"Exact invalidation needs structural/counterfactual dependency rather than current-output equality alone.","classification":"NEGATIVE_RESULT","support":["CE-Semantic-State-v0","Semantic-Optimizer-v0"],"status":"SUPPORTED"},
+    {"id":"E17","section":"8.4","claim":"MCV consumption suppresses downstream FD use, and composition-aware selection restores useful FD consumption in both workloads.","classification":"CROSS_WORKLOAD_REPLICATION","support":["CE-Replay-Optimize-v4","DMV-Baseline-and-Nonmonotonicity-v0","DMV-Maintenance-Budget-Optimize-v0"],"status":"SUPPORTED"},
+    {"id":"E18","section":"8.4","claim":"Both final selected states were physically realized and fresh replay matched fresh native PostgreSQL.","classification":"SAME_REALIZATION_NATIVE_VALIDATION","support":["Maintenance-Design-Deploy-v0","DMV-Deploy-v0"],"status":"SUPPORTED"},
+    {"id":"E19","section":"8.4","claim":"Repeated Census ANALYZE demonstrates payload variability while same-realization replay remains faithful.","classification":"DIRECT_MEASUREMENT","support":["Repeated-Analyze-Robustness-v0"],"status":"SUPPORTED"},
+    {"id":"E20","section":"8.4","claim":"DMV lacks a paired frozen-to-fresh per-query drift distribution because frozen numerical provenance was not persisted.","classification":"LIMITATION","support":["DMV-Frozen-Provenance-Recovery-v0"],"status":"SUPPORTED"},
+    {"id":"E21","section":"8.4","claim":"DMV provenance incompleteness does not invalidate fresh physical composition or same-fresh-realization semantic fidelity.","classification":"LIMITATION","support":["DMV-Deploy-v0","DMV-Frozen-Provenance-Recovery-v0"],"status":"SUPPORTED"},
+    {"id":"E22","section":"7.4/8.2/8.4","claim":"The two zero-truth DMV queries dominate raw aggregate q-error, so raw cross-workload loss is not compared and nonzero loss is diagnostic only.","classification":"LIMITATION","support":["DMV-Fit-Audit-v0","DMV-Maintenance-Budget-Optimize-v0","DMV-Deploy-v0"],"status":"SUPPORTED"}
+  ],
+  "rq_answers": {
+    "RQ1":"SUPPORTED WITHIN CURRENT BOUNDARY",
+    "RQ2":"SUPPORTED WITHIN CURRENT BOUNDARY",
+    "RQ3":"SUPPORTED WITHIN CURRENT BOUNDARY",
+    "RQ4":"SUPPORTED WITHIN CURRENT BOUNDARY"
+  },
+  "consistency_checks": {
+    "target_workload_not_training_workload": true,
+    "replay_outputs_estimates_not_qerror_predictions": true,
+    "generic_maintenance_formulation_preserved": true,
+    "fixed_recorded_precedence_preserved": true,
+    "local_optimum_scope_preserved": true,
+    "frozen_fresh_distinction_preserved": true,
+    "semantic_error_separated_from_realization_drift": true,
+    "main_figure_budget_preserved": true,
+    "main_table_budget_preserved": true,
+    "unsupported_main_text_claims": 0,
+    "conflicts_with_technical_core": []
+  },
+  "appendix_candidates": [
+    "full MCV semantic matrices",
+    "FD tie and ordering details",
+    "complete ScalarArray fixtures",
+    "precedence/OID experiments",
+    "move-category distributions",
+    "semantic-state counterexamples",
+    "commutativity experiments",
+    "semantic factorization",
+    "full maintenance regression diagnostics",
+    "complete repeated-ANALYZE distribution",
+    "DMV provenance recovery audit",
+    "full query-level deployment comparisons"
+  ],
+  "status": "PASS"
+}

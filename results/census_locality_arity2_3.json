@@ -1,0 +1,5399 @@
+{
+  "candidate_arities": [
+    2,
+    3
+  ],
+  "counts": {
+    "queries": 468,
+    "candidate_bearing_queries": 467,
+    "candidates": 19245,
+    "edges": 30856,
+    "components": 2
+  },
+  "query_degree": {
+    "min": 0,
+    "mean": 65.93162393162393,
+    "median": 56.0,
+    "p90": 165.0,
+    "p95": 165.0,
+    "p99": 286.0,
+    "max": 455
+  },
+  "candidate_degree": {
+    "min": 1,
+    "mean": 1.6033255391010652,
+    "median": 1,
+    "p90": 3.0,
+    "p95": 5.0,
+    "p99": 7.0,
+    "max": 13
+  },
+  "candidate_reuse": {
+    "degree_1_count": 13801,
+    "degree_1_ratio": 0.7171213302156404
+  },
+  "candidate_degree_histogram": [
+    {
+      "degree": 1,
+      "candidate_count": 13801,
+      "candidate_ratio": 0.7171213302156404,
+      "incident_edge_count": 13801,
+      "incident_edge_ratio": 0.44727119522945297
+    },
+    {
+      "degree": 2,
+      "candidate_count": 3126,
+      "candidate_ratio": 0.16243180046765393,
+      "incident_edge_count": 6252,
+      "incident_edge_ratio": 0.20261861550427793
+    },
+    {
+      "degree": 3,
+      "candidate_count": 797,
+      "candidate_ratio": 0.041413354117952716,
+      "incident_edge_count": 2391,
+      "incident_edge_ratio": 0.07748898107337308
+    },
+    {
+      "degree": 4,
+      "candidate_count": 511,
+      "candidate_ratio": 0.02655235126006755,
+      "incident_edge_count": 2044,
+      "incident_edge_ratio": 0.0662431941923775
+    },
+    {
+      "degree": 5,
+      "candidate_count": 383,
+      "candidate_ratio": 0.019901273057937128,
+      "incident_edge_count": 1915,
+      "incident_edge_ratio": 0.062062483795696136
+    },
+    {
+      "degree": 6,
+      "candidate_count": 270,
+      "candidate_ratio": 0.014029618082618862,
+      "incident_edge_count": 1620,
+      "incident_edge_ratio": 0.052501944516463575
+    },
+    {
+      "degree": 7,
+      "candidate_count": 168,
+      "candidate_ratio": 0.00872954014029618,
+      "incident_edge_count": 1176,
+      "incident_edge_ratio": 0.038112522686025406
+    },
+    {
+      "degree": 8,
+      "candidate_count": 103,
+      "candidate_ratio": 0.005352039490776825,
+      "incident_edge_count": 824,
+      "incident_edge_ratio": 0.026704692766398756
+    },
+    {
+      "degree": 9,
+      "candidate_count": 44,
+      "candidate_ratio": 0.002286308131982333,
+      "incident_edge_count": 396,
+      "incident_edge_ratio": 0.012833808659579985
+    },
+    {
+      "degree": 10,
+      "candidate_count": 30,
+      "candidate_ratio": 0.001558846453624318,
+      "incident_edge_count": 300,
+      "incident_edge_ratio": 0.009722582317863625
+    },
+    {
+      "degree": 11,
+      "candidate_count": 9,
+      "candidate_ratio": 0.0004676539360872954,
+      "incident_edge_count": 99,
+      "incident_edge_ratio": 0.003208452164894996
+    },
+    {
+      "degree": 12,
+      "candidate_count": 1,
+      "candidate_ratio": 5.1961548454143937e-05,
+      "incident_edge_count": 12,
+      "incident_edge_ratio": 0.000388903292714545
+    },
+    {
+      "degree": 13,
+      "candidate_count": 2,
+      "candidate_ratio": 0.00010392309690828787,
+      "incident_edge_count": 26,
+      "incident_edge_ratio": 0.0008426238008815141
+    }
+  ],
+  "candidate_interaction_neighborhood": {
+    "definition_includes_self": true,
+    "size": {
+      "min": 4,
+      "mean": 206.623798389192,
+      "median": 165,
+      "p90": 438.0,
+      "p95": 555.0,
+      "p99": 879.0,
+      "max": 1796
+    },
+    "other_candidates_size": {
+      "min": 3,
+      "mean": 205.623798389192,
+      "median": 164,
+      "p90": 437.0,
+      "p95": 554.0,
+      "p99": 878.0,
+      "max": 1795
+    },
+    "fraction_of_candidate_space": {
+      "min": 0.00020784619381657575,
+      "mean": 0.010736492511779267,
+      "median": 0.00857365549493375,
+      "p90": 0.022759158222915042,
+      "p95": 0.028838659392049885,
+      "p99": 0.045674201091192516,
+      "max": 0.09332294102364251
+    },
+    "by_candidate_degree": [
+      {
+        "candidate_degree": 1,
+        "min": 4,
+        "mean": 140.64785160495617,
+        "median": 120,
+        "p90": 286.0,
+        "p95": 364.0,
+        "p99": 455.0,
+        "max": 455
+      },
+      {
+        "candidate_degree": 2,
+        "min": 19,
+        "mean": 269.5345489443378,
+        "median": 245.0,
+        "p90": 442.5,
+        "p95": 533.5,
+        "p99": 665.0,
+        "max": 731
+      },
+      {
+        "candidate_degree": 3,
+        "min": 60,
+        "mean": 367.0539523212045,
+        "median": 355,
+        "p90": 560.0,
+        "p95": 654.5999999999998,
+        "p99": 811.7999999999993,
+        "max": 922
+      },
+      {
+        "candidate_degree": 4,
+        "min": 104,
+        "mean": 444.28767123287673,
+        "median": 426,
+        "p90": 676.0,
+        "p95": 755.0,
+        "p99": 955.0999999999998,
+        "max": 1080
+      },
+      {
+        "candidate_degree": 5,
+        "min": 171,
+        "mean": 541.3080939947781,
+        "median": 517,
+        "p90": 786.2,
+        "p95": 876.6999999999999,
+        "p99": 1087.0,
+        "max": 1201
+      },
+      {
+        "candidate_degree": 6,
+        "min": 164,
+        "mean": 618.4296296296296,
+        "median": 601.0,
+        "p90": 873.1,
+        "p95": 951.3,
+        "p99": 1187.13,
+        "max": 1240
+      },
+      {
+        "candidate_degree": 7,
+        "min": 332,
+        "mean": 740.5178571428571,
+        "median": 742.0,
+        "p90": 1048.8000000000002,
+        "p95": 1129.8000000000002,
+        "p99": 1280.420000000001,
+        "max": 1343
+      },
+      {
+        "candidate_degree": 8,
+        "min": 425,
+        "mean": 832.5825242718447,
+        "median": 834,
+        "p90": 1128.6,
+        "p95": 1178.9999999999998,
+        "p99": 1451.4800000000007,
+        "max": 1475
+      },
+      {
+        "candidate_degree": 9,
+        "min": 495,
+        "mean": 918.25,
+        "median": 899.5,
+        "p90": 1163.1,
+        "p95": 1229.1,
+        "p99": 1593.99,
+        "max": 1726
+      },
+      {
+        "candidate_degree": 10,
+        "min": 632,
+        "mean": 1112.7,
+        "median": 1065.5,
+        "p90": 1574.0000000000002,
+        "p95": 1656.65,
+        "p99": 1662.97,
+        "max": 1665
+      },
+      {
+        "candidate_degree": 11,
+        "min": 840,
+        "mean": 1209.3333333333333,
+        "median": 1192,
+        "p90": 1402.4,
+        "p95": 1453.2,
+        "p99": 1493.84,
+        "max": 1504
+      },
+      {
+        "candidate_degree": 12,
+        "min": 1796,
+        "mean": 1796.0,
+        "median": 1796,
+        "p90": 1796.0,
+        "p95": 1796.0,
+        "p99": 1796.0,
+        "max": 1796
+      },
+      {
+        "candidate_degree": 13,
+        "min": 1132,
+        "mean": 1166.0,
+        "median": 1166.0,
+        "p90": 1193.2,
+        "p95": 1196.6,
+        "p99": 1199.32,
+        "max": 1200
+      }
+    ],
+    "candidate_interaction_edges": 1978615,
+    "candidate_interaction_density": 0.010685086176948244,
+    "histogram": [
+      {
+        "neighborhood_size": 4,
+        "candidate_count": 20,
+        "candidate_ratio": 0.0010392309690828788
+      },
+      {
+        "neighborhood_size": 10,
+        "candidate_count": 142,
+        "candidate_ratio": 0.007378539880488438
+      },
+      {
+        "neighborhood_size": 19,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 20,
+        "candidate_count": 467,
+        "candidate_ratio": 0.024266043128085217
+      },
+      {
+        "neighborhood_size": 23,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 26,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 29,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 35,
+        "candidate_count": 956,
+        "candidate_ratio": 0.0496752403221616
+      },
+      {
+        "neighborhood_size": 36,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 39,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 41,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 44,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 51,
+        "candidate_count": 12,
+        "candidate_ratio": 0.0006235385814497272
+      },
+      {
+        "neighborhood_size": 54,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 56,
+        "candidate_count": 1736,
+        "candidate_ratio": 0.09020524811639387
+      },
+      {
+        "neighborhood_size": 60,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 62,
+        "candidate_count": 12,
+        "candidate_ratio": 0.0006235385814497272
+      },
+      {
+        "neighborhood_size": 66,
+        "candidate_count": 12,
+        "candidate_ratio": 0.0006235385814497272
+      },
+      {
+        "neighborhood_size": 69,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 70,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 72,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 75,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 81,
+        "candidate_count": 9,
+        "candidate_ratio": 0.0004676539360872954
+      },
+      {
+        "neighborhood_size": 84,
+        "candidate_count": 2478,
+        "candidate_ratio": 0.12876071706936867
+      },
+      {
+        "neighborhood_size": 85,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 87,
+        "candidate_count": 42,
+        "candidate_ratio": 0.002182385035074045
+      },
+      {
+        "neighborhood_size": 90,
+        "candidate_count": 20,
+        "candidate_ratio": 0.0010392309690828788
+      },
+      {
+        "neighborhood_size": 93,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 96,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 99,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 100,
+        "candidate_count": 33,
+        "candidate_ratio": 0.0017147310989867497
+      },
+      {
+        "neighborhood_size": 102,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 103,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 104,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 106,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 108,
+        "candidate_count": 39,
+        "candidate_ratio": 0.0020265003897116133
+      },
+      {
+        "neighborhood_size": 109,
+        "candidate_count": 28,
+        "candidate_ratio": 0.00145492335671603
+      },
+      {
+        "neighborhood_size": 111,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 112,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 115,
+        "candidate_count": 43,
+        "candidate_ratio": 0.002234346583528189
+      },
+      {
+        "neighborhood_size": 118,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 120,
+        "candidate_count": 2263,
+        "candidate_ratio": 0.11758898415172772
+      },
+      {
+        "neighborhood_size": 121,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 122,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 123,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 126,
+        "candidate_count": 19,
+        "candidate_ratio": 0.0009872694206287348
+      },
+      {
+        "neighborhood_size": 127,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 129,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 130,
+        "candidate_count": 42,
+        "candidate_ratio": 0.002182385035074045
+      },
+      {
+        "neighborhood_size": 131,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 132,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 133,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 134,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 136,
+        "candidate_count": 121,
+        "candidate_ratio": 0.006287347362951416
+      },
+      {
+        "neighborhood_size": 137,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 138,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 139,
+        "candidate_count": 17,
+        "candidate_ratio": 0.0008833463237204468
+      },
+      {
+        "neighborhood_size": 140,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 142,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 145,
+        "candidate_count": 9,
+        "candidate_ratio": 0.0004676539360872954
+      },
+      {
+        "neighborhood_size": 146,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 149,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 151,
+        "candidate_count": 47,
+        "candidate_ratio": 0.0024421927773447647
+      },
+      {
+        "neighborhood_size": 152,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 154,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 155,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 156,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 158,
+        "candidate_count": 47,
+        "candidate_ratio": 0.0024421927773447647
+      },
+      {
+        "neighborhood_size": 160,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 161,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 163,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 164,
+        "candidate_count": 76,
+        "candidate_ratio": 0.003949077682514939
+      },
+      {
+        "neighborhood_size": 165,
+        "candidate_count": 2633,
+        "candidate_ratio": 0.13681475707976098
+      },
+      {
+        "neighborhood_size": 166,
+        "candidate_count": 27,
+        "candidate_ratio": 0.0014029618082618861
+      },
+      {
+        "neighborhood_size": 167,
+        "candidate_count": 9,
+        "candidate_ratio": 0.0004676539360872954
+      },
+      {
+        "neighborhood_size": 170,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 171,
+        "candidate_count": 15,
+        "candidate_ratio": 0.000779423226812159
+      },
+      {
+        "neighborhood_size": 172,
+        "candidate_count": 92,
+        "candidate_ratio": 0.004780462457781242
+      },
+      {
+        "neighborhood_size": 173,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 174,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 175,
+        "candidate_count": 9,
+        "candidate_ratio": 0.0004676539360872954
+      },
+      {
+        "neighborhood_size": 176,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 177,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 179,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 180,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 181,
+        "candidate_count": 34,
+        "candidate_ratio": 0.0017666926474408937
+      },
+      {
+        "neighborhood_size": 182,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 183,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 184,
+        "candidate_count": 13,
+        "candidate_ratio": 0.0006755001299038712
+      },
+      {
+        "neighborhood_size": 185,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 186,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 187,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 188,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 189,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 190,
+        "candidate_count": 19,
+        "candidate_ratio": 0.0009872694206287348
+      },
+      {
+        "neighborhood_size": 191,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 192,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 193,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 194,
+        "candidate_count": 41,
+        "candidate_ratio": 0.0021304234866199013
+      },
+      {
+        "neighborhood_size": 195,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 196,
+        "candidate_count": 51,
+        "candidate_ratio": 0.0026500389711613405
+      },
+      {
+        "neighborhood_size": 198,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 199,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 200,
+        "candidate_count": 123,
+        "candidate_ratio": 0.006391270459859704
+      },
+      {
+        "neighborhood_size": 201,
+        "candidate_count": 12,
+        "candidate_ratio": 0.0006235385814497272
+      },
+      {
+        "neighborhood_size": 202,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 203,
+        "candidate_count": 20,
+        "candidate_ratio": 0.0010392309690828788
+      },
+      {
+        "neighborhood_size": 204,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 205,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 206,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 207,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 208,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 209,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 210,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 211,
+        "candidate_count": 48,
+        "candidate_ratio": 0.002494154325798909
+      },
+      {
+        "neighborhood_size": 212,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 213,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 215,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 216,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 217,
+        "candidate_count": 103,
+        "candidate_ratio": 0.005352039490776825
+      },
+      {
+        "neighborhood_size": 218,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 219,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 220,
+        "candidate_count": 1424,
+        "candidate_ratio": 0.07399324499870095
+      },
+      {
+        "neighborhood_size": 222,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 223,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 224,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 225,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 226,
+        "candidate_count": 9,
+        "candidate_ratio": 0.0004676539360872954
+      },
+      {
+        "neighborhood_size": 227,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 228,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 229,
+        "candidate_count": 27,
+        "candidate_ratio": 0.0014029618082618861
+      },
+      {
+        "neighborhood_size": 230,
+        "candidate_count": 40,
+        "candidate_ratio": 0.0020784619381657575
+      },
+      {
+        "neighborhood_size": 231,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 232,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 233,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 234,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 235,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 236,
+        "candidate_count": 57,
+        "candidate_ratio": 0.0029618082618862044
+      },
+      {
+        "neighborhood_size": 237,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 238,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 239,
+        "candidate_count": 75,
+        "candidate_ratio": 0.003897116134060795
+      },
+      {
+        "neighborhood_size": 240,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 242,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 243,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 244,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 245,
+        "candidate_count": 136,
+        "candidate_ratio": 0.007066770589763575
+      },
+      {
+        "neighborhood_size": 246,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 248,
+        "candidate_count": 16,
+        "candidate_ratio": 0.000831384775266303
+      },
+      {
+        "neighborhood_size": 249,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 251,
+        "candidate_count": 40,
+        "candidate_ratio": 0.0020784619381657575
+      },
+      {
+        "neighborhood_size": 252,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 253,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 254,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 255,
+        "candidate_count": 9,
+        "candidate_ratio": 0.0004676539360872954
+      },
+      {
+        "neighborhood_size": 256,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 257,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 258,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 259,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 261,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 262,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 263,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 264,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 265,
+        "candidate_count": 27,
+        "candidate_ratio": 0.0014029618082618861
+      },
+      {
+        "neighborhood_size": 266,
+        "candidate_count": 37,
+        "candidate_ratio": 0.0019225772928033256
+      },
+      {
+        "neighborhood_size": 267,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 268,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 269,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 270,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 271,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 272,
+        "candidate_count": 52,
+        "candidate_ratio": 0.0027020005196154847
+      },
+      {
+        "neighborhood_size": 274,
+        "candidate_count": 9,
+        "candidate_ratio": 0.0004676539360872954
+      },
+      {
+        "neighborhood_size": 275,
+        "candidate_count": 80,
+        "candidate_ratio": 0.004156923876331515
+      },
+      {
+        "neighborhood_size": 276,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 277,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 278,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 279,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 280,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 281,
+        "candidate_count": 101,
+        "candidate_ratio": 0.005248116393868537
+      },
+      {
+        "neighborhood_size": 282,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 283,
+        "candidate_count": 9,
+        "candidate_ratio": 0.0004676539360872954
+      },
+      {
+        "neighborhood_size": 284,
+        "candidate_count": 37,
+        "candidate_ratio": 0.0019225772928033256
+      },
+      {
+        "neighborhood_size": 285,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 286,
+        "candidate_count": 855,
+        "candidate_ratio": 0.044427123928293066
+      },
+      {
+        "neighborhood_size": 287,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 288,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 289,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 290,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 291,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 292,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 293,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 294,
+        "candidate_count": 24,
+        "candidate_ratio": 0.0012470771628994544
+      },
+      {
+        "neighborhood_size": 295,
+        "candidate_count": 10,
+        "candidate_ratio": 0.0005196154845414394
+      },
+      {
+        "neighborhood_size": 297,
+        "candidate_count": 11,
+        "candidate_ratio": 0.0005715770329955832
+      },
+      {
+        "neighborhood_size": 298,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 299,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 300,
+        "candidate_count": 42,
+        "candidate_ratio": 0.002182385035074045
+      },
+      {
+        "neighborhood_size": 301,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 302,
+        "candidate_count": 12,
+        "candidate_ratio": 0.0006235385814497272
+      },
+      {
+        "neighborhood_size": 303,
+        "candidate_count": 11,
+        "candidate_ratio": 0.0005715770329955832
+      },
+      {
+        "neighborhood_size": 304,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 305,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 306,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 307,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 308,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 309,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 310,
+        "candidate_count": 37,
+        "candidate_ratio": 0.0019225772928033256
+      },
+      {
+        "neighborhood_size": 311,
+        "candidate_count": 16,
+        "candidate_ratio": 0.000831384775266303
+      },
+      {
+        "neighborhood_size": 312,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 313,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 315,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 316,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 317,
+        "candidate_count": 21,
+        "candidate_ratio": 0.0010911925175370225
+      },
+      {
+        "neighborhood_size": 319,
+        "candidate_count": 14,
+        "candidate_ratio": 0.000727461678358015
+      },
+      {
+        "neighborhood_size": 320,
+        "candidate_count": 78,
+        "candidate_ratio": 0.004053000779423227
+      },
+      {
+        "neighborhood_size": 321,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 322,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 324,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 325,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 326,
+        "candidate_count": 43,
+        "candidate_ratio": 0.002234346583528189
+      },
+      {
+        "neighborhood_size": 327,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 328,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 329,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 330,
+        "candidate_count": 41,
+        "candidate_ratio": 0.0021304234866199013
+      },
+      {
+        "neighborhood_size": 331,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 332,
+        "candidate_count": 12,
+        "candidate_ratio": 0.0006235385814497272
+      },
+      {
+        "neighborhood_size": 333,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 334,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 335,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 336,
+        "candidate_count": 57,
+        "candidate_ratio": 0.0029618082618862044
+      },
+      {
+        "neighborhood_size": 337,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 338,
+        "candidate_count": 27,
+        "candidate_ratio": 0.0014029618082618861
+      },
+      {
+        "neighborhood_size": 339,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 340,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 341,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 342,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 344,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 345,
+        "candidate_count": 10,
+        "candidate_ratio": 0.0005196154845414394
+      },
+      {
+        "neighborhood_size": 346,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 347,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 348,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 349,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 350,
+        "candidate_count": 13,
+        "candidate_ratio": 0.0006755001299038712
+      },
+      {
+        "neighborhood_size": 351,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 352,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 353,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 354,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 355,
+        "candidate_count": 14,
+        "candidate_ratio": 0.000727461678358015
+      },
+      {
+        "neighborhood_size": 356,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 357,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 358,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 359,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 360,
+        "candidate_count": 36,
+        "candidate_ratio": 0.0018706157443491816
+      },
+      {
+        "neighborhood_size": 361,
+        "candidate_count": 12,
+        "candidate_ratio": 0.0006235385814497272
+      },
+      {
+        "neighborhood_size": 362,
+        "candidate_count": 9,
+        "candidate_ratio": 0.0004676539360872954
+      },
+      {
+        "neighborhood_size": 363,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 364,
+        "candidate_count": 617,
+        "candidate_ratio": 0.03206027539620681
+      },
+      {
+        "neighborhood_size": 365,
+        "candidate_count": 13,
+        "candidate_ratio": 0.0006755001299038712
+      },
+      {
+        "neighborhood_size": 366,
+        "candidate_count": 42,
+        "candidate_ratio": 0.002182385035074045
+      },
+      {
+        "neighborhood_size": 367,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 368,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 370,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 371,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 372,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 373,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 374,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 375,
+        "candidate_count": 67,
+        "candidate_ratio": 0.0034814237464276436
+      },
+      {
+        "neighborhood_size": 376,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 377,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 378,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 379,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 380,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 381,
+        "candidate_count": 49,
+        "candidate_ratio": 0.0025461158742530526
+      },
+      {
+        "neighborhood_size": 382,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 383,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 384,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 385,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 386,
+        "candidate_count": 26,
+        "candidate_ratio": 0.0013510002598077424
+      },
+      {
+        "neighborhood_size": 387,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 388,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 389,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 390,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 391,
+        "candidate_count": 10,
+        "candidate_ratio": 0.0005196154845414394
+      },
+      {
+        "neighborhood_size": 392,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 393,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 394,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 395,
+        "candidate_count": 15,
+        "candidate_ratio": 0.000779423226812159
+      },
+      {
+        "neighborhood_size": 396,
+        "candidate_count": 28,
+        "candidate_ratio": 0.00145492335671603
+      },
+      {
+        "neighborhood_size": 397,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 398,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 400,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 401,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 402,
+        "candidate_count": 22,
+        "candidate_ratio": 0.0011431540659911665
+      },
+      {
+        "neighborhood_size": 403,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 404,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 405,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 406,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 407,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 408,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 409,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 410,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 411,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 412,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 413,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 414,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 415,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 416,
+        "candidate_count": 28,
+        "candidate_ratio": 0.00145492335671603
+      },
+      {
+        "neighborhood_size": 417,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 418,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 419,
+        "candidate_count": 10,
+        "candidate_ratio": 0.0005196154845414394
+      },
+      {
+        "neighborhood_size": 420,
+        "candidate_count": 12,
+        "candidate_ratio": 0.0006235385814497272
+      },
+      {
+        "neighborhood_size": 421,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 422,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 423,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 424,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 425,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 426,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 427,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 428,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 429,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 430,
+        "candidate_count": 18,
+        "candidate_ratio": 0.0009353078721745908
+      },
+      {
+        "neighborhood_size": 431,
+        "candidate_count": 11,
+        "candidate_ratio": 0.0005715770329955832
+      },
+      {
+        "neighborhood_size": 432,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 433,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 434,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 435,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 436,
+        "candidate_count": 18,
+        "candidate_ratio": 0.0009353078721745908
+      },
+      {
+        "neighborhood_size": 437,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 438,
+        "candidate_count": 29,
+        "candidate_ratio": 0.001506884905170174
+      },
+      {
+        "neighborhood_size": 439,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 440,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 441,
+        "candidate_count": 41,
+        "candidate_ratio": 0.0021304234866199013
+      },
+      {
+        "neighborhood_size": 442,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 443,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 444,
+        "candidate_count": 21,
+        "candidate_ratio": 0.0010911925175370225
+      },
+      {
+        "neighborhood_size": 445,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 446,
+        "candidate_count": 10,
+        "candidate_ratio": 0.0005196154845414394
+      },
+      {
+        "neighborhood_size": 447,
+        "candidate_count": 28,
+        "candidate_ratio": 0.00145492335671603
+      },
+      {
+        "neighborhood_size": 448,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 449,
+        "candidate_count": 9,
+        "candidate_ratio": 0.0004676539360872954
+      },
+      {
+        "neighborhood_size": 450,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 451,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 452,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 453,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 454,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 455,
+        "candidate_count": 249,
+        "candidate_ratio": 0.012938425565081839
+      },
+      {
+        "neighborhood_size": 456,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 457,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 458,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 459,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 460,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 461,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 462,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 463,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 464,
+        "candidate_count": 17,
+        "candidate_ratio": 0.0008833463237204468
+      },
+      {
+        "neighborhood_size": 465,
+        "candidate_count": 10,
+        "candidate_ratio": 0.0005196154845414394
+      },
+      {
+        "neighborhood_size": 466,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 467,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 468,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 469,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 471,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 472,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 473,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 474,
+        "candidate_count": 24,
+        "candidate_ratio": 0.0012470771628994544
+      },
+      {
+        "neighborhood_size": 475,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 476,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 477,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 478,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 479,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 480,
+        "candidate_count": 17,
+        "candidate_ratio": 0.0008833463237204468
+      },
+      {
+        "neighborhood_size": 481,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 482,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 483,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 484,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 485,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 486,
+        "candidate_count": 14,
+        "candidate_ratio": 0.000727461678358015
+      },
+      {
+        "neighborhood_size": 487,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 488,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 489,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 490,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 491,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 492,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 493,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 494,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 495,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 496,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 497,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 498,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 499,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 501,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 502,
+        "candidate_count": 22,
+        "candidate_ratio": 0.0011431540659911665
+      },
+      {
+        "neighborhood_size": 503,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 504,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 505,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 506,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 507,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 508,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 509,
+        "candidate_count": 10,
+        "candidate_ratio": 0.0005196154845414394
+      },
+      {
+        "neighborhood_size": 510,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 511,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 512,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 513,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 514,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 515,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 516,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 517,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 518,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 519,
+        "candidate_count": 15,
+        "candidate_ratio": 0.000779423226812159
+      },
+      {
+        "neighborhood_size": 520,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 521,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 522,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 523,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 524,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 525,
+        "candidate_count": 20,
+        "candidate_ratio": 0.0010392309690828788
+      },
+      {
+        "neighborhood_size": 526,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 527,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 529,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 530,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 531,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 532,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 533,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 534,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 535,
+        "candidate_count": 16,
+        "candidate_ratio": 0.000831384775266303
+      },
+      {
+        "neighborhood_size": 536,
+        "candidate_count": 10,
+        "candidate_ratio": 0.0005196154845414394
+      },
+      {
+        "neighborhood_size": 537,
+        "candidate_count": 17,
+        "candidate_ratio": 0.0008833463237204468
+      },
+      {
+        "neighborhood_size": 538,
+        "candidate_count": 10,
+        "candidate_ratio": 0.0005196154845414394
+      },
+      {
+        "neighborhood_size": 539,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 540,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 541,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 542,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 543,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 544,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 545,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 546,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 547,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 548,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 549,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 550,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 551,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 553,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 554,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 555,
+        "candidate_count": 10,
+        "candidate_ratio": 0.0005196154845414394
+      },
+      {
+        "neighborhood_size": 557,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 558,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 559,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 560,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 561,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 562,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 563,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 564,
+        "candidate_count": 13,
+        "candidate_ratio": 0.0006755001299038712
+      },
+      {
+        "neighborhood_size": 565,
+        "candidate_count": 18,
+        "candidate_ratio": 0.0009353078721745908
+      },
+      {
+        "neighborhood_size": 566,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 567,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 568,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 569,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 570,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 571,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 572,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 573,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 574,
+        "candidate_count": 18,
+        "candidate_ratio": 0.0009353078721745908
+      },
+      {
+        "neighborhood_size": 575,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 576,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 577,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 578,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 579,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 580,
+        "candidate_count": 12,
+        "candidate_ratio": 0.0006235385814497272
+      },
+      {
+        "neighborhood_size": 581,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 582,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 583,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 584,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 585,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 586,
+        "candidate_count": 7,
+        "candidate_ratio": 0.0003637308391790075
+      },
+      {
+        "neighborhood_size": 587,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 588,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 589,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 590,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 591,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 593,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 594,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 595,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 596,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 597,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 598,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 599,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 600,
+        "candidate_count": 19,
+        "candidate_ratio": 0.0009872694206287348
+      },
+      {
+        "neighborhood_size": 601,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 602,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 603,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 604,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 605,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 606,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 607,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 608,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 609,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 610,
+        "candidate_count": 15,
+        "candidate_ratio": 0.000779423226812159
+      },
+      {
+        "neighborhood_size": 612,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 613,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 614,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 615,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 616,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 617,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 618,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 619,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 620,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 621,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 622,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 623,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 624,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 625,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 626,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 627,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 628,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 629,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 630,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 631,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 632,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 633,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 634,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 635,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 636,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 638,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 639,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 640,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 641,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 642,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 643,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 645,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 646,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 647,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 648,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 649,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 650,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 651,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 652,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 653,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 654,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 655,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 656,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 657,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 660,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 661,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 662,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 663,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 664,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 665,
+        "candidate_count": 11,
+        "candidate_ratio": 0.0005715770329955832
+      },
+      {
+        "neighborhood_size": 667,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 668,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 669,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 670,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 671,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 673,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 674,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 675,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 676,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 677,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 679,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 680,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 681,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 682,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 684,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 686,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 687,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 688,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 689,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 690,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 692,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 693,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 695,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 696,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 697,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 698,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 699,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 701,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 702,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 703,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 704,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 705,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 706,
+        "candidate_count": 22,
+        "candidate_ratio": 0.0011431540659911665
+      },
+      {
+        "neighborhood_size": 708,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 709,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 710,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 711,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 712,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 713,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 714,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 715,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 716,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 717,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 718,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 719,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 720,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 721,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 722,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 723,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 724,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 726,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 727,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 728,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 729,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 730,
+        "candidate_count": 8,
+        "candidate_ratio": 0.0004156923876331515
+      },
+      {
+        "neighborhood_size": 731,
+        "candidate_count": 6,
+        "candidate_ratio": 0.0003117692907248636
+      },
+      {
+        "neighborhood_size": 732,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 733,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 735,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 736,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 737,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 738,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 739,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 740,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 744,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 745,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 746,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 747,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 749,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 750,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 754,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 755,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 757,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 758,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 759,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 760,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 761,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 762,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 763,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 764,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 765,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 766,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 767,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 768,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 769,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 770,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 771,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 772,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 773,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 774,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 775,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 776,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 780,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 781,
+        "candidate_count": 5,
+        "candidate_ratio": 0.0002598077422707197
+      },
+      {
+        "neighborhood_size": 782,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 783,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 786,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 787,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 788,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 790,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 791,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 796,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 798,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 802,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 803,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 804,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 805,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 807,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 808,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 809,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 811,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 812,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 814,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 815,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 816,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 817,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 818,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 819,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 820,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 822,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 825,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 826,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 830,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 831,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 832,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 833,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 834,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 835,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 836,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 838,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 839,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 840,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 842,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 843,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 846,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 847,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 849,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 850,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 851,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 852,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 853,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 855,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 856,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 857,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 859,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 860,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 861,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 862,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 863,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 864,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 866,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 867,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 868,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 869,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 870,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 871,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 873,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 874,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 875,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 876,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 877,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 879,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 880,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 881,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 883,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 884,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 886,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 888,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 889,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 890,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 891,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 892,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 893,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 894,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 896,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 897,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 899,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 900,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 904,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 905,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 908,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 914,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 915,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 917,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 918,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 919,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 920,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 921,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 922,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 923,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 924,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 930,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 931,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 932,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 935,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 936,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 940,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 942,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 946,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 947,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 948,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 950,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 952,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 954,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 955,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 956,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 957,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 961,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 964,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 969,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 973,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 974,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 975,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 978,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 979,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 981,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 985,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 987,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 989,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 993,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 997,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1000,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 1002,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1003,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 1004,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1005,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1007,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1008,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1009,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1011,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1013,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1019,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1024,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1028,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1031,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1037,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1038,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1040,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1043,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 1045,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1046,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1047,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1049,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1053,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1054,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 1057,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1064,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1065,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1066,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1071,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1076,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 1077,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1079,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1080,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1081,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1082,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1083,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1087,
+        "candidate_count": 4,
+        "candidate_ratio": 0.00020784619381657575
+      },
+      {
+        "neighborhood_size": 1089,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1093,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1098,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 1099,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1102,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1105,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1108,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1111,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1113,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1116,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1119,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1122,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1131,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1132,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 1134,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1150,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1151,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1152,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1158,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1161,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 1164,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 1166,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1172,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1180,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1181,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 1190,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1192,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1200,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1201,
+        "candidate_count": 3,
+        "candidate_ratio": 0.0001558846453624318
+      },
+      {
+        "neighborhood_size": 1203,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1204,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1224,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 1228,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1230,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1240,
+        "candidate_count": 2,
+        "candidate_ratio": 0.00010392309690828787
+      },
+      {
+        "neighborhood_size": 1245,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1256,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1273,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1279,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1330,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1336,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1343,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1348,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1367,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1377,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1391,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1419,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1455,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1475,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1483,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1504,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1545,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1565,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1655,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1658,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1665,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1726,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      },
+      {
+        "neighborhood_size": 1796,
+        "candidate_count": 1,
+        "candidate_ratio": 5.1961548454143937e-05
+      }
+    ]
+  },
+  "high_degree_peeling_curve": [
+    {
+      "max_retained_degree_k": 0,
+      "removed_candidate_count": 19245,
+      "removed_candidate_ratio": 1.0,
+      "removed_edge_count": 30856,
+      "removed_edge_ratio": 1.0,
+      "remaining_candidate_count": 0,
+      "component_count": 468,
+      "nontrivial_component_count": 0,
+      "giant_query_count": 1,
+      "giant_query_ratio": 0.002136752136752137,
+      "giant_candidate_count": 0,
+      "giant_candidate_ratio_of_remaining": 0.0,
+      "giant_candidate_ratio_of_original": 0.0
+    },
+    {
+      "max_retained_degree_k": 1,
+      "removed_candidate_count": 5444,
+      "removed_candidate_ratio": 0.28287866978435955,
+      "removed_edge_count": 17055,
+      "removed_edge_ratio": 0.5527288047705471,
+      "remaining_candidate_count": 13801,
+      "component_count": 468,
+      "nontrivial_component_count": 0,
+      "giant_query_count": 1,
+      "giant_query_ratio": 0.002136752136752137,
+      "giant_candidate_count": 244,
+      "giant_candidate_ratio_of_remaining": 0.017679878269690603,
+      "giant_candidate_ratio_of_original": 0.01267861782281112
+    },
+    {
+      "max_retained_degree_k": 2,
+      "removed_candidate_count": 2318,
+      "removed_candidate_ratio": 0.12044686931670563,
+      "removed_edge_count": 10803,
+      "removed_edge_ratio": 0.35011018926626913,
+      "remaining_candidate_count": 16927,
+      "component_count": 33,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 436,
+      "giant_query_ratio": 0.9316239316239316,
+      "giant_candidate_count": 16893,
+      "giant_candidate_ratio_of_remaining": 0.9979913747267679,
+      "giant_candidate_ratio_of_original": 0.8777864380358534
+    },
+    {
+      "max_retained_degree_k": 3,
+      "removed_candidate_count": 1521,
+      "removed_candidate_ratio": 0.07903351519875293,
+      "removed_edge_count": 8412,
+      "removed_edge_ratio": 0.27262120819289604,
+      "remaining_candidate_count": 17724,
+      "component_count": 21,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 448,
+      "giant_query_ratio": 0.9572649572649573,
+      "giant_candidate_count": 17713,
+      "giant_candidate_ratio_of_remaining": 0.9993793726021214,
+      "giant_candidate_ratio_of_original": 0.9203949077682515
+    },
+    {
+      "max_retained_degree_k": 4,
+      "removed_candidate_count": 1010,
+      "removed_candidate_ratio": 0.05248116393868537,
+      "removed_edge_count": 6368,
+      "removed_edge_ratio": 0.20637801400051853,
+      "remaining_candidate_count": 18235,
+      "component_count": 14,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 455,
+      "giant_query_ratio": 0.9722222222222222,
+      "giant_candidate_count": 18231,
+      "giant_candidate_ratio_of_remaining": 0.999780641623252,
+      "giant_candidate_ratio_of_original": 0.9473109898674981
+    },
+    {
+      "max_retained_degree_k": 5,
+      "removed_candidate_count": 627,
+      "removed_candidate_ratio": 0.032579890880748245,
+      "removed_edge_count": 4453,
+      "removed_edge_ratio": 0.1443155302048224,
+      "remaining_candidate_count": 18618,
+      "component_count": 10,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 459,
+      "giant_query_ratio": 0.9807692307692307,
+      "giant_candidate_count": 18615,
+      "giant_candidate_ratio_of_remaining": 0.999838865613922,
+      "giant_candidate_ratio_of_original": 0.9672642244738893
+    },
+    {
+      "max_retained_degree_k": 6,
+      "removed_candidate_count": 357,
+      "removed_candidate_ratio": 0.018550272798129385,
+      "removed_edge_count": 2833,
+      "removed_edge_ratio": 0.09181358568835883,
+      "remaining_candidate_count": 18888,
+      "component_count": 4,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 465,
+      "giant_query_ratio": 0.9935897435897436,
+      "giant_candidate_count": 18888,
+      "giant_candidate_ratio_of_remaining": 1.0,
+      "giant_candidate_ratio_of_original": 0.9814497272018706
+    },
+    {
+      "max_retained_degree_k": 7,
+      "removed_candidate_count": 189,
+      "removed_candidate_ratio": 0.009820732657833203,
+      "removed_edge_count": 1657,
+      "removed_edge_ratio": 0.05370106300233342,
+      "remaining_candidate_count": 19056,
+      "component_count": 4,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 465,
+      "giant_query_ratio": 0.9935897435897436,
+      "giant_candidate_count": 19056,
+      "giant_candidate_ratio_of_remaining": 1.0,
+      "giant_candidate_ratio_of_original": 0.9901792673421668
+    },
+    {
+      "max_retained_degree_k": 8,
+      "removed_candidate_count": 86,
+      "removed_candidate_ratio": 0.004468693167056378,
+      "removed_edge_count": 833,
+      "removed_edge_ratio": 0.026996370235934663,
+      "remaining_candidate_count": 19159,
+      "component_count": 2,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 467,
+      "giant_query_ratio": 0.9978632478632479,
+      "giant_candidate_count": 19159,
+      "giant_candidate_ratio_of_remaining": 1.0,
+      "giant_candidate_ratio_of_original": 0.9955313068329437
+    },
+    {
+      "max_retained_degree_k": 9,
+      "removed_candidate_count": 42,
+      "removed_candidate_ratio": 0.002182385035074045,
+      "removed_edge_count": 437,
+      "removed_edge_ratio": 0.01416256157635468,
+      "remaining_candidate_count": 19203,
+      "component_count": 2,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 467,
+      "giant_query_ratio": 0.9978632478632479,
+      "giant_candidate_count": 19203,
+      "giant_candidate_ratio_of_remaining": 1.0,
+      "giant_candidate_ratio_of_original": 0.9978176149649259
+    },
+    {
+      "max_retained_degree_k": 10,
+      "removed_candidate_count": 12,
+      "removed_candidate_ratio": 0.0006235385814497272,
+      "removed_edge_count": 137,
+      "removed_edge_ratio": 0.004439979258491055,
+      "remaining_candidate_count": 19233,
+      "component_count": 2,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 467,
+      "giant_query_ratio": 0.9978632478632479,
+      "giant_candidate_count": 19233,
+      "giant_candidate_ratio_of_remaining": 1.0,
+      "giant_candidate_ratio_of_original": 0.9993764614185503
+    },
+    {
+      "max_retained_degree_k": 11,
+      "removed_candidate_count": 3,
+      "removed_candidate_ratio": 0.0001558846453624318,
+      "removed_edge_count": 38,
+      "removed_edge_ratio": 0.0012315270935960591,
+      "remaining_candidate_count": 19242,
+      "component_count": 2,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 467,
+      "giant_query_ratio": 0.9978632478632479,
+      "giant_candidate_count": 19242,
+      "giant_candidate_ratio_of_remaining": 1.0,
+      "giant_candidate_ratio_of_original": 0.9998441153546376
+    },
+    {
+      "max_retained_degree_k": 12,
+      "removed_candidate_count": 2,
+      "removed_candidate_ratio": 0.00010392309690828787,
+      "removed_edge_count": 26,
+      "removed_edge_ratio": 0.0008426238008815141,
+      "remaining_candidate_count": 19243,
+      "component_count": 2,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 467,
+      "giant_query_ratio": 0.9978632478632479,
+      "giant_candidate_count": 19243,
+      "giant_candidate_ratio_of_remaining": 1.0,
+      "giant_candidate_ratio_of_original": 0.9998960769030917
+    },
+    {
+      "max_retained_degree_k": 13,
+      "removed_candidate_count": 0,
+      "removed_candidate_ratio": 0.0,
+      "removed_edge_count": 0,
+      "removed_edge_ratio": 0.0,
+      "remaining_candidate_count": 19245,
+      "component_count": 2,
+      "nontrivial_component_count": 1,
+      "giant_query_count": 467,
+      "giant_query_ratio": 0.9978632478632479,
+      "giant_candidate_count": 19245,
+      "giant_candidate_ratio_of_remaining": 1.0,
+      "giant_candidate_ratio_of_original": 1.0
+    }
+  ],
+  "top_candidate_hubs": [
+    {
+      "table": "climate",
+      "columns": [
+        "dincome2",
+        "dweek89"
+      ],
+      "degree": 13
+    },
+    {
+      "table": "climate",
+      "columns": [
+        "dweek89",
+        "idisabl2"
+      ],
+      "degree": 13
+    },
+    {
+      "table": "climate",
+      "columns": [
+        "dweek89",
+        "irownchld"
+      ],
+      "degree": 12
+    },
+    {
+      "table": "climate",
+      "columns": [
+        "dage",
+        "irrelchld"
+      ],
+      "degree": 11
+    },
+    {
+      "table": "climate",
+      "columns": [
+        "dweek89",
+        "iworklwk"
+      ],
+      "degree": 11
+    },
+    {
+      "table": "climate",
+      "columns": [
+        "ienglish",
+        "imilitary"
+      ],
+      "degree": 11
+    },
+    {
+      "table": "climate",
+      "columns": [
+        "iimmigr",
+        "irspouse"
+      ],
+      "degree": 11
+    },
+    {
+      "table": "climate",
+      "columns": [
+        "iimmigr",
+        "iworklwk"
+      ],
+      "degree": 11
+    },
+    {
+      "table": "climate",
+      "columns": [
+        "ilang1",
+        "iremplpar"
+      ],
+      "degree": 11
+    },
+    {
+      "table": "climate",
+      "columns": [
+        "iremplpar",
+        "ivietnam"
+      ],
+      "degree": 11
+    }
+  ],
+  "bipartite_density": 0.0034259092715834727,
+  "component_query_size": {
+    "min": 1,
+    "mean": 234.0,
+    "median": 234.0,
+    "p90": 420.40000000000003,
+    "p95": 443.7,
+    "p99": 462.34,
+    "max": 467
+  },
+  "component_candidate_size": {
+    "min": 0,
+    "mean": 9622.5,
+    "median": 9622.5,
+    "p90": 17320.5,
+    "p95": 18282.75,
+    "p99": 19052.55,
+    "max": 19245
+  },
+  "giant_component": {
+    "query_count": 467,
+    "candidate_count": 19245,
+    "edge_count": 30856,
+    "query_ratio": 0.9978632478632479,
+    "candidate_ratio": 1.0,
+    "edge_ratio": 1.0
+  },
+  "components": [
+    {
+      "query_count": 467,
+      "candidate_count": 19245,
+      "edge_count": 30856,
+      "query_ids": [
+        "query.1",
+        "query.2",
+        "query.3",
+        "query.4",
+        "query.5",
+        "query.6",
+        "query.7",
+        "query.8",
+        "query.9",
+        "query.10",
+        "query.11",
+        "query.12",
+        "query.13",
+        "query.14",
+        "query.15",
+        "query.16",
+        "query.17",
+        "query.18",
+        "query.19",
+        "query.20",
+        "query.21",
+        "query.22",
+        "query.23",
+        "query.24",
+        "query.25",
+        "query.26",
+        "query.27",
+        "query.28",
+        "query.29",
+        "query.30",
+        "query.31",
+        "query.32",
+        "query.33",
+        "query.34",
+        "query.35",
+        "query.36",
+        "query.37",
+        "query.38",
+        "query.39",
+        "query.40",
+        "query.41",
+        "query.42",
+        "query.43",
+        "query.44",
+        "query.45",
+        "query.46",
+        "query.47",
+        "query.48",
+        "query.49",
+        "query.50",
+        "query.51",
+        "query.52",
+        "query.53",
+        "query.54",
+        "query.55",
+        "query.56",
+        "query.57",
+        "query.58",
+        "query.59",
+        "query.60",
+        "query.61",
+        "query.62",
+        "query.63",
+        "query.64",
+        "query.65",
+        "query.66",
+        "query.67",
+        "query.68",
+        "query.69",
+        "query.70",
+        "query.71",
+        "query.72",
+        "query.73",
+        "query.74",
+        "query.75",
+        "query.76",
+        "query.77",
+        "query.78",
+        "query.79",
+        "query.80",
+        "query.81",
+        "query.82",
+        "query.83",
+        "query.84",
+        "query.85",
+        "query.86",
+        "query.87",
+        "query.88",
+        "query.89",
+        "query.90",
+        "query.91",
+        "query.92",
+        "query.93",
+        "query.94",
+        "query.95",
+        "query.96",
+        "query.97",
+        "query.98",
+        "query.99",
+        "query.100",
+        "query.101",
+        "query.102",
+        "query.103",
+        "query.104",
+        "query.105",
+        "query.106",
+        "query.107",
+        "query.108",
+        "query.109",
+        "query.110",
+        "query.111",
+        "query.112",
+        "query.113",
+        "query.114",
+        "query.115",
+        "query.116",
+        "query.117",
+        "query.118",
+        "query.119",
+        "query.120",
+        "query.121",
+        "query.122",
+        "query.123",
+        "query.124",
+        "query.125",
+        "query.126",
+        "query.127",
+        "query.128",
+        "query.129",
+        "query.130",
+        "query.131",
+        "query.132",
+        "query.133",
+        "query.134",
+        "query.135",
+        "query.136",
+        "query.137",
+        "query.138",
+        "query.139",
+        "query.140",
+        "query.141",
+        "query.142",
+        "query.143",
+        "query.144",
+        "query.145",
+        "query.146",
+        "query.147",
+        "query.148",
+        "query.149",
+        "query.150",
+        "query.151",
+        "query.152",
+        "query.153",
+        "query.154",
+        "query.155",
+        "query.156",
+        "query.157",
+        "query.158",
+        "query.159",
+        "query.160",
+        "query.161",
+        "query.162",
+        "query.163",
+        "query.164",
+        "query.165",
+        "query.166",
+        "query.167",
+        "query.168",
+        "query.169",
+        "query.170",
+        "query.171",
+        "query.172",
+        "query.173",
+        "query.174",
+        "query.175",
+        "query.176",
+        "query.177",
+        "query.178",
+        "query.179",
+        "query.180",
+        "query.181",
+        "query.182",
+        "query.183",
+        "query.184",
+        "query.185",
+        "query.186",
+        "query.187",
+        "query.188",
+        "query.189",
+        "query.190",
+        "query.191",
+        "query.192",
+        "query.193",
+        "query.194",
+        "query.195",
+        "query.196",
+        "query.197",
+        "query.198",
+        "query.199",
+        "query.200",
+        "query.201",
+        "query.202",
+        "query.203",
+        "query.204",
+        "query.205",
+        "query.206",
+        "query.207",
+        "query.208",
+        "query.209",
+        "query.210",
+        "query.211",
+        "query.212",
+        "query.213",
+        "query.214",
+        "query.215",
+        "query.216",
+        "query.217",
+        "query.218",
+        "query.219",
+        "query.220",
+        "query.221",
+        "query.222",
+        "query.223",
+        "query.224",
+        "query.225",
+        "query.226",
+        "query.227",
+        "query.228",
+        "query.229",
+        "query.230",
+        "query.231",
+        "query.232",
+        "query.233",
+        "query.234",
+        "query.235",
+        "query.236",
+        "query.237",
+        "query.238",
+        "query.239",
+        "query.240",
+        "query.241",
+        "query.242",
+        "query.243",
+        "query.244",
+        "query.245",
+        "query.246",
+        "query.247",
+        "query.248",
+        "query.249",
+        "query.250",
+        "query.251",
+        "query.252",
+        "query.253",
+        "query.254",
+        "query.255",
+        "query.256",
+        "query.257",
+        "query.258",
+        "query.259",
+        "query.260",
+        "query.261",
+        "query.262",
+        "query.263",
+        "query.264",
+        "query.265",
+        "query.266",
+        "query.267",
+        "query.268",
+        "query.269",
+        "query.270",
+        "query.271",
+        "query.272",
+        "query.273",
+        "query.274",
+        "query.275",
+        "query.276",
+        "query.277",
+        "query.278",
+        "query.279",
+        "query.280",
+        "query.281",
+        "query.282",
+        "query.283",
+        "query.284",
+        "query.285",
+        "query.286",
+        "query.287",
+        "query.288",
+        "query.289",
+        "query.290",
+        "query.291",
+        "query.292",
+        "query.293",
+        "query.294",
+        "query.295",
+        "query.296",
+        "query.297",
+        "query.298",
+        "query.299",
+        "query.300",
+        "query.301",
+        "query.302",
+        "query.303",
+        "query.304",
+        "query.305",
+        "query.306",
+        "query.307",
+        "query.308",
+        "query.309",
+        "query.310",
+        "query.311",
+        "query.312",
+        "query.313",
+        "query.314",
+        "query.315",
+        "query.316",
+        "query.317",
+        "query.318",
+        "query.319",
+        "query.320",
+        "query.321",
+        "query.322",
+        "query.324",
+        "query.325",
+        "query.326",
+        "query.327",
+        "query.328",
+        "query.329",
+        "query.330",
+        "query.331",
+        "query.332",
+        "query.333",
+        "query.334",
+        "query.335",
+        "query.336",
+        "query.337",
+        "query.338",
+        "query.339",
+        "query.340",
+        "query.341",
+        "query.342",
+        "query.343",
+        "query.344",
+        "query.345",
+        "query.346",
+        "query.347",
+        "query.348",
+        "query.349",
+        "query.350",
+        "query.351",
+        "query.352",
+        "query.353",
+        "query.354",
+        "query.355",
+        "query.356",
+        "query.357",
+        "query.358",
+        "query.359",
+        "query.360",
+        "query.361",
+        "query.362",
+        "query.363",
+        "query.364",
+        "query.365",
+        "query.366",
+        "query.367",
+        "query.368",
+        "query.369",
+        "query.370",
+        "query.371",
+        "query.372",
+        "query.373",
+        "query.374",
+        "query.375",
+        "query.376",
+        "query.377",
+        "query.378",
+        "query.379",
+        "query.380",
+        "query.381",
+        "query.382",
+        "query.383",
+        "query.384",
+        "query.385",
+        "query.386",
+        "query.387",
+        "query.388",
+        "query.389",
+        "query.390",
+        "query.391",
+        "query.392",
+        "query.393",
+        "query.394",
+        "query.395",
+        "query.396",
+        "query.397",
+        "query.398",
+        "query.399",
+        "query.400",
+        "query.401",
+        "query.402",
+        "query.403",
+        "query.404",
+        "query.405",
+        "query.406",
+        "query.407",
+        "query.408",
+        "query.409",
+        "query.410",
+        "query.411",
+        "query.412",
+        "query.413",
+        "query.414",
+        "query.415",
+        "query.416",
+        "query.417",
+        "query.418",
+        "query.419",
+        "query.420",
+        "query.421",
+        "query.422",
+        "query.423",
+        "query.424",
+        "query.425",
+        "query.426",
+        "query.427",
+        "query.428",
+        "query.429",
+        "query.430",
+        "query.431",
+        "query.432",
+        "query.433",
+        "query.434",
+        "query.435",
+        "query.436",
+        "query.437",
+        "query.438",
+        "query.439",
+        "query.440",
+        "query.441",
+        "query.442",
+        "query.443",
+        "query.444",
+        "query.445",
+        "query.446",
+        "query.447",
+        "query.448",
+        "query.449",
+        "query.450",
+        "query.451",
+        "query.452",
+        "query.453",
+        "query.454",
+        "query.455",
+        "query.456",
+        "query.457",
+        "query.458",
+        "query.459",
+        "query.460",
+        "query.461",
+        "query.462",
+        "query.463",
+        "query.464",
+        "query.465",
+        "query.466",
+        "query.467",
+        "query.468"
+      ]
+    },
+    {
+      "query_count": 1,
+      "candidate_count": 0,
+      "edge_count": 0,
+      "query_ids": [
+        "query.323"
+      ]
+    }
+  ]
+}

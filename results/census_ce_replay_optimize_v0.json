@@ -1,0 +1,620 @@
+{
+  "experiment": "CE-Replay-Optimize-v0",
+  "source_ir": "results/census_ce_replay_ir_v1b_instrumented_target1000.json",
+  "truth_rows": 13.0,
+  "cost_unit": "pg_column_size(stxdmcv) bytes",
+  "candidate_costs": {
+    "good": 436,
+    "middle": 410,
+    "bad": 388,
+    "independent_1": 1340,
+    "independent_2": 218
+  },
+  "designs_enumerated": 32,
+  "budget_thresholds_checked": 32,
+  "all_optimizer_choices_match_native_exact_optimum": true,
+  "max_selected_prediction_relative_error": 2.690094824285384e-16,
+  "optimal_frontier": [
+    {
+      "budget_bytes": 0,
+      "selected": [],
+      "used_bytes": 0,
+      "predicted_rows": 54222.066095359995,
+      "deployed_native_pg_rows": 54222.066095359995,
+      "predicted_qerror": 4170.928161181538,
+      "deployed_native_pg_qerror": 4170.928161181538,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": []
+    },
+    {
+      "budget_bytes": 218,
+      "selected": [
+        "independent_2"
+      ],
+      "used_bytes": 218,
+      "predicted_rows": 54094.43227426947,
+      "deployed_native_pg_rows": 54094.43227426946,
+      "predicted_qerror": 4161.110174943806,
+      "deployed_native_pg_qerror": 4161.110174943804,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 410,
+      "selected": [
+        "middle"
+      ],
+      "used_bytes": 410,
+      "predicted_rows": 1231.6568423205474,
+      "deployed_native_pg_rows": 1231.6568423205472,
+      "predicted_qerror": 94.7428340246575,
+      "deployed_native_pg_qerror": 94.74283402465747,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "middle"
+      ]
+    },
+    {
+      "budget_bytes": 436,
+      "selected": [
+        "good"
+      ],
+      "used_bytes": 436,
+      "predicted_rows": 30.431145250201553,
+      "deployed_native_pg_rows": 30.43114525020155,
+      "predicted_qerror": 2.340857326938581,
+      "deployed_native_pg_qerror": 2.340857326938581,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good"
+      ]
+    },
+    {
+      "budget_bytes": 654,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    }
+  ],
+  "all_budget_solutions": [
+    {
+      "budget_bytes": 0,
+      "selected": [],
+      "used_bytes": 0,
+      "predicted_rows": 54222.066095359995,
+      "deployed_native_pg_rows": 54222.066095359995,
+      "predicted_qerror": 4170.928161181538,
+      "deployed_native_pg_qerror": 4170.928161181538,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": []
+    },
+    {
+      "budget_bytes": 218,
+      "selected": [
+        "independent_2"
+      ],
+      "used_bytes": 218,
+      "predicted_rows": 54094.43227426947,
+      "deployed_native_pg_rows": 54094.43227426946,
+      "predicted_qerror": 4161.110174943806,
+      "deployed_native_pg_qerror": 4161.110174943804,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 388,
+      "selected": [
+        "independent_2"
+      ],
+      "used_bytes": 218,
+      "predicted_rows": 54094.43227426947,
+      "deployed_native_pg_rows": 54094.43227426946,
+      "predicted_qerror": 4161.110174943806,
+      "deployed_native_pg_qerror": 4161.110174943804,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 410,
+      "selected": [
+        "middle"
+      ],
+      "used_bytes": 410,
+      "predicted_rows": 1231.6568423205474,
+      "deployed_native_pg_rows": 1231.6568423205472,
+      "predicted_qerror": 94.7428340246575,
+      "deployed_native_pg_qerror": 94.74283402465747,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "middle"
+      ]
+    },
+    {
+      "budget_bytes": 436,
+      "selected": [
+        "good"
+      ],
+      "used_bytes": 436,
+      "predicted_rows": 30.431145250201553,
+      "deployed_native_pg_rows": 30.43114525020155,
+      "predicted_qerror": 2.340857326938581,
+      "deployed_native_pg_qerror": 2.340857326938581,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good"
+      ]
+    },
+    {
+      "budget_bytes": 606,
+      "selected": [
+        "good"
+      ],
+      "used_bytes": 436,
+      "predicted_rows": 30.431145250201553,
+      "deployed_native_pg_rows": 30.43114525020155,
+      "predicted_qerror": 2.340857326938581,
+      "deployed_native_pg_qerror": 2.340857326938581,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good"
+      ]
+    },
+    {
+      "budget_bytes": 628,
+      "selected": [
+        "good"
+      ],
+      "used_bytes": 436,
+      "predicted_rows": 30.431145250201553,
+      "deployed_native_pg_rows": 30.43114525020155,
+      "predicted_qerror": 2.340857326938581,
+      "deployed_native_pg_qerror": 2.340857326938581,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good"
+      ]
+    },
+    {
+      "budget_bytes": 654,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 798,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 824,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 846,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1016,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1042,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1064,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1234,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1340,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1452,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1558,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1728,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1750,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1776,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1946,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1968,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 1994,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 2138,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 2164,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 2186,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 2356,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 2382,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 2404,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 2574,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    },
+    {
+      "budget_bytes": 2792,
+      "selected": [
+        "good",
+        "independent_2"
+      ],
+      "used_bytes": 654,
+      "predicted_rows": 30.359513096944738,
+      "deployed_native_pg_rows": 30.35951309694473,
+      "predicted_qerror": 2.3353471613034413,
+      "deployed_native_pg_qerror": 2.335347161303441,
+      "same_design_as_native_exact_optimum": true,
+      "native_exact_optimum": [
+        "good",
+        "independent_2"
+      ]
+    }
+  ]
+}

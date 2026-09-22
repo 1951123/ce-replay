@@ -1,0 +1,126 @@
+{
+  "artifact": "paper-figure-table-plan-v0",
+  "date": "2026-09-22",
+  "main_text_budget": {"figures": 4, "tables": 5},
+  "main_text": [
+    {
+      "id": "F1",
+      "type": "figure",
+      "title": "CE-Replay physical-design pipeline",
+      "paper_section": "5 CE-Replay",
+      "source_evidence": ["docs/ce-replay-ir-v1.md", "Research-Convergence-Audit-v2"],
+      "intended_visual_encoding": "Left-to-right pipeline: native semantics and workload/payload inputs; executable specialization; objective and dependency outputs; search; deployment; fresh native validation. Mark offline payload acquisition and fresh realization separately.",
+      "claim_supported": "CE-Replay is a design-parametric objective evaluator and dependency oracle, not the search algorithm or an automatic source compiler.",
+      "claim_ids": ["C1", "C9", "C13", "C16"],
+      "status": "MAIN-TEXT",
+      "essential": true
+    },
+    {
+      "id": "F2",
+      "type": "figure",
+      "title": "Cross-workload non-monotonicity of statistics-set inclusion",
+      "paper_section": "8.2 RQ2",
+      "source_evidence": ["Statistics-Nonmonotonicity-v0", "DMV-Baseline-and-Nonmonotonicity-v0"],
+      "intended_visual_encoding": "Two panels. Within each workload show empty, all-statistics, and selected-subset outcomes on a workload-local scale; annotate harmful singleton and improving-removal counts. Preserve raw values in accompanying text/table and do not compare y magnitudes across panels.",
+      "claim_supported": "Selection remains meaningful independently of a binding budget.",
+      "claim_ids": ["C2", "C3"],
+      "status": "MAIN-TEXT",
+      "essential": true
+    },
+    {
+      "id": "F3",
+      "type": "figure",
+      "title": "Mechanism-aware recurring ANALYZE cost",
+      "paper_section": "8.2 RQ2",
+      "source_evidence": ["Analyze-Cost-Model-v0", "DMV-Analyze-Cost-Model-v0"],
+      "intended_visual_encoding": "Census and DMV panels; x-axis deployed object count/composition, y-axis aggregate ANALYZE latency; separate MCV and FD observations/fits; report coefficients and fit quality per panel.",
+      "claim_supported": "A mechanism-aware object-count model is a useful first-order maintenance proxy, with environment-specific coefficients.",
+      "claim_ids": ["C4", "C5"],
+      "status": "MAIN-TEXT",
+      "essential": true
+    },
+    {
+      "id": "F4",
+      "type": "figure",
+      "title": "Directed MCV-to-FD composition",
+      "paper_section": "8.4 RQ4",
+      "source_evidence": ["FD-Semantics-v0", "CE-Replay-Optimize-v4", "DMV-Baseline-and-Nonmonotonicity-v0", "DMV-Maintenance-Budget-Optimize-v0"],
+      "intended_visual_encoding": "State-transition diagram from MCV applicability through GreedyCover/clause consumption to FD applicability, paired with a compact all-statistics versus optimized-subset FD-consumption comparison for both workloads.",
+      "claim_supported": "MCV consumption changes downstream FD reachability, requiring compositional optimization.",
+      "claim_ids": ["C7", "C8"],
+      "status": "MAIN-TEXT",
+      "essential": true
+    },
+    {
+      "id": "T1",
+      "type": "table",
+      "title": "Complementary workload and candidate structure",
+      "paper_section": "7 Experimental Methodology",
+      "source_evidence": ["Census locality analysis", "DMV-Fit-Audit-v0"],
+      "intended_visual_encoding": "Columns for queries, rows, predicate columns/forms, structural pairs, usable mechanism candidates, candidate degree, incidence character, and major semantic feature.",
+      "claim_supported": "DMV is meaningful structural replication but not a Census-scale candidate-space benchmark.",
+      "claim_ids": ["C10", "C11"],
+      "status": "MAIN-TEXT",
+      "essential": true
+    },
+    {
+      "id": "T2",
+      "type": "table",
+      "title": "Native semantic fidelity within the supported fragment",
+      "paper_section": "8.1 RQ1",
+      "source_evidence": ["CE-Replay-IR-v1-B", "FD-Semantics-v0", "MCV-ScalarArray-Semantics-v0", "DMV-Baseline-and-Nonmonotonicity-v0", "Maintenance-Design-Deploy-v0", "DMV-Deploy-v0"],
+      "intended_visual_encoding": "Rows for Census MCV, FD fixtures, ScalarArray fixtures/regression, real DMV frozen comparisons, and both fresh deployments; columns for semantic fragment, comparisons, tolerance passes, and maximum relative error.",
+      "claim_supported": "Replay matches native estimates at reported floating-point tolerances inside an explicit boundary.",
+      "claim_ids": ["C1", "C15", "C16"],
+      "status": "MAIN-TEXT",
+      "essential": true
+    },
+    {
+      "id": "T3",
+      "type": "table",
+      "title": "Maintenance-budget physical-design outcomes",
+      "paper_section": "8.2 RQ2",
+      "source_evidence": ["Maintenance-Budget-Optimize-v0", "DMV-Maintenance-Budget-Optimize-v0", "CE-Replay-Optimize-v0"],
+      "intended_visual_encoding": "Per workload: budget, usable universe, selected MCV/FD, modeled cost, unused capacity, objective, consumed objects, terminal audit, and exhaustive-audit scope.",
+      "claim_supported": "Replay drives resource-constrained design; workload-scale guarantees are neighborhood-local, while small/restricted instances have exhaustive evidence.",
+      "claim_ids": ["C3", "C6", "C12"],
+      "status": "MAIN-TEXT",
+      "essential": true
+    },
+    {
+      "id": "T4",
+      "type": "table",
+      "title": "Exact incremental evaluation under sparse and dense incidence",
+      "paper_section": "8.3 RQ3",
+      "source_evidence": ["Semantic-Optimizer-v0", "Compositional-Semantic-Optimizer-v0", "DMV-Maintenance-Budget-Optimize-v0"],
+      "intended_visual_encoding": "Rows for Census MCV, Census mixed, and DMV mixed; columns for degree/topology, evaluated neighborhood, trajectory agreement, replay/control-work reduction, and wall-clock result.",
+      "claim_supported": "Semantic dependency information reduces audited control work without a universal runtime guarantee.",
+      "claim_ids": ["C9", "C10", "C11"],
+      "status": "MAIN-TEXT",
+      "essential": true
+    },
+    {
+      "id": "T5",
+      "type": "table",
+      "title": "Physical deployment and fresh native validation",
+      "paper_section": "8.4 RQ4",
+      "source_evidence": ["Maintenance-Design-Deploy-v0", "DMV-Deploy-v0", "DMV-Frozen-Provenance-Recovery-v0"],
+      "intended_visual_encoding": "Rows Census/DMV; columns selected design, order verification, fresh ANALYZE, materialization/consumption, frozen prediction, fresh replay/native, maximum semantic error, paired drift availability, and cost-model prediction error. DMV paired drift cell explicitly says unavailable due to missing frozen per-query provenance.",
+      "claim_supported": "Both designs physically realize and validate fresh semantics; only Census supports complete paired numerical drift analysis.",
+      "claim_ids": ["C8", "C13", "C14"],
+      "status": "MAIN-TEXT",
+      "essential": true
+    }
+  ],
+  "appendix": [
+    {"id":"A-F1","type":"figure","title":"PostgreSQL source-semantic and instrumentation map","paper_section":"Appendix A","source_evidence":["CE-Replay-IR-v1-B","FD-Semantics-v0","MCV-ScalarArray-Semantics-v0"],"intended_visual_encoding":"Source function to IR/replay primitive mapping.","claim_supported":"Reproducible semantic derivation.","status":"APPENDIX","essential":true},
+    {"id":"A-T1","type":"table","title":"Complete predicate and semantic validation matrix","paper_section":"Appendix B","source_evidence":["FD-Semantics-v0","MCV-ScalarArray-Semantics-v0","MCV consumption/composition"],"intended_visual_encoding":"Predicate cases, expected eligibility/trace, native and replay fields.","claim_supported":"Detailed semantic coverage and exclusions.","status":"APPENDIX","essential":true},
+    {"id":"A-F2","type":"figure","title":"OID precedence and overlapping-MCV witness","paper_section":"Appendix C","source_evidence":["Creation/OID-order probe","MCV-ScalarArray-Semantics-v0"],"intended_visual_encoding":"Same selected definitions in reversed physical order with winner/estimate changes.","claim_supported":"Physical realization matters in PostgreSQL-specific ties.","status":"APPENDIX","essential":true},
+    {"id":"A-T2","type":"table","title":"Exhaustive and terminal optimality audits","paper_section":"Appendix D","source_evidence":["CE-Replay-Optimize-v0","Maintenance-Budget-Optimize-v0","DMV-Maintenance-Budget-Optimize-v0"],"intended_visual_encoding":"Instance size, enumerated designs/moves, tolerance, gap, guarantee.","claim_supported":"Exactness boundary of the optimizer.","status":"APPENDIX","essential":true},
+    {"id":"A-T3","type":"table","title":"Rejected semantic shortcuts and decompositions","paper_section":"Appendix E","source_evidence":["Census locality analysis","First-applicable pilot","CE-Semantic-State-v0","MCV-Commutativity-v0","MCV-Semantic-Factorization-v0","CE-Replay-Optimize-v2"],"intended_visual_encoding":"Hypothesis, counterexample/result, implication for final design.","claim_supported":"Why the final dependency/invalidation architecture is necessary.","status":"APPENDIX","essential":false},
+    {"id":"A-F3","type":"figure","title":"Maintenance-model residual and noise diagnostics","paper_section":"Appendix F","source_evidence":["Analyze-Cost-Model-v0","DMV-Analyze-Cost-Model-v0"],"intended_visual_encoding":"Residuals, CVs, same-count subset variation, full-range predictions.","claim_supported":"First-order proxy limitations.","status":"APPENDIX","essential":true},
+    {"id":"A-F4","type":"figure","title":"Repeated fresh ANALYZE realization variability","paper_section":"Appendix G","source_evidence":["Repeated-Analyze-Robustness-v0"],"intended_visual_encoding":"Thirty-run objective distribution and replay/native fidelity.","claim_supported":"Payload drift is distinct from semantic replay error.","status":"APPENDIX","essential":false},
+    {"id":"A-T4","type":"table","title":"DMV frozen-provenance audit","paper_section":"Appendix H","source_evidence":["DMV-Frozen-Provenance-Recovery-v0"],"intended_visual_encoding":"Persisted versus missing state and supported versus blocked claims.","claim_supported":"The DMV limitation is provenance incompleteness, not fresh semantic failure.","status":"APPENDIX","essential":true},
+    {"id":"A-T5","type":"table","title":"Complete 39-experiment evidence inventory","paper_section":"Appendix I or artifact only","source_evidence":["Research-Convergence-Audit-v2"],"intended_visual_encoding":"Experiment, role, claim, limitation, placement.","claim_supported":"Auditability and traceability.","status":"APPENDIX/ARTIFACT","essential":false}
+  ]
+}

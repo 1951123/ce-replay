@@ -1,0 +1,41 @@
+{
+  "artifact": "paper-technical-notation-audit-v0",
+  "date": "2026-09-22",
+  "drafts": [
+    "docs/paper-section-3-problem-formulation-v0.md",
+    "docs/paper-section-4-ce-semantics-v0.md",
+    "docs/paper-section-5-ce-replay-v0.md",
+    "docs/paper-section-6-physical-design-v0.md"
+  ],
+  "frozen_architecture_source": "docs/paper-architecture-v0.md#6-mathematical-formulation-and-notation-freeze",
+  "symbols": [
+    {"symbol":"Q","meaning":"supplied target workload","first_definition":"Section 3.1","sections_used":["3"],"frozen_architecture_source":"notation table: Q","consistency_status":"CONSISTENT"},
+    {"symbol":"q","meaning":"one target query","first_definition":"Section 3.1","sections_used":["3"],"frozen_architecture_source":"notation table: q","consistency_status":"CONSISTENT"},
+    {"symbol":"N_q","meaning":"ground-truth cardinality for query q, used only to score estimates","first_definition":"Section 3.1","sections_used":["3"],"frozen_architecture_source":"notation table: N_q","consistency_status":"CONSISTENT"},
+    {"symbol":"S","meaning":"candidate-statistic universe","first_definition":"Section 3.2","sections_used":["3"],"frozen_architecture_source":"notation table: S","consistency_status":"CONSISTENT"},
+    {"symbol":"Y","meaning":"selected candidate subset","first_definition":"Section 3.2","sections_used":["3"],"frozen_architecture_source":"notation table: Y","consistency_status":"CONSISTENT"},
+    {"symbol":"rho","meaning":"DBMS-specific physical realization","first_definition":"Section 3.2","sections_used":["3"],"frozen_architecture_source":"notation table: rho","consistency_status":"CONSISTENT"},
+    {"symbol":"P","meaning":"frozen candidate-payload repository/snapshot","first_definition":"Section 3.3","sections_used":["3"],"frozen_architecture_source":"notation table: P","consistency_status":"CONSISTENT"},
+    {"symbol":"W_q","meaning":"workload-fixed context for query q","first_definition":"Section 3.1","sections_used":["3"],"frozen_architecture_source":"notation table: W_q","consistency_status":"CONSISTENT"},
+    {"symbol":"F","meaning":"CE-Replay executable semantics","first_definition":"Section 3.4","sections_used":["3"],"frozen_architecture_source":"notation table: F","consistency_status":"CONSISTENT"},
+    {"symbol":"Nhat_q","meaning":"replayed/native DBMS cardinality estimate for query q","first_definition":"Section 3.4","sections_used":["3"],"frozen_architecture_source":"notation table: Nhat_q","consistency_status":"CONSISTENT"},
+    {"symbol":"ell","meaning":"per-query cardinality-estimation loss, instantiated as q-error","first_definition":"Section 3.5","sections_used":["3"],"frozen_architecture_source":"notation table: ell","consistency_status":"CONSISTENT"},
+    {"symbol":"L","meaning":"aggregate target-workload loss","first_definition":"Section 3.5","sections_used":["3"],"frozen_architecture_source":"notation table: L","consistency_status":"CONSISTENT"},
+    {"symbol":"C","meaning":"general recurring maintenance-cost function","first_definition":"Section 3.6","sections_used":["3"],"frozen_architecture_source":"notation table: C","consistency_status":"CONSISTENT"},
+    {"symbol":"B","meaning":"recurring maintenance budget","first_definition":"Section 3.6","sections_used":["3"],"frozen_architecture_source":"notation table: B","consistency_status":"CONSISTENT"}
+  ],
+  "audit": {
+    "new_notation_required": false,
+    "undefined_symbols": [],
+    "duplicate_meanings": [],
+    "introduced_but_unused": [],
+    "inline_math_delimiter_violations": 0,
+    "display_math_blocks_balanced": true,
+    "notes": [
+      "The frozen architecture calls this a 13-symbol set but lists Q, q, N_q, S, Y, rho, P, W_q, F, Nhat_q, ell, L, C, and B: fourteen table entries. The drafts preserve all fourteen listed entries rather than silently deleting one.",
+      "The architecture's sample objective contained a query-weight symbol absent from its frozen notation table. The draft uses the evaluated unweighted sum and introduces no new weight symbol; fixed weights are mentioned only as possible workload context.",
+      "Algorithm pseudocode uses descriptive program-variable names, not mathematical notation."
+    ]
+  },
+  "status": "PASS WITH DOCUMENTED ARCHITECTURE COUNT DISCREPANCY"
+}

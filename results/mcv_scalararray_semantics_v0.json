@@ -1,0 +1,4212 @@
+{
+  "experiment": "MCV-ScalarArray-Semantics-v0",
+  "source_audit": {
+    "postgres_version": "16.14",
+    "source_hashes": {
+      "/root/projects/extended-stats-optim/postgresql-16.14/src/backend/statistics/extended_stats.c": "5cda8b8a57f00ac0fea4d7e773b35fa883d97b30d0559d5e3cd8462c7fc76b43",
+      "/root/projects/extended-stats-optim/postgresql-16.14/src/backend/statistics/mcv.c": "ad61c851725a11712b6686dbbf650c74a33d72c658ac1a1ea8565f155e283473"
+    },
+    "path": [
+      {
+        "file": "src/backend/statistics/extended_stats.c",
+        "lines": "1324-1506",
+        "function": "statext_is_compatible_clause_internal",
+        "role": "recognizes Var/Expr op ANY/ALL Const ScalarArray clauses and supported operator selectivity families"
+      },
+      {
+        "file": "src/backend/statistics/extended_stats.c",
+        "lines": "1225-1321",
+        "function": "choose_best_statistics",
+        "role": "GreedyCover: most covered attributes, then fewest statistic keys, then stats-list/OID order"
+      },
+      {
+        "file": "src/backend/statistics/extended_stats.c",
+        "lines": "1696-2013",
+        "function": "statext_mcv_clauselist_selectivity",
+        "role": "filters/marks estimated clauses, repeats GreedyCover, computes simple selectivity, and composes statistic selectivities"
+      },
+      {
+        "file": "src/backend/statistics/mcv.c",
+        "lines": "1584-1972",
+        "function": "mcv_get_match_bitmap",
+        "role": "directly evaluates every MCV item against every ScalarArray element; ANY=OR, ALL=AND; NULL element=false"
+      },
+      {
+        "file": "src/backend/statistics/mcv.c",
+        "lines": "1977-2030",
+        "function": "mcv_combine_selectivities",
+        "role": "combines simple, matching MCV/base, and total MCV selectivities"
+      },
+      {
+        "file": "src/backend/statistics/mcv.c",
+        "lines": "2035-2087",
+        "function": "mcv_clauselist_selectivity",
+        "role": "sums matched item frequency/base_frequency and total list frequency"
+      }
+    ],
+    "answer": "ScalarArray is evaluated directly per MCV item and array element; it is not expanded into planner equality alternatives."
+  },
+  "supported_boundary": {
+    "supported": [
+      "a IN (constant text values)",
+      "a = ANY (constant text array)",
+      "conjunctive base-relation restrictions",
+      "duplicates",
+      "NULL array elements"
+    ],
+    "recognized_outside_scope": [
+      "a <> ALL (...) and other ANY/ALL operators accepted by native source",
+      "range-operator ScalarArrays",
+      "OR/NOT clause trees"
+    ],
+    "unsupported": [
+      "non-Const arrays",
+      "Var/Expr on the right",
+      "arbitrary operators",
+      "joins and parameterized clauses"
+    ],
+    "internal_representation": "IN and = ANY become ScalarArrayOpExpr with useOr=true and equality operator"
+  },
+  "fixture": {
+    "table": "sa_fixture",
+    "columns": {
+      "a": "text",
+      "b": "text",
+      "c": "text",
+      "d": "text"
+    },
+    "rows": 2400,
+    "statistics_target": 10,
+    "data_generation_sql": "WITH base AS (\n          SELECT g,\n                 CASE WHEN g%20<8 THEN 'A0' WHEN g%20<13 THEN 'A1'\n                      WHEN g%20<16 THEN 'A2' WHEN g%20<18 THEN 'A3'\n                      WHEN g%20=18 THEN 'A4' ELSE 'A5' END AS a\n          FROM generate_series(1,2400) g\n        ), ab AS (\n          SELECT g,a,\n                 CASE WHEN a='A0' THEN CASE WHEN g%10<7 THEN 'B0' ELSE 'B3' END\n                      WHEN a='A1' THEN CASE WHEN g%7<5 THEN 'B1' ELSE 'B4' END\n                      WHEN a='A2' THEN CASE WHEN g%5<3 THEN 'B2' ELSE 'B0' END\n                      WHEN a='A3' THEN CASE WHEN g%3<2 THEN 'B0' ELSE 'B3' END\n                      WHEN a='A4' THEN CASE WHEN g%2=0 THEN 'B4' ELSE 'B2' END\n                      ELSE CASE WHEN g%2=0 THEN 'B5' ELSE 'B1' END END AS b\n          FROM base\n        ), abc AS (\n          SELECT g,a,b,\n                 CASE WHEN b='B0' THEN CASE WHEN g%3<2 THEN 'C0' ELSE 'C3' END\n                      WHEN b='B1' THEN CASE WHEN g%4<3 THEN 'C1' ELSE 'C4' END\n                      WHEN b='B2' THEN 'C2' WHEN b='B3' THEN 'C3'\n                      WHEN b='B4' THEN 'C4' ELSE 'C5' END AS c\n          FROM ab\n        )\n        INSERT INTO sa_fixture\n        SELECT a,b,c,'D'||(g%6)::text FROM abc",
+    "configurations": [
+      {
+        "name": "single_ab",
+        "statistics": [
+          [
+            "ab",
+            [
+              "a",
+              "b"
+            ]
+          ]
+        ],
+        "cases": 18
+      },
+      {
+        "name": "single_abc",
+        "statistics": [
+          [
+            "abc",
+            [
+              "a",
+              "b",
+              "c"
+            ]
+          ]
+        ],
+        "cases": 3
+      },
+      {
+        "name": "overlap_ab_bc",
+        "statistics": [
+          [
+            "ab",
+            [
+              "a",
+              "b"
+            ]
+          ],
+          [
+            "bc",
+            [
+              "b",
+              "c"
+            ]
+          ]
+        ],
+        "cases": 2
+      },
+      {
+        "name": "overlap_bc_ab",
+        "statistics": [
+          [
+            "bc",
+            [
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "ab",
+            [
+              "a",
+              "b"
+            ]
+          ]
+        ],
+        "cases": 2
+      },
+      {
+        "name": "disjoint_ab_cd",
+        "statistics": [
+          [
+            "ab",
+            [
+              "a",
+              "b"
+            ]
+          ],
+          [
+            "cd",
+            [
+              "c",
+              "d"
+            ]
+          ]
+        ],
+        "cases": 2
+      },
+      {
+        "name": "three_overlap",
+        "statistics": [
+          [
+            "ab",
+            [
+              "a",
+              "b"
+            ]
+          ],
+          [
+            "bc",
+            [
+              "b",
+              "c"
+            ]
+          ],
+          [
+            "ac",
+            [
+              "a",
+              "c"
+            ]
+          ]
+        ],
+        "cases": 2
+      }
+    ],
+    "payloads": {
+      "single_ab": [
+        {
+          "id": "ab",
+          "oid": 49868,
+          "oid_rank": 0,
+          "columns": [
+            "a",
+            "b"
+          ],
+          "payload_columns": [
+            "a",
+            "b"
+          ],
+          "items": 10,
+          "payload": [
+            {
+              "values": [
+                "A0",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.35,
+              "base_frequency": 0.2066666666666667
+            },
+            {
+              "values": [
+                "A1",
+                "B1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.17875,
+              "base_frequency": 0.0571875
+            },
+            {
+              "values": [
+                "A2",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.1,
+              "base_frequency": 0.0775
+            },
+            {
+              "values": [
+                "A1",
+                "B4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.07125,
+              "base_frequency": 0.0303125
+            },
+            {
+              "values": [
+                "A3",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.06666666666666667,
+              "base_frequency": 0.05166666666666667
+            },
+            {
+              "values": [
+                "A5",
+                "B1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.011437500000000001
+            },
+            {
+              "values": [
+                "A0",
+                "B3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.03333333333333333
+            },
+            {
+              "values": [
+                "A2",
+                "B2"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0075
+            },
+            {
+              "values": [
+                "A4",
+                "B4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0060625
+            },
+            {
+              "values": [
+                "A3",
+                "B3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.03333333333333333,
+              "base_frequency": 0.008333333333333333
+            }
+          ]
+        }
+      ],
+      "single_abc": [
+        {
+          "id": "abc",
+          "oid": 49876,
+          "oid_rank": 0,
+          "columns": [
+            "a",
+            "b",
+            "c"
+          ],
+          "payload_columns": [
+            "a",
+            "b",
+            "c"
+          ],
+          "items": 10,
+          "payload": [
+            {
+              "values": [
+                "A0",
+                "B0",
+                "C0"
+              ],
+              "nulls": [
+                false,
+                false,
+                false
+              ],
+              "frequency": 0.23333333333333334,
+              "base_frequency": 0.07577777777777778
+            },
+            {
+              "values": [
+                "A1",
+                "B1",
+                "C1"
+              ],
+              "nulls": [
+                false,
+                false,
+                false
+              ],
+              "frequency": 0.14291666666666666,
+              "base_frequency": 0.008173046875
+            },
+            {
+              "values": [
+                "A0",
+                "B0",
+                "C3"
+              ],
+              "nulls": [
+                false,
+                false,
+                false
+              ],
+              "frequency": 0.11666666666666667,
+              "base_frequency": 0.04822222222222223
+            },
+            {
+              "values": [
+                "A1",
+                "B4",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false,
+                false
+              ],
+              "frequency": 0.07125,
+              "base_frequency": 0.006277213541666667
+            },
+            {
+              "values": [
+                "A2",
+                "B0",
+                "C0"
+              ],
+              "nulls": [
+                false,
+                false,
+                false
+              ],
+              "frequency": 0.06666666666666667,
+              "base_frequency": 0.028416666666666663
+            },
+            {
+              "values": [
+                "A3",
+                "B0",
+                "C0"
+              ],
+              "nulls": [
+                false,
+                false,
+                false
+              ],
+              "frequency": 0.06666666666666667,
+              "base_frequency": 0.018944444444444444
+            },
+            {
+              "values": [
+                "A5",
+                "B1",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0023685156250000004
+            },
+            {
+              "values": [
+                "A2",
+                "B2",
+                "C2"
+              ],
+              "nulls": [
+                false,
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.000375
+            },
+            {
+              "values": [
+                "A0",
+                "B3",
+                "C3"
+              ],
+              "nulls": [
+                false,
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0077777777777777776
+            },
+            {
+              "values": [
+                "A4",
+                "B4",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0012554427083333335
+            }
+          ]
+        }
+      ],
+      "overlap_ab_bc": [
+        {
+          "id": "ab",
+          "oid": 49882,
+          "oid_rank": 0,
+          "columns": [
+            "a",
+            "b"
+          ],
+          "payload_columns": [
+            "a",
+            "b"
+          ],
+          "items": 10,
+          "payload": [
+            {
+              "values": [
+                "A0",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.35,
+              "base_frequency": 0.2066666666666667
+            },
+            {
+              "values": [
+                "A1",
+                "B1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.17875,
+              "base_frequency": 0.0571875
+            },
+            {
+              "values": [
+                "A2",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.1,
+              "base_frequency": 0.0775
+            },
+            {
+              "values": [
+                "A1",
+                "B4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.07125,
+              "base_frequency": 0.0303125
+            },
+            {
+              "values": [
+                "A3",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.06666666666666667,
+              "base_frequency": 0.05166666666666667
+            },
+            {
+              "values": [
+                "A5",
+                "B1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.011437500000000001
+            },
+            {
+              "values": [
+                "A0",
+                "B3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.03333333333333333
+            },
+            {
+              "values": [
+                "A2",
+                "B2"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0075
+            },
+            {
+              "values": [
+                "A4",
+                "B4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0060625
+            },
+            {
+              "values": [
+                "A3",
+                "B3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.03333333333333333,
+              "base_frequency": 0.008333333333333333
+            }
+          ]
+        },
+        {
+          "id": "bc",
+          "oid": 49883,
+          "oid_rank": 1,
+          "columns": [
+            "b",
+            "c"
+          ],
+          "payload_columns": [
+            "b",
+            "c"
+          ],
+          "items": 7,
+          "payload": [
+            {
+              "values": [
+                "B0",
+                "C0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.36666666666666664,
+              "base_frequency": 0.18944444444444444
+            },
+            {
+              "values": [
+                "B0",
+                "C3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.15,
+              "base_frequency": 0.12055555555555557
+            },
+            {
+              "values": [
+                "B1",
+                "C1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.14291666666666666,
+              "base_frequency": 0.0326921875
+            },
+            {
+              "values": [
+                "B4",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.12125,
+              "base_frequency": 0.025108854166666666
+            },
+            {
+              "values": [
+                "B1",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.08583333333333333,
+              "base_frequency": 0.047370312500000004
+            },
+            {
+              "values": [
+                "B3",
+                "C3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.08333333333333333,
+              "base_frequency": 0.019444444444444445
+            },
+            {
+              "values": [
+                "B2",
+                "C2"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0025000000000000005
+            }
+          ]
+        }
+      ],
+      "overlap_bc_ab": [
+        {
+          "id": "bc",
+          "oid": 49889,
+          "oid_rank": 0,
+          "columns": [
+            "b",
+            "c"
+          ],
+          "payload_columns": [
+            "b",
+            "c"
+          ],
+          "items": 7,
+          "payload": [
+            {
+              "values": [
+                "B0",
+                "C0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.36666666666666664,
+              "base_frequency": 0.18944444444444444
+            },
+            {
+              "values": [
+                "B0",
+                "C3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.15,
+              "base_frequency": 0.12055555555555557
+            },
+            {
+              "values": [
+                "B1",
+                "C1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.14291666666666666,
+              "base_frequency": 0.0326921875
+            },
+            {
+              "values": [
+                "B4",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.12125,
+              "base_frequency": 0.025108854166666666
+            },
+            {
+              "values": [
+                "B1",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.08583333333333333,
+              "base_frequency": 0.047370312500000004
+            },
+            {
+              "values": [
+                "B3",
+                "C3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.08333333333333333,
+              "base_frequency": 0.019444444444444445
+            },
+            {
+              "values": [
+                "B2",
+                "C2"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0025000000000000005
+            }
+          ]
+        },
+        {
+          "id": "ab",
+          "oid": 49890,
+          "oid_rank": 1,
+          "columns": [
+            "a",
+            "b"
+          ],
+          "payload_columns": [
+            "a",
+            "b"
+          ],
+          "items": 10,
+          "payload": [
+            {
+              "values": [
+                "A0",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.35,
+              "base_frequency": 0.2066666666666667
+            },
+            {
+              "values": [
+                "A1",
+                "B1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.17875,
+              "base_frequency": 0.0571875
+            },
+            {
+              "values": [
+                "A2",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.1,
+              "base_frequency": 0.0775
+            },
+            {
+              "values": [
+                "A1",
+                "B4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.07125,
+              "base_frequency": 0.0303125
+            },
+            {
+              "values": [
+                "A3",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.06666666666666667,
+              "base_frequency": 0.05166666666666667
+            },
+            {
+              "values": [
+                "A5",
+                "B1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.011437500000000001
+            },
+            {
+              "values": [
+                "A0",
+                "B3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.03333333333333333
+            },
+            {
+              "values": [
+                "A2",
+                "B2"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0075
+            },
+            {
+              "values": [
+                "A4",
+                "B4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0060625
+            },
+            {
+              "values": [
+                "A3",
+                "B3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.03333333333333333,
+              "base_frequency": 0.008333333333333333
+            }
+          ]
+        }
+      ],
+      "disjoint_ab_cd": [
+        {
+          "id": "ab",
+          "oid": 49896,
+          "oid_rank": 0,
+          "columns": [
+            "a",
+            "b"
+          ],
+          "payload_columns": [
+            "a",
+            "b"
+          ],
+          "items": 10,
+          "payload": [
+            {
+              "values": [
+                "A0",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.35,
+              "base_frequency": 0.2066666666666667
+            },
+            {
+              "values": [
+                "A1",
+                "B1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.17875,
+              "base_frequency": 0.0571875
+            },
+            {
+              "values": [
+                "A2",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.1,
+              "base_frequency": 0.0775
+            },
+            {
+              "values": [
+                "A1",
+                "B4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.07125,
+              "base_frequency": 0.0303125
+            },
+            {
+              "values": [
+                "A3",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.06666666666666667,
+              "base_frequency": 0.05166666666666667
+            },
+            {
+              "values": [
+                "A5",
+                "B1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.011437500000000001
+            },
+            {
+              "values": [
+                "A0",
+                "B3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.03333333333333333
+            },
+            {
+              "values": [
+                "A2",
+                "B2"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0075
+            },
+            {
+              "values": [
+                "A4",
+                "B4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0060625
+            },
+            {
+              "values": [
+                "A3",
+                "B3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.03333333333333333,
+              "base_frequency": 0.008333333333333333
+            }
+          ]
+        },
+        {
+          "id": "cd",
+          "oid": 49897,
+          "oid_rank": 1,
+          "columns": [
+            "c",
+            "d"
+          ],
+          "payload_columns": [
+            "c",
+            "d"
+          ],
+          "items": 10,
+          "payload": [
+            {
+              "values": [
+                "C3",
+                "D2"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.1,
+              "base_frequency": 0.03888888888888889
+            },
+            {
+              "values": [
+                "C0",
+                "D4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.1,
+              "base_frequency": 0.0611111111111111
+            },
+            {
+              "values": [
+                "C0",
+                "D0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.1,
+              "base_frequency": 0.0611111111111111
+            },
+            {
+              "values": [
+                "C3",
+                "D5"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.1,
+              "base_frequency": 0.03888888888888889
+            },
+            {
+              "values": [
+                "C0",
+                "D1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.08333333333333333,
+              "base_frequency": 0.0611111111111111
+            },
+            {
+              "values": [
+                "C0",
+                "D3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.08333333333333333,
+              "base_frequency": 0.0611111111111111
+            },
+            {
+              "values": [
+                "C4",
+                "D5"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.03833333333333333,
+              "base_frequency": 0.034513888888888886
+            },
+            {
+              "values": [
+                "C4",
+                "D3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.03791666666666667,
+              "base_frequency": 0.034513888888888886
+            },
+            {
+              "values": [
+                "C4",
+                "D1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.03791666666666667,
+              "base_frequency": 0.034513888888888886
+            },
+            {
+              "values": [
+                "C1",
+                "D4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.03625,
+              "base_frequency": 0.02381944444444444
+            }
+          ]
+        }
+      ],
+      "three_overlap": [
+        {
+          "id": "ab",
+          "oid": 49903,
+          "oid_rank": 0,
+          "columns": [
+            "a",
+            "b"
+          ],
+          "payload_columns": [
+            "a",
+            "b"
+          ],
+          "items": 10,
+          "payload": [
+            {
+              "values": [
+                "A0",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.35,
+              "base_frequency": 0.2066666666666667
+            },
+            {
+              "values": [
+                "A1",
+                "B1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.17875,
+              "base_frequency": 0.0571875
+            },
+            {
+              "values": [
+                "A2",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.1,
+              "base_frequency": 0.0775
+            },
+            {
+              "values": [
+                "A1",
+                "B4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.07125,
+              "base_frequency": 0.0303125
+            },
+            {
+              "values": [
+                "A3",
+                "B0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.06666666666666667,
+              "base_frequency": 0.05166666666666667
+            },
+            {
+              "values": [
+                "A5",
+                "B1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.011437500000000001
+            },
+            {
+              "values": [
+                "A0",
+                "B3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.03333333333333333
+            },
+            {
+              "values": [
+                "A2",
+                "B2"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0075
+            },
+            {
+              "values": [
+                "A4",
+                "B4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0060625
+            },
+            {
+              "values": [
+                "A3",
+                "B3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.03333333333333333,
+              "base_frequency": 0.008333333333333333
+            }
+          ]
+        },
+        {
+          "id": "bc",
+          "oid": 49904,
+          "oid_rank": 1,
+          "columns": [
+            "b",
+            "c"
+          ],
+          "payload_columns": [
+            "b",
+            "c"
+          ],
+          "items": 7,
+          "payload": [
+            {
+              "values": [
+                "B0",
+                "C0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.36666666666666664,
+              "base_frequency": 0.18944444444444444
+            },
+            {
+              "values": [
+                "B0",
+                "C3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.15,
+              "base_frequency": 0.12055555555555557
+            },
+            {
+              "values": [
+                "B1",
+                "C1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.14291666666666666,
+              "base_frequency": 0.0326921875
+            },
+            {
+              "values": [
+                "B4",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.12125,
+              "base_frequency": 0.025108854166666666
+            },
+            {
+              "values": [
+                "B1",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.08583333333333333,
+              "base_frequency": 0.047370312500000004
+            },
+            {
+              "values": [
+                "B3",
+                "C3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.08333333333333333,
+              "base_frequency": 0.019444444444444445
+            },
+            {
+              "values": [
+                "B2",
+                "C2"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0025000000000000005
+            }
+          ]
+        },
+        {
+          "id": "ac",
+          "oid": 49905,
+          "oid_rank": 2,
+          "columns": [
+            "a",
+            "c"
+          ],
+          "payload_columns": [
+            "a",
+            "c"
+          ],
+          "items": 10,
+          "payload": [
+            {
+              "values": [
+                "A0",
+                "C0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.23333333333333334,
+              "base_frequency": 0.14666666666666667
+            },
+            {
+              "values": [
+                "A0",
+                "C3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.16666666666666666,
+              "base_frequency": 0.09333333333333334
+            },
+            {
+              "values": [
+                "A1",
+                "C1"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.14291666666666666,
+              "base_frequency": 0.035729166666666666
+            },
+            {
+              "values": [
+                "A1",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.10708333333333334,
+              "base_frequency": 0.051770833333333335
+            },
+            {
+              "values": [
+                "A3",
+                "C0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.06666666666666667,
+              "base_frequency": 0.03666666666666667
+            },
+            {
+              "values": [
+                "A2",
+                "C0"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.06666666666666667,
+              "base_frequency": 0.05499999999999999
+            },
+            {
+              "values": [
+                "A5",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.010354166666666668
+            },
+            {
+              "values": [
+                "A2",
+                "C2"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.0075
+            },
+            {
+              "values": [
+                "A4",
+                "C4"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.05,
+              "base_frequency": 0.010354166666666668
+            },
+            {
+              "values": [
+                "A2",
+                "C3"
+              ],
+              "nulls": [
+                false,
+                false
+              ],
+              "frequency": 0.03333333333333333,
+              "base_frequency": 0.034999999999999996
+            }
+          ]
+        }
+      ]
+    },
+    "isolated_database_dropped": true
+  },
+  "validation": {
+    "cases": 29,
+    "strict_matches": 29,
+    "trace_matches": 29,
+    "max_row_relative_error": 4.38168020385397e-15,
+    "max_node_field_relative_error": 4.440892098500646e-15,
+    "max_absolute_row_error": 6.821210263296962e-13,
+    "tolerance": 1e-12,
+    "rows": [
+      {
+        "configuration": "single_ab",
+        "case": "eq_single",
+        "clause_class": "A-equality",
+        "where": "a = 'A0'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "eq",
+            "value": "A0",
+            "sql": "a = 'A0'"
+          }
+        ],
+        "native_rows": 960.0000143051147,
+        "native_selectivity": 0.4000000059604645,
+        "external_rows": 960.0000143051147,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [],
+        "external_trace": [],
+        "trace_match": true,
+        "native_nodes": [],
+        "external_nodes": [],
+        "node_relative_errors": [],
+        "estimated_clause_indexes_native_inferred_from_source": [],
+        "estimated_clause_indexes_replay": [],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "eq_pair",
+        "clause_class": "A-equality",
+        "where": "a = 'A0' AND b = 'B0'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "eq",
+            "value": "A0",
+            "sql": "a = 'A0'"
+          },
+          {
+            "column": "b",
+            "kind": "eq",
+            "value": "B0",
+            "sql": "b = 'B0'"
+          }
+        ],
+        "native_rows": 839.9999999999994,
+        "native_selectivity": 0.34999999999999976,
+        "external_rows": 840.0,
+        "absolute_error": 5.684341886080801e-13,
+        "relative_error": 6.767073673905721e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.2066666633884111,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0000000000000002,
+            "stat": 0.34999999999999976
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.2066666633884111,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0,
+            "stat": 0.35
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 6.344131569286613e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "in_one_only",
+        "clause_class": "B-single-array",
+        "where": "a IN ('A0')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0')"
+          }
+        ],
+        "native_rows": 960.0000143051147,
+        "native_selectivity": 0.4000000059604645,
+        "external_rows": 960.0000143051147,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [],
+        "external_trace": [],
+        "trace_match": true,
+        "native_nodes": [],
+        "external_nodes": [],
+        "node_relative_errors": [],
+        "estimated_clause_indexes_native_inferred_from_source": [],
+        "estimated_clause_indexes_replay": [],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "in_two_only",
+        "clause_class": "B-single-array",
+        "where": "a IN ('A0', 'A1')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A1')"
+          }
+        ],
+        "native_rows": 1560.0000143051147,
+        "native_selectivity": 0.6500000059604645,
+        "external_rows": 1560.0000143051147,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [],
+        "external_trace": [],
+        "trace_match": true,
+        "native_nodes": [],
+        "external_nodes": [],
+        "node_relative_errors": [],
+        "estimated_clause_indexes_native_inferred_from_source": [],
+        "estimated_clause_indexes_replay": [],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "in_three_only",
+        "clause_class": "B-single-array",
+        "where": "a IN ('A0', 'A1', 'A2')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1",
+              "A2"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A1', 'A2')"
+          }
+        ],
+        "native_rows": 1920.0000286102295,
+        "native_selectivity": 0.800000011920929,
+        "external_rows": 1920.0000286102295,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [],
+        "external_trace": [],
+        "trace_match": true,
+        "native_nodes": [],
+        "external_nodes": [],
+        "node_relative_errors": [],
+        "estimated_clause_indexes_native_inferred_from_source": [],
+        "estimated_clause_indexes_replay": [],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "in_large_only",
+        "clause_class": "B-single-array",
+        "where": "a IN ('A0', 'A1', 'A2', 'A3', 'A4', 'A5')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1",
+              "A2",
+              "A3",
+              "A4",
+              "A5"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A1', 'A2', 'A3', 'A4', 'A5')"
+          }
+        ],
+        "native_rows": 1654.3545150401517,
+        "native_selectivity": 0.6893143812667298,
+        "external_rows": 1654.3545150401517,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [],
+        "external_trace": [],
+        "trace_match": true,
+        "native_nodes": [],
+        "external_nodes": [],
+        "node_relative_errors": [],
+        "estimated_clause_indexes_native_inferred_from_source": [],
+        "estimated_clause_indexes_replay": [],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "eq_then_in_one",
+        "clause_class": "C-equality-array",
+        "where": "a = 'A0' AND b IN ('B0')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "eq",
+            "value": "A0",
+            "sql": "a = 'A0'"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0')"
+          }
+        ],
+        "native_rows": 839.9999999999994,
+        "native_selectivity": 0.34999999999999976,
+        "external_rows": 840.0,
+        "absolute_error": 5.684341886080801e-13,
+        "relative_error": 6.767073673905721e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.2066666633884111,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0000000000000002,
+            "stat": 0.34999999999999976
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.2066666633884111,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0,
+            "stat": 0.35
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 6.344131569286613e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "eq_then_in_some",
+        "clause_class": "C-equality-array",
+        "where": "a = 'A0' AND b IN ('B0', 'B3', 'BX')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "eq",
+            "value": "A0",
+            "sql": "a = 'A0'"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0",
+              "B3",
+              "BX"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0', 'B3', 'BX')"
+          }
+        ],
+        "native_rows": 959.9999999999994,
+        "native_selectivity": 0.39999999999999974,
+        "external_rows": 960.0,
+        "absolute_error": 5.684341886080801e-13,
+        "relative_error": 5.921189464667505e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.23999999970197672,
+            "mcv": 0.39999999999999997,
+            "base": 0.24000000000000002,
+            "total": 1.0000000000000002,
+            "stat": 0.39999999999999974
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.23999999970197672,
+            "mcv": 0.39999999999999997,
+            "base": 0.24000000000000002,
+            "total": 1.0,
+            "stat": 0.39999999999999997
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 5.551115123125787e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "in_then_eq",
+        "clause_class": "C-equality-array",
+        "where": "a IN ('A0', 'A1') AND b = 'B0'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A1')"
+          },
+          {
+            "column": "b",
+            "kind": "eq",
+            "value": "B0",
+            "sql": "b = 'B0'"
+          }
+        ],
+        "native_rows": 839.9999999999994,
+        "native_selectivity": 0.34999999999999976,
+        "external_rows": 840.0,
+        "absolute_error": 5.684341886080801e-13,
+        "relative_error": 6.767073673905721e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.3358333260814348,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0000000000000002,
+            "stat": 0.34999999999999976
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.3358333260814348,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0,
+            "stat": 0.35
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 6.344131569286613e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "any_syntax",
+        "clause_class": "C-equality-array",
+        "where": "a = ANY (ARRAY['A0', 'A1']::text[]) AND b = 'B0'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1"
+            ],
+            "syntax": "ANY",
+            "sql": "a = ANY (ARRAY['A0', 'A1']::text[])"
+          },
+          {
+            "column": "b",
+            "kind": "eq",
+            "value": "B0",
+            "sql": "b = 'B0'"
+          }
+        ],
+        "native_rows": 839.9999999999994,
+        "native_selectivity": 0.34999999999999976,
+        "external_rows": 840.0,
+        "absolute_error": 5.684341886080801e-13,
+        "relative_error": 6.767073673905721e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.3358333260814348,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0000000000000002,
+            "stat": 0.34999999999999976
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.3358333260814348,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0,
+            "stat": 0.35
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 6.344131569286613e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "two_arrays_many",
+        "clause_class": "D-multiple-array",
+        "where": "a IN ('A0', 'A1', 'A2') AND b IN ('B0', 'B1', 'B2')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1",
+              "A2"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A1', 'A2')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0",
+              "B1",
+              "B2"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0', 'B1', 'B2')"
+          }
+        ],
+        "native_rows": 1628.9999999999993,
+        "native_selectivity": 0.6787499999999997,
+        "external_rows": 1629.0,
+        "absolute_error": 6.821210263296962e-13,
+        "relative_error": 4.1873605054002237e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.6363333349873621,
+            "mcv": 0.67875,
+            "base": 0.34885416666666674,
+            "total": 1.0000000000000002,
+            "stat": 0.6787499999999997
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.6363333349873621,
+            "mcv": 0.67875,
+            "base": 0.3488541666666667,
+            "total": 1.0,
+            "stat": 0.67875
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 1.591242316572335e-16,
+            "total": 2.2204460492503126e-16,
+            "stat": 3.2713753948439245e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "two_arrays_one",
+        "clause_class": "D-multiple-array",
+        "where": "a IN ('A4') AND b IN ('B4')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A4"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A4')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B4"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B4')"
+          }
+        ],
+        "native_rows": 119.99999999999947,
+        "native_selectivity": 0.04999999999999978,
+        "external_rows": 120.0,
+        "absolute_error": 5.258016244624741e-13,
+        "relative_error": 4.38168020385397e-15,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.006062500269152227,
+            "mcv": 0.05,
+            "base": 0.0060625,
+            "total": 1.0000000000000002,
+            "stat": 0.04999999999999978
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.006062500269152227,
+            "mcv": 0.05,
+            "base": 0.0060625,
+            "total": 1.0,
+            "stat": 0.05
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 4.440892098500646e-15
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "two_arrays_none",
+        "clause_class": "D-multiple-array",
+        "where": "a IN ('AZ') AND b IN ('BZ')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "AZ"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('AZ')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "BZ"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('BZ')"
+          }
+        ],
+        "native_rows": 0.0,
+        "native_selectivity": 0.0,
+        "external_rows": 0.0,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 1.0000000000000002,
+            "stat": 0.0
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.0,
+            "mcv": 0,
+            "base": 0,
+            "total": 1.0,
+            "stat": 0.0
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 0.0
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "duplicate_hit",
+        "clause_class": "E-duplicates",
+        "where": "a IN ('A0', 'A0', 'A1') AND b = 'B0'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A0",
+              "A1"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A0', 'A1')"
+          },
+          {
+            "column": "b",
+            "kind": "eq",
+            "value": "B0",
+            "sql": "b = 'B0'"
+          }
+        ],
+        "native_rows": 839.9999999999994,
+        "native_selectivity": 0.34999999999999976,
+        "external_rows": 840.0,
+        "absolute_error": 5.684341886080801e-13,
+        "relative_error": 6.767073673905721e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.37716665783524506,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0000000000000002,
+            "stat": 0.34999999999999976
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.37716665783524506,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0,
+            "stat": 0.35
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 6.344131569286613e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "duplicate_miss",
+        "clause_class": "E-duplicates",
+        "where": "a IN ('AZ', 'AZ') AND b = 'B0'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "AZ",
+              "AZ"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('AZ', 'AZ')"
+          },
+          {
+            "column": "b",
+            "kind": "eq",
+            "value": "B0",
+            "sql": "b = 'B0'"
+          }
+        ],
+        "native_rows": 0.0,
+        "native_selectivity": 0.0,
+        "external_rows": 0.0,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 1.0000000000000002,
+            "stat": 0.0
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.0,
+            "mcv": 0,
+            "base": 0,
+            "total": 1.0,
+            "stat": 0.0
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 0.0
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "null_plus_hit",
+        "clause_class": "F-null",
+        "where": "a IN ('A0', NULL) AND b = 'B0'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              null
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', NULL)"
+          },
+          {
+            "column": "b",
+            "kind": "eq",
+            "value": "B0",
+            "sql": "b = 'B0'"
+          }
+        ],
+        "native_rows": 839.9999999999994,
+        "native_selectivity": 0.34999999999999976,
+        "external_rows": 840.0,
+        "absolute_error": 5.684341886080801e-13,
+        "relative_error": 6.767073673905721e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.2066666633884111,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0000000000000002,
+            "stat": 0.34999999999999976
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.2066666633884111,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0,
+            "stat": 0.35
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 6.344131569286613e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "null_plus_miss",
+        "clause_class": "F-null",
+        "where": "a IN ('AZ', NULL) AND b = 'B0'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "AZ",
+              null
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('AZ', NULL)"
+          },
+          {
+            "column": "b",
+            "kind": "eq",
+            "value": "B0",
+            "sql": "b = 'B0'"
+          }
+        ],
+        "native_rows": 0.0,
+        "native_selectivity": 0.0,
+        "external_rows": 0.0,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 1.0000000000000002,
+            "stat": 0.0
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.0,
+            "mcv": 0,
+            "base": 0,
+            "total": 1.0,
+            "stat": 0.0
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 0.0
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_ab",
+        "case": "non_mcv_values",
+        "clause_class": "G-non-mcv",
+        "where": "a = 'A5' AND b = 'B5'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "eq",
+            "value": "A5",
+            "sql": "a = 'A5'"
+          },
+          {
+            "column": "b",
+            "kind": "eq",
+            "value": "B5",
+            "sql": "b = 'B5'"
+          }
+        ],
+        "native_rows": 0.0,
+        "native_selectivity": 0.0,
+        "external_rows": 0.0,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49868,
+            "simple": 1.8626451769865326e-10,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 1.0000000000000002,
+            "stat": 0.0
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49868,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 1.8626451769865326e-10,
+            "mcv": 0,
+            "base": 0,
+            "total": 1.0,
+            "stat": 0.0
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 0.0
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_abc",
+        "case": "three_arrays_many",
+        "clause_class": "D-multiple-array",
+        "where": "a IN ('A0', 'A1') AND b IN ('B0', 'B1') AND c IN ('C0', 'C1')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A1')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0",
+              "B1"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0', 'B1')"
+          },
+          {
+            "column": "c",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "C0",
+              "C1"
+            ],
+            "syntax": "IN",
+            "sql": "c IN ('C0', 'C1')"
+          }
+        ],
+        "native_rows": 1148.9999999999995,
+        "native_selectivity": 0.4787499999999998,
+        "external_rows": 1149.0000000000002,
+        "absolute_error": 6.821210263296962e-13,
+        "relative_error": 5.936649489379429e-16,
+        "native_trace": [
+          "abc"
+        ],
+        "external_trace": [
+          "abc"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49876,
+            "simple": 0.24690374288734768,
+            "mcv": 0.37625,
+            "base": 0.08395082465277778,
+            "total": 0.8975000000000002,
+            "stat": 0.4787499999999998
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "abc",
+            "oid": 49876,
+            "covered_clause_indexes": [
+              0,
+              1,
+              2
+            ],
+            "simple": 0.24690374288734768,
+            "mcv": 0.37625,
+            "base": 0.08395082465277778,
+            "total": 0.8975,
+            "stat": 0.47875
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.4740345952649724e-16,
+            "stat": 4.63800741357768e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_abc",
+        "case": "three_arrays_one",
+        "clause_class": "D-multiple-array",
+        "where": "a IN ('A0') AND b IN ('B0') AND c IN ('C0')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0')"
+          },
+          {
+            "column": "c",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "C0"
+            ],
+            "syntax": "IN",
+            "sql": "c IN ('C0')"
+          }
+        ],
+        "native_rows": 560.0000010569889,
+        "native_selectivity": 0.23333333377374538,
+        "external_rows": 560.0000010569888,
+        "absolute_error": 1.1368683772161603e-13,
+        "relative_error": 2.0301220983398996e-16,
+        "native_trace": [
+          "abc"
+        ],
+        "external_trace": [
+          "abc"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49876,
+            "simple": 0.07577777821818982,
+            "mcv": 0.23333333333333334,
+            "base": 0.07577777777777778,
+            "total": 0.8975000000000002,
+            "stat": 0.23333333377374538
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "abc",
+            "oid": 49876,
+            "covered_clause_indexes": [
+              0,
+              1,
+              2
+            ],
+            "simple": 0.07577777821818982,
+            "mcv": 0.23333333333333334,
+            "base": 0.07577777777777778,
+            "total": 0.8975,
+            "stat": 0.23333333377374538
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.4740345952649724e-16,
+            "stat": 0.0
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "single_abc",
+        "case": "three_arrays_none",
+        "clause_class": "D-multiple-array",
+        "where": "a IN ('AZ') AND b IN ('BZ') AND c IN ('CZ')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "AZ"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('AZ')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "BZ"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('BZ')"
+          },
+          {
+            "column": "c",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "CZ"
+            ],
+            "syntax": "IN",
+            "sql": "c IN ('CZ')"
+          }
+        ],
+        "native_rows": 0.0,
+        "native_selectivity": 0.0,
+        "external_rows": 0.0,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [
+          "abc"
+        ],
+        "external_trace": [
+          "abc"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49876,
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 0.8975000000000002,
+            "stat": 0.0
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "abc",
+            "oid": 49876,
+            "covered_clause_indexes": [
+              0,
+              1,
+              2
+            ],
+            "simple": 0.0,
+            "mcv": 0,
+            "base": 0,
+            "total": 0.8975,
+            "stat": 0.0
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.4740345952649724e-16,
+            "stat": 0.0
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "overlap_ab_bc",
+        "case": "overlap_many",
+        "clause_class": "H-overlap",
+        "where": "a IN ('A0', 'A1') AND b IN ('B0', 'B1') AND c = 'C0'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A1')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0",
+              "B1"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0', 'B1')"
+          },
+          {
+            "column": "c",
+            "kind": "eq",
+            "value": "C0",
+            "sql": "c = 'C0'"
+          }
+        ],
+        "native_rows": 465.30001008510567,
+        "native_selectivity": 0.19387500420212736,
+        "external_rows": 465.30001008510584,
+        "absolute_error": 1.7053025658242404e-13,
+        "relative_error": 3.6649527807066504e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49882,
+            "simple": 0.4845208309317628,
+            "mcv": 0.5287499999999999,
+            "base": 0.2638541666666667,
+            "total": 1.0000000000000002,
+            "stat": 0.5287499999999997
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49882,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.4845208309317628,
+            "mcv": 0.5287499999999999,
+            "base": 0.2638541666666667,
+            "total": 1.0,
+            "stat": 0.5287499999999999
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 4.199425152246457e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "overlap_ab_bc",
+        "case": "overlap_duplicate",
+        "clause_class": "H-overlap",
+        "where": "a IN ('A0', 'A0') AND b IN ('B0', 'B3') AND c IN ('C0', 'C3')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A0"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A0')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0",
+              "B3"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0', 'B3')"
+          },
+          {
+            "column": "c",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "C0",
+              "C3"
+            ],
+            "syntax": "IN",
+            "sql": "c IN ('C0', 'C3')"
+          }
+        ],
+        "native_rows": 576.0000085830685,
+        "native_selectivity": 0.24000000357627854,
+        "external_rows": 576.0000085830688,
+        "absolute_error": 3.410605131648481e-13,
+        "relative_error": 5.921189376434908e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49882,
+            "simple": 0.47999999642372115,
+            "mcv": 0.39999999999999997,
+            "base": 0.24000000000000002,
+            "total": 1.0000000000000002,
+            "stat": 0.39999999999999974
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49882,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.47999999642372115,
+            "mcv": 0.39999999999999997,
+            "base": 0.24000000000000002,
+            "total": 1.0,
+            "stat": 0.39999999999999997
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 5.551115123125787e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "overlap_bc_ab",
+        "case": "overlap_many",
+        "clause_class": "H-overlap-order",
+        "where": "a IN ('A0', 'A1') AND b IN ('B0', 'B1') AND c = 'C0'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A1')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0",
+              "B1"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0', 'B1')"
+          },
+          {
+            "column": "c",
+            "kind": "eq",
+            "value": "C0",
+            "sql": "c = 'C0'"
+          }
+        ],
+        "native_rows": 572.0000052452087,
+        "native_selectivity": 0.23833333551883698,
+        "external_rows": 572.0000052452086,
+        "absolute_error": 1.1368683772161603e-13,
+        "relative_error": 1.9875321097747194e-16,
+        "native_trace": [
+          "bc"
+        ],
+        "external_trace": [
+          "bc"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49889,
+            "simple": 0.27331944650742734,
+            "mcv": 0.36666666666666664,
+            "base": 0.18944444444444444,
+            "total": 1.0,
+            "stat": 0.36666666666666664
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "bc",
+            "oid": 49889,
+            "covered_clause_indexes": [
+              1,
+              2
+            ],
+            "simple": 0.27331944650742734,
+            "mcv": 0.36666666666666664,
+            "base": 0.18944444444444444,
+            "total": 1.0,
+            "stat": 0.36666666666666664
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 0.0,
+            "stat": 0.0
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            1,
+            2
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            1,
+            2
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "overlap_bc_ab",
+        "case": "overlap_duplicate",
+        "clause_class": "H-overlap-order",
+        "where": "a IN ('A0', 'A0') AND b IN ('B0', 'B3') AND c IN ('C0', 'C3')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A0"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A0')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0",
+              "B3"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0', 'B3')"
+          },
+          {
+            "column": "c",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "C0",
+              "C3"
+            ],
+            "syntax": "IN",
+            "sql": "c IN ('C0', 'C3')"
+          }
+        ],
+        "native_rows": 1152.0000171661377,
+        "native_selectivity": 0.48000000715255736,
+        "external_rows": 1152.0000171661377,
+        "absolute_error": 0.0,
+        "relative_error": 0.0,
+        "native_trace": [
+          "bc"
+        ],
+        "external_trace": [
+          "bc"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49889,
+            "simple": 0.35999999731779087,
+            "mcv": 0.6,
+            "base": 0.32944444444444443,
+            "total": 1.0,
+            "stat": 0.6
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "bc",
+            "oid": 49889,
+            "covered_clause_indexes": [
+              1,
+              2
+            ],
+            "simple": 0.35999999731779087,
+            "mcv": 0.6,
+            "base": 0.32944444444444443,
+            "total": 1.0,
+            "stat": 0.6
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 0.0,
+            "stat": 0.0
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            1,
+            2
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            1,
+            2
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "disjoint_ab_cd",
+        "case": "disjoint_compose",
+        "clause_class": "I-disjoint",
+        "where": "a IN ('A0', 'A1') AND b = 'B0' AND c IN ('C0', 'C1') AND d IN ('D0', 'D1')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A1')"
+          },
+          {
+            "column": "b",
+            "kind": "eq",
+            "value": "B0",
+            "sql": "b = 'B0'"
+          },
+          {
+            "column": "c",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "C0",
+              "C1"
+            ],
+            "syntax": "IN",
+            "sql": "c IN ('C0', 'C1')"
+          },
+          {
+            "column": "d",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "D0",
+              "D1"
+            ],
+            "syntax": "IN",
+            "sql": "d IN ('D0', 'D1')"
+          }
+        ],
+        "native_rows": 194.01667253226037,
+        "native_selectivity": 0.08084028022177515,
+        "external_rows": 194.01667253226046,
+        "absolute_error": 8.526512829121202e-14,
+        "relative_error": 4.3947320185606446e-16,
+        "native_trace": [
+          "ab",
+          "cd"
+        ],
+        "external_trace": [
+          "ab",
+          "cd"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49896,
+            "simple": 0.3358333260814348,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0000000000000002,
+            "stat": 0.34999999999999976
+          },
+          {
+            "oid": 49897,
+            "simple": 0.16986111809396087,
+            "mcv": 0.18333333333333335,
+            "base": 0.1222222222222222,
+            "total": 0.7170833333333334,
+            "stat": 0.23097222920507202
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49896,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.3358333260814348,
+            "mcv": 0.35,
+            "base": 0.2066666666666667,
+            "total": 1.0,
+            "stat": 0.35
+          },
+          {
+            "id": "cd",
+            "oid": 49897,
+            "covered_clause_indexes": [
+              2,
+              3
+            ],
+            "simple": 0.16986111809396087,
+            "mcv": 0.18333333333333335,
+            "base": 0.1222222222222222,
+            "total": 0.7170833333333333,
+            "stat": 0.23097222920507202
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 6.344131569286613e-16
+          },
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 1.5482482621152675e-16,
+            "stat": 0.0
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "disjoint_ab_cd",
+        "case": "disjoint_nonmcv",
+        "clause_class": "I-disjoint",
+        "where": "a IN ('A4', 'A5') AND b IN ('B4', 'B5') AND c IN ('C4', 'C5') AND d = 'D5'",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A4",
+              "A5"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A4', 'A5')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B4",
+              "B5"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B4', 'B5')"
+          },
+          {
+            "column": "c",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "C4",
+              "C5"
+            ],
+            "syntax": "IN",
+            "sql": "c IN ('C4', 'C5')"
+          },
+          {
+            "column": "d",
+            "kind": "eq",
+            "value": "D5",
+            "sql": "d = 'D5'"
+          }
+        ],
+        "native_rows": 4.600000047932046,
+        "native_selectivity": 0.0019166666866383528,
+        "external_rows": 4.600000047932066,
+        "absolute_error": 1.9539925233402755e-14,
+        "relative_error": 4.247809789086204e-15,
+        "native_trace": [
+          "ab",
+          "cd"
+        ],
+        "external_trace": [
+          "ab",
+          "cd"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49896,
+            "simple": 0.012125000910833489,
+            "mcv": 0.05,
+            "base": 0.0060625,
+            "total": 1.0000000000000002,
+            "stat": 0.04999999999999978
+          },
+          {
+            "oid": 49897,
+            "simple": 0.034513889288322774,
+            "mcv": 0.03833333333333333,
+            "base": 0.034513888888888886,
+            "total": 0.7170833333333334,
+            "stat": 0.03833333373276722
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49896,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.012125000910833489,
+            "mcv": 0.05,
+            "base": 0.0060625,
+            "total": 1.0,
+            "stat": 0.05
+          },
+          {
+            "id": "cd",
+            "oid": 49897,
+            "covered_clause_indexes": [
+              2,
+              3
+            ],
+            "simple": 0.034513889288322774,
+            "mcv": 0.03833333333333333,
+            "base": 0.034513888888888886,
+            "total": 0.7170833333333333,
+            "stat": 0.03833333373276722
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 4.440892098500646e-15
+          },
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 1.5482482621152675e-16,
+            "stat": 0.0
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "three_overlap",
+        "case": "three_compete",
+        "clause_class": "J-three-overlap",
+        "where": "a IN ('A0', 'A1') AND b IN ('B0', 'B1') AND c IN ('C0', 'C1')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              "A1"
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', 'A1')"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0",
+              "B1"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0', 'B1')"
+          },
+          {
+            "column": "c",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "C0",
+              "C1"
+            ],
+            "syntax": "IN",
+            "sql": "c IN ('C0', 'C1')"
+          }
+        ],
+        "native_rows": 646.6612573117014,
+        "native_selectivity": 0.2694421905465423,
+        "external_rows": 646.6612573117018,
+        "absolute_error": 3.410605131648481e-13,
+        "relative_error": 5.274175765263934e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49903,
+            "simple": 0.4845208309317628,
+            "mcv": 0.5287499999999999,
+            "base": 0.2638541666666667,
+            "total": 1.0000000000000002,
+            "stat": 0.5287499999999997
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49903,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.4845208309317628,
+            "mcv": 0.5287499999999999,
+            "base": 0.2638541666666667,
+            "total": 1.0,
+            "stat": 0.5287499999999999
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 4.199425152246457e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      },
+      {
+        "configuration": "three_overlap",
+        "case": "three_compete_null",
+        "clause_class": "J-three-overlap",
+        "where": "a IN ('A0', NULL) AND b IN ('B0', 'B3') AND c IN ('C0', 'C3')",
+        "clauses": [
+          {
+            "column": "a",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "A0",
+              null
+            ],
+            "syntax": "IN",
+            "sql": "a IN ('A0', NULL)"
+          },
+          {
+            "column": "b",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "B0",
+              "B3"
+            ],
+            "syntax": "IN",
+            "sql": "b IN ('B0', 'B3')"
+          },
+          {
+            "column": "c",
+            "kind": "scalar_array",
+            "operator": "=",
+            "quantifier": "ANY",
+            "values": [
+              "C0",
+              "C3"
+            ],
+            "syntax": "IN",
+            "sql": "c IN ('C0', 'C3')"
+          }
+        ],
+        "native_rows": 576.0000085830685,
+        "native_selectivity": 0.24000000357627854,
+        "external_rows": 576.0000085830688,
+        "absolute_error": 3.410605131648481e-13,
+        "relative_error": 5.921189376434908e-16,
+        "native_trace": [
+          "ab"
+        ],
+        "external_trace": [
+          "ab"
+        ],
+        "trace_match": true,
+        "native_nodes": [
+          {
+            "oid": 49903,
+            "simple": 0.23999999821186058,
+            "mcv": 0.39999999999999997,
+            "base": 0.24000000000000002,
+            "total": 1.0000000000000002,
+            "stat": 0.39999999999999974
+          }
+        ],
+        "external_nodes": [
+          {
+            "id": "ab",
+            "oid": 49903,
+            "covered_clause_indexes": [
+              0,
+              1
+            ],
+            "simple": 0.23999999821186058,
+            "mcv": 0.39999999999999997,
+            "base": 0.24000000000000002,
+            "total": 1.0,
+            "stat": 0.39999999999999997
+          }
+        ],
+        "node_relative_errors": [
+          {
+            "simple": 0.0,
+            "mcv": 0.0,
+            "base": 0.0,
+            "total": 2.2204460492503126e-16,
+            "stat": 5.551115123125787e-16
+          }
+        ],
+        "estimated_clause_indexes_native_inferred_from_source": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_indexes_replay": [
+          [
+            0,
+            1
+          ]
+        ],
+        "estimated_clause_match": true
+      }
+    ]
+  },
+  "correctness_distinctions": {
+    "clause_semantics": {
+      "established": true,
+      "evidence": "native vs replay mcv/base/total/stat fields for every selected node"
+    },
+    "control_semantics": {
+      "established": true,
+      "evidence": "selected OID/stat trace and source-inferred estimated clause indexes"
+    },
+    "end_to_end_ce": {
+      "established": true,
+      "evidence": "native pre-clamp raw rows vs external replay"
+    }
+  },
+  "order_test": {
+    "pairs": [
+      {
+        "case": "overlap_many",
+        "order_ab_bc_trace": [
+          "ab"
+        ],
+        "order_bc_ab_trace": [
+          "bc"
+        ],
+        "trace_changed": true,
+        "rows_ab_bc": 465.30001008510567,
+        "rows_bc_ab": 572.0000052452087,
+        "rows_changed": true
+      },
+      {
+        "case": "overlap_duplicate",
+        "order_ab_bc_trace": [
+          "ab"
+        ],
+        "order_bc_ab_trace": [
+          "bc"
+        ],
+        "trace_changed": true,
+        "rows_ab_bc": 576.0000085830685,
+        "rows_bc_ab": 1152.0000171661377,
+        "rows_changed": true
+      }
+    ],
+    "all_traces_change_with_order": true,
+    "new_scalararray_order_rule": false,
+    "interpretation": "existing stats-list/OID tie precedence applies unchanged"
+  },
+  "scalar_regression": {
+    "fixtures": 128,
+    "passed": 128,
+    "max_relative_error": 5.551306518836137e-16,
+    "tolerance": 1e-12,
+    "targets": [
+      100,
+      500,
+      1000,
+      2000
+    ]
+  },
+  "dmv_coverage": {
+    "reaudit_method": "reclassify DMV-Fit-Audit-v0 query classes by unsupported reason after adding the validated ScalarArray semantic handler",
+    "before": {
+      "fully_supported": 52,
+      "partially_supported": 1913,
+      "unsupported": 0,
+      "total": 1965,
+      "percent": 2.6463104325699747,
+      "reason_histogram": {
+        "partial: MCV IN/ScalarArray clause replay is outside current executable handler": 1913,
+        "minor engineering for all queries: text literal/payload parsing rather than Census numeric plumbing": 1965
+      }
+    },
+    "after": {
+      "fully_supported": 1965,
+      "partially_supported": 0,
+      "unsupported": 0,
+      "total": 1965,
+      "percent": 100.0,
+      "reason_histogram": {}
+    },
+    "newly_supported": 1913,
+    "partially_supported": 0,
+    "unsupported": 0,
+    "unsupported_reason_histogram": {},
+    "note": "All canonical DMV predicates are AND-conjoined scalar equality or equality IN over text constants; text payload plumbing is implemented generically here."
+  },
+  "runtime_seconds": 0.12077885600592708,
+  "gate": "READY FOR DMV REPLICATION"
+}

@@ -1,0 +1,249 @@
+{
+  "experiment": "DMV-Maintenance-Budget-Design-v0",
+  "source_result": "results/dmv_maintenance_budget_optimize_v0.json",
+  "payload_realization_changed": true,
+  "budget_fraction": 0.5,
+  "budget": 43.724602994231546,
+  "maintenance_cost": 29.1585432900458,
+  "remaining_capacity": 14.566059704185747,
+  "frozen_predicted_loss": 7.836513886761748e+298,
+  "mcv_cost": 1.0,
+  "fd_cost": 1.51321194083715,
+  "fixed_precedence": "lexicographic pair order materialized as creation/OID order; no precedence optimization",
+  "creation_order": [
+    {
+      "mechanism": "mcv",
+      "id": "mcv:body_type:suspension_indicator",
+      "columns": [
+        "body_type",
+        "suspension_indicator"
+      ],
+      "rank": 7
+    },
+    {
+      "mechanism": "mcv",
+      "id": "mcv:county:record_type",
+      "columns": [
+        "county",
+        "record_type"
+      ],
+      "rank": 9
+    },
+    {
+      "mechanism": "mcv",
+      "id": "mcv:county:state",
+      "columns": [
+        "county",
+        "state"
+      ],
+      "rank": 13
+    },
+    {
+      "mechanism": "mcv",
+      "id": "mcv:fuel_type:record_type",
+      "columns": [
+        "fuel_type",
+        "record_type"
+      ],
+      "rank": 15
+    },
+    {
+      "mechanism": "mcv",
+      "id": "mcv:fuel_type:revocation_indicator",
+      "columns": [
+        "fuel_type",
+        "revocation_indicator"
+      ],
+      "rank": 17
+    },
+    {
+      "mechanism": "mcv",
+      "id": "mcv:fuel_type:scofflaw_indicator",
+      "columns": [
+        "fuel_type",
+        "scofflaw_indicator"
+      ],
+      "rank": 18
+    },
+    {
+      "mechanism": "mcv",
+      "id": "mcv:record_type:registration_class",
+      "columns": [
+        "record_type",
+        "registration_class"
+      ],
+      "rank": 21
+    },
+    {
+      "mechanism": "mcv",
+      "id": "mcv:record_type:scofflaw_indicator",
+      "columns": [
+        "record_type",
+        "scofflaw_indicator"
+      ],
+      "rank": 23
+    },
+    {
+      "mechanism": "mcv",
+      "id": "mcv:registration_class:scofflaw_indicator",
+      "columns": [
+        "registration_class",
+        "scofflaw_indicator"
+      ],
+      "rank": 27
+    },
+    {
+      "mechanism": "mcv",
+      "id": "mcv:scofflaw_indicator:state",
+      "columns": [
+        "scofflaw_indicator",
+        "state"
+      ],
+      "rank": 33
+    },
+    {
+      "mechanism": "mcv",
+      "id": "mcv:state:suspension_indicator",
+      "columns": [
+        "state",
+        "suspension_indicator"
+      ],
+      "rank": 35
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:body_type:record_type",
+      "columns": [
+        "body_type",
+        "record_type"
+      ],
+      "rank": 2
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:body_type:scofflaw_indicator",
+      "columns": [
+        "body_type",
+        "scofflaw_indicator"
+      ],
+      "rank": 5
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:county:revocation_indicator",
+      "columns": [
+        "county",
+        "revocation_indicator"
+      ],
+      "rank": 9
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:county:scofflaw_indicator",
+      "columns": [
+        "county",
+        "scofflaw_indicator"
+      ],
+      "rank": 10
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:fuel_type:suspension_indicator",
+      "columns": [
+        "fuel_type",
+        "suspension_indicator"
+      ],
+      "rank": 18
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:record_type:revocation_indicator",
+      "columns": [
+        "record_type",
+        "revocation_indicator"
+      ],
+      "rank": 20
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:record_type:state",
+      "columns": [
+        "record_type",
+        "state"
+      ],
+      "rank": 22
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:record_type:suspension_indicator",
+      "columns": [
+        "record_type",
+        "suspension_indicator"
+      ],
+      "rank": 23
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:registration_class:suspension_indicator",
+      "columns": [
+        "registration_class",
+        "suspension_indicator"
+      ],
+      "rank": 27
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:revocation_indicator:scofflaw_indicator",
+      "columns": [
+        "revocation_indicator",
+        "scofflaw_indicator"
+      ],
+      "rank": 28
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:revocation_indicator:suspension_indicator",
+      "columns": [
+        "revocation_indicator",
+        "suspension_indicator"
+      ],
+      "rank": 30
+    },
+    {
+      "mechanism": "fd",
+      "id": "fd:scofflaw_indicator:suspension_indicator",
+      "columns": [
+        "scofflaw_indicator",
+        "suspension_indicator"
+      ],
+      "rank": 32
+    }
+  ],
+  "selected_mcv_ids": [
+    "mcv:body_type:suspension_indicator",
+    "mcv:county:record_type",
+    "mcv:county:state",
+    "mcv:fuel_type:record_type",
+    "mcv:fuel_type:revocation_indicator",
+    "mcv:fuel_type:scofflaw_indicator",
+    "mcv:record_type:registration_class",
+    "mcv:record_type:scofflaw_indicator",
+    "mcv:registration_class:scofflaw_indicator",
+    "mcv:scofflaw_indicator:state",
+    "mcv:state:suspension_indicator"
+  ],
+  "selected_fd_ids": [
+    "fd:body_type:record_type",
+    "fd:body_type:scofflaw_indicator",
+    "fd:county:revocation_indicator",
+    "fd:county:scofflaw_indicator",
+    "fd:fuel_type:suspension_indicator",
+    "fd:record_type:revocation_indicator",
+    "fd:record_type:state",
+    "fd:record_type:suspension_indicator",
+    "fd:registration_class:suspension_indicator",
+    "fd:revocation_indicator:scofflaw_indicator",
+    "fd:revocation_indicator:suspension_indicator",
+    "fd:scofflaw_indicator:suspension_indicator"
+  ]
+}

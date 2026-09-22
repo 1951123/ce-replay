@@ -1,0 +1,4236 @@
+{
+  "experiment": "DMV-Deploy-v0",
+  "deployment": {
+    "database": "dmv_deploy_v0",
+    "isolated": true,
+    "postgres_version": "PostgreSQL 16.14 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit",
+    "row_count": 11591877,
+    "schema": [
+      {
+        "column": "record_type",
+        "type": "text"
+      },
+      {
+        "column": "registration_class",
+        "type": "text"
+      },
+      {
+        "column": "state",
+        "type": "text"
+      },
+      {
+        "column": "county",
+        "type": "text"
+      },
+      {
+        "column": "body_type",
+        "type": "text"
+      },
+      {
+        "column": "fuel_type",
+        "type": "text"
+      },
+      {
+        "column": "reg_valid_date",
+        "type": "text"
+      },
+      {
+        "column": "color",
+        "type": "text"
+      },
+      {
+        "column": "scofflaw_indicator",
+        "type": "text"
+      },
+      {
+        "column": "suspension_indicator",
+        "type": "text"
+      },
+      {
+        "column": "revocation_indicator",
+        "type": "text"
+      }
+    ],
+    "statistics_target": 100,
+    "objects": [
+      {
+        "id": "mcv:body_type:suspension_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "body_type",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_00_mcv",
+        "oid": 51765,
+        "creation_rank": 0,
+        "semantic_rank": 7
+      },
+      {
+        "id": "mcv:county:record_type",
+        "mechanism": "mcv",
+        "columns": [
+          "county",
+          "record_type"
+        ],
+        "name": "dmv_deploy_v0_01_mcv",
+        "oid": 51766,
+        "creation_rank": 1,
+        "semantic_rank": 9
+      },
+      {
+        "id": "mcv:county:state",
+        "mechanism": "mcv",
+        "columns": [
+          "county",
+          "state"
+        ],
+        "name": "dmv_deploy_v0_02_mcv",
+        "oid": 51767,
+        "creation_rank": 2,
+        "semantic_rank": 13
+      },
+      {
+        "id": "mcv:fuel_type:record_type",
+        "mechanism": "mcv",
+        "columns": [
+          "fuel_type",
+          "record_type"
+        ],
+        "name": "dmv_deploy_v0_03_mcv",
+        "oid": 51768,
+        "creation_rank": 3,
+        "semantic_rank": 15
+      },
+      {
+        "id": "mcv:fuel_type:revocation_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "fuel_type",
+          "revocation_indicator"
+        ],
+        "name": "dmv_deploy_v0_04_mcv",
+        "oid": 51769,
+        "creation_rank": 4,
+        "semantic_rank": 17
+      },
+      {
+        "id": "mcv:fuel_type:scofflaw_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "fuel_type",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_05_mcv",
+        "oid": 51770,
+        "creation_rank": 5,
+        "semantic_rank": 18
+      },
+      {
+        "id": "mcv:record_type:registration_class",
+        "mechanism": "mcv",
+        "columns": [
+          "record_type",
+          "registration_class"
+        ],
+        "name": "dmv_deploy_v0_06_mcv",
+        "oid": 51771,
+        "creation_rank": 6,
+        "semantic_rank": 21
+      },
+      {
+        "id": "mcv:record_type:scofflaw_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "record_type",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_07_mcv",
+        "oid": 51772,
+        "creation_rank": 7,
+        "semantic_rank": 23
+      },
+      {
+        "id": "mcv:registration_class:scofflaw_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "registration_class",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_08_mcv",
+        "oid": 51773,
+        "creation_rank": 8,
+        "semantic_rank": 27
+      },
+      {
+        "id": "mcv:scofflaw_indicator:state",
+        "mechanism": "mcv",
+        "columns": [
+          "scofflaw_indicator",
+          "state"
+        ],
+        "name": "dmv_deploy_v0_09_mcv",
+        "oid": 51774,
+        "creation_rank": 9,
+        "semantic_rank": 33
+      },
+      {
+        "id": "mcv:state:suspension_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "state",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_10_mcv",
+        "oid": 51775,
+        "creation_rank": 10,
+        "semantic_rank": 35
+      },
+      {
+        "id": "fd:body_type:record_type",
+        "mechanism": "fd",
+        "columns": [
+          "body_type",
+          "record_type"
+        ],
+        "name": "dmv_deploy_v0_11_fd",
+        "oid": 51776,
+        "creation_rank": 11,
+        "semantic_rank": 2
+      },
+      {
+        "id": "fd:body_type:scofflaw_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "body_type",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_12_fd",
+        "oid": 51777,
+        "creation_rank": 12,
+        "semantic_rank": 5
+      },
+      {
+        "id": "fd:county:revocation_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "county",
+          "revocation_indicator"
+        ],
+        "name": "dmv_deploy_v0_13_fd",
+        "oid": 51778,
+        "creation_rank": 13,
+        "semantic_rank": 9
+      },
+      {
+        "id": "fd:county:scofflaw_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "county",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_14_fd",
+        "oid": 51779,
+        "creation_rank": 14,
+        "semantic_rank": 10
+      },
+      {
+        "id": "fd:fuel_type:suspension_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "fuel_type",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_15_fd",
+        "oid": 51780,
+        "creation_rank": 15,
+        "semantic_rank": 18
+      },
+      {
+        "id": "fd:record_type:revocation_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "record_type",
+          "revocation_indicator"
+        ],
+        "name": "dmv_deploy_v0_16_fd",
+        "oid": 51781,
+        "creation_rank": 16,
+        "semantic_rank": 20
+      },
+      {
+        "id": "fd:record_type:state",
+        "mechanism": "fd",
+        "columns": [
+          "record_type",
+          "state"
+        ],
+        "name": "dmv_deploy_v0_17_fd",
+        "oid": 51782,
+        "creation_rank": 17,
+        "semantic_rank": 22
+      },
+      {
+        "id": "fd:record_type:suspension_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "record_type",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_18_fd",
+        "oid": 51783,
+        "creation_rank": 18,
+        "semantic_rank": 23
+      },
+      {
+        "id": "fd:registration_class:suspension_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "registration_class",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_19_fd",
+        "oid": 51784,
+        "creation_rank": 19,
+        "semantic_rank": 27
+      },
+      {
+        "id": "fd:revocation_indicator:scofflaw_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "revocation_indicator",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_20_fd",
+        "oid": 51785,
+        "creation_rank": 20,
+        "semantic_rank": 28
+      },
+      {
+        "id": "fd:revocation_indicator:suspension_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "revocation_indicator",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_21_fd",
+        "oid": 51786,
+        "creation_rank": 21,
+        "semantic_rank": 30
+      },
+      {
+        "id": "fd:scofflaw_indicator:suspension_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "scofflaw_indicator",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_22_fd",
+        "oid": 51787,
+        "creation_rank": 22,
+        "semantic_rank": 32
+      }
+    ],
+    "selected_mcv": 11,
+    "selected_fd": 12,
+    "physical_oid_order_verified": true,
+    "analyze_executions": 1,
+    "analyze_seconds": 0.30373482200229773,
+    "reoptimized": false
+  },
+  "design_verification": {
+    "authoritative_artifact": "results/dmv_maintenance_budget_design_v0.json",
+    "maintenance_cost": 29.1585432900458,
+    "budget": 43.724602994231546,
+    "frozen_predicted_loss": 7.836513886761748e+298,
+    "candidate_ids_match": true
+  },
+  "cost_sanity": {
+    "predicted_seconds": 0.23864584055563237,
+    "observed_seconds": 0.30373482200229773,
+    "absolute_error_seconds": 0.06508898144666536,
+    "relative_error": 0.21429542064878215,
+    "model_refit": false
+  },
+  "fresh_payloads": {
+    "mcv": [
+      {
+        "id": "mcv:body_type:suspension_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "body_type",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_00_mcv",
+        "oid": 51765,
+        "creation_rank": 0,
+        "semantic_rank": 7,
+        "index": 0,
+        "oid_rank": 7,
+        "payload_columns": [
+          "body_type",
+          "suspension_indicator"
+        ],
+        "payload": [
+          {
+            "values": [
+              "SUBN",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.4206666666666667,
+            "base_frequency": 0.42057039444444444
+          },
+          {
+            "values": [
+              "4DSD",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.3103,
+            "base_frequency": 0.3117001555555556
+          },
+          {
+            "values": [
+              "PICK",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0389,
+            "base_frequency": 0.0386815
+          },
+          {
+            "values": [
+              "2DSD",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.037,
+            "base_frequency": 0.03702844444444445
+          },
+          {
+            "values": [
+              "BOAT",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0321,
+            "base_frequency": 0.031837849999999994
+          },
+          {
+            "values": [
+              "MCY",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.030733333333333335,
+            "base_frequency": 0.030482344444444445
+          },
+          {
+            "values": [
+              "LTRL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0215,
+            "base_frequency": 0.021324416666666665
+          },
+          {
+            "values": [
+              "VAN",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.019233333333333335,
+            "base_frequency": 0.019241566666666668
+          },
+          {
+            "values": [
+              "TRLR",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0143,
+            "base_frequency": 0.014183216666666667
+          },
+          {
+            "values": [
+              "CONV",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.014,
+            "base_frequency": 0.01395178888888889
+          },
+          {
+            "values": [
+              "SNOW",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.008366666666666666,
+            "base_frequency": 0.008298338888888888
+          },
+          {
+            "values": [
+              "ATV",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.007333333333333333,
+            "base_frequency": 0.007273444444444444
+          },
+          {
+            "values": [
+              "DUMP",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.007,
+            "base_frequency": 0.006975894444444445
+          },
+          {
+            "values": [
+              "BUS",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004733333333333333,
+            "base_frequency": 0.0046946777777777775
+          },
+          {
+            "values": [
+              "4DSD",
+              "Y"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.003966666666666667,
+            "base_frequency": 0.0025665111111111112
+          },
+          {
+            "values": [
+              "UTIL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.003533333333333333,
+            "base_frequency": 0.0035044777777777777
+          },
+          {
+            "values": [
+              "SEMI",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.003533333333333333,
+            "base_frequency": 0.0035044777777777777
+          },
+          {
+            "values": [
+              "SUBN",
+              "Y"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0033666666666666667,
+            "base_frequency": 0.0034629388888888883
+          },
+          {
+            "values": [
+              "TRAC",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0033666666666666667,
+            "base_frequency": 0.0033722333333333332
+          },
+          {
+            "values": [
+              "H/WH",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0027,
+            "base_frequency": 0.002711011111111111
+          },
+          {
+            "values": [
+              "DELV",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0021,
+            "base_frequency": 0.00208285
+          },
+          {
+            "values": [
+              "FLAT",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0018,
+            "base_frequency": 0.0017852999999999999
+          },
+          {
+            "values": [
+              "H/TR",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0015333333333333334,
+            "base_frequency": 0.0015208111111111111
+          },
+          {
+            "values": [
+              "STAK",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009,
+            "base_frequency": 0.0008926499999999999
+          }
+        ],
+        "total_frequency": 0.9929666666666667,
+        "serialized_bytes": 776,
+        "available": true
+      },
+      {
+        "id": "mcv:county:record_type",
+        "mechanism": "mcv",
+        "columns": [
+          "county",
+          "record_type"
+        ],
+        "name": "dmv_deploy_v0_01_mcv",
+        "oid": 51766,
+        "creation_rank": 1,
+        "semantic_rank": 9,
+        "index": 1,
+        "oid_rank": 9,
+        "payload_columns": [
+          "record_type",
+          "county"
+        ],
+        "payload": [
+          {
+            "values": [
+              "VEH",
+              "SUFFOLK"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.10536666666666666,
+            "base_frequency": 0.10468928666666667
+          },
+          {
+            "values": [
+              "VEH",
+              "NASSAU"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0858,
+            "base_frequency": 0.08174159111111112
+          },
+          {
+            "values": [
+              "VEH",
+              "QUEENS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.07176666666666667,
+            "base_frequency": 0.06660652888888889
+          },
+          {
+            "values": [
+              "VEH",
+              "WESTCHESTER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.05993333333333333,
+            "base_frequency": 0.05661861333333334
+          },
+          {
+            "values": [
+              "VEH",
+              "ERIE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.057833333333333334,
+            "base_frequency": 0.05766029777777778
+          },
+          {
+            "values": [
+              "VEH",
+              "KINGS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.046233333333333335,
+            "base_frequency": 0.04301544
+          },
+          {
+            "values": [
+              "VEH",
+              "MONROE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0441,
+            "base_frequency": 0.04457796666666667
+          },
+          {
+            "values": [
+              "VEH",
+              "ONONDAGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0295,
+            "base_frequency": 0.030699053333333334
+          },
+          {
+            "values": [
+              "VEH",
+              "BRONX"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.025,
+            "base_frequency": 0.02331534888888889
+          },
+          {
+            "values": [
+              "VEH",
+              "ORANGE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.024033333333333334,
+            "base_frequency": 0.023928104444444445
+          },
+          {
+            "values": [
+              "VEH",
+              "RICHMOND"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.023433333333333334,
+            "base_frequency": 0.021906011111111113
+          },
+          {
+            "values": [
+              "VEH",
+              "NEW YORK"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0224,
+            "base_frequency": 0.021048153333333333
+          },
+          {
+            "values": [
+              "VEH",
+              "ALBANY"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0196,
+            "base_frequency": 0.01948562666666667
+          },
+          {
+            "values": [
+              "VEH",
+              "DUTCHESS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0186,
+            "base_frequency": 0.01847458
+          },
+          {
+            "values": [
+              "VEH",
+              "ROCKLAND"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.017533333333333335,
+            "base_frequency": 0.016758864444444445
+          },
+          {
+            "values": [
+              "VEH",
+              "SARATOGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.015533333333333333,
+            "base_frequency": 0.016329935555555557
+          },
+          {
+            "values": [
+              "VEH",
+              "ONEIDA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.014466666666666666,
+            "base_frequency": 0.015349526666666667
+          },
+          {
+            "values": [
+              "VEH",
+              "OUTOFSTATE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.013433333333333334,
+            "base_frequency": 0.01504314888888889
+          },
+          {
+            "values": [
+              "VEH",
+              "NIAGARA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.013266666666666666,
+            "base_frequency": 0.013817637777777777
+          },
+          {
+            "values": [
+              "VEH",
+              "ULSTER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0125,
+            "base_frequency": 0.012500213333333333
+          },
+          {
+            "values": [
+              "VEH",
+              "BROOME"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0124,
+            "base_frequency": 0.012990417777777777
+          },
+          {
+            "values": [
+              "VEH",
+              "SCHENECTADY"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0104,
+            "base_frequency": 0.010631308888888889
+          },
+          {
+            "values": [
+              "VEH",
+              "RENSSELAER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0097,
+            "base_frequency": 0.010018553333333334
+          },
+          {
+            "values": [
+              "VEH",
+              "CHAUTAUQUA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0081,
+            "base_frequency": 0.008425388888888889
+          },
+          {
+            "values": [
+              "VEH",
+              "OSWEGO"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0074333333333333335,
+            "base_frequency": 0.008364113333333334
+          },
+          {
+            "values": [
+              "VEH",
+              "PUTNAM"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.007233333333333333,
+            "base_frequency": 0.0070466888888888884
+          },
+          {
+            "values": [
+              "VEH",
+              "ST LAWRENCE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.006933333333333333,
+            "base_frequency": 0.007904546666666666
+          },
+          {
+            "values": [
+              "VEH",
+              "ONTARIO"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0067,
+            "base_frequency": 0.007628806666666667
+          },
+          {
+            "values": [
+              "VEH",
+              "STEUBEN"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.006166666666666667,
+            "base_frequency": 0.006679035555555556
+          },
+          {
+            "values": [
+              "VEH",
+              "CHEMUNG"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.006,
+            "base_frequency": 0.006188831111111111
+          },
+          {
+            "values": [
+              "VEH",
+              "WAYNE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.005866666666666667,
+            "base_frequency": 0.006525846666666667
+          },
+          {
+            "values": [
+              "VEH",
+              "SULLIVAN"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0057666666666666665,
+            "base_frequency": 0.006005004444444445
+          },
+          {
+            "values": [
+              "VEH",
+              "JEFFERSON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.005733333333333333,
+            "base_frequency": 0.006556484444444445
+          },
+          {
+            "values": [
+              "VEH",
+              "CLINTON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0057,
+            "base_frequency": 0.006311382222222222
+          },
+          {
+            "values": [
+              "VEH",
+              "TOMPKINS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0055,
+            "base_frequency": 0.00579054
+          },
+          {
+            "values": [
+              "VEH",
+              "CATTARAUGUS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.005,
+            "base_frequency": 0.005422886666666666
+          },
+          {
+            "values": [
+              "BOAT",
+              "SUFFOLK"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004966666666666667,
+            "base_frequency": 0.00362202
+          },
+          {
+            "values": [
+              "VEH",
+              "HERKIMER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0047,
+            "base_frequency": 0.004902044444444444
+          },
+          {
+            "values": [
+              "VEH",
+              "WARREN"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0044666666666666665,
+            "base_frequency": 0.00523906
+          },
+          {
+            "values": [
+              "VEH",
+              "CAYUGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0044,
+            "base_frequency": 0.005116508888888889
+          },
+          {
+            "values": [
+              "VEH",
+              "MADISON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0042,
+            "base_frequency": 0.004779493333333333
+          },
+          {
+            "values": [
+              "VEH",
+              "COLUMBIA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004166666666666667,
+            "base_frequency": 0.004074824444444444
+          },
+          {
+            "values": [
+              "VEH",
+              "GREENE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.003966666666666667,
+            "base_frequency": 0.004228013333333333
+          },
+          {
+            "values": [
+              "VEH",
+              "LIVINGSTON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.003966666666666667,
+            "base_frequency": 0.004228013333333333
+          },
+          {
+            "values": [
+              "VEH",
+              "GENESEE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0038,
+            "base_frequency": 0.004105462222222222
+          },
+          {
+            "values": [
+              "VEH",
+              "WASHINGTON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.003766666666666667,
+            "base_frequency": 0.0041361
+          },
+          {
+            "values": [
+              "VEH",
+              "MONTGOMERY"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0037,
+            "base_frequency": 0.0038603599999999997
+          },
+          {
+            "values": [
+              "VEH",
+              "FULTON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0034666666666666665,
+            "base_frequency": 0.004044186666666667
+          },
+          {
+            "values": [
+              "VEH",
+              "CHENANGO"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0034333333333333334,
+            "base_frequency": 0.003462068888888889
+          },
+          {
+            "values": [
+              "TRL",
+              "SUFFOLK"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0034,
+            "base_frequency": 0.00463573
+          },
+          {
+            "values": [
+              "VEH",
+              "OTSEGO"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0033333333333333335,
+            "base_frequency": 0.0037378088888888887
+          },
+          {
+            "values": [
+              "VEH",
+              "FRANKLIN"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0033,
+            "base_frequency": 0.003921635555555556
+          },
+          {
+            "values": [
+              "VEH",
+              "TIOGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0033,
+            "base_frequency": 0.003431431111111111
+          },
+          {
+            "values": [
+              "VEH",
+              "ALLEGANY"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0030666666666666668,
+            "base_frequency": 0.0033701555555555557
+          },
+          {
+            "values": [
+              "VEH",
+              "DELAWARE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0028333333333333335,
+            "base_frequency": 0.003247604444444444
+          },
+          {
+            "values": [
+              "VEH",
+              "WYOMING"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0027333333333333333,
+            "base_frequency": 0.0030025022222222226
+          },
+          {
+            "values": [
+              "VEH",
+              "CORTLAND"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0027333333333333333,
+            "base_frequency": 0.0029105888888888887
+          },
+          {
+            "values": [
+              "TRL",
+              "ERIE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0027,
+            "base_frequency": 0.0025532466666666667
+          },
+          {
+            "values": [
+              "VEH",
+              "ORLEANS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0026666666666666666,
+            "base_frequency": 0.0029105888888888887
+          },
+          {
+            "values": [
+              "VEH",
+              "ESSEX"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0025,
+            "base_frequency": 0.00303314
+          },
+          {
+            "values": [
+              "TRL",
+              "MONROE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0024,
+            "base_frequency": 0.00197395
+          },
+          {
+            "values": [
+              "VEH",
+              "SCHOHARIE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0023333333333333335,
+            "base_frequency": 0.0026654866666666666
+          },
+          {
+            "values": [
+              "VEH",
+              "SENECA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0022333333333333333,
+            "base_frequency": 0.002634848888888889
+          },
+          {
+            "values": [
+              "VEH",
+              "LEWIS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0021,
+            "base_frequency": 0.002328471111111111
+          },
+          {
+            "values": [
+              "BOAT",
+              "NASSAU"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0019333333333333333,
+            "base_frequency": 0.00282808
+          },
+          {
+            "values": [
+              "BOAT",
+              "ONONDAGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0017666666666666666,
+            "base_frequency": 0.00106212
+          },
+          {
+            "values": [
+              "BOAT",
+              "MONROE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0017333333333333333,
+            "base_frequency": 0.0015423000000000001
+          },
+          {
+            "values": [
+              "BOAT",
+              "ERIE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0017333333333333333,
+            "base_frequency": 0.0019949200000000003
+          },
+          {
+            "values": [
+              "TRL",
+              "ONONDAGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0016666666666666668,
+            "base_frequency": 0.0013593799999999999
+          },
+          {
+            "values": [
+              "SNOW",
+              "OUTOFSTATE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0015333333333333334,
+            "base_frequency": 0.00013693444444444445
+          },
+          {
+            "values": [
+              "VEH",
+              "SCHUYLER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0014,
+            "base_frequency": 0.00165444
+          },
+          {
+            "values": [
+              "TRL",
+              "NIAGARA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0012333333333333332,
+            "base_frequency": 0.0006118566666666667
+          },
+          {
+            "values": [
+              "TRL",
+              "NASSAU"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0012,
+            "base_frequency": 0.003619586666666667
+          },
+          {
+            "values": [
+              "TRL",
+              "ONEIDA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0012,
+            "base_frequency": 0.0006796899999999999
+          },
+          {
+            "values": [
+              "VEH",
+              "YATES"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0011666666666666668,
+            "base_frequency": 0.0013787
+          },
+          {
+            "values": [
+              "TRL",
+              "DUTCHESS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0011,
+            "base_frequency": 0.00081807
+          },
+          {
+            "values": [
+              "TRL",
+              "SARATOGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0010333333333333334,
+            "base_frequency": 0.0007231033333333334
+          },
+          {
+            "values": [
+              "TRL",
+              "BROOME"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.001,
+            "base_frequency": 0.0005752266666666666
+          },
+          {
+            "values": [
+              "BOAT",
+              "SARATOGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.001,
+            "base_frequency": 0.0005649800000000001
+          },
+          {
+            "values": [
+              "TRL",
+              "ORANGE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009666666666666667,
+            "base_frequency": 0.0010595566666666667
+          },
+          {
+            "values": [
+              "TRL",
+              "STEUBEN"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009,
+            "base_frequency": 0.0002957533333333333
+          },
+          {
+            "values": [
+              "BOAT",
+              "ORANGE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009,
+            "base_frequency": 0.00082786
+          },
+          {
+            "values": [
+              "TRL",
+              "WESTCHESTER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0008333333333333334,
+            "base_frequency": 0.0025071200000000003
+          },
+          {
+            "values": [
+              "TRL",
+              "ST LAWRENCE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0008333333333333334,
+            "base_frequency": 0.00035002
+          }
+        ],
+        "total_frequency": 0.9547333333333333,
+        "serialized_bytes": 2643,
+        "available": true
+      },
+      {
+        "id": "mcv:county:state",
+        "mechanism": "mcv",
+        "columns": [
+          "county",
+          "state"
+        ],
+        "name": "dmv_deploy_v0_02_mcv",
+        "oid": 51767,
+        "creation_rank": 2,
+        "semantic_rank": 13,
+        "index": 2,
+        "oid_rank": 13,
+        "payload_columns": [
+          "state",
+          "county"
+        ],
+        "payload": [
+          {
+            "values": [
+              "NY",
+              "SUFFOLK"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.11373333333333334,
+            "base_frequency": 0.11180803666666667
+          },
+          {
+            "values": [
+              "NY",
+              "NASSAU"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.08876666666666666,
+            "base_frequency": 0.08729992444444445
+          },
+          {
+            "values": [
+              "NY",
+              "QUEENS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.07226666666666667,
+            "base_frequency": 0.07113569555555556
+          },
+          {
+            "values": [
+              "NY",
+              "ERIE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.06266666666666666,
+            "base_frequency": 0.06158113111111112
+          },
+          {
+            "values": [
+              "NY",
+              "WESTCHESTER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0614,
+            "base_frequency": 0.06046861333333334
+          },
+          {
+            "values": [
+              "NY",
+              "MONROE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.048433333333333335,
+            "base_frequency": 0.04760921666666667
+          },
+          {
+            "values": [
+              "NY",
+              "KINGS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0468,
+            "base_frequency": 0.04594044
+          },
+          {
+            "values": [
+              "NY",
+              "ONONDAGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.03326666666666667,
+            "base_frequency": 0.032786553333333336
+          },
+          {
+            "values": [
+              "NY",
+              "ORANGE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.025866666666666666,
+            "base_frequency": 0.025555187777777776
+          },
+          {
+            "values": [
+              "NY",
+              "BRONX"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.025366666666666666,
+            "base_frequency": 0.024900765555555555
+          },
+          {
+            "values": [
+              "NY",
+              "RICHMOND"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0238,
+            "base_frequency": 0.023395594444444445
+          },
+          {
+            "values": [
+              "NY",
+              "NEW YORK"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.022733333333333335,
+            "base_frequency": 0.022479403333333335
+          },
+          {
+            "values": [
+              "NY",
+              "ALBANY"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.021033333333333334,
+            "base_frequency": 0.02081062666666667
+          },
+          {
+            "values": [
+              "NY",
+              "DUTCHESS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.020066666666666667,
+            "base_frequency": 0.01973083
+          },
+          {
+            "values": [
+              "NY",
+              "ROCKLAND"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0182,
+            "base_frequency": 0.017898447777777778
+          },
+          {
+            "values": [
+              "NY",
+              "SARATOGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.017766666666666667,
+            "base_frequency": 0.017440352222222223
+          },
+          {
+            "values": [
+              "NY",
+              "ONEIDA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0167,
+            "base_frequency": 0.016393276666666668
+          },
+          {
+            "values": [
+              "NY",
+              "NIAGARA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.015033333333333333,
+            "base_frequency": 0.01475722111111111
+          },
+          {
+            "values": [
+              "NY",
+              "BROOME"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.014133333333333333,
+            "base_frequency": 0.013873751111111112
+          },
+          {
+            "values": [
+              "NY",
+              "ULSTER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0136,
+            "base_frequency": 0.013350213333333333
+          },
+          {
+            "values": [
+              "NY",
+              "SCHENECTADY"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0115,
+            "base_frequency": 0.011354225555555555
+          },
+          {
+            "values": [
+              "NY",
+              "RENSSELAER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0109,
+            "base_frequency": 0.010699803333333334
+          },
+          {
+            "values": [
+              "NY",
+              "CHAUTAUQUA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.009133333333333334,
+            "base_frequency": 0.008998305555555556
+          },
+          {
+            "values": [
+              "NY",
+              "OSWEGO"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0091,
+            "base_frequency": 0.008932863333333334
+          },
+          {
+            "values": [
+              "NY",
+              "ST LAWRENCE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0086,
+            "base_frequency": 0.008442046666666666
+          },
+          {
+            "values": [
+              "NY",
+              "ONTARIO"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0083,
+            "base_frequency": 0.008147556666666667
+          },
+          {
+            "values": [
+              "NY",
+              "PUTNAM"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0076,
+            "base_frequency": 0.007525855555555555
+          },
+          {
+            "values": [
+              "NY",
+              "STEUBEN"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.007266666666666667,
+            "base_frequency": 0.007133202222222222
+          },
+          {
+            "values": [
+              "NY",
+              "WAYNE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0071,
+            "base_frequency": 0.006969596666666667
+          },
+          {
+            "values": [
+              "NY",
+              "JEFFERSON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0071,
+            "base_frequency": 0.007002317777777778
+          },
+          {
+            "values": [
+              "NY",
+              "CLINTON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.006866666666666667,
+            "base_frequency": 0.006740548888888889
+          },
+          {
+            "values": [
+              "NY",
+              "CHEMUNG"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.006733333333333333,
+            "base_frequency": 0.006609664444444444
+          },
+          {
+            "values": [
+              "NY",
+              "SULLIVAN"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.006533333333333334,
+            "base_frequency": 0.006413337777777779
+          },
+          {
+            "values": [
+              "NY",
+              "TOMPKINS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0063,
+            "base_frequency": 0.00618429
+          },
+          {
+            "values": [
+              "NY",
+              "CATTARAUGUS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0059,
+            "base_frequency": 0.0057916366666666665
+          },
+          {
+            "values": [
+              "NY",
+              "WARREN"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.005633333333333333,
+            "base_frequency": 0.00559531
+          },
+          {
+            "values": [
+              "NY",
+              "CAYUGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.005533333333333334,
+            "base_frequency": 0.005464425555555556
+          },
+          {
+            "values": [
+              "NY",
+              "HERKIMER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.005333333333333333,
+            "base_frequency": 0.005235377777777777
+          },
+          {
+            "values": [
+              "NY",
+              "MADISON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0052,
+            "base_frequency": 0.005104493333333333
+          },
+          {
+            "values": [
+              "NY",
+              "GREENE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0046,
+            "base_frequency": 0.004515513333333334
+          },
+          {
+            "values": [
+              "NY",
+              "LIVINGSTON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0046,
+            "base_frequency": 0.004515513333333334
+          },
+          {
+            "values": [
+              "NY",
+              "WASHINGTON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0045,
+            "base_frequency": 0.00441735
+          },
+          {
+            "values": [
+              "NY",
+              "COLUMBIA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004433333333333333,
+            "base_frequency": 0.004351907777777778
+          },
+          {
+            "values": [
+              "NY",
+              "GENESEE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004433333333333333,
+            "base_frequency": 0.0043846288888888885
+          },
+          {
+            "values": [
+              "NY",
+              "FULTON"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004366666666666666,
+            "base_frequency": 0.004319186666666667
+          },
+          {
+            "values": [
+              "OK",
+              "OUTOFSTATE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004333333333333333,
+            "base_frequency": 7.092222222222223e-05
+          },
+          {
+            "values": [
+              "NY",
+              "FRANKLIN"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004266666666666667,
+            "base_frequency": 0.004188302222222223
+          },
+          {
+            "values": [
+              "NY",
+              "MONTGOMERY"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0042,
+            "base_frequency": 0.00412286
+          },
+          {
+            "values": [
+              "NY",
+              "OTSEGO"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004066666666666666,
+            "base_frequency": 0.003991975555555556
+          },
+          {
+            "values": [
+              "NJ",
+              "OUTOFSTATE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0039,
+            "base_frequency": 6.928555555555556e-05
+          },
+          {
+            "values": [
+              "NY",
+              "CHENANGO"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.003766666666666667,
+            "base_frequency": 0.003697485555555556
+          },
+          {
+            "values": [
+              "NY",
+              "TIOGA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0037333333333333333,
+            "base_frequency": 0.0036647644444444444
+          },
+          {
+            "values": [
+              "NY",
+              "ALLEGANY"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0036333333333333335,
+            "base_frequency": 0.0035993222222222222
+          },
+          {
+            "values": [
+              "NY",
+              "DELAWARE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.003533333333333333,
+            "base_frequency": 0.003468437777777778
+          },
+          {
+            "values": [
+              "NY",
+              "WYOMING"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.003266666666666667,
+            "base_frequency": 0.0032066688888888893
+          },
+          {
+            "values": [
+              "NY",
+              "ESSEX"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.003266666666666667,
+            "base_frequency": 0.00323939
+          },
+          {
+            "values": [
+              "NY",
+              "CORTLAND"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0031666666666666666,
+            "base_frequency": 0.0031085055555555557
+          },
+          {
+            "values": [
+              "NY",
+              "ORLEANS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0031666666666666666,
+            "base_frequency": 0.0031085055555555557
+          },
+          {
+            "values": [
+              "NY",
+              "SCHOHARIE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0029,
+            "base_frequency": 0.0028467366666666666
+          },
+          {
+            "values": [
+              "NY",
+              "SENECA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0028666666666666667,
+            "base_frequency": 0.0028140155555555556
+          },
+          {
+            "values": [
+              "NY",
+              "LEWIS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.002533333333333333,
+            "base_frequency": 0.0024868044444444444
+          },
+          {
+            "values": [
+              "PA",
+              "OUTOFSTATE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0019,
+            "base_frequency": 3.327888888888889e-05
+          },
+          {
+            "values": [
+              "NY",
+              "SCHUYLER"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0018,
+            "base_frequency": 0.00176694
+          },
+          {
+            "values": [
+              "NY",
+              "YATES"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0015,
+            "base_frequency": 0.0014724500000000001
+          },
+          {
+            "values": [
+              "IL",
+              "OUTOFSTATE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0010333333333333334,
+            "base_frequency": 1.9640000000000002e-05
+          },
+          {
+            "values": [
+              "TX",
+              "OUTOFSTATE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.001,
+            "base_frequency": 1.6366666666666667e-05
+          },
+          {
+            "values": [
+              "MD",
+              "OUTOFSTATE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009,
+            "base_frequency": 1.745777777777778e-05
+          }
+        ],
+        "total_frequency": 0.9939333333333333,
+        "serialized_bytes": 2281,
+        "available": true
+      },
+      {
+        "id": "mcv:fuel_type:record_type",
+        "mechanism": "mcv",
+        "columns": [
+          "fuel_type",
+          "record_type"
+        ],
+        "name": "dmv_deploy_v0_03_mcv",
+        "oid": 51768,
+        "creation_rank": 3,
+        "semantic_rank": 15,
+        "index": 3,
+        "oid_rank": 15,
+        "payload_columns": [
+          "record_type",
+          "fuel_type"
+        ],
+        "payload": [
+          {
+            "values": [
+              "VEH",
+              "GAS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.8807333333333334,
+            "base_frequency": 0.8370547266666667
+          },
+          {
+            "values": [
+              "TRL",
+              "NONE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0407,
+            "base_frequency": 0.00173382
+          },
+          {
+            "values": [
+              "VEH",
+              "DIESEL"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.03476666666666667,
+            "base_frequency": 0.03269050888888889
+          },
+          {
+            "values": [
+              "BOAT",
+              "GAS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.029966666666666666,
+            "base_frequency": 0.02896026
+          },
+          {
+            "values": [
+              "SNOW",
+              ""
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.008366666666666666,
+            "base_frequency": 7.000111111111111e-05
+          },
+          {
+            "values": [
+              "VEH",
+              "NONE"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0014666666666666667,
+            "base_frequency": 0.03915508
+          },
+          {
+            "values": [
+              "VEH",
+              "ELECTRIC"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0014333333333333333,
+            "base_frequency": 0.0016850777777777778
+          }
+        ],
+        "total_frequency": 0.9974333333333334,
+        "serialized_bytes": 291,
+        "available": true
+      },
+      {
+        "id": "mcv:fuel_type:revocation_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "fuel_type",
+          "revocation_indicator"
+        ],
+        "name": "dmv_deploy_v0_04_mcv",
+        "oid": 51769,
+        "creation_rank": 4,
+        "semantic_rank": 17,
+        "index": 4,
+        "oid_rank": 17,
+        "payload_columns": [
+          "fuel_type",
+          "revocation_indicator"
+        ],
+        "payload": [
+          {
+            "values": [
+              "GAS",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.9066333333333333,
+            "base_frequency": 0.9069661299999999
+          },
+          {
+            "values": [
+              "NONE",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0426,
+            "base_frequency": 0.04242534
+          },
+          {
+            "values": [
+              "DIESEL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.03553333333333333,
+            "base_frequency": 0.035420843333333334
+          },
+          {
+            "values": [
+              "",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.008366666666666666,
+            "base_frequency": 0.008332363333333334
+          },
+          {
+            "values": [
+              "GAS",
+              "Y"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004066666666666666,
+            "base_frequency": 0.0037338700000000002
+          },
+          {
+            "values": [
+              "ELECTRIC",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0018333333333333333,
+            "base_frequency": 0.0018258166666666666
+          }
+        ],
+        "total_frequency": 0.9990333333333333,
+        "serialized_bytes": 249,
+        "available": true
+      },
+      {
+        "id": "mcv:fuel_type:scofflaw_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "fuel_type",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_05_mcv",
+        "oid": 51770,
+        "creation_rank": 5,
+        "semantic_rank": 18,
+        "index": 5,
+        "oid_rank": 18,
+        "payload_columns": [
+          "fuel_type",
+          "scofflaw_indicator"
+        ],
+        "payload": [
+          {
+            "values": [
+              "GAS",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.9105,
+            "base_frequency": 0.91051786
+          },
+          {
+            "values": [
+              "NONE",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0426,
+            "base_frequency": 0.04259148
+          },
+          {
+            "values": [
+              "DIESEL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.03556666666666667,
+            "base_frequency": 0.03555955333333334
+          },
+          {
+            "values": [
+              "",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.008366666666666666,
+            "base_frequency": 0.008364993333333333
+          },
+          {
+            "values": [
+              "ELECTRIC",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0018333333333333333,
+            "base_frequency": 0.0018329666666666666
+          }
+        ],
+        "total_frequency": 0.9988666666666667,
+        "serialized_bytes": 222,
+        "available": true
+      },
+      {
+        "id": "mcv:record_type:registration_class",
+        "mechanism": "mcv",
+        "columns": [
+          "record_type",
+          "registration_class"
+        ],
+        "name": "dmv_deploy_v0_06_mcv",
+        "oid": 51771,
+        "creation_rank": 6,
+        "semantic_rank": 21,
+        "index": 6,
+        "oid_rank": 21,
+        "payload_columns": [
+          "record_type",
+          "registration_class"
+        ],
+        "payload": [
+          {
+            "values": [
+              "VEH",
+              "PAS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.74,
+            "base_frequency": 0.6801586666666667
+          },
+          {
+            "values": [
+              "VEH",
+              "COM"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0614,
+            "base_frequency": 0.056434786666666674
+          },
+          {
+            "values": [
+              "BOAT",
+              "BOT"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0318,
+            "base_frequency": 0.00101124
+          },
+          {
+            "values": [
+              "VEH",
+              "MOT"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.030166666666666668,
+            "base_frequency": 0.02772718888888889
+          },
+          {
+            "values": [
+              "TRL",
+              "LTR"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.022333333333333334,
+            "base_frequency": 0.0009089666666666666
+          },
+          {
+            "values": [
+              "VEH",
+              "SRF"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0181,
+            "base_frequency": 0.016636313333333336
+          },
+          {
+            "values": [
+              "TRL",
+              "TRL"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0133,
+            "base_frequency": 0.0005413099999999999
+          },
+          {
+            "values": [
+              "VEH",
+              "PSD"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0128,
+            "base_frequency": 0.011764906666666668
+          },
+          {
+            "values": [
+              "VEH",
+              "OMT"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.012033333333333333,
+            "base_frequency": 0.011060237777777778
+          },
+          {
+            "values": [
+              "VEH",
+              "OMS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.009266666666666666,
+            "base_frequency": 0.008517302222222222
+          },
+          {
+            "values": [
+              "SNOW",
+              "SNO"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.008366666666666666,
+            "base_frequency": 7.000111111111111e-05
+          },
+          {
+            "values": [
+              "VEH",
+              "ATV"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0073,
+            "base_frequency": 0.006709673333333333
+          },
+          {
+            "values": [
+              "VEH",
+              "ORG"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0044666666666666665,
+            "base_frequency": 0.004105462222222222
+          },
+          {
+            "values": [
+              "TRL",
+              "SEM"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0036333333333333335,
+            "base_frequency": 0.00014787666666666666
+          },
+          {
+            "values": [
+              "VEH",
+              "HIS"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0035,
+            "base_frequency": 0.0032169666666666667
+          },
+          {
+            "values": [
+              "VEH",
+              "IRP"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0028333333333333335,
+            "base_frequency": 0.0026042111111111116
+          },
+          {
+            "values": [
+              "VEH",
+              "STA"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0022,
+            "base_frequency": 0.0020220933333333336
+          },
+          {
+            "values": [
+              "VEH",
+              "OMR"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0021666666666666666,
+            "base_frequency": 0.0019914555555555556
+          },
+          {
+            "values": [
+              "TRL",
+              "HOU"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0014333333333333333,
+            "base_frequency": 5.8336666666666667e-05
+          },
+          {
+            "values": [
+              "VEH",
+              "AGR"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0013666666666666666,
+            "base_frequency": 0.0012561488888888888
+          },
+          {
+            "values": [
+              "VEH",
+              "TRC"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0011333333333333334,
+            "base_frequency": 0.0010416844444444445
+          },
+          {
+            "values": [
+              "VEH",
+              "MED"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0010666666666666667,
+            "base_frequency": 0.000980408888888889
+          },
+          {
+            "values": [
+              "VEH",
+              "SCL"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.001,
+            "base_frequency": 0.0009191333333333334
+          },
+          {
+            "values": [
+              "VEH",
+              "OML"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009666666666666667,
+            "base_frequency": 0.0008884955555555555
+          },
+          {
+            "values": [
+              "VEH",
+              "SPO"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009666666666666667,
+            "base_frequency": 0.0008884955555555555
+          },
+          {
+            "values": [
+              "VEH",
+              "FAR"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009333333333333333,
+            "base_frequency": 0.0008578577777777778
+          },
+          {
+            "values": [
+              "VEH",
+              "RGL"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009,
+            "base_frequency": 0.00082722
+          }
+        ],
+        "total_frequency": 0.9954333333333333,
+        "serialized_bytes": 879,
+        "available": true
+      },
+      {
+        "id": "mcv:record_type:scofflaw_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "record_type",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_07_mcv",
+        "oid": 51772,
+        "creation_rank": 7,
+        "semantic_rank": 23,
+        "index": 7,
+        "oid_rank": 23,
+        "payload_columns": [
+          "record_type",
+          "scofflaw_indicator"
+        ],
+        "payload": [
+          {
+            "values": [
+              "VEH",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.9189333333333334,
+            "base_frequency": 0.9189495066666667
+          },
+          {
+            "values": [
+              "TRL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0407,
+            "base_frequency": 0.04069186
+          },
+          {
+            "values": [
+              "BOAT",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0318,
+            "base_frequency": 0.031793640000000005
+          },
+          {
+            "values": [
+              "SNOW",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.008366666666666666,
+            "base_frequency": 0.008364993333333333
+          }
+        ],
+        "total_frequency": 0.9998,
+        "serialized_bytes": 189,
+        "available": true
+      },
+      {
+        "id": "mcv:registration_class:scofflaw_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "registration_class",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_08_mcv",
+        "oid": 51773,
+        "creation_rank": 8,
+        "semantic_rank": 27,
+        "index": 8,
+        "oid_rank": 27,
+        "payload_columns": [
+          "registration_class",
+          "scofflaw_indicator"
+        ],
+        "payload": [
+          {
+            "values": [
+              "PAS",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.7398,
+            "base_frequency": 0.739852
+          },
+          {
+            "values": [
+              "COM",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0614,
+            "base_frequency": 0.06138772000000001
+          },
+          {
+            "values": [
+              "BOT",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0318,
+            "base_frequency": 0.031793640000000005
+          },
+          {
+            "values": [
+              "MOT",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.030166666666666668,
+            "base_frequency": 0.030160633333333336
+          },
+          {
+            "values": [
+              "LTR",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.022333333333333334,
+            "base_frequency": 0.022328866666666666
+          },
+          {
+            "values": [
+              "SRF",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0181,
+            "base_frequency": 0.018096380000000002
+          },
+          {
+            "values": [
+              "TRL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0133,
+            "base_frequency": 0.01329734
+          },
+          {
+            "values": [
+              "PSD",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0128,
+            "base_frequency": 0.01279744
+          },
+          {
+            "values": [
+              "OMT",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.012033333333333333,
+            "base_frequency": 0.012030926666666667
+          },
+          {
+            "values": [
+              "OMS",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.009266666666666666,
+            "base_frequency": 0.009264813333333333
+          },
+          {
+            "values": [
+              "SNO",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.008366666666666666,
+            "base_frequency": 0.008364993333333333
+          },
+          {
+            "values": [
+              "ATV",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0073,
+            "base_frequency": 0.00729854
+          },
+          {
+            "values": [
+              "ORG",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0044666666666666665,
+            "base_frequency": 0.004465773333333333
+          },
+          {
+            "values": [
+              "SEM",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0036333333333333335,
+            "base_frequency": 0.0036326066666666668
+          },
+          {
+            "values": [
+              "HIS",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0035,
+            "base_frequency": 0.0034993000000000003
+          },
+          {
+            "values": [
+              "IRP",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0028333333333333335,
+            "base_frequency": 0.0028327666666666668
+          },
+          {
+            "values": [
+              "STA",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0022,
+            "base_frequency": 0.00219956
+          },
+          {
+            "values": [
+              "OMR",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0021666666666666666,
+            "base_frequency": 0.002166233333333333
+          },
+          {
+            "values": [
+              "HOU",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0014333333333333333,
+            "base_frequency": 0.0014330466666666666
+          },
+          {
+            "values": [
+              "AGR",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0013666666666666666,
+            "base_frequency": 0.0013663933333333334
+          },
+          {
+            "values": [
+              "TRC",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0011333333333333334,
+            "base_frequency": 0.0011331066666666668
+          },
+          {
+            "values": [
+              "MED",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0010666666666666667,
+            "base_frequency": 0.0010664533333333334
+          },
+          {
+            "values": [
+              "SCL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.001,
+            "base_frequency": 0.0009998000000000001
+          },
+          {
+            "values": [
+              "SPO",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009666666666666667,
+            "base_frequency": 0.0009664733333333334
+          },
+          {
+            "values": [
+              "OML",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009666666666666667,
+            "base_frequency": 0.0009664733333333334
+          },
+          {
+            "values": [
+              "FAR",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009333333333333333,
+            "base_frequency": 0.0009331466666666667
+          },
+          {
+            "values": [
+              "RGL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009,
+            "base_frequency": 0.00089982
+          }
+        ],
+        "total_frequency": 0.9952333333333333,
+        "serialized_bytes": 854,
+        "available": true
+      },
+      {
+        "id": "mcv:scofflaw_indicator:state",
+        "mechanism": "mcv",
+        "columns": [
+          "scofflaw_indicator",
+          "state"
+        ],
+        "name": "dmv_deploy_v0_09_mcv",
+        "oid": 51774,
+        "creation_rank": 9,
+        "semantic_rank": 33,
+        "index": 9,
+        "oid_rank": 33,
+        "payload_columns": [
+          "state",
+          "scofflaw_indicator"
+        ],
+        "payload": [
+          {
+            "values": [
+              "NY",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.9814333333333334,
+            "base_frequency": 0.9814370066666667
+          },
+          {
+            "values": [
+              "OK",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004333333333333333,
+            "base_frequency": 0.004332466666666666
+          },
+          {
+            "values": [
+              "NJ",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004233333333333334,
+            "base_frequency": 0.004232486666666667
+          },
+          {
+            "values": [
+              "PA",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.002033333333333333,
+            "base_frequency": 0.0020329266666666668
+          },
+          {
+            "values": [
+              "IL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0012,
+            "base_frequency": 0.00119976
+          },
+          {
+            "values": [
+              "MD",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0010666666666666667,
+            "base_frequency": 0.0010664533333333334
+          },
+          {
+            "values": [
+              "TX",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.001,
+            "base_frequency": 0.0009998000000000001
+          },
+          {
+            "values": [
+              "FL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009333333333333333,
+            "base_frequency": 0.0009331466666666667
+          }
+        ],
+        "total_frequency": 0.9962333333333334,
+        "serialized_bytes": 295,
+        "available": true
+      },
+      {
+        "id": "mcv:state:suspension_indicator",
+        "mechanism": "mcv",
+        "columns": [
+          "state",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_10_mcv",
+        "oid": 51775,
+        "creation_rank": 10,
+        "semantic_rank": 35,
+        "index": 10,
+        "oid_rank": 35,
+        "payload_columns": [
+          "state",
+          "suspension_indicator"
+        ],
+        "payload": [
+          {
+            "values": [
+              "NY",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.9736,
+            "base_frequency": 0.9736166611111111
+          },
+          {
+            "values": [
+              "NY",
+              "Y"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.008033333333333333,
+            "base_frequency": 0.008016672222222222
+          },
+          {
+            "values": [
+              "OK",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004333333333333333,
+            "base_frequency": 0.0042979444444444445
+          },
+          {
+            "values": [
+              "NJ",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.004233333333333334,
+            "base_frequency": 0.004198761111111111
+          },
+          {
+            "values": [
+              "PA",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.002033333333333333,
+            "base_frequency": 0.002016727777777778
+          },
+          {
+            "values": [
+              "IL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0012,
+            "base_frequency": 0.0011902
+          },
+          {
+            "values": [
+              "TX",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.001,
+            "base_frequency": 0.0009918333333333333
+          },
+          {
+            "values": [
+              "MD",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.001,
+            "base_frequency": 0.0010579555555555555
+          },
+          {
+            "values": [
+              "FL",
+              "N"
+            ],
+            "nulls": [
+              false,
+              false
+            ],
+            "frequency": 0.0009333333333333333,
+            "base_frequency": 0.0009257111111111112
+          }
+        ],
+        "total_frequency": 0.9963666666666667,
+        "serialized_bytes": 322,
+        "available": true
+      }
+    ],
+    "fd": [
+      {
+        "id": "fd:body_type:record_type",
+        "mechanism": "fd",
+        "columns": [
+          "body_type",
+          "record_type"
+        ],
+        "name": "dmv_deploy_v0_11_fd",
+        "oid": 51776,
+        "creation_rank": 11,
+        "semantic_rank": 2,
+        "index": 0,
+        "oid_rank": 2,
+        "payload": [
+          {
+            "attributes": [
+              "record_type",
+              "body_type"
+            ],
+            "degree": 0.04016666666666667
+          },
+          {
+            "attributes": [
+              "body_type",
+              "record_type"
+            ],
+            "degree": 0.9146666666666666
+          }
+        ],
+        "serialized_bytes": 41,
+        "available": true
+      },
+      {
+        "id": "fd:body_type:scofflaw_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "body_type",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_12_fd",
+        "oid": 51777,
+        "creation_rank": 12,
+        "semantic_rank": 5,
+        "index": 1,
+        "oid_rank": 5,
+        "payload": [
+          {
+            "attributes": [
+              "body_type",
+              "scofflaw_indicator"
+            ],
+            "degree": 0.22436666666666666
+          }
+        ],
+        "serialized_bytes": 27,
+        "available": true
+      },
+      {
+        "id": "fd:county:revocation_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "county",
+          "revocation_indicator"
+        ],
+        "name": "dmv_deploy_v0_13_fd",
+        "oid": 51778,
+        "creation_rank": 13,
+        "semantic_rank": 9,
+        "index": 2,
+        "oid_rank": 9,
+        "payload": [
+          {
+            "attributes": [
+              "county",
+              "revocation_indicator"
+            ],
+            "degree": 0.44033333333333335
+          }
+        ],
+        "serialized_bytes": 27,
+        "available": true
+      },
+      {
+        "id": "fd:county:scofflaw_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "county",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_14_fd",
+        "oid": 51779,
+        "creation_rank": 14,
+        "semantic_rank": 10,
+        "index": 3,
+        "oid_rank": 10,
+        "payload": [
+          {
+            "attributes": [
+              "county",
+              "scofflaw_indicator"
+            ],
+            "degree": 0.6730666666666667
+          }
+        ],
+        "serialized_bytes": 27,
+        "available": true
+      },
+      {
+        "id": "fd:fuel_type:suspension_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "fuel_type",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_15_fd",
+        "oid": 51780,
+        "creation_rank": 15,
+        "semantic_rank": 18,
+        "index": 4,
+        "oid_rank": 18,
+        "payload": [
+          {
+            "attributes": [
+              "fuel_type",
+              "suspension_indicator"
+            ],
+            "degree": 0.0519
+          }
+        ],
+        "serialized_bytes": 27,
+        "available": true
+      },
+      {
+        "id": "fd:record_type:revocation_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "record_type",
+          "revocation_indicator"
+        ],
+        "name": "dmv_deploy_v0_16_fd",
+        "oid": 51781,
+        "creation_rank": 16,
+        "semantic_rank": 20,
+        "index": 5,
+        "oid_rank": 20,
+        "payload": [
+          {
+            "attributes": [
+              "record_type",
+              "revocation_indicator"
+            ],
+            "degree": 0.08086666666666667
+          },
+          {
+            "attributes": [
+              "revocation_indicator",
+              "record_type"
+            ],
+            "degree": 0.0041
+          }
+        ],
+        "serialized_bytes": 41,
+        "available": true
+      },
+      {
+        "id": "fd:record_type:state",
+        "mechanism": "fd",
+        "columns": [
+          "record_type",
+          "state"
+        ],
+        "name": "dmv_deploy_v0_17_fd",
+        "oid": 51782,
+        "creation_rank": 17,
+        "semantic_rank": 22,
+        "index": 6,
+        "oid_rank": 22,
+        "payload": [
+          {
+            "attributes": [
+              "state",
+              "record_type"
+            ],
+            "degree": 0.008066666666666666
+          }
+        ],
+        "serialized_bytes": 27,
+        "available": true
+      },
+      {
+        "id": "fd:record_type:suspension_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "record_type",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_18_fd",
+        "oid": 51783,
+        "creation_rank": 18,
+        "semantic_rank": 23,
+        "index": 7,
+        "oid_rank": 23,
+        "payload": [
+          {
+            "attributes": [
+              "record_type",
+              "suspension_indicator"
+            ],
+            "degree": 0.08086666666666667
+          },
+          {
+            "attributes": [
+              "suspension_indicator",
+              "record_type"
+            ],
+            "degree": 0.008166666666666666
+          }
+        ],
+        "serialized_bytes": 41,
+        "available": true
+      },
+      {
+        "id": "fd:registration_class:suspension_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "registration_class",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_19_fd",
+        "oid": 51784,
+        "creation_rank": 19,
+        "semantic_rank": 27,
+        "index": 8,
+        "oid_rank": 27,
+        "payload": [
+          {
+            "attributes": [
+              "registration_class",
+              "suspension_indicator"
+            ],
+            "degree": 0.1734
+          }
+        ],
+        "serialized_bytes": 27,
+        "available": true
+      },
+      {
+        "id": "fd:revocation_indicator:scofflaw_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "revocation_indicator",
+          "scofflaw_indicator"
+        ],
+        "name": "dmv_deploy_v0_20_fd",
+        "oid": 51785,
+        "creation_rank": 20,
+        "semantic_rank": 28,
+        "index": 9,
+        "oid_rank": 28,
+        "payload": [
+          {
+            "attributes": [
+              "scofflaw_indicator",
+              "revocation_indicator"
+            ],
+            "degree": 0.0002
+          },
+          {
+            "attributes": [
+              "revocation_indicator",
+              "scofflaw_indicator"
+            ],
+            "degree": 0.0041
+          }
+        ],
+        "serialized_bytes": 41,
+        "available": true
+      },
+      {
+        "id": "fd:revocation_indicator:suspension_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "revocation_indicator",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_21_fd",
+        "oid": 51786,
+        "creation_rank": 21,
+        "semantic_rank": 30,
+        "index": 10,
+        "oid_rank": 30,
+        "payload": [
+          {
+            "attributes": [
+              "suspension_indicator",
+              "revocation_indicator"
+            ],
+            "degree": 0.008166666666666666
+          },
+          {
+            "attributes": [
+              "revocation_indicator",
+              "suspension_indicator"
+            ],
+            "degree": 0.0041
+          }
+        ],
+        "serialized_bytes": 41,
+        "available": true
+      },
+      {
+        "id": "fd:scofflaw_indicator:suspension_indicator",
+        "mechanism": "fd",
+        "columns": [
+          "scofflaw_indicator",
+          "suspension_indicator"
+        ],
+        "name": "dmv_deploy_v0_22_fd",
+        "oid": 51787,
+        "creation_rank": 22,
+        "semantic_rank": 32,
+        "index": 11,
+        "oid_rank": 32,
+        "payload": [],
+        "serialized_bytes": null,
+        "available": false
+      }
+    ],
+    "mcv_materialized": 11,
+    "fd_materialized": 11,
+    "fd_unavailable": [
+      "fd:scofflaw_indicator:suspension_indicator"
+    ]
+  },
+  "semantic": {
+    "comparisons": 1965,
+    "matches": 1965,
+    "tolerance": 1e-12,
+    "max_relative_error": 2.4342231117803612e-14,
+    "max_absolute_error": 7.450580596923828e-09,
+    "bitwise_equal": 688
+  },
+  "loss": {
+    "frozen": 7.836513886761748e+298,
+    "fresh_replay": 9.968366429866527e+298,
+    "fresh_native": 9.968366429866527e+298,
+    "frozen_to_fresh_change": 2.1318525431047787e+298,
+    "semantic_error": 0.0,
+    "frozen_nonzero_truth": null,
+    "fresh_replay_nonzero_truth": 85014.80834605158,
+    "fresh_native_nonzero_truth": 85014.8083460518
+  },
+  "zero_truth": {
+    "count": 2,
+    "query_ids": [
+      "dmv.173",
+      "dmv.943"
+    ],
+    "frozen_contribution": null,
+    "fresh_replay_contribution": 9.968366429866527e+298,
+    "fresh_native_contribution": 9.968366429866527e+298,
+    "queries": [
+      {
+        "id": "dmv.173",
+        "frozen_qerror": null,
+        "fresh_qerror": 4.0260431684600355e+295,
+        "fresh_estimate": 4.0260431684600356e-05
+      },
+      {
+        "id": "dmv.943",
+        "frozen_qerror": null,
+        "fresh_qerror": 9.964340386698068e+298,
+        "fresh_estimate": 0.09964340386698069
+      }
+    ]
+  },
+  "estimate_drift": {
+    "available": false,
+    "reason": "The authoritative frozen artifacts omit per-query baseline rows and clause selectivities, so frozen per-query estimates, zero-truth contributions, nonzero-truth loss, and frozen-to-fresh estimate-drift distribution cannot be reconstructed exactly after cleanup.",
+    "unchanged": null,
+    "meaningfully_changed": null,
+    "median": null,
+    "p90": null,
+    "p95": null,
+    "p99": null,
+    "maximum": null
+  },
+  "control": {
+    "mcv_trace_unchanged": 1965,
+    "mcv_trace_changed": 0,
+    "fd_trace_unchanged": 1928,
+    "fd_trace_changed": 37,
+    "fresh_mcv_consumed": 11,
+    "fresh_mcv_never_consumed": [],
+    "fresh_fd_consumed": 11,
+    "fresh_fd_never_consumed": [
+      "fd:scofflaw_indicator:suspension_indicator"
+    ],
+    "queries_consuming_fd": 389,
+    "frozen_mcv_consumed_structural": 11,
+    "frozen_fd_consumed_structural": 12
+  },
+  "frozen_numeric_artifact": {
+    "available": false,
+    "blocker": "The authoritative frozen artifacts omit per-query baseline rows and clause selectivities, so frozen per-query estimates, zero-truth contributions, nonzero-truth loss, and frozen-to-fresh estimate-drift distribution cannot be reconstructed exactly after cleanup."
+  },
+  "query_comparison_artifact": "results/dmv_deploy_query_comparison_v0.csv",
+  "runtime_seconds": 23.540989899003762,
+  "gate": "DEPLOYMENT/CORRECTNESS BLOCKER"
+}

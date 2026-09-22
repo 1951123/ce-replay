@@ -1,0 +1,192 @@
+{
+  "artifact": "paper-evidence-map-v0",
+  "date": "2026-09-22",
+  "frozen_sources": [
+    "docs/research-convergence-audit-v2.md",
+    "results/research-evidence-matrix-v2.json",
+    "results/paper-claim-matrix-v0.json"
+  ],
+  "entries": [
+    {
+      "section": "1 Introduction",
+      "claim_id": "C2",
+      "claim": "Statistics selection is semantically meaningful even without binding scarcity.",
+      "source_experiment": ["Statistics-Nonmonotonicity-v0", "DMV-Baseline-and-Nonmonotonicity-v0"],
+      "source_artifact": ["tools/statistics_nonmonotonicity_v0.py", "results/census_statistics_nonmonotonicity_v0.json", "results/census_statistics_nonmonotonicity_v0.md", "tools/dmv_baseline_nonmonotonicity_v0.py", "results/dmv_baseline_nonmonotonicity_v0.json", "results/dmv_baseline_nonmonotonicity_v0.md"],
+      "realization_boundary": "Census figures share one frozen Census realization. DMV baseline figures share an earlier target-100 DMV realization and must not be paired numerically with later DMV optimization.",
+      "qualification": "Empirical witnesses; not a universal PostgreSQL theorem."
+    },
+    {
+      "section": "1 Introduction",
+      "claim_id": "C4",
+      "claim": "Extended statistics impose measurable recurring ANALYZE maintenance work.",
+      "source_experiment": ["Analyze-Cost-Model-v0", "DMV-Analyze-Cost-Model-v0"],
+      "source_artifact": ["tools/analyze_cost_model_v0.py", "results/census_analyze_cost_model_v0.json", "results/census_analyze_cost_model_v0.csv", "results/census_analyze_cost_model_v0.md", "tools/dmv_analyze_cost_model_v0.py", "results/dmv_analyze_cost_model_v0.json", "results/dmv_analyze_cost_model_v0.csv", "results/dmv_analyze_cost_model_v0.md"],
+      "realization_boundary": "Independent isolated measurements on Census and DMV; coefficients are not shared.",
+      "qualification": "Aggregate first-order proxy, excluding creation, acquisition, concurrency, and per-candidate effects."
+    },
+    {
+      "section": "2 Background and Motivation",
+      "claim_id": "C7",
+      "claim": "MCV clause consumption changes the estimated-clause state seen by FD semantics.",
+      "source_experiment": ["FD-Semantics-v0", "CE-Replay-Optimize-v4", "DMV-Baseline-and-Nonmonotonicity-v0"],
+      "source_artifact": ["tools/fd_semantics_v0.py", "results/fd_semantics_v0.json", "results/fd_semantics_v0.md", "tools/ce_replay_optimize_v4.py", "results/census_ce_replay_optimize_v4.json", "results/census_ce_replay_optimize_v4.md", "results/dmv_baseline_nonmonotonicity_v0.json"],
+      "realization_boundary": "Conceptual composition is cross-realization; absolute objective values remain realization-local.",
+      "qualification": "PostgreSQL 16.14 supported base-restriction fragment only."
+    },
+    {
+      "section": "4 Statistics-Sensitive CE Semantics",
+      "claim_id": "C15",
+      "claim": "Constant ScalarArray IN/=ANY semantics can be added by bounded source-derived specialization.",
+      "source_experiment": ["MCV-ScalarArray-Semantics-v0"],
+      "source_artifact": ["tools/mcv_scalararray_semantics_v0.py", "results/mcv_scalararray_semantics_v0.json", "results/mcv_scalararray_semantics_v0.md"],
+      "realization_boundary": "Synthetic fixture and scalar regressions are separate from the real DMV payload realization.",
+      "qualification": "No automatic arbitrary-predicate support."
+    },
+    {
+      "section": "5 CE-Replay",
+      "claim_id": "C1",
+      "claim": "Design-parametric replay reproduces native CE in the supported fragment.",
+      "source_experiment": ["CE-Replay-IR-v1-B", "FD-Semantics-v0", "MCV-ScalarArray-Semantics-v0"],
+      "source_artifact": ["tools/ce_replay_ir_v1.py", "results/census_ce_replay_ir_v1b_instrumented_target100.json", "results/census_ce_replay_ir_v1b_instrumented_target500.json", "results/census_ce_replay_ir_v1b_instrumented_target1000.json", "results/census_ce_replay_ir_v1b_instrumented_target2000.json", "results/census_ce_replay_v1b_optimize_v0.md", "tools/fd_semantics_v0.py", "results/fd_semantics_v0.json", "results/mcv_scalararray_semantics_v0.json", "docs/ce-replay-ir-v1.md"],
+      "realization_boundary": "Every comparison uses matched native/replay payload and physical state within its experiment.",
+      "qualification": "Raw/pre-clamp or explicitly reported native boundary; not full planner/CE replay."
+    },
+    {
+      "section": "5 CE-Replay",
+      "claim_id": "C16",
+      "claim": "General PostgreSQL CE coverage is outside the contribution.",
+      "source_experiment": ["Research-Convergence-Audit-v2"],
+      "source_artifact": ["docs/research-convergence-audit-v2.md", "results/paper-claim-matrix-v0.json"],
+      "realization_boundary": "Not applicable.",
+      "qualification": "Explicit scope boundary, not an empirical result."
+    },
+    {
+      "section": "6 Semantics-Guided Physical Design",
+      "claim_id": "C12",
+      "claim": "The solver uses exact replay move values and returns an audited neighborhood local optimum at workload scale.",
+      "source_experiment": ["CE-Replay-Optimize-v0", "Maintenance-Budget-Optimize-v0", "DMV-Maintenance-Budget-Optimize-v0"],
+      "source_artifact": ["tools/ce_replay_optimize_v0.py", "results/census_ce_replay_optimize_v0.json", "tools/maintenance_budget_optimize_v0.py", "results/census_maintenance_budget_optimize_v0.json", "results/census_maintenance_budget_optimize_v0.md", "tools/dmv_maintenance_budget_optimize_v0.py", "results/dmv_maintenance_budget_optimize_v0.json", "results/dmv_maintenance_budget_optimize_v0.md"],
+      "realization_boundary": "Global exhaustive evidence applies only to the five-candidate Census instance and four restricted DMV instances.",
+      "qualification": "No full-instance global optimum or approximation guarantee."
+    },
+    {
+      "section": "6 Semantics-Guided Physical Design",
+      "claim_id": "C9",
+      "claim": "Replay semantics expose exact move invalidation/dependency information.",
+      "source_experiment": ["Semantic-Move-Pruning-v0", "Semantic-Optimizer-v0", "Compositional-Semantic-Optimizer-v0", "DMV-Maintenance-Budget-Optimize-v0"],
+      "source_artifact": ["tools/semantic_move_pruning_v0.py", "results/census_semantic_move_pruning_v0.json", "tools/semantic_optimizer_v0.py", "results/census_semantic_optimizer_v0.json", "results/census_semantic_optimizer_v0.md", "tools/compositional_semantic_optimizer_v0.py", "results/census_compositional_semantic_optimizer_v0.json", "results/census_compositional_semantic_optimizer_v0.md", "results/dmv_maintenance_budget_optimize_v0.json"],
+      "realization_boundary": "Each trajectory comparison uses its own fixed payload and precedence.",
+      "qualification": "Control-work reduction does not imply universal wall-clock speedup."
+    },
+    {
+      "section": "7 Experimental Methodology",
+      "claim_id": "C10",
+      "claim": "Census provides a large sparse candidate-incidence regime.",
+      "source_experiment": ["Census locality analysis"],
+      "source_artifact": ["tools/analyze_locality.py", "results/census_locality.md", "results/census_locality_arity2.json", "results/census_locality_arity2_3.json"],
+      "realization_boundary": "Structural workload/candidate analysis; no payload realization.",
+      "qualification": "Sparse degree coexists with a giant component."
+    },
+    {
+      "section": "7 Experimental Methodology",
+      "claim_id": "C11",
+      "claim": "DMV provides a dense high-reuse IN-heavy regime.",
+      "source_experiment": ["DMV-Fit-Audit-v0"],
+      "source_artifact": ["tools/dmv_fit_audit_v0.py", "results/dmv_fit_audit_v0.json", "results/dmv_fit_audit_v0.md"],
+      "realization_boundary": "Static workload audit; row count obtained from source data and later confirmed by load experiments.",
+      "qualification": "Only 36 structural pairs; not a large candidate-space scalability benchmark."
+    },
+    {
+      "section": "8.1 RQ1",
+      "claim_id": "C1",
+      "claim": "Real DMV replay matches native CE over the complete canonical workload.",
+      "source_experiment": ["DMV-Baseline-and-Nonmonotonicity-v0"],
+      "source_artifact": ["tools/dmv_baseline_nonmonotonicity_v0.py", "results/dmv_baseline_nonmonotonicity_v0.json", "results/dmv_baseline_nonmonotonicity_v0.md"],
+      "realization_boundary": "One baseline target-100 payload realization, distinct from later optimization.",
+      "qualification": "27,510 tested query/design comparisons inside the supported fragment."
+    },
+    {
+      "section": "8.2 RQ2",
+      "claim_id": "C6",
+      "claim": "Aligning the Census resource constraint with maintenance cost materially changes design and loss.",
+      "source_experiment": ["Maintenance-Budget-Optimize-v0"],
+      "source_artifact": ["tools/maintenance_budget_optimize_v0.py", "results/census_maintenance_budget_optimize_v0.json", "results/census_maintenance_budget_optimize_v0.md"],
+      "realization_boundary": "Direct comparison uses the same frozen Census evaluator/payload/precedence.",
+      "qualification": "Direct resource-model comparison is Census-only."
+    },
+    {
+      "section": "8.2 RQ2",
+      "claim_id": "C3",
+      "claim": "DMV optimization can leave budget unused instead of adding harmful/unhelpful objects.",
+      "source_experiment": ["DMV-Maintenance-Budget-Optimize-v0"],
+      "source_artifact": ["tools/dmv_maintenance_budget_optimize_v0.py", "results/dmv_maintenance_budget_optimize_v0.json", "results/dmv_maintenance_budget_optimize_v0.md", "results/dmv_maintenance_budget_design_v0.json"],
+      "realization_boundary": "New internally consistent target-100 realization; do not pair absolute loss with DMV baseline experiment.",
+      "qualification": "The 50%, 75%, and 100% solutions coincide under the completed search and objective."
+    },
+    {
+      "section": "8.3 RQ3",
+      "claim_id": "C9",
+      "claim": "Incremental semantic evaluation remains useful under both sparse and dense incidence.",
+      "source_experiment": ["Semantic-Optimizer-v0", "Compositional-Semantic-Optimizer-v0", "DMV-Maintenance-Budget-Optimize-v0"],
+      "source_artifact": ["results/census_semantic_optimizer_v0.json", "results/census_compositional_semantic_optimizer_v0.json", "results/dmv_maintenance_budget_optimize_v0.json"],
+      "realization_boundary": "Cross-workload comparison is structural/control-work, not a paired runtime benchmark.",
+      "qualification": "Census mixed implementation did not improve wall-clock time; DMV reports avoided replay operations, not an end-to-end speedup."
+    },
+    {
+      "section": "8.4 RQ4",
+      "claim_id": "C8",
+      "claim": "Composition-aware optimization restores useful FD reachability.",
+      "source_experiment": ["CE-Replay-Optimize-v4", "Maintenance-Budget-Optimize-v0", "DMV-Baseline-and-Nonmonotonicity-v0", "DMV-Maintenance-Budget-Optimize-v0", "DMV-Deploy-v0"],
+      "source_artifact": ["results/census_ce_replay_optimize_v4.json", "results/census_maintenance_budget_optimize_v0.json", "results/dmv_baseline_nonmonotonicity_v0.json", "results/dmv_maintenance_budget_optimize_v0.json", "results/dmv_deploy_v0.json"],
+      "realization_boundary": "Use consumption counts and qualitative mechanism behavior across realizations; do not pair their absolute objectives.",
+      "qualification": "One selected DMV FD failed to materialize fresh; all 11 materialized FDs consumed."
+    },
+    {
+      "section": "8.4 RQ4",
+      "claim_id": "C13",
+      "claim": "The final Census design physically realizes and fresh replay matches native PostgreSQL.",
+      "source_experiment": ["Maintenance-Design-Deploy-v0"],
+      "source_artifact": ["tools/maintenance_design_deploy_v0.py", "results/census_maintenance_design_deploy_v0.json", "results/census_maintenance_design_deploy_v0.md", "results/census_maintenance_budget_optimize_v0.json"],
+      "realization_boundary": "Frozen optimization payload versus one fresh deployed ANALYZE is explicitly paired.",
+      "qualification": "One deployment; local optimum; environment-specific cost model."
+    },
+    {
+      "section": "8.4 RQ4",
+      "claim_id": "C13",
+      "claim": "The final DMV design physically realizes and fresh replay matches native PostgreSQL.",
+      "source_experiment": ["DMV-Deploy-v0", "DMV-Frozen-Provenance-Recovery-v0"],
+      "source_artifact": ["tools/dmv_deploy_v0.py", "results/dmv_deploy_v0.json", "results/dmv_deploy_v0.md", "results/dmv_deploy_query_comparison_v0.csv", "tools/dmv_frozen_provenance_recovery_v0.py", "results/dmv_frozen_provenance_recovery_v0.json", "results/dmv_frozen_provenance_recovery_v0.md", "results/dmv_maintenance_budget_design_v0.json"],
+      "realization_boundary": "Fresh-side values are authoritative; frozen per-query numerical vector is absent.",
+      "qualification": "Do not report a paired frozen-to-fresh per-query drift distribution."
+    },
+    {
+      "section": "9 Discussion and Limitations",
+      "claim_id": "C14",
+      "claim": "Payload realization drift is distinct from semantic replay error.",
+      "source_experiment": ["Repeated-Analyze-Robustness-v0", "Maintenance-Design-Deploy-v0", "DMV-Frozen-Provenance-Recovery-v0"],
+      "source_artifact": ["tools/repeated_analyze_robustness_v0.py", "results/census_repeated_analyze_robustness_v0.json", "results/census_repeated_analyze_robustness_v0.md", "results/census_repeated_analyze_robustness_v0_runs.csv", "results/census_maintenance_design_deploy_v0.json", "results/dmv_frozen_provenance_recovery_v0.json"],
+      "realization_boundary": "Census has paired/repeated numerical evidence; DMV has fresh and structural evidence only.",
+      "qualification": "Do not infer design-ranking stability from one-design variability."
+    },
+    {
+      "section": "9 Discussion and Limitations",
+      "claim_id": "C5",
+      "claim": "Maintenance coefficients and prediction accuracy are environment-specific.",
+      "source_experiment": ["Analyze-Cost-Model-v0", "DMV-Analyze-Cost-Model-v0", "Maintenance-Design-Deploy-v0", "DMV-Deploy-v0"],
+      "source_artifact": ["results/census_analyze_cost_model_v0.json", "results/dmv_analyze_cost_model_v0.json", "results/census_maintenance_design_deploy_v0.json", "results/dmv_deploy_v0.json"],
+      "realization_boundary": "Cost-model calibration and deployment sanity checks are separate measurements within each workload environment.",
+      "qualification": "Report Census 7.20% and DMV 21.4295% deployment prediction errors."
+    }
+  ],
+  "excluded_from_core_narrative": [
+    "CE-Replay-IR-v0",
+    "CE-Replay-IR-v1-A",
+    "Research-Synthesis-v0",
+    "Workload-Generalization-v0",
+    "Generalization-Mechanism-Analysis-v0",
+    "Budget-Generalization-Curve-v0",
+    "Census structural-group audit",
+    "Structural-Distance-Generalization-v0"
+  ]
+}

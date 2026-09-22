@@ -1,0 +1,167 @@
+{
+  "artifact": "paper-claim-matrix-v0",
+  "date": "2026-09-22",
+  "primary_problem": "Resource-constrained statistics physical design for a supplied fixed target workload.",
+  "claims": [
+    {
+      "claim_id": "C1",
+      "claim_text": "Executable replay reproduces native PostgreSQL CE inside the supported statistics-sensitive fragment.",
+      "evidence": ["CE-Replay-IR-v1-B", "FD-Semantics-v0", "MCV-ScalarArray-Semantics-v0", "DMV-Baseline-and-Nonmonotonicity-v0", "Maintenance-Design-Deploy-v0", "DMV-Deploy-v0"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "PostgreSQL 16.14 base-relation conjunctive restrictions; supported scalar predicates and constant IN/=ANY; MCV, FD, MCV-first consumption, fixed payload and precedence.",
+      "safe_wording": "Replay matches native PostgreSQL within the explicitly supported statistics-sensitive base-restriction fragment to the reported floating-point tolerances.",
+      "forbidden_wording": "CE-Replay exactly reproduces all PostgreSQL cardinality estimation.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C2",
+      "claim_text": "Statistics-set inclusion can be non-monotone for target-workload CE loss.",
+      "evidence": ["Statistics-Nonmonotonicity-v0", "DMV-Baseline-and-Nonmonotonicity-v0"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "Empirical witnesses in two fixed workloads and frozen realizations.",
+      "safe_wording": "Native extended-statistics consumption semantics can make workload CE loss non-monotone in statistics-set inclusion.",
+      "forbidden_wording": "Extended statistics are always non-monotone or harmful.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C3",
+      "claim_text": "Selection remains meaningful even when the available budget is nonbinding.",
+      "evidence": ["Statistics-Nonmonotonicity-v0", "DMV-Maintenance-Budget-Optimize-v0"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "Census all-statistics versus strict subset; DMV identical 50/75/100% solution with unused capacity.",
+      "safe_wording": "The optimizer can rationally leave capacity unused and reject harmful or unhelpful statistics.",
+      "forbidden_wording": "More budget always improves the optimized objective.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C4",
+      "claim_text": "Aggregate ANALYZE cost admits a useful first-order mechanism-aware object-count approximation in the measured environments.",
+      "evidence": ["Analyze-Cost-Model-v0", "DMV-Analyze-Cost-Model-v0"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "Aggregate recurring ANALYZE latency on one machine, PostgreSQL 16.14, pair MCV/FD objects.",
+      "safe_wording": "A mechanism-weighted count model is a reproducible first-order maintenance resource proxy in the measured environments.",
+      "forbidden_wording": "The model precisely predicts every ANALYZE latency or candidate-specific cost.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C5",
+      "claim_text": "Maintenance-model form transfers, while fitted coefficients are environment and workload specific.",
+      "evidence": ["Analyze-Cost-Model-v0", "DMV-Analyze-Cost-Model-v0", "Maintenance-Design-Deploy-v0", "DMV-Deploy-v0"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "Census FD/MCV ratio 1.449; DMV ratio 1.51321194083715; deployment prediction errors 7.20% and 21.4295%.",
+      "safe_wording": "Both workloads support the model form, but coefficients must be calibrated for the measured setting.",
+      "forbidden_wording": "FD generally costs 1.449x or 1.513x MCV in PostgreSQL.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C6",
+      "claim_text": "Changing the resource model can materially change the chosen physical design.",
+      "evidence": ["Maintenance-Budget-Optimize-v0"],
+      "workload_coverage": ["Census"],
+      "scope": "Direct Census byte-budget versus maintenance-budget comparison at matched modeled cost.",
+      "safe_wording": "On Census, resource-model alignment materially changed selection and loss.",
+      "forbidden_wording": "The same effect was directly demonstrated on DMV or is universal.",
+      "paper_role": "SUPPORTING"
+    },
+    {
+      "claim_id": "C7",
+      "claim_text": "MCV clause consumption changes downstream FD applicability.",
+      "evidence": ["FD-Semantics-v0", "CE-Replay-Optimize-v4", "Compositional-Semantic-Optimizer-v0", "DMV-Baseline-and-Nonmonotonicity-v0"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "PostgreSQL 16.14 MCV-first base-restriction composition.",
+      "safe_wording": "MCV-first consumption can suppress or expose FD use, so the mechanisms must be evaluated compositionally.",
+      "forbidden_wording": "MCV and FD objectives can always be optimized independently.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C8",
+      "claim_text": "Joint optimization can restore useful FD consumption suppressed by all-statistics or independently chosen designs.",
+      "evidence": ["CE-Replay-Optimize-v4", "Maintenance-Budget-Optimize-v0", "DMV-Maintenance-Budget-Optimize-v0", "DMV-Deploy-v0"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "Census selected FDs consumed; DMV all-statistics consumed 0 FD versus optimized 12 and fresh deployed 11 materialized FDs.",
+      "safe_wording": "Composition-aware subsets restored FD reachability in both workloads.",
+      "forbidden_wording": "All selected statistics are always materialized and consumed.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C9",
+      "claim_text": "Semantic dependency information permits exact incremental move evaluation with fewer control replays.",
+      "evidence": ["Semantic-Optimizer-v0", "Compositional-Semantic-Optimizer-v0", "DMV-Maintenance-Budget-Optimize-v0"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "Audited fixed ADD/DROP/SWAP neighborhoods and trajectories; DMV avoided 67.91% of full-workload query replay operations.",
+      "safe_wording": "Dependency-aware evaluation reduces control-replay work while preserving audited move results.",
+      "forbidden_wording": "Semantic incremental evaluation always accelerates end-to-end optimization.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C10",
+      "claim_text": "Sparse affected-query locality is present in Census.",
+      "evidence": ["Census locality analysis", "CE-Replay-Optimize-v1", "Semantic-Optimizer-v0"],
+      "workload_coverage": ["Census"],
+      "scope": "Census pair-candidate mean degree 4.44; giant component prevents strict component decomposition.",
+      "safe_wording": "Census exhibits sparse local incidence despite a giant connected component.",
+      "forbidden_wording": "Sparse locality is a universal workload property.",
+      "paper_role": "SUPPORTING"
+    },
+    {
+      "claim_id": "C11",
+      "claim_text": "The semantic method remains useful on dense candidate/workload incidence.",
+      "evidence": ["DMV-Fit-Audit-v0", "DMV-Maintenance-Budget-Optimize-v0"],
+      "workload_coverage": ["DMV"],
+      "scope": "36 high-reuse pairs; degree mean 497.13; 67.91% query replay operations avoided.",
+      "safe_wording": "DMV shows useful exact dependency-aware evaluation in a dense, small candidate universe.",
+      "forbidden_wording": "DMV demonstrates Census-scale optimizer scalability.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C12",
+      "claim_text": "Global optimality is established only on exhaustive small/restricted instances; workload-scale results are fixed-neighborhood local optima.",
+      "evidence": ["CE-Replay-Optimize-v0", "Semantic-Optimizer-v0", "Compositional-Semantic-Optimizer-v0", "DMV-Maintenance-Budget-Optimize-v0", "Maintenance-Budget-Optimize-v0"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "Fixed payload and precedence; deterministic ADD/DROP/SWAP terminal audits; DMV 4/4 restricted exhaustive recovery.",
+      "safe_wording": "The workload-scale designs are locally optimal under the audited neighborhood.",
+      "forbidden_wording": "The optimizer finds the global optimum on full Census or DMV.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C13",
+      "claim_text": "Selected mixed designs can be physically realized and fresh replay can match fresh native estimates.",
+      "evidence": ["Maintenance-Design-Deploy-v0", "DMV-Deploy-v0"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "Exact creation order, one fresh ANALYZE, fresh payload replay/native validation.",
+      "safe_wording": "Physical realization and fresh semantic fidelity succeeded on both workloads.",
+      "forbidden_wording": "Both workloads have complete paired frozen-to-fresh numerical drift audits.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C14",
+      "claim_text": "Fresh ANALYZE may change payload realization and objective.",
+      "evidence": ["Mixed-Deploy-v0", "Repeated-Analyze-Robustness-v0", "Maintenance-Design-Deploy-v0", "DMV-Deploy-v0", "DMV-Frozen-Provenance-Recovery-v0"],
+      "workload_coverage": ["Census", "DMV (aggregate/structural only)"],
+      "scope": "Census has paired and repeated evidence; DMV lacks frozen per-query numerical provenance.",
+      "safe_wording": "Census quantifies paired payload drift; DMV shows aggregate and control-path change but cannot provide the paired per-query distribution.",
+      "forbidden_wording": "DMV has a paired frozen-to-fresh estimate-drift distribution.",
+      "paper_role": "ROBUSTNESS"
+    },
+    {
+      "claim_id": "C15",
+      "claim_text": "The replay boundary can be deliberately extended to constant ScalarArray/IN semantics using source-derived rules.",
+      "evidence": ["MCV-ScalarArray-Semantics-v0", "DMV-Baseline-and-Nonmonotonicity-v0"],
+      "workload_coverage": ["Synthetic", "Census regression", "DMV"],
+      "scope": "Conjunctive constant IN/=ANY text predicates; 29 synthetic cases, 128 scalar regressions, 1965 DMV queries.",
+      "safe_wording": "A bounded source-derived ScalarArray extension achieved complete semantic coverage of the canonical DMV file.",
+      "forbidden_wording": "The system automatically supports arbitrary PostgreSQL predicates.",
+      "paper_role": "CORE"
+    },
+    {
+      "claim_id": "C16",
+      "claim_text": "General PostgreSQL CE coverage is not established.",
+      "evidence": ["Research-Convergence-Audit-v1", "Research-Convergence-Audit-v2"],
+      "workload_coverage": ["Census", "DMV"],
+      "scope": "Explicit limitation.",
+      "safe_wording": "The project replays the supported statistics-sensitive base-restriction CE fragment of PostgreSQL 16.14.",
+      "forbidden_wording": "The project replays PostgreSQL cardinality estimation without qualification.",
+      "paper_role": "BOUNDARY"
+    }
+  ]
+}

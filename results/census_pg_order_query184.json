@@ -1,0 +1,234 @@
+{
+  "postgres_version": 160015,
+  "query_id": "query.184",
+  "sql": "SELECT count(*) FROM climate WHERE dDepart >= 0 AND dDepart <= 2 AND iDisabl1 = 0 AND iEnglish = 0 AND iImmigr = 0 AND iLooking = 0 AND iMay75880 = 0 AND iRelat2 = 0 AND dRpincome >= 2 AND dRpincome <= 4 AND iRspouse = 1 AND dTravtime >= 0 AND dTravtime <= 4",
+  "actual": 13,
+  "statistics_target": 1000,
+  "coexistence_repeats": 3,
+  "statistics": {
+    "good": [
+      "idisabl1",
+      "irspouse"
+    ],
+    "bad": [
+      "ddepart",
+      "idisabl1"
+    ]
+  },
+  "observations": [
+    {
+      "regime": "baseline",
+      "trial": 1,
+      "creation_order": [],
+      "estimate": 52900,
+      "qerror": 4069.230769230769,
+      "catalog_oid_order": []
+    },
+    {
+      "regime": "good_only",
+      "trial": 1,
+      "creation_order": [
+        "good"
+      ],
+      "estimate": 52,
+      "qerror": 4.0,
+      "catalog_oid_order": [
+        {
+          "name": "v3_order_probe_good",
+          "oid": 22348407,
+          "columns": [
+            "idisabl1",
+            "irspouse"
+          ]
+        }
+      ]
+    },
+    {
+      "regime": "bad_only",
+      "trial": 1,
+      "creation_order": [
+        "bad"
+      ],
+      "estimate": 77817,
+      "qerror": 5985.923076923077,
+      "catalog_oid_order": [
+        {
+          "name": "v3_order_probe_bad",
+          "oid": 22348408,
+          "columns": [
+            "ddepart",
+            "idisabl1"
+          ]
+        }
+      ]
+    },
+    {
+      "regime": "good_then_bad",
+      "trial": 1,
+      "creation_order": [
+        "good",
+        "bad"
+      ],
+      "estimate": 25,
+      "qerror": 1.9230769230769231,
+      "catalog_oid_order": [
+        {
+          "name": "v3_order_probe_good",
+          "oid": 22348409,
+          "columns": [
+            "idisabl1",
+            "irspouse"
+          ]
+        },
+        {
+          "name": "v3_order_probe_bad",
+          "oid": 22348410,
+          "columns": [
+            "ddepart",
+            "idisabl1"
+          ]
+        }
+      ]
+    },
+    {
+      "regime": "bad_then_good",
+      "trial": 1,
+      "creation_order": [
+        "bad",
+        "good"
+      ],
+      "estimate": 78256,
+      "qerror": 6019.692307692308,
+      "catalog_oid_order": [
+        {
+          "name": "v3_order_probe_bad",
+          "oid": 22348411,
+          "columns": [
+            "ddepart",
+            "idisabl1"
+          ]
+        },
+        {
+          "name": "v3_order_probe_good",
+          "oid": 22348412,
+          "columns": [
+            "idisabl1",
+            "irspouse"
+          ]
+        }
+      ]
+    },
+    {
+      "regime": "good_then_bad",
+      "trial": 2,
+      "creation_order": [
+        "good",
+        "bad"
+      ],
+      "estimate": 52,
+      "qerror": 4.0,
+      "catalog_oid_order": [
+        {
+          "name": "v3_order_probe_good",
+          "oid": 22348413,
+          "columns": [
+            "idisabl1",
+            "irspouse"
+          ]
+        },
+        {
+          "name": "v3_order_probe_bad",
+          "oid": 22348414,
+          "columns": [
+            "ddepart",
+            "idisabl1"
+          ]
+        }
+      ]
+    },
+    {
+      "regime": "bad_then_good",
+      "trial": 2,
+      "creation_order": [
+        "bad",
+        "good"
+      ],
+      "estimate": 78762,
+      "qerror": 6058.615384615385,
+      "catalog_oid_order": [
+        {
+          "name": "v3_order_probe_bad",
+          "oid": 22348415,
+          "columns": [
+            "ddepart",
+            "idisabl1"
+          ]
+        },
+        {
+          "name": "v3_order_probe_good",
+          "oid": 22348416,
+          "columns": [
+            "idisabl1",
+            "irspouse"
+          ]
+        }
+      ]
+    },
+    {
+      "regime": "good_then_bad",
+      "trial": 3,
+      "creation_order": [
+        "good",
+        "bad"
+      ],
+      "estimate": 59,
+      "qerror": 4.538461538461538,
+      "catalog_oid_order": [
+        {
+          "name": "v3_order_probe_good",
+          "oid": 22348417,
+          "columns": [
+            "idisabl1",
+            "irspouse"
+          ]
+        },
+        {
+          "name": "v3_order_probe_bad",
+          "oid": 22348418,
+          "columns": [
+            "ddepart",
+            "idisabl1"
+          ]
+        }
+      ]
+    },
+    {
+      "regime": "bad_then_good",
+      "trial": 3,
+      "creation_order": [
+        "bad",
+        "good"
+      ],
+      "estimate": 78244,
+      "qerror": 6018.7692307692305,
+      "catalog_oid_order": [
+        {
+          "name": "v3_order_probe_bad",
+          "oid": 22348419,
+          "columns": [
+            "ddepart",
+            "idisabl1"
+          ]
+        },
+        {
+          "name": "v3_order_probe_good",
+          "oid": 22348420,
+          "columns": [
+            "idisabl1",
+            "irspouse"
+          ]
+        }
+      ]
+    }
+  ]
+}

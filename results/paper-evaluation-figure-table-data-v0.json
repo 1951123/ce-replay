@@ -1,0 +1,99 @@
+{
+  "artifact": "paper-evaluation-figure-table-data-v0",
+  "date": "2026-09-22",
+  "main_text_budget_unchanged": {"figures": 4, "tables": 5},
+  "evaluation_items": [
+    {
+      "id": "T1",
+      "title": "Complementary workload and candidate structure",
+      "takeaway": "Census stresses a large sparse candidate universe, whereas DMV stresses dense reuse and ScalarArray predicates.",
+      "rows": [
+        {"workload":"Census","queries":468,"rows":2458285,"predicate_columns":68,"predicate_character":"numeric equality/range","structural_pair_candidates":2253,"mechanism_candidates":"2,253 MCV; 758 usable FD in the mixed realization","candidate_degree":"mean 4.44; max 13","incidence":"sparse, giant component","main_stress":"large candidate space and sparse incremental evaluation"},
+        {"workload":"DMV","queries":1965,"rows":11591877,"predicate_columns":9,"predicate_character":"categorical equality and constant IN/=ANY","structural_pair_candidates":36,"mechanism_candidates":"72 definitions; realization-specific usable payloads","candidate_degree":"mean 497.08; median 498; max 546","incidence":"dense/high reuse","main_stress":"ScalarArray semantics and dense incremental evaluation"}
+      ],
+      "sources": ["results/census_locality_arity2.json", "results/census_analyze_cost_model_v0.md", "results/dmv_fit_audit_v0.json"]
+    },
+    {
+      "id": "F2",
+      "title": "Cross-workload non-monotonicity",
+      "visual_question": "Can adding statistics worsen target-workload CE loss?",
+      "encoding": "Two independent workload panels; use workload-local axes and never connect panels. Raw values remain labeled.",
+      "panels": {
+        "Census_nonmonotonicity_realization": {"empty":11808.960378745707,"all_statistics":10932.295550009163,"optimized_subset":805.316471766631,"harmful_singletons":1560,"tested_singletons":3011,"improving_removals_from_all":317},
+        "DMV_baseline_realization": {"empty":87276.58113200263,"all_mcv":92850.15130320721,"all_fd":95404.85514557704,"all_statistics":92850.15130320721,"beneficial_singletons":25,"harmful_singletons":45,"usable_singletons":70,"improving_removals_from_all":17}
+      },
+      "caption": "Statistics-set inclusion is empirically non-monotone in both frozen realizations. Panels use separate axes because DMV's floor-based objective is dominated by two zero-truth queries; absolute loss is not compared across workloads.",
+      "sources": ["results/census_statistics_nonmonotonicity_v0.json", "results/dmv_baseline_nonmonotonicity_v0.json"]
+    },
+    {
+      "id": "F3",
+      "title": "Mechanism-aware recurring ANALYZE cost",
+      "visual_question": "Does aggregate ANALYZE latency admit a useful first-order mechanism-aware approximation?",
+      "encoding": "Separate Census and DMV panels sourced directly from their CSVs; distinct MCV/FD fits and no shared regression line.",
+      "panels": {
+        "Census": {"configurations":36,"measured_runs":360,"empty_mean_seconds":0.236111,"mcv_only_slope_ms":1.874997,"fd_only_slope_ms":2.717261,"mcv_r2":0.994936,"fd_r2":0.996367,"normalized_fd_weight":1.449,"csv":"results/census_analyze_cost_model_v0.csv"},
+        "DMV": {"configurations":35,"measured_runs":245,"empty_mean_seconds":0.114857189,"mcv_only_slope_ms":4.101326,"fd_only_slope_ms":5.759152,"combined_mcv_ms":3.903845,"combined_fd_ms":5.907345,"combined_r2":0.974868,"normalized_fd_weight":1.51321194083715,"rmse_improvement_vs_uniform_percent":44.8187,"csv":"results/dmv_analyze_cost_model_v0.csv"}
+      },
+      "caption": "Aggregate ANALYZE latency is approximately first-order in deployed mechanism counts in each measured environment, but the fitted coefficients differ. The model is a resource proxy rather than a universal or candidate-specific PostgreSQL cost function.",
+      "sources": ["results/census_analyze_cost_model_v0.json", "results/dmv_analyze_cost_model_v0.json"]
+    },
+    {
+      "id": "T2",
+      "title": "Native semantic fidelity within the supported fragment",
+      "takeaway": "Controlled, real-workload, and fresh-deployment comparisons all match native PostgreSQL at floating-point-scale relative error inside the supported boundary.",
+      "rows": [
+        {"setting":"Census MCV raw oracle","fragment":"scalar MCV","comparisons":"4 targets x 32 designs","result":"all matched","max_relative_error":5.55e-16},
+        {"setting":"FD controlled scenarios","fragment":"FD selection/application and order","comparisons":"13 subset/order scenarios","result":"all matched","max_relative_error":0.0},
+        {"setting":"ScalarArray synthetic","fragment":"constant IN/=ANY MCV","comparisons":"29 cases","result":"29/29; scalar regression 128/128","max_relative_error":4.38e-15},
+        {"setting":"DMV baseline realization","fragment":"real equality/IN MCV+FD","comparisons":27510,"result":"27510/27510","max_relative_error":1.40286e-14},
+        {"setting":"Census fresh deployment","fragment":"fresh mixed MCV+FD","comparisons":468,"result":"468/468","max_relative_error":6.92e-16},
+        {"setting":"DMV fresh deployment","fragment":"fresh mixed MCV+FD","comparisons":1965,"result":"1965/1965","max_relative_error":2.43422e-14}
+      ],
+      "sources": ["results/census_ce_replay_ir_v1b_instrumented_target100.json", "results/fd_semantics_v0.json", "results/mcv_scalararray_semantics_v0.json", "results/dmv_baseline_nonmonotonicity_v0.json", "results/census_maintenance_design_deploy_v0.json", "results/dmv_deploy_v0.json"]
+    },
+    {
+      "id": "T3",
+      "title": "Maintenance-budget physical-design outcomes",
+      "takeaway": "Replay selects nontrivial mixed subsets, can leave capacity unused, and provides audited neighborhood-local rather than full global optimality.",
+      "rows": [
+        {"workload":"Census","usable_universe":"2,253 MCV + 758 FD","budget":286.144,"selected":"276 MCV + 7 FD","modeled_cost":286.143,"remaining":0.001,"frozen_loss":787.809381279634,"consumption":"all 7 selected FD consumed","audit":"565,031 terminal moves; best delta 3.74539805201e-05; local optimum"},
+        {"workload":"DMV optimization realization","usable_universe":"36 MCV + 34 FD","budget":43.724602994231546,"selected":"11 MCV + 12 FD","modeled_cost":29.1585432900458,"remaining":14.566059704185747,"frozen_loss":7.83651388676e298,"consumption":"all selected objects consumed; 417 FD-consuming queries","audit":"47 ADD + 23 DROP + 1,081 SWAP; best delta 0; 4/4 restricted exact recovery"}
+      ],
+      "sources": ["results/census_maintenance_budget_optimize_v0.json", "results/dmv_maintenance_budget_optimize_v0.json"]
+    },
+    {
+      "id": "T4",
+      "title": "Exact incremental evaluation under sparse and dense incidence",
+      "takeaway": "Semantic dependencies reduce exact replay work in both regimes, but topology and numerical overhead determine wall-clock benefit.",
+      "rows": [
+        {"setting":"Census MCV local search","incidence":"sparse; candidate mean degree about 4.44","audited_moves":5639186,"exactness":"17 accepted moves and final result identical","work_reduction":"171.31x fewer query control replays; 95.28% no control replay","wall_clock":"82.422 s vs 289.013 s; 3.51x"},
+        {"setting":"Census mixed local search","incidence":"sparse plus directed MCV-to-FD state","audited_moves":9107766,"exactness":"19 accepted moves and final result identical","work_reduction":"95.13% numerical-only; 154.61x mechanism-aware control reduction","wall_clock":"145.68 s vs 45.05 s; 3.23x slower"},
+        {"setting":"DMV mixed optimization","incidence":"dense; degree mean/median/p90/max 497.13/498/520/546","audited_moves":"terminal 1,151","exactness":"terminal local audit; 4/4 restricted exact recovery","work_reduction":"67.91% of full-workload query replay operations avoided","wall_clock":"no comparable speedup claim"}
+      ],
+      "sources": ["results/census_semantic_optimizer_v0.json", "results/census_compositional_semantic_optimizer_v0.json", "results/dmv_maintenance_budget_optimize_v0.json"]
+    },
+    {
+      "id": "F4",
+      "title": "Directed MCV-to-FD composition",
+      "visual_question": "Does MCV clause consumption suppress FD use, and can joint selection restore it?",
+      "encoding": "Top: MCV-to-residual-clause-state-to-FD diagram. Bottom: compact Census and DMV all/independent versus joint/selected consumption comparison.",
+      "data": {
+        "Census": {"independent_loss":813.942274,"joint_loss":806.443575,"relative_improvement_percent":0.9213,"independent_selected_fd":97,"independent_never_consumed_fd":72,"joint_selected_fd":54,"joint_consumed_fd":54},
+        "DMV": {"all_state_consumed_mcv":36,"all_state_usable_fd":34,"all_state_consumed_fd":0,"optimized_selected_fd":12,"optimized_consumed_fd":12,"optimized_fd_consuming_queries":417,"fresh_materialized_fd":11,"fresh_consumed_fd":11,"fresh_fd_consuming_queries":389}
+      },
+      "caption": "MCV executes first and changes the clause state visible to FD. Independent/all-statistics states can suppress FD contribution, whereas composition-aware subsets restore FD reachability in both workloads and after DMV deployment.",
+      "sources": ["results/census_ce_replay_optimize_v4.json", "results/dmv_baseline_nonmonotonicity_v0.json", "results/dmv_maintenance_budget_optimize_v0.json", "results/dmv_deploy_v0.json"]
+    },
+    {
+      "id": "T5",
+      "title": "Physical deployment and fresh native validation",
+      "takeaway": "Both selected states were physically realized and match fresh native CE; only Census supports a complete paired numerical drift analysis.",
+      "rows": [
+        {"workload":"Census","selected":"276 MCV + 7 FD","fresh_analyze":"exactly one","materialization":"276/276 MCV; 7/7 FD","fd_consumption":"7/7","fresh_replay_native":"811.553725117865 / 811.553725117865; 468/468","max_relative_error":6.92e-16,"frozen_to_fresh":"787.809381279634 to 811.553725117865; +3.0140%","cost_prediction_error":"7.20%","provenance":"complete paired deployment evidence"},
+        {"workload":"DMV","selected":"11 MCV + 12 FD","fresh_analyze":"exactly one","materialization":"11/11 MCV; 11/12 FD","fd_consumption":"11/11 materialized; 389 queries","fresh_replay_native":"1965/1965; aggregate equal","max_relative_error":2.43422e-14,"frozen_to_fresh":"Unavailable: frozen per-query provenance not persisted","cost_prediction_error":"21.4295%","provenance":"fresh and structural claims supported; paired numerical drift unavailable"}
+      ],
+      "sources": ["results/census_maintenance_design_deploy_v0.json", "results/dmv_deploy_v0.json", "results/dmv_frozen_provenance_recovery_v0.json"]
+    }
+  ],
+  "not_repeated_here": {"F1":"Specified in docs/paper-figure-1-spec-v0.md; method architecture, not an Evaluation result."}
+}

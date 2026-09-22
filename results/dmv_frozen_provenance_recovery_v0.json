@@ -1,0 +1,558 @@
+{
+  "audit": "DMV-Frozen-Provenance-Recovery-v0",
+  "mode": "read-only artifact/provenance audit",
+  "inspected_artifacts": [
+    {
+      "path": "/root/projects/extended-stats-optim-v3/results/dmv_maintenance_budget_optimize_v0.json",
+      "exists": true,
+      "size_bytes": 974169,
+      "mtime_ns": 1790003267926555357,
+      "sha256": "73d32e0ed83d7114d8e441c9952376657a5602ecf37ef1562d932f9cea891b0d",
+      "classification": "same frozen realization / authoritative",
+      "finding": "Contains payload repository, aggregate losses, selected sets, trajectory, and audits; no per-query final state."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/results/dmv_maintenance_budget_design_v0.json",
+      "exists": true,
+      "size_bytes": 5702,
+      "mtime_ns": 1790003111302064014,
+      "sha256": "50355787698cfe9eda40b7c3f17374b9efc16136c56e67b4dd13c01f8256b7d1",
+      "classification": "same frozen realization / authoritative",
+      "finding": "Contains 23 selected identities, creation order, cost, budget, and aggregate frozen loss; no query vector."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/results/dmv_maintenance_budget_optimize_v0.md",
+      "exists": true,
+      "size_bytes": 6842,
+      "mtime_ns": 1790003268632748139,
+      "sha256": "83ccd5f8212a906ad0138081c13fbf8f2f045d74ff40547b7f5bade4ba12143b",
+      "classification": "same frozen realization / summary",
+      "finding": "Human-readable aggregate summary only."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/tools/dmv_maintenance_budget_optimize_v0.py",
+      "exists": true,
+      "size_bytes": 37972,
+      "mtime_ns": 1790003267220362573,
+      "sha256": "e2ec53691ac5593e891fd4054a0b192b52e11c5fe8737369072bb81464170665",
+      "classification": "same frozen realization / code",
+      "finding": "Source confirms state.losses existed only in memory and result serialization retained selected sets/aggregate total, not per-query estimates."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/results/dmv_baseline_nonmonotonicity_v0.json",
+      "exists": true,
+      "size_bytes": 2174197,
+      "mtime_ns": 1790000233677629430,
+      "sha256": "436558078a215f29f4e6c624f0d6ae9fab4578c051669f3206632772cd215e26",
+      "classification": "different earlier realization",
+      "finding": "Has query-level empty-design rows and payloads, but explicitly predates and differs from the optimization realization."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/results/dmv_baseline_nonmonotonicity_v0.md",
+      "exists": true,
+      "size_bytes": 4628,
+      "mtime_ns": 1790000315204790327,
+      "sha256": "bbd3d01b19d045842f820b5c02283f33ca970ccf959222bc0ca7311e1f2b07ed",
+      "classification": "different earlier realization / summary",
+      "finding": "Cannot establish optimization-realization provenance."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/tools/dmv_baseline_nonmonotonicity_v0.py",
+      "exists": true,
+      "size_bytes": 34622,
+      "mtime_ns": 1790000314558973647,
+      "sha256": "4fde4b133eab77344a9bf6f4e37070d492c9276322fec5870addf54971edfcd9",
+      "classification": "different earlier realization / code",
+      "finding": "No runtime optimizer state."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/results/dmv_deploy_v0.json",
+      "exists": true,
+      "size_bytes": 99866,
+      "mtime_ns": 1790039708147251178,
+      "sha256": "39da9735ca5373816456d021bee01a605ba74496f578e92c9654efd06650ff3b",
+      "classification": "fresh deployment realization",
+      "finding": "Supports fresh physical/semantic claims but is forbidden as a source of frozen numerical estimates."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/results/dmv_deploy_query_comparison_v0.csv",
+      "exists": true,
+      "size_bytes": 233214,
+      "mtime_ns": 1790039708143251353,
+      "sha256": "9391c6d69de2384fdabeeb92859e194062a7ab1b2cda8b135ccad394adb4fdf2",
+      "classification": "fresh deployment realization",
+      "finding": "Contains 1,965 fresh rows; frozen estimate and q-error columns are empty by construction."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/results/dmv_deploy_v0.md",
+      "exists": true,
+      "size_bytes": 4466,
+      "mtime_ns": 1790039708147251178,
+      "sha256": "9246c26d15cb39d8d0be1ac00ea8f4e06c3f13f4b4e169170dfaf9e317f5d107",
+      "classification": "fresh deployment realization / summary",
+      "finding": "No missing frozen vector."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/tools/dmv_deploy_v0.py",
+      "exists": true,
+      "size_bytes": 23769,
+      "mtime_ns": 1790039654414602867,
+      "sha256": "a0503850a915fbe14d5b79ad05116bc27446b551ed6b2c5dc555d75fa79298f1",
+      "classification": "fresh deployment realization / code",
+      "finding": "Documents the frozen-artifact gap; not original frozen numerical evidence."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/results/dmv_analyze_cost_model_v0.json",
+      "exists": true,
+      "size_bytes": 70766,
+      "mtime_ns": 1790001274633724955,
+      "sha256": "acd7ba490f5473ccac4ae279f16ab91a61d82e6e30a357e48cc0ccf7fd91de7c",
+      "classification": "cost calibration realization",
+      "finding": "Timing configurations only; no CE query vector."
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v3/results/dmv_fit_audit_v0.json",
+      "exists": true,
+      "size_bytes": 50765,
+      "mtime_ns": 1789998441431442013,
+      "sha256": "1c250955412cdd7330fa1be963e80d4e3e3300be143f7dd24d6ec600df857570",
+      "classification": "static workload audit",
+      "finding": "Workload shape/truth provenance, not optimization-realization estimates."
+    },
+    {
+      "path": "/tmp/mixed_deploy_postgres_final.log",
+      "exists": true,
+      "size_bytes": 12721,
+      "mtime_ns": 1790040025380612969,
+      "sha256": "1ad5ed87cd607a2c5f99ffd5e189d068855331847db58938e110eb5f0795e1f3",
+      "classification": "server operational log",
+      "finding": "Contains database lifecycle/checkpoint/autovacuum messages, but no CE_REPLAY notice stream or query estimates."
+    }
+  ],
+  "optimizer_json_key_audit": {
+    "matching_paths": [
+      {
+        "path": "/objective_numerics/qerror_floor",
+        "type": "float",
+        "length": null
+      }
+    ],
+    "matching_path_count": 1,
+    "all_key_counts": {
+      "experiment": 1,
+      "instance": 1,
+      "payload_realization_changed": 1,
+      "reason": 1,
+      "mixed_with_previous_realization": 1,
+      "rows": 2,
+      "queries": 1,
+      "target": 1,
+      "analyze_seconds": 1,
+      "fixed_precedence": 1,
+      "fd_availability_drift": 1,
+      "previous_unavailable": 1,
+      "current_unavailable": 1,
+      "interpretation": 2,
+      "mcv_candidates": 1,
+      "id": 162,
+      "source_index": 70,
+      "name": 70,
+      "oid": 70,
+      "oid_rank": 70,
+      "columns": 70,
+      "query_indexes": 70,
+      "payload_columns": 36,
+      "payload": 70,
+      "values": 1091,
+      "nulls": 1091,
+      "frequency": 1091,
+      "base_frequency": 1091,
+      "total_frequency": 36,
+      "index": 250,
+      "fd_candidates": 1,
+      "attributes": 54,
+      "degree": 54,
+      "maintenance": 1,
+      "mcv_cost": 1,
+      "fd_cost": 1,
+      "full_usable_cost": 1,
+      "budgets": 1,
+      "0.25": 2,
+      "0.5": 2,
+      "0.75": 2,
+      "1.0": 2,
+      "correctness": 1,
+      "native_replay": 1,
+      "designs": 1,
+      "comparisons": 1,
+      "matches": 1,
+      "bitwise_equal": 1,
+      "max_relative_error": 1,
+      "usable_counts": 1,
+      "mcv": 43,
+      "fd": 43,
+      "unavailable_fd_count": 1,
+      "scalararray_mcv": 1,
+      "mcv_first_fd_state": 1,
+      "truths_consistent": 1,
+      "all_checks_passed": 1,
+      "objective_numerics": 1,
+      "zero_truth_queries": 1,
+      "qerror_floor": 1,
+      "finite_large_loss_explanation": 1,
+      "baselines": 1,
+      "empty_loss": 1,
+      "all_mcv_loss": 1,
+      "all_fd_loss": 1,
+      "all_mixed_loss": 1,
+      "random_primary": 1,
+      "samples": 1,
+      "mean_loss": 1,
+      "median_loss": 1,
+      "min_loss": 1,
+      "max_loss": 1,
+      "seed": 34,
+      "loss": 106,
+      "cost": 30,
+      "singleton_ranking_primary": 1,
+      "selected_mcv": 6,
+      "selected_fd": 8,
+      "selected_mcv_ids": 6,
+      "selected_fd_ids": 6,
+      "consumed_mcv": 6,
+      "consumed_fd": 8,
+      "never_consumed_mcv": 6,
+      "never_consumed_fd": 6,
+      "queries_consuming_fd": 8,
+      "maintenance_cost": 6,
+      "runtime_seconds": 12,
+      "singleton_rows": 1,
+      "mechanism": 180,
+      "delta": 180,
+      "budget_solutions": 1,
+      "final": 4,
+      "budget": 9,
+      "remaining_capacity": 5,
+      "trajectory": 5,
+      "phase": 110,
+      "move": 110,
+      "type": 110,
+      "add": 110,
+      "remove": 110,
+      "cost_before": 110,
+      "cost_after": 110,
+      "loss_before": 110,
+      "loss_after": 110,
+      "marginal_greedy_loss": 5,
+      "runtime": 5,
+      "marginal_greedy": 5,
+      "feasible_adds_considered": 5,
+      "local_search": 5,
+      "enumeration_and_exact_replay_seconds": 5,
+      "accepted_moves": 5,
+      "trajectory_start": 5,
+      "infeasible_moves_pruned": 5,
+      "evaluation_metrics": 5,
+      "moves_evaluated": 6,
+      "query_evaluations": 6,
+      "mcv_control_moves": 6,
+      "fd_replay_moves": 6,
+      "terminal_audit": 5,
+      "feasible_add": 5,
+      "feasible_drop": 5,
+      "feasible_swap": 5,
+      "total": 5,
+      "best_delta": 5,
+      "local_optimum": 5,
+      "state": 4,
+      "singleton_diagnostics": 2,
+      "selected_beneficial": 2,
+      "selected_harmful": 2,
+      "selected_harmful_ids": 2,
+      "beneficial_omitted": 2,
+      "beneficial_omitted_ids": 2,
+      "harmful_singletons_contextually_beneficial": 2,
+      "singleton_delta": 22,
+      "removal_delta": 22,
+      "suppression": 2,
+      "suppressed_on_every_relevant_query": 2,
+      "queries_where_mcv_changes_fd_applicability": 2,
+      "fd_consumable_without_mcv": 2,
+      "primary": 1,
+      "incremental": 1,
+      "candidate_degree": 1,
+      "mean": 1,
+      "median": 1,
+      "p90": 1,
+      "max": 1,
+      "full_workload_query_evaluations": 1,
+      "avoided_query_evaluations": 1,
+      "fraction_avoided": 1,
+      "cache_hit_rate": 1,
+      "safe_pruning": 1,
+      "restricted_audits": 1,
+      "candidate_count": 4,
+      "mcv_count": 4,
+      "fd_count": 4,
+      "feasible_subsets": 4,
+      "exact_optimum_loss": 4,
+      "optimizer_loss": 4,
+      "absolute_gap": 4,
+      "relative_gap": 4,
+      "recovered": 4,
+      "exact_runtime_seconds": 4,
+      "optimizer_runtime_seconds": 4,
+      "candidate_ids": 4,
+      "exact_selected": 4,
+      "optimizer_selected": 4,
+      "gate": 1
+    }
+  },
+  "design_json_key_audit": {
+    "matching_paths": [],
+    "matching_path_count": 0,
+    "all_key_counts": {
+      "experiment": 1,
+      "source_result": 1,
+      "payload_realization_changed": 1,
+      "budget_fraction": 1,
+      "budget": 1,
+      "maintenance_cost": 1,
+      "remaining_capacity": 1,
+      "frozen_predicted_loss": 1,
+      "mcv_cost": 1,
+      "fd_cost": 1,
+      "fixed_precedence": 1,
+      "creation_order": 1,
+      "mechanism": 23,
+      "id": 23,
+      "columns": 23,
+      "rank": 23,
+      "selected_mcv_ids": 1,
+      "selected_fd_ids": 1
+    }
+  },
+  "legacy_directories": [
+    {
+      "path": "/root/projects/extended-stats-optim-v2/results/measure/dmv/oracle",
+      "file_count": 1273,
+      "min_mtime_ns": 1788659577536479273,
+      "max_mtime_ns": 1788851064046585678,
+      "sample_files": [
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results/measure/dmv/oracle/_meta.json",
+          "size_bytes": 780,
+          "sha256": "ee7ad5c5ff31723fdb5c9f964275be41ed914a084ec973fd6545bc9a1d6c5f16"
+        },
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results/measure/dmv/oracle/dmv.1.json",
+          "size_bytes": 13073,
+          "sha256": "89568db5425cc911ef754e9f2a2adec919f6324f6ce327ebf3c4159fece21381"
+        },
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results/measure/dmv/oracle/dmv.394.json",
+          "size_bytes": 4229,
+          "sha256": "e74ff105ae968ae442d50fa44ed6cd11a81a36e4612dce088fcf54a4da5118b2"
+        },
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results/measure/dmv/oracle/dmv.395.json",
+          "size_bytes": 6500,
+          "sha256": "fd395b3d8f9f7e994770fb62ca02883838d81e1c8f74f9fb8737f9defabfa2ed"
+        }
+      ]
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v2/results/measure/dmv/postgres",
+      "file_count": 1928,
+      "min_mtime_ns": 1788606158949692803,
+      "max_mtime_ns": 1788703377730604147,
+      "sample_files": [
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results/measure/dmv/postgres/_maint.json",
+          "size_bytes": 233,
+          "sha256": "8396cc19cacbe35c80aa5fc83f13aab94ab8cbfc7311a3fcd5898c834f08b475"
+        },
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results/measure/dmv/postgres/_meta.json",
+          "size_bytes": 812,
+          "sha256": "70c7275722ed1abf54c108b1fc821ee73679b922df7058cebbfac2134aa672ea"
+        },
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results/measure/dmv/postgres/dmv.998.json",
+          "size_bytes": 40358,
+          "sha256": "1479d33f1159064639f3c9b14e8c6a1996a39913b73f281aaffd90102b684505"
+        },
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results/measure/dmv/postgres/dmv.999.json",
+          "size_bytes": 82361,
+          "sha256": "04c196975879b05361c63b3408f0481a18d8483ff40169e3dfd107f694794810"
+        }
+      ]
+    },
+    {
+      "path": "/root/projects/extended-stats-optim-v2/results_archive_pre_sgrid_20260905/per_lambda/dmv/postgres",
+      "file_count": 1927,
+      "min_mtime_ns": 1788500261356217068,
+      "max_mtime_ns": 1788517437666204492,
+      "sample_files": [
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results_archive_pre_sgrid_20260905/per_lambda/dmv/postgres/_meta.json",
+          "size_bytes": 416,
+          "sha256": "7ce3a35aac458d38ef80176c9f9352334f22acdd59d6a2091ee3e112a4a60ab8"
+        },
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results_archive_pre_sgrid_20260905/per_lambda/dmv/postgres/dmv.1.json",
+          "size_bytes": 82126,
+          "sha256": "e42d8af89555d1a146a29a43f7007481d8c7328d02a64aa6474089f17f6c4ced"
+        },
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results_archive_pre_sgrid_20260905/per_lambda/dmv/postgres/dmv.998.json",
+          "size_bytes": 40325,
+          "sha256": "fc8810030d9c49760b3dab73ca449b1e81297f8cfae58ec82b9fc3a678e53024"
+        },
+        {
+          "path": "/root/projects/extended-stats-optim-v2/results_archive_pre_sgrid_20260905/per_lambda/dmv/postgres/dmv.999.json",
+          "size_bytes": 82369,
+          "sha256": "64820cbe3b00dfd94d217e19c0241397a42c72afa6f987790b3b9ca1e734b4dc"
+        }
+      ]
+    }
+  ],
+  "legacy_classification": "Legacy per-query files predate DMV-Maintenance-Budget-Optimize-v0 and use a different oracle/per-lambda pipeline, rounded estimates, and different designs. They have no unambiguous provenance to the target-100 frozen optimization realization.",
+  "filesystem_search": {
+    "exact_optimization_marker_matches": [
+      "/root/projects/extended-stats-optim-v3/results/dmv_maintenance_budget_optimize_v0.json",
+      "/root/projects/extended-stats-optim-v3/results/dmv_maintenance_budget_design_v0.json",
+      "/root/projects/extended-stats-optim-v3/results/dmv_maintenance_budget_optimize_v0.md",
+      "/root/projects/extended-stats-optim-v3/results/dmv_deploy_v0.json",
+      "/root/projects/extended-stats-optim-v3/tools/dmv_maintenance_budget_optimize_v0.py"
+    ],
+    "temporary_runtime_state_found": false,
+    "serialized_runtime_cache_found": false,
+    "pycache_interpretation": "Python bytecode stores code, not the terminated process heap/final evaluator state.",
+    "server_log_scan": {
+      "ce_replay_raw_rows_occurrences": 0,
+      "frozen_aggregate_marker_occurrences": 0,
+      "optimization_database_lifecycle_occurrences": 1
+    }
+  },
+  "database_catalog": {
+    "read_only_check": true,
+    "dmv_databases": [],
+    "original_optimization_database_present": false
+  },
+  "required_frozen_information": {
+    "persisted": {
+      "workload_query_count": 1965,
+      "truths_source": "canonical dmv.sql (not duplicated per query in optimizer JSON)",
+      "mcv_payloads": 36,
+      "fd_payloads": 34,
+      "selected_mcv_ids": [
+        "mcv:body_type:suspension_indicator",
+        "mcv:county:record_type",
+        "mcv:county:state",
+        "mcv:fuel_type:record_type",
+        "mcv:fuel_type:revocation_indicator",
+        "mcv:fuel_type:scofflaw_indicator",
+        "mcv:record_type:registration_class",
+        "mcv:record_type:scofflaw_indicator",
+        "mcv:registration_class:scofflaw_indicator",
+        "mcv:scofflaw_indicator:state",
+        "mcv:state:suspension_indicator"
+      ],
+      "selected_fd_ids": [
+        "fd:body_type:record_type",
+        "fd:body_type:scofflaw_indicator",
+        "fd:county:revocation_indicator",
+        "fd:county:scofflaw_indicator",
+        "fd:fuel_type:suspension_indicator",
+        "fd:record_type:revocation_indicator",
+        "fd:record_type:state",
+        "fd:record_type:suspension_indicator",
+        "fd:registration_class:suspension_indicator",
+        "fd:revocation_indicator:scofflaw_indicator",
+        "fd:revocation_indicator:suspension_indicator",
+        "fd:scofflaw_indicator:suspension_indicator"
+      ],
+      "fixed_precedence": "lexicographic pair order materialized as creation/OID order; no precedence optimization",
+      "maintenance_cost": 29.1585432900458,
+      "budget": 43.724602994231546,
+      "aggregate_loss": 7.836513886761748e+298,
+      "accepted_trajectory": 23
+    },
+    "missing": {
+      "per_query_final_estimate": 1965,
+      "per_query_final_qerror": 1965,
+      "per_query_baseline_rows": 1965,
+      "per_query_clause_selectivities": 1965,
+      "per_query_final_loss_state": 1965,
+      "direct_per_query_mcv_trace": 1965,
+      "direct_per_query_fd_trace": 1965
+    },
+    "reconstructability": "Payloads and structural control inputs exist, but baseline rows and clause-level simple selectivities from the original ANALYZE realization do not. They are required for exact numerical replay and cannot be derived from aggregate loss or payloads alone."
+  },
+  "recovery": {
+    "direct_vector_persisted": false,
+    "all_inputs_for_exact_reconstruction_persisted": false,
+    "all_1965_estimates_recoverable": false,
+    "baseline_csv_created": false,
+    "classification": "artifact/provenance incompleteness",
+    "semantic_failure": false
+  },
+  "paired_diagnostics": {
+    "zero_truth_query_ids": [
+      "dmv.173",
+      "dmv.943"
+    ],
+    "frozen_zero_truth_contribution": null,
+    "fresh_zero_truth_contribution": 9.968366429866527e+298,
+    "frozen_nonzero_truth_loss": null,
+    "fresh_nonzero_truth_loss": 85014.80834605158,
+    "estimate_drift_distribution": null,
+    "mcv_trace_changes": 0,
+    "fd_trace_changes": 37,
+    "trace_provenance": "Exact structural replay is supported by persisted candidate payloads/degrees, selected IDs, precedence, and workload clauses; MCV selection and FD dependency choice do not require the missing numerical simple selectivities."
+  },
+  "deploy_query_csv": {
+    "rows": 1965,
+    "header": [
+      "query",
+      "truth",
+      "zero_truth",
+      "frozen_estimate",
+      "fresh_replay_estimate",
+      "fresh_native_estimate",
+      "frozen_qerror",
+      "fresh_replay_qerror",
+      "semantic_relative_error",
+      "mcv_trace_changed",
+      "fd_trace_changed",
+      "control_class"
+    ],
+    "empty_frozen_estimate_cells": 1965,
+    "empty_frozen_qerror_cells": 1965,
+    "frozen_columns_present_but_empty": true
+  },
+  "deployment_claims_independently_supported": {
+    "exact_physical_deployment_11_mcv_12_fd": true,
+    "oid_creation_order": true,
+    "exactly_one_fresh_analyze": true,
+    "mcv_materialization_11_of_11": true,
+    "mcv_consumption_11_of_11": true,
+    "fd_materialization_11_of_12": true,
+    "materialized_fd_consumption_11_of_11": true,
+    "queries_consuming_fd_389": true,
+    "fresh_replay_native_1965_of_1965": true,
+    "recorded_max_relative_semantic_error": 2.4342231117803612e-14,
+    "fresh_replay_native_aggregate_loss_equal": true,
+    "fresh_nonzero_truth_diagnostic_loss": 85014.80834605158,
+    "physical_useful_mcv_fd_composition": true
+  },
+  "cost_model_context": {
+    "predicted_seconds": 0.23864584055563237,
+    "observed_seconds": 0.30373482200229773,
+    "relative_error": 0.21429542064878215,
+    "safe_interpretation": "mechanism-weighted model is a first-order resource proxy, not a high-precision per-configuration latency predictor; no refit performed"
+  },
+  "gate": "FROZEN BASELINE UNRECOVERABLE"
+}

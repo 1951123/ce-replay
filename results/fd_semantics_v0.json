@@ -1,0 +1,957 @@
+{
+  "experiment": "FD-Semantics-v0",
+  "table_rows": 100000,
+  "candidates": {
+    "ab": {
+      "columns": [
+        "a",
+        "b"
+      ],
+      "payload": "{\"1 => 2\": 0.900000}",
+      "parsed": [
+        {
+          "attributes": [
+            1,
+            2
+          ],
+          "degree": 0.9
+        }
+      ]
+    },
+    "abc": {
+      "columns": [
+        "a",
+        "b",
+        "c"
+      ],
+      "payload": "{\"1 => 2\": 0.900000, \"1 => 3\": 0.800000, \"2 => 3\": 0.890000, \"1, 2 => 3\": 0.900000, \"1, 3 => 2\": 1.000000, \"2, 3 => 1\": 0.099000}",
+      "parsed": [
+        {
+          "attributes": [
+            1,
+            2
+          ],
+          "degree": 0.9
+        },
+        {
+          "attributes": [
+            1,
+            3
+          ],
+          "degree": 0.8
+        },
+        {
+          "attributes": [
+            2,
+            3
+          ],
+          "degree": 0.89
+        },
+        {
+          "attributes": [
+            1,
+            2,
+            3
+          ],
+          "degree": 0.9
+        },
+        {
+          "attributes": [
+            1,
+            3,
+            2
+          ],
+          "degree": 1.0
+        },
+        {
+          "attributes": [
+            2,
+            3,
+            1
+          ],
+          "degree": 0.099
+        }
+      ]
+    },
+    "cd": {
+      "columns": [
+        "c",
+        "d"
+      ],
+      "payload": "{\"3 => 4\": 0.640000, \"4 => 3\": 0.100000}",
+      "parsed": [
+        {
+          "attributes": [
+            3,
+            4
+          ],
+          "degree": 0.64
+        },
+        {
+          "attributes": [
+            4,
+            3
+          ],
+          "degree": 0.1
+        }
+      ]
+    }
+  },
+  "simple_selectivities": {
+    "1": 0.009999999776482582,
+    "2": 0.010999999940395355,
+    "3": 0.012000000104308128,
+    "4": 0.017999999225139618
+  },
+  "scenarios": [
+    {
+      "order": [],
+      "oids": {},
+      "native_rows": 0.0023759998523890987,
+      "native_fd_selectivity": 1.0,
+      "external_fd_selectivity": 1.0,
+      "relative_error": 0.0,
+      "native_choose": [],
+      "native_apply": [],
+      "external_choose": []
+    },
+    {
+      "order": [
+        "ab"
+      ],
+      "oids": {
+        "ab": 21306
+      },
+      "native_rows": 0.19463758896135996,
+      "native_fd_selectivity": 0.009010999798528851,
+      "external_fd_selectivity": 0.009010999798528851,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "2",
+          "implied": "2",
+          "degree": "0.90000000000000002"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "2",
+          "degree": "0.90000000000000002",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "0.90109999999403956"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            2
+          ],
+          "degree": 0.9
+        }
+      ]
+    },
+    {
+      "order": [
+        "abc"
+      ],
+      "oids": {
+        "abc": 21307
+      },
+      "native_rows": 14.443199055796878,
+      "native_fd_selectivity": 0.008023999820858241,
+      "external_fd_selectivity": 0.008023999820858241,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1"
+        },
+        {
+          "step": "1",
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.012000000104308128",
+          "conditional_sel": "0.80240000002086165"
+        },
+        {
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1",
+          "determinant_sel": "0.0080239998208582412",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "1"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            3,
+            2
+          ],
+          "degree": 1.0
+        },
+        {
+          "attributes": [
+            1,
+            3
+          ],
+          "degree": 0.8
+        }
+      ]
+    },
+    {
+      "order": [
+        "cd"
+      ],
+      "oids": {
+        "cd": 21308
+      },
+      "native_rows": 0.08533535833515048,
+      "native_fd_selectivity": 0.007757760064085723,
+      "external_fd_selectivity": 0.007757760064085723,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "2",
+          "implied": "4",
+          "degree": "0.64000000000000001"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "4",
+          "degree": "0.64000000000000001",
+          "determinant_sel": "0.012000000104308128",
+          "implied_sel": "0.017999999225139618",
+          "conditional_sel": "0.6464799997210503"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            3,
+            4
+          ],
+          "degree": 0.64
+        }
+      ]
+    },
+    {
+      "order": [
+        "ab",
+        "abc"
+      ],
+      "oids": {
+        "ab": 21309,
+        "abc": 21310
+      },
+      "native_rows": 14.443199055796878,
+      "native_fd_selectivity": 0.008023999820858241,
+      "external_fd_selectivity": 0.008023999820858241,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1"
+        },
+        {
+          "step": "1",
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.012000000104308128",
+          "conditional_sel": "0.80240000002086165"
+        },
+        {
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1",
+          "determinant_sel": "0.0080239998208582412",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "1"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            3,
+            2
+          ],
+          "degree": 1.0
+        },
+        {
+          "attributes": [
+            1,
+            3
+          ],
+          "degree": 0.8
+        }
+      ]
+    },
+    {
+      "order": [
+        "ab",
+        "cd"
+      ],
+      "oids": {
+        "ab": 21311,
+        "cd": 21312
+      },
+      "native_rows": 6.990517437451162,
+      "native_fd_selectivity": 6.990517437451162e-05,
+      "external_fd_selectivity": 6.990517437451162e-05,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "2",
+          "implied": "2",
+          "degree": "0.90000000000000002"
+        },
+        {
+          "step": "1",
+          "nattrs": "2",
+          "implied": "4",
+          "degree": "0.64000000000000001"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "4",
+          "degree": "0.64000000000000001",
+          "determinant_sel": "0.012000000104308128",
+          "implied_sel": "0.017999999225139618",
+          "conditional_sel": "0.6464799997210503"
+        },
+        {
+          "nattrs": "2",
+          "implied": "2",
+          "degree": "0.90000000000000002",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "0.90109999999403956"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            2
+          ],
+          "degree": 0.9
+        },
+        {
+          "attributes": [
+            3,
+            4
+          ],
+          "degree": 0.64
+        }
+      ]
+    },
+    {
+      "order": [
+        "abc",
+        "cd"
+      ],
+      "oids": {
+        "abc": 21313,
+        "cd": 21314
+      },
+      "native_rows": 14.443199055796878,
+      "native_fd_selectivity": 0.008023999820858241,
+      "external_fd_selectivity": 0.008023999820858241,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1"
+        },
+        {
+          "step": "1",
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.012000000104308128",
+          "conditional_sel": "0.80240000002086165"
+        },
+        {
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1",
+          "determinant_sel": "0.0080239998208582412",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "1"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            3,
+            2
+          ],
+          "degree": 1.0
+        },
+        {
+          "attributes": [
+            1,
+            3
+          ],
+          "degree": 0.8
+        }
+      ]
+    },
+    {
+      "order": [
+        "ab",
+        "abc",
+        "cd"
+      ],
+      "oids": {
+        "ab": 21315,
+        "abc": 21316,
+        "cd": 21317
+      },
+      "native_rows": 14.443199055796878,
+      "native_fd_selectivity": 0.008023999820858241,
+      "external_fd_selectivity": 0.008023999820858241,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1"
+        },
+        {
+          "step": "1",
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.012000000104308128",
+          "conditional_sel": "0.80240000002086165"
+        },
+        {
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1",
+          "determinant_sel": "0.0080239998208582412",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "1"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            3,
+            2
+          ],
+          "degree": 1.0
+        },
+        {
+          "attributes": [
+            1,
+            3
+          ],
+          "degree": 0.8
+        }
+      ]
+    },
+    {
+      "order": [
+        "ab",
+        "cd",
+        "abc"
+      ],
+      "oids": {
+        "ab": 21318,
+        "cd": 21319,
+        "abc": 21320
+      },
+      "native_rows": 14.443199055796878,
+      "native_fd_selectivity": 0.008023999820858241,
+      "external_fd_selectivity": 0.008023999820858241,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1"
+        },
+        {
+          "step": "1",
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.012000000104308128",
+          "conditional_sel": "0.80240000002086165"
+        },
+        {
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1",
+          "determinant_sel": "0.0080239998208582412",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "1"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            3,
+            2
+          ],
+          "degree": 1.0
+        },
+        {
+          "attributes": [
+            1,
+            3
+          ],
+          "degree": 0.8
+        }
+      ]
+    },
+    {
+      "order": [
+        "abc",
+        "ab",
+        "cd"
+      ],
+      "oids": {
+        "abc": 21321,
+        "ab": 21322,
+        "cd": 21323
+      },
+      "native_rows": 14.443199055796878,
+      "native_fd_selectivity": 0.008023999820858241,
+      "external_fd_selectivity": 0.008023999820858241,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1"
+        },
+        {
+          "step": "1",
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.012000000104308128",
+          "conditional_sel": "0.80240000002086165"
+        },
+        {
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1",
+          "determinant_sel": "0.0080239998208582412",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "1"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            3,
+            2
+          ],
+          "degree": 1.0
+        },
+        {
+          "attributes": [
+            1,
+            3
+          ],
+          "degree": 0.8
+        }
+      ]
+    },
+    {
+      "order": [
+        "abc",
+        "cd",
+        "ab"
+      ],
+      "oids": {
+        "abc": 21324,
+        "cd": 21325,
+        "ab": 21326
+      },
+      "native_rows": 14.443199055796878,
+      "native_fd_selectivity": 0.008023999820858241,
+      "external_fd_selectivity": 0.008023999820858241,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1"
+        },
+        {
+          "step": "1",
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.012000000104308128",
+          "conditional_sel": "0.80240000002086165"
+        },
+        {
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1",
+          "determinant_sel": "0.0080239998208582412",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "1"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            3,
+            2
+          ],
+          "degree": 1.0
+        },
+        {
+          "attributes": [
+            1,
+            3
+          ],
+          "degree": 0.8
+        }
+      ]
+    },
+    {
+      "order": [
+        "cd",
+        "ab",
+        "abc"
+      ],
+      "oids": {
+        "cd": 21327,
+        "ab": 21328,
+        "abc": 21329
+      },
+      "native_rows": 14.443199055796878,
+      "native_fd_selectivity": 0.008023999820858241,
+      "external_fd_selectivity": 0.008023999820858241,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1"
+        },
+        {
+          "step": "1",
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.012000000104308128",
+          "conditional_sel": "0.80240000002086165"
+        },
+        {
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1",
+          "determinant_sel": "0.0080239998208582412",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "1"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            3,
+            2
+          ],
+          "degree": 1.0
+        },
+        {
+          "attributes": [
+            1,
+            3
+          ],
+          "degree": 0.8
+        }
+      ]
+    },
+    {
+      "order": [
+        "cd",
+        "abc",
+        "ab"
+      ],
+      "oids": {
+        "cd": 21330,
+        "abc": 21331,
+        "ab": 21332
+      },
+      "native_rows": 14.443199055796878,
+      "native_fd_selectivity": 0.008023999820858241,
+      "external_fd_selectivity": 0.008023999820858241,
+      "relative_error": 0.0,
+      "native_choose": [
+        {
+          "step": "0",
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1"
+        },
+        {
+          "step": "1",
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004"
+        }
+      ],
+      "native_apply": [
+        {
+          "nattrs": "2",
+          "implied": "3",
+          "degree": "0.80000000000000004",
+          "determinant_sel": "0.0099999997764825821",
+          "implied_sel": "0.012000000104308128",
+          "conditional_sel": "0.80240000002086165"
+        },
+        {
+          "nattrs": "3",
+          "implied": "2",
+          "degree": "1",
+          "determinant_sel": "0.0080239998208582412",
+          "implied_sel": "0.010999999940395355",
+          "conditional_sel": "1"
+        }
+      ],
+      "external_choose": [
+        {
+          "attributes": [
+            1,
+            3,
+            2
+          ],
+          "degree": 1.0
+        },
+        {
+          "attributes": [
+            1,
+            3
+          ],
+          "degree": 0.8
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "count": 13,
+    "max_relative_error": 0.0
+  },
+  "applicability": {
+    "eq_eq": {
+      "where": "a=7 AND b=7",
+      "rows": 901.0999798528851,
+      "used_fd": true,
+      "trace": [
+        "CE_REPLAY_FD_LOAD oid=21333 matched=2 payload_ndeps=1",
+        "CE_REPLAY_FD_CHOOSE step=0 nattrs=2 implied=2 degree=0.90000000000000002",
+        "CE_REPLAY_FD_APPLY nattrs=2 implied=2 degree=0.90000000000000002 determinant_sel=0.0099999997764825821 implied_sel=0.010999999940395355 conditional_sel=0.90109999999403956",
+        "CE_REPLAY_FD_RESULT ndeps=1 nattrs=2 selectivity=0.0090109997985288511"
+      ]
+    },
+    "const_eq_var": {
+      "where": "7=a AND b=7",
+      "rows": 901.0999798528851,
+      "used_fd": true,
+      "trace": [
+        "CE_REPLAY_FD_LOAD oid=21333 matched=2 payload_ndeps=1",
+        "CE_REPLAY_FD_CHOOSE step=0 nattrs=2 implied=2 degree=0.90000000000000002",
+        "CE_REPLAY_FD_APPLY nattrs=2 implied=2 degree=0.90000000000000002 determinant_sel=0.0099999997764825821 implied_sel=0.010999999940395355 conditional_sel=0.90109999999403956",
+        "CE_REPLAY_FD_RESULT ndeps=1 nattrs=2 selectivity=0.0090109997985288511"
+      ]
+    },
+    "in_eq": {
+      "where": "a IN (7,8) AND b=7",
+      "rows": 992.1999945744872,
+      "used_fd": true,
+      "trace": [
+        "CE_REPLAY_FD_LOAD oid=21333 matched=2 payload_ndeps=1",
+        "CE_REPLAY_FD_CHOOSE step=0 nattrs=2 implied=2 degree=0.90000000000000002",
+        "CE_REPLAY_FD_APPLY nattrs=2 implied=2 degree=0.90000000000000002 determinant_sel=0.019999999552965164 implied_sel=0.010999999940395355 conditional_sel=0.49610000837594287",
+        "CE_REPLAY_FD_RESULT ndeps=1 nattrs=2 selectivity=0.0099219999457448721"
+      ]
+    },
+    "or_same_attr_eq": {
+      "where": "(a=7 OR a=8) AND b=7",
+      "rows": 992.1889945750386,
+      "used_fd": true,
+      "trace": [
+        "CE_REPLAY_FD_LOAD oid=21333 matched=2 payload_ndeps=1",
+        "CE_REPLAY_FD_CHOOSE step=0 nattrs=2 implied=2 degree=0.90000000000000002",
+        "CE_REPLAY_FD_APPLY nattrs=2 implied=2 degree=0.90000000000000002 determinant_sel=0.019899999557435512 implied_sel=0.010999999940395355 conditional_sel=0.49858744554811474",
+        "CE_REPLAY_FD_RESULT ndeps=1 nattrs=2 selectivity=0.0099218899457503857"
+      ]
+    },
+    "range_eq": {
+      "where": "a>7 AND b=7",
+      "rows": 1011.999984189868,
+      "used_fd": false,
+      "trace": []
+    },
+    "neq_eq": {
+      "where": "a<>7 AND b=7",
+      "rows": 1088.9999943450093,
+      "used_fd": false,
+      "trace": []
+    },
+    "var_eq_var": {
+      "where": "a=b AND b=7",
+      "rows": 901.0999798528851,
+      "used_fd": true,
+      "trace": [
+        "CE_REPLAY_FD_LOAD oid=21333 matched=2 payload_ndeps=1",
+        "CE_REPLAY_FD_CHOOSE step=0 nattrs=2 implied=2 degree=0.90000000000000002",
+        "CE_REPLAY_FD_APPLY nattrs=2 implied=2 degree=0.90000000000000002 determinant_sel=0.0099999997764825821 implied_sel=0.010999999940395355 conditional_sel=0.90109999999403956",
+        "CE_REPLAY_FD_RESULT ndeps=1 nattrs=2 selectivity=0.0090109997985288511"
+      ]
+    },
+    "duplicate_same_attr": {
+      "where": "a=7 AND a<20 AND b=7",
+      "rows": 180.22000201292323,
+      "used_fd": true,
+      "trace": [
+        "CE_REPLAY_FD_LOAD oid=21333 matched=2 payload_ndeps=1",
+        "CE_REPLAY_FD_CHOOSE step=0 nattrs=2 implied=2 degree=0.90000000000000002",
+        "CE_REPLAY_FD_APPLY nattrs=2 implied=2 degree=0.90000000000000002 determinant_sel=0.0099999997764825821 implied_sel=0.010999999940395355 conditional_sel=0.90109999999403956",
+        "CE_REPLAY_FD_RESULT ndeps=1 nattrs=2 selectivity=0.0090109997985288511"
+      ]
+    },
+    "single_attr": {
+      "where": "a=7",
+      "rows": 999.9999776482582,
+      "used_fd": false,
+      "trace": []
+    }
+  },
+  "expression_applicability": {
+    "exact": {
+      "where": "lower(txt)='v7' AND a=7",
+      "rows": 999.9999776482582,
+      "used_fd": true,
+      "trace": [
+        "CE_REPLAY_FD_LOAD oid=21334 matched=2 payload_ndeps=2",
+        "CE_REPLAY_FD_CHOOSE step=0 nattrs=2 implied=3 degree=1",
+        "CE_REPLAY_FD_APPLY nattrs=2 implied=3 degree=1 determinant_sel=0.0099999997764825821 implied_sel=0.0099999997764825821 conditional_sel=1",
+        "CE_REPLAY_FD_RESULT ndeps=1 nattrs=2 selectivity=0.0099999997764825821"
+      ]
+    },
+    "nonmatching": {
+      "where": "upper(txt)='V7' AND a=7",
+      "rows": 4.999999888241291,
+      "used_fd": false,
+      "trace": []
+    }
+  },
+  "mcv_fd_composition": {
+    "rows": 7.757760064085724,
+    "mcv_trace": [
+      "CE_REPLAY_MCV oid=21335 simple=0.00010999999694526197 mcv=0.01 base=0.00010999999999999999 total=0.99999999999998956 stat=0.01"
+    ],
+    "fd_trace": [
+      "CE_REPLAY_FD_LOAD oid=21337 matched=2 payload_ndeps=2",
+      "CE_REPLAY_FD_CHOOSE step=0 nattrs=2 implied=4 degree=0.64000000000000001",
+      "CE_REPLAY_FD_APPLY nattrs=2 implied=4 degree=0.64000000000000001 determinant_sel=0.012000000104308128 implied_sel=0.017999999225139618 conditional_sel=0.6464799997210503",
+      "CE_REPLAY_FD_RESULT ndeps=1 nattrs=2 selectivity=0.0077577600640857227"
+    ]
+  }
+}

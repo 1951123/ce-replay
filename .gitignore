@@ -1,0 +1,75 @@
+# Python caches and test tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Editors and operating-system metadata
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Local Codex/agent state
+.agents/
+.codex/
+
+# Native/PostgreSQL extension build products
+pgext/**/*.o
+pgext/**/*.so
+pgext/**/*.bc
+pgext/**/*.a
+pgext/**/*.dylib
+pgext/**/Makefile.global
+
+# PostgreSQL build/data trees if created locally
+postgresql-*/
+pgdata/
+data/postgresql/
+**/PG_VERSION
+postmaster.pid
+postmaster.opts
+
+# Local databases, dumps, logs, and scratch output
+*.log
+*.pid
+*.dump
+*.backup
+*.sql.gz
+scratch/
+tmp/
+.tmp/
+build/
+dist/
+
+# Credentials and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Reproducible rendered paper artifacts
+figures/rendered/
+paper/build/
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz

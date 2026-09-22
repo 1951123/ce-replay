@@ -1,0 +1,35 @@
+{
+  "experiment": "MCV-Commutativity-v0 synthetic source fixture",
+  "postgresql_version": "16.14",
+  "purpose": "Exercise the statistics-expression branch absent from Census and falsify plain stxkeys-only disjointness.",
+  "setup_sql": [
+    "CREATE TABLE expr_probe(a int, b int, t text)",
+    "CREATE STATISTICS expr_a (mcv) ON a, lower(t) FROM expr_probe",
+    "CREATE STATISTICS expr_b (mcv) ON b, lower(t) FROM expr_probe",
+    "SELECT * FROM expr_probe WHERE a=1 AND b=1 AND lower(t)='x'"
+  ],
+  "candidate_a": {
+    "stxkeys": ["a"],
+    "expressions": ["lower(t)"],
+    "compatible_clause_scope": ["a=1", "lower(t)='x'"]
+  },
+  "candidate_b": {
+    "stxkeys": ["b"],
+    "expressions": ["lower(t)"],
+    "compatible_clause_scope": ["b=1", "lower(t)='x'"]
+  },
+  "classification": {
+    "plain_attribute_stxkeys_disjoint": true,
+    "full_dimension_scopes_disjoint": false,
+    "compatible_clause_scopes_disjoint": false,
+    "consumed_clause_scopes_disjoint": false,
+    "read_write_independent": false
+  },
+  "source_derived_result": {
+    "a_then_b": "a consumes a=1 and lower(t)='x'; b retains only b=1 and is no longer MCV-eligible",
+    "b_then_a": "b consumes b=1 and lower(t)='x'; a retains only a=1 and is no longer MCV-eligible",
+    "commutes": false
+  },
+  "evidence_type": "Constructed directly from PostgreSQL 16.14 statext expression matching and consumption semantics; not counted among Census runtime instances.",
+  "conclusion": "Disjoint pg_statistic_ext.stxkeys alone is not sufficient when statistics expressions are admitted. Full key dimensions or compatible/consumed clause scopes must include expressions."
+}

@@ -1,0 +1,1696 @@
+{
+  "experiment": "MCV-Commutativity-v0",
+  "source": "results/census_ce_replay_optimize_v1_full_pairs.json",
+  "scope": {
+    "queries_total": 468,
+    "exhaustive_threshold": 10,
+    "queries_exhaustive": 158,
+    "subsets": 69245
+  },
+  "semantics": {
+    "action": "consume all currently unestimated compatible clauses covered by the statistic; emit local stat_sel",
+    "scheduler": "PostgreSQL chooses maximum covered dimensions, then minimum total keys, then first ascending-OID list entry",
+    "numerical_update": "sel := sel * stat_sel",
+    "tolerance": 1e-12
+  },
+  "pairwise": {
+    "instances": 791640,
+    "non_commuting": 543288,
+    "overlap_invalidation": 543288,
+    "fully_commuting": 248352,
+    "bitwise_equal": 248352,
+    "tolerance_only": 0
+  },
+  "conditions": {
+    "A_disjoint_attribute_keys": {
+      "instances": 248352,
+      "commuting": 248352,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "bitwise_equal": 248352,
+      "tolerance_equal": 248352,
+      "counterexample": null
+    },
+    "B_disjoint_clause_scope": {
+      "instances": 248352,
+      "commuting": 248352,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "bitwise_equal": 248352,
+      "tolerance_equal": 248352,
+      "counterexample": null
+    },
+    "C_disjoint_consumed_scope": {
+      "instances": 248352,
+      "commuting": 248352,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "bitwise_equal": 248352,
+      "tolerance_equal": 248352,
+      "counterexample": null
+    },
+    "D_read_write_independent": {
+      "instances": 248352,
+      "commuting": 248352,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "bitwise_equal": 248352,
+      "tolerance_equal": 248352,
+      "counterexample": null
+    }
+  },
+  "implications": {
+    "A_not_B": 0,
+    "B_not_C": 0,
+    "C_not_D": 0
+  },
+  "continuation": {
+    "tests": 248352,
+    "divergences": 0,
+    "method": "same fixed selected set; native-priority suffix from both post-pair states"
+  },
+  "canonicalizer": {
+    "tests": 55615,
+    "failures": 0,
+    "observed_winner_traces": 2341,
+    "canonical_trace_classes": 2341,
+    "note": "PostgreSQL traces are already OID-canonical; tests swap adjacent independent actions and canonicalize back."
+  },
+  "synthetic_fixture": {
+    "name": "shared_expression_disjoint_stxkeys",
+    "candidate_a": {
+      "stxkeys": [
+        "a"
+      ],
+      "expressions": [
+        "lower(t)"
+      ],
+      "clause_scope": [
+        "a=1",
+        "lower(t)='x'"
+      ]
+    },
+    "candidate_b": {
+      "stxkeys": [
+        "b"
+      ],
+      "expressions": [
+        "lower(t)"
+      ],
+      "clause_scope": [
+        "b=1",
+        "lower(t)='x'"
+      ]
+    },
+    "condition_A_plain_stxkeys": true,
+    "condition_B": false,
+    "condition_C": false,
+    "condition_D": false,
+    "semantic_result": "non_commuting: either first action consumes lower(t), leaving the other with only one dimension",
+    "status": "source-constructed regression fixture; Census has no expression candidates"
+  },
+  "queries": [
+    {
+      "query": "query.4",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12198,
+      "fully_commuting": 3840,
+      "non_commuting": 8358,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.8",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.9",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.12",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12182,
+      "fully_commuting": 3840,
+      "non_commuting": 8342,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.14",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.26",
+      "candidates": 1,
+      "subsets": 2,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 2,
+      "canonical_trace_classes": 2
+    },
+    {
+      "query": "query.30",
+      "candidates": 1,
+      "subsets": 2,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 2,
+      "canonical_trace_classes": 2
+    },
+    {
+      "query": "query.31",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.33",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.37",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.39",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.40",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.45",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.47",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12208,
+      "fully_commuting": 3840,
+      "non_commuting": 8368,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.53",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.64",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12074,
+      "fully_commuting": 3840,
+      "non_commuting": 8234,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.75",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.76",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.78",
+      "candidates": 1,
+      "subsets": 2,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 2,
+      "canonical_trace_classes": 2
+    },
+    {
+      "query": "query.79",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12194,
+      "fully_commuting": 3840,
+      "non_commuting": 8354,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.83",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.84",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12140,
+      "fully_commuting": 3840,
+      "non_commuting": 8300,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.85",
+      "candidates": 1,
+      "subsets": 2,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 2,
+      "canonical_trace_classes": 2
+    },
+    {
+      "query": "query.88",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12116,
+      "fully_commuting": 3840,
+      "non_commuting": 8276,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.90",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12216,
+      "fully_commuting": 3840,
+      "non_commuting": 8376,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.92",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.93",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.100",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12104,
+      "fully_commuting": 3840,
+      "non_commuting": 8264,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.106",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.107",
+      "candidates": 1,
+      "subsets": 2,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 2,
+      "canonical_trace_classes": 2
+    },
+    {
+      "query": "query.108",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12156,
+      "fully_commuting": 3840,
+      "non_commuting": 8316,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.112",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.115",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.119",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12178,
+      "fully_commuting": 3840,
+      "non_commuting": 8338,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.125",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12216,
+      "fully_commuting": 3840,
+      "non_commuting": 8376,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.129",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12216,
+      "fully_commuting": 3840,
+      "non_commuting": 8376,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.131",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.132",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12188,
+      "fully_commuting": 3840,
+      "non_commuting": 8348,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.133",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12145,
+      "fully_commuting": 3840,
+      "non_commuting": 8305,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.137",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12104,
+      "fully_commuting": 3840,
+      "non_commuting": 8264,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.139",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.145",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.146",
+      "candidates": 1,
+      "subsets": 2,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 2,
+      "canonical_trace_classes": 2
+    },
+    {
+      "query": "query.148",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.151",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12089,
+      "fully_commuting": 3840,
+      "non_commuting": 8249,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.152",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12104,
+      "fully_commuting": 3840,
+      "non_commuting": 8264,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.153",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.155",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.157",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.164",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12134,
+      "fully_commuting": 3840,
+      "non_commuting": 8294,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.165",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.169",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12208,
+      "fully_commuting": 3840,
+      "non_commuting": 8368,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.171",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.172",
+      "candidates": 1,
+      "subsets": 2,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 2,
+      "canonical_trace_classes": 2
+    },
+    {
+      "query": "query.174",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.177",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.178",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.182",
+      "candidates": 1,
+      "subsets": 2,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 2,
+      "canonical_trace_classes": 2
+    },
+    {
+      "query": "query.185",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.188",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12240,
+      "fully_commuting": 3840,
+      "non_commuting": 8400,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.189",
+      "candidates": 1,
+      "subsets": 2,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 2,
+      "canonical_trace_classes": 2
+    },
+    {
+      "query": "query.190",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.191",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12220,
+      "fully_commuting": 3840,
+      "non_commuting": 8380,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.192",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12136,
+      "fully_commuting": 3840,
+      "non_commuting": 8296,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.197",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12144,
+      "fully_commuting": 3840,
+      "non_commuting": 8304,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.198",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.200",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.202",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12220,
+      "fully_commuting": 3840,
+      "non_commuting": 8380,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.207",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.208",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12216,
+      "fully_commuting": 3840,
+      "non_commuting": 8376,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.210",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.212",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.213",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.214",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.216",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12220,
+      "fully_commuting": 3840,
+      "non_commuting": 8380,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.217",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12124,
+      "fully_commuting": 3840,
+      "non_commuting": 8284,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.219",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12184,
+      "fully_commuting": 3840,
+      "non_commuting": 8344,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.221",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.222",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.225",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.226",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12220,
+      "fully_commuting": 3840,
+      "non_commuting": 8380,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.227",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12134,
+      "fully_commuting": 3840,
+      "non_commuting": 8294,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.228",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12220,
+      "fully_commuting": 3840,
+      "non_commuting": 8380,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.230",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.234",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.237",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12148,
+      "fully_commuting": 3840,
+      "non_commuting": 8308,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.239",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.240",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.241",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.242",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12202,
+      "fully_commuting": 3840,
+      "non_commuting": 8362,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.247",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12152,
+      "fully_commuting": 3840,
+      "non_commuting": 8312,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.248",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.249",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12040,
+      "fully_commuting": 3840,
+      "non_commuting": 8200,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.250",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12204,
+      "fully_commuting": 3840,
+      "non_commuting": 8364,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.256",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.257",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12074,
+      "fully_commuting": 3840,
+      "non_commuting": 8234,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.260",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.261",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.268",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.270",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12208,
+      "fully_commuting": 3840,
+      "non_commuting": 8368,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.272",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12116,
+      "fully_commuting": 3840,
+      "non_commuting": 8276,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.276",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.278",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12208,
+      "fully_commuting": 3840,
+      "non_commuting": 8368,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.286",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12088,
+      "fully_commuting": 3840,
+      "non_commuting": 8248,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.287",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12145,
+      "fully_commuting": 3840,
+      "non_commuting": 8305,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.291",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12156,
+      "fully_commuting": 3840,
+      "non_commuting": 8316,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.292",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.296",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.302",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.304",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12074,
+      "fully_commuting": 3840,
+      "non_commuting": 8234,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.306",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.309",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12156,
+      "fully_commuting": 3840,
+      "non_commuting": 8316,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.312",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.313",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.315",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.316",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.317",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.319",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.322",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12240,
+      "fully_commuting": 3840,
+      "non_commuting": 8400,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.323",
+      "candidates": 0,
+      "subsets": 1,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 1,
+      "canonical_trace_classes": 1
+    },
+    {
+      "query": "query.325",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12082,
+      "fully_commuting": 3840,
+      "non_commuting": 8242,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.327",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.333",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.337",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12240,
+      "fully_commuting": 3840,
+      "non_commuting": 8400,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.340",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12208,
+      "fully_commuting": 3840,
+      "non_commuting": 8368,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.341",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12201,
+      "fully_commuting": 3840,
+      "non_commuting": 8361,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.347",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12140,
+      "fully_commuting": 3840,
+      "non_commuting": 8300,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.351",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.365",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12204,
+      "fully_commuting": 3840,
+      "non_commuting": 8364,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.366",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12152,
+      "fully_commuting": 3840,
+      "non_commuting": 8312,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.369",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.373",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12090,
+      "fully_commuting": 3840,
+      "non_commuting": 8250,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.391",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.396",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.399",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.401",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12156,
+      "fully_commuting": 3840,
+      "non_commuting": 8316,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.402",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.408",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12022,
+      "fully_commuting": 3840,
+      "non_commuting": 8182,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.411",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.414",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.415",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.416",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.417",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.418",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.419",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.424",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12176,
+      "fully_commuting": 3840,
+      "non_commuting": 8336,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.425",
+      "candidates": 3,
+      "subsets": 8,
+      "pair_contexts": 6,
+      "fully_commuting": 0,
+      "non_commuting": 6,
+      "observed_winner_traces": 4,
+      "canonical_trace_classes": 4
+    },
+    {
+      "query": "query.426",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.427",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12140,
+      "fully_commuting": 3840,
+      "non_commuting": 8300,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.432",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.434",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12240,
+      "fully_commuting": 3840,
+      "non_commuting": 8400,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.441",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12148,
+      "fully_commuting": 3840,
+      "non_commuting": 8308,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.446",
+      "candidates": 1,
+      "subsets": 2,
+      "pair_contexts": 0,
+      "fully_commuting": 0,
+      "non_commuting": 0,
+      "observed_winner_traces": 2,
+      "canonical_trace_classes": 2
+    },
+    {
+      "query": "query.449",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12216,
+      "fully_commuting": 3840,
+      "non_commuting": 8376,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.450",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    },
+    {
+      "query": "query.453",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12220,
+      "fully_commuting": 3840,
+      "non_commuting": 8380,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.460",
+      "candidates": 10,
+      "subsets": 1024,
+      "pair_contexts": 12212,
+      "fully_commuting": 3840,
+      "non_commuting": 8372,
+      "observed_winner_traces": 26,
+      "canonical_trace_classes": 26
+    },
+    {
+      "query": "query.462",
+      "candidates": 6,
+      "subsets": 64,
+      "pair_contexts": 240,
+      "fully_commuting": 48,
+      "non_commuting": 192,
+      "observed_winner_traces": 10,
+      "canonical_trace_classes": 10
+    }
+  ],
+  "regression_fixtures": [],
+  "runtime_seconds": 3.5586602479997964
+}

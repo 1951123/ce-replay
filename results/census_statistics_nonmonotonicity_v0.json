@@ -1,0 +1,199 @@
+{
+  "experiment": "Statistics-Nonmonotonicity-v0",
+  "scope": {
+    "dbms": "PostgreSQL 16.14",
+    "workload": "Census fixed workload (468 queries)",
+    "semantics": "frozen-payload base-restriction MCV+FD replay",
+    "precedence": "fixed precedence used by the mixed optimizer",
+    "budget_bytes": 105061,
+    "resource_proxy": "serialized statistics payload size; not a complete maintenance-cost model"
+  },
+  "fingerprint": {
+    "workload_sha256": "f3dfda84c10e6b0a5101591c4f6bec4311e8c529a6ac0f114b473797bd565c15",
+    "design_sha256": "52e2e3acc7881ecc400d1527c3a87870b33f60c89584744ad6e9fc0a00c9cebf"
+  },
+  "designs": {
+    "empty": {
+      "mcv_count": 0,
+      "fd_count": 0,
+      "total_candidate_count": 0,
+      "workload_aggregate_qerror": 11808.960378745707,
+      "mean_per_query_qerror": 25.232821322106215,
+      "median_per_query_qerror": 1.2784447271581132
+    },
+    "optimized": {
+      "mcv_count": 205,
+      "fd_count": 56,
+      "total_candidate_count": 261,
+      "workload_aggregate_qerror": 805.3164717666307,
+      "mean_per_query_qerror": 1.72076169180904,
+      "median_per_query_qerror": 1.127332840211554
+    },
+    "all": {
+      "mcv_count": 2253,
+      "fd_count": 758,
+      "total_candidate_count": 3011,
+      "workload_aggregate_qerror": 10932.295550009163,
+      "mean_per_query_qerror": 23.359605876087954,
+      "median_per_query_qerror": 1.2421954678926064
+    }
+  },
+  "all_vs_optimized": {
+    "absolute_difference": 10126.979078242532,
+    "relative_difference": 12.575154530276624,
+    "all_is_worse": true,
+    "optimized_is_strict_subset": true
+  },
+  "additions": {
+    "empty": {
+      "tested": 3011,
+      "improve": 1444,
+      "unchanged": 7,
+      "worsen": 1560
+    },
+    "optimized_budget_feasible": {
+      "tested": 0,
+      "improve": 0,
+      "unchanged": 0,
+      "worsen": 0
+    },
+    "combined": {
+      "tested": 3011,
+      "improve": 1444,
+      "unchanged": 7,
+      "worsen": 1560
+    },
+    "worst_harmful": {
+      "candidate_id": 671,
+      "candidate_name": "v3_scale_0671",
+      "mechanism": "MCV",
+      "columns": [
+        "ddepart",
+        "idisabl1"
+      ],
+      "cost_bytes": 388,
+      "structurally_affected_queries": [
+        22,
+        65,
+        184,
+        308,
+        338
+      ],
+      "loss_before": 11808.960378745707,
+      "loss_after": 13726.22064816649,
+      "absolute_change": 1917.2602694207842,
+      "relative_change": 0.16235639784782024,
+      "source_design": "empty",
+      "semantic_explanation": {
+        "classification": "MCV winner/GreedyCover change",
+        "causal_chain": "add statistic -> consumption/control or numerical response changes -> estimated rows change -> aggregate q-error increases",
+        "changed_query_count": 5,
+        "top_query_traces": [
+          {
+            "query": 184,
+            "truth": 13,
+            "rows_before": 54178.43471360872,
+            "rows_after": 79138.8156010001,
+            "qerror_before": 4167.571901046825,
+            "qerror_after": 6087.601200076931,
+            "qerror_change": 1920.029299030106,
+            "mcv_trace_before": [],
+            "mcv_trace_after": [
+              671
+            ],
+            "fd_trace_before": [],
+            "fd_trace_after": []
+          },
+          {
+            "query": 308,
+            "truth": 285854,
+            "rows_before": 93513.04537484945,
+            "rows_after": 70741.74280410753,
+            "qerror_before": 3.0568355340599473,
+            "qerror_after": 4.040810823555258,
+            "qerror_change": 0.9839752894953109,
+            "mcv_trace_before": [],
+            "mcv_trace_after": [
+              671
+            ],
+            "fd_trace_before": [],
+            "fd_trace_after": []
+          },
+          {
+            "query": 338,
+            "truth": 149378,
+            "rows_before": 118639.93105304487,
+            "rows_after": 76718.79347777335,
+            "qerror_before": 1.2590870432418904,
+            "qerror_after": 1.947084843601942,
+            "qerror_change": 0.6879978003600515,
+            "mcv_trace_before": [],
+            "mcv_trace_after": [
+              671
+            ],
+            "fd_trace_before": [],
+            "fd_trace_after": []
+          },
+          {
+            "query": 65,
+            "truth": 207333,
+            "rows_before": 126306.9600294783,
+            "rows_after": 114884.33360366993,
+            "qerror_before": 1.6415009905361615,
+            "qerror_after": 1.8047108208440428,
+            "qerror_change": 0.16320983030788128,
+            "mcv_trace_before": [],
+            "mcv_trace_after": [
+              671
+            ],
+            "fd_trace_before": [],
+            "fd_trace_after": []
+          },
+          {
+            "query": 22,
+            "truth": 22999,
+            "rows_before": 299683.0237770482,
+            "rows_after": 193790.73981142486,
+            "qerror_before": 13.030263219142059,
+            "qerror_after": 8.426050689657153,
+            "qerror_change": -4.604212529484906,
+            "mcv_trace_before": [],
+            "mcv_trace_after": [
+              671
+            ],
+            "fd_trace_before": [],
+            "fd_trace_after": []
+          }
+        ]
+      }
+    }
+  },
+  "removal_from_all": {
+    "tested": 3011,
+    "improving": 317,
+    "best": {
+      "candidate_id": 1267,
+      "candidate_name": "v3_scale_1267",
+      "mechanism": "MCV",
+      "columns": [
+        "dtravtime",
+        "idisabl1"
+      ],
+      "cost_bytes": 436,
+      "structurally_affected_queries": [
+        184,
+        194,
+        294,
+        443
+      ],
+      "loss_before": 10932.295550009163,
+      "loss_after": 10316.982441211823,
+      "absolute_change": -615.3131087973402,
+      "relative_change": -0.05628398043051667
+    }
+  },
+  "verdict": {
+    "empirically_nonmonotone": true,
+    "selection_meaningful_without_budget": true
+  }
+}

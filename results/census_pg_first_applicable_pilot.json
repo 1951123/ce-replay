@@ -1,0 +1,447 @@
+{
+  "postgres_version": 160015,
+  "statistics_target": 1000,
+  "hypothesis": "coexistence estimate equals first-created applicable singleton estimate",
+  "summary": {
+    "permutations": 14,
+    "within_20_percent": 11,
+    "within_2x": 12,
+    "median_deviation_factor": 1.023876161382891,
+    "max_deviation_factor": 98.91208791208791
+  },
+  "scenarios": [
+    {
+      "scenario": "q184_shared_anchor_3",
+      "qid": "query.184",
+      "overlap_structure": "shared_anchor",
+      "actual": 13,
+      "baseline": 54481,
+      "statistics": {
+        "good": [
+          "idisabl1",
+          "irspouse"
+        ],
+        "middle": [
+          "drpincome",
+          "idisabl1"
+        ],
+        "bad": [
+          "ddepart",
+          "idisabl1"
+        ]
+      },
+      "singleton_estimates": {
+        "good": 61,
+        "middle": 1292,
+        "bad": 78393
+      },
+      "permutations": [
+        {
+          "creation_order": [
+            "good",
+            "middle",
+            "bad"
+          ],
+          "predicted_first_singleton": 61,
+          "observed": 48,
+          "deviation_factor": 1.2708333333333333,
+          "within_20_percent": false,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_good",
+              "oid": 22348424
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_middle",
+              "oid": 22348425
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_bad",
+              "oid": 22348426
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "good",
+            "bad",
+            "middle"
+          ],
+          "predicted_first_singleton": 61,
+          "observed": 63,
+          "deviation_factor": 1.0327868852459017,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_good",
+              "oid": 22348427
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_bad",
+              "oid": 22348428
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_middle",
+              "oid": 22348429
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "middle",
+            "good",
+            "bad"
+          ],
+          "predicted_first_singleton": 1292,
+          "observed": 1219,
+          "deviation_factor": 1.0598851517637409,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_middle",
+              "oid": 22348430
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_good",
+              "oid": 22348431
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_bad",
+              "oid": 22348432
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "middle",
+            "bad",
+            "good"
+          ],
+          "predicted_first_singleton": 1292,
+          "observed": 1274,
+          "deviation_factor": 1.0141287284144427,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_middle",
+              "oid": 22348433
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_bad",
+              "oid": 22348434
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_good",
+              "oid": 22348435
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "bad",
+            "good",
+            "middle"
+          ],
+          "predicted_first_singleton": 78393,
+          "observed": 78024,
+          "deviation_factor": 1.004729314057213,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_bad",
+              "oid": 22348436
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_good",
+              "oid": 22348437
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_middle",
+              "oid": 22348438
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "bad",
+            "middle",
+            "good"
+          ],
+          "predicted_first_singleton": 78393,
+          "observed": 78433,
+          "deviation_factor": 1.000510249639636,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_bad",
+              "oid": 22348439
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_middle",
+              "oid": 22348440
+            },
+            {
+              "name": "v3_first_probe_q184_shared_anchor_3_good",
+              "oid": 22348441
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scenario": "q221_triangle_3",
+      "qid": "query.221",
+      "overlap_structure": "pairwise_triangle",
+      "actual": 1744,
+      "baseline": 197916,
+      "statistics": {
+        "ab": [
+          "drearning",
+          "dweek89"
+        ],
+        "ac": [
+          "drearning",
+          "irelat1"
+        ],
+        "bc": [
+          "dweek89",
+          "irelat1"
+        ]
+      },
+      "singleton_estimates": {
+        "ab": 1149,
+        "ac": 128897,
+        "bc": 289731
+      },
+      "permutations": [
+        {
+          "creation_order": [
+            "ab",
+            "ac",
+            "bc"
+          ],
+          "predicted_first_singleton": 1149,
+          "observed": 1275,
+          "deviation_factor": 1.1096605744125327,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q221_triangle_3_ab",
+              "oid": 22348445
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_ac",
+              "oid": 22348446
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_bc",
+              "oid": 22348447
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "ab",
+            "bc",
+            "ac"
+          ],
+          "predicted_first_singleton": 1149,
+          "observed": 1271,
+          "deviation_factor": 1.1061792863359443,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q221_triangle_3_ab",
+              "oid": 22348448
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_bc",
+              "oid": 22348449
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_ac",
+              "oid": 22348450
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "ac",
+            "ab",
+            "bc"
+          ],
+          "predicted_first_singleton": 128897,
+          "observed": 130826,
+          "deviation_factor": 1.0149654375198802,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q221_triangle_3_ac",
+              "oid": 22348451
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_ab",
+              "oid": 22348452
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_bc",
+              "oid": 22348453
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "ac",
+            "bc",
+            "ab"
+          ],
+          "predicted_first_singleton": 128897,
+          "observed": 130107,
+          "deviation_factor": 1.009387340279448,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q221_triangle_3_ac",
+              "oid": 22348454
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_bc",
+              "oid": 22348455
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_ab",
+              "oid": 22348456
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "bc",
+            "ab",
+            "ac"
+          ],
+          "predicted_first_singleton": 289731,
+          "observed": 291119,
+          "deviation_factor": 1.0047906506380055,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q221_triangle_3_bc",
+              "oid": 22348457
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_ab",
+              "oid": 22348458
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_ac",
+              "oid": 22348459
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "bc",
+            "ac",
+            "ab"
+          ],
+          "predicted_first_singleton": 289731,
+          "observed": 289237,
+          "deviation_factor": 1.0017079419299744,
+          "within_20_percent": true,
+          "within_2x": true,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q221_triangle_3_bc",
+              "oid": 22348460
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_ac",
+              "oid": 22348461
+            },
+            {
+              "name": "v3_first_probe_q221_triangle_3_ab",
+              "oid": 22348462
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scenario": "q274_disjoint_2",
+      "qid": "query.274",
+      "overlap_structure": "disjoint",
+      "actual": 470,
+      "baseline": 50414,
+      "statistics": {
+        "left": [
+          "drearning",
+          "dweek89"
+        ],
+        "right": [
+          "dhour89",
+          "imeans"
+        ]
+      },
+      "singleton_estimates": {
+        "left": 520,
+        "right": 18002
+      },
+      "permutations": [
+        {
+          "creation_order": [
+            "left",
+            "right"
+          ],
+          "predicted_first_singleton": 520,
+          "observed": 178,
+          "deviation_factor": 2.9213483146067416,
+          "within_20_percent": false,
+          "within_2x": false,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q274_disjoint_2_left",
+              "oid": 22348465
+            },
+            {
+              "name": "v3_first_probe_q274_disjoint_2_right",
+              "oid": 22348466
+            }
+          ]
+        },
+        {
+          "creation_order": [
+            "right",
+            "left"
+          ],
+          "predicted_first_singleton": 18002,
+          "observed": 182,
+          "deviation_factor": 98.91208791208791,
+          "within_20_percent": false,
+          "within_2x": false,
+          "catalog_oid_order": [
+            {
+              "name": "v3_first_probe_q274_disjoint_2_right",
+              "oid": 22348467
+            },
+            {
+              "name": "v3_first_probe_q274_disjoint_2_left",
+              "oid": 22348468
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
