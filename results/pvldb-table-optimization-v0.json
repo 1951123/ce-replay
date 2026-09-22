@@ -1,0 +1,17 @@
+{
+  "experiment": "PVLDB-Table-Optimization-v0",
+  "checkpoint": "B",
+  "scientific_values_changed": 0,
+  "layout_method": "readable small text in full-width tabularx; no font reduction",
+  "tables": {
+    "T1": {"original_columns": 9, "optimized_columns": 7, "original_footprint": "double-column fixed-width table", "optimized_footprint": "double-column width-bounded table", "values_removed": [], "values_preserved_elsewhere": [], "caption_words_before": 36, "caption_words_after": 26, "overfull_before": true, "overfull_after": false, "readability": "PASS"},
+    "T2": {"original_columns": 5, "optimized_columns": 5, "original_footprint": "double-column fixed-width table", "optimized_footprint": "double-column width-bounded table", "values_removed": [], "values_preserved_elsewhere": [], "caption_words_before": 29, "caption_words_after": 25, "overfull_before": false, "overfull_after": false, "readability": "PASS"},
+    "T3": {"original_columns": 7, "optimized_columns": 6, "original_footprint": "double-column fixed-width table", "optimized_footprint": "double-column width-bounded table", "values_removed": [], "values_preserved_elsewhere": [], "caption_words_before": 22, "caption_words_after": 21, "overfull_before": true, "overfull_after": false, "readability": "PASS"},
+    "T4": {"original_columns": 6, "optimized_columns": 5, "original_footprint": "double-column fixed-width table", "optimized_footprint": "double-column width-bounded table", "values_removed": [], "values_preserved_elsewhere": [], "caption_words_before": 21, "caption_words_after": 15, "overfull_before": true, "overfull_after": false, "readability": "PASS"},
+    "T5": {"original_columns": 8, "optimized_columns": 6, "original_footprint": "double-column fixed-width table", "optimized_footprint": "double-column width-bounded table", "values_removed": [], "values_preserved_elsewhere": [], "caption_words_before": 21, "caption_words_after": 18, "overfull_before": true, "overfull_after": false, "readability": "PASS"}
+  },
+  "caption_words_before_all_figures_and_tables": 516,
+  "caption_words_after_all_figures_and_tables": 403,
+  "caption_words_removed": 113,
+  "status": "PASS"
+}

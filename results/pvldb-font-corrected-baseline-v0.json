@@ -1,0 +1,37 @@
+{
+  "experiment": "PVLDB-Font-Corrected-Baseline-v0",
+  "source_commit": "c27b41150e4618a7ec3bfebf1af8ead92b3cf863",
+  "content_edits": false,
+  "official_template_commit": "39c95f5c6fcbe652a83be24e4eff8f2134cd3fbc",
+  "packages_installed": [
+    {"name": "fonts-linuxlibertine", "version": "5.3.0-6"},
+    {"name": "fonts-inconsolata", "version": "001.010-6build1"},
+    {"name": "texlive-fonts-extra", "version": "2023.20240207-1"},
+    {"name": "texlive-plain-generic", "version": "2023.20240207-1"}
+  ],
+  "required_font_files": {
+    "libertine": "/usr/share/texlive/texmf-dist/tex/latex/libertine/libertine.sty",
+    "inconsolata": "/usr/share/texlive/texmf-dist/tex/latex/inconsolata/zi4.sty",
+    "newtxmath": "/usr/share/texlive/texmf-dist/tex/latex/newtx/newtxmath.sty"
+  },
+  "fallback_baseline": {
+    "total_pages": 13,
+    "reference_start_page": 13,
+    "estimated_non_reference_pages": 12.25,
+    "missing_font_warning_families": ["libertine", "inconsolata", "newtxmath"]
+  },
+  "font_corrected_baseline": {
+    "total_pages": 12,
+    "reference_start_page": 12,
+    "reference_start_location": "page 12, left column after the artifact statement",
+    "estimated_non_reference_pages": 11.20,
+    "missing_font_warnings": 0,
+    "overfull_hboxes": 16,
+    "overfull_vboxes": 1,
+    "underfull_issues": 44
+  },
+  "estimated_non_reference_change_pages": -1.05,
+  "measurement_note": "The fractional extent is a visual estimate from the clean official-font PDF; page and reference-start labels are exact.",
+  "checkpoint": "A",
+  "status": "PASS"
+}

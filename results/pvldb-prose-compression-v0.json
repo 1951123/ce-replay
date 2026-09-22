@@ -1,0 +1,28 @@
+{
+  "experiment": "PVLDB-Prose-Compression-v0",
+  "checkpoint_c_executed": false,
+  "checkpoint_c_reason": "Checkpoint B already produced a stable layout; Section 8 was not deliberately compressed.",
+  "checkpoint_d_executed": true,
+  "total_words_before": 7009,
+  "total_words_after": 6855,
+  "total_words_removed": 154,
+  "section_8_words_before": 1318,
+  "section_8_words_after": 1224,
+  "section_1_words_before": 746,
+  "section_1_words_after": 743,
+  "operations": [
+    {"section": "1", "original_word_count": 28, "revised_word_count": 27, "information_removed": "redundant collection wording", "where_available": "same sentence", "claim_change": "NONE", "reason": "remove overflow"},
+    {"section": "1 contributions", "original_word_count": 28, "revised_word_count": 26, "information_removed": "redundant physical-design modifier", "where_available": "contribution heading and formulation", "claim_change": "SCOPE PRESERVED", "reason": "remove overflow"},
+    {"section": "4.2", "original_word_count": 9, "revised_word_count": 8, "information_removed": "none; reordered wording", "where_available": "same sentence", "claim_change": "NONE", "reason": "remove overflow"},
+    {"section": "7", "original_word_count": 30, "revised_word_count": 23, "information_removed": "repeated question scaffolding", "where_available": "four RQ subsections", "claim_change": "NONE", "reason": "remove overflow"},
+    {"section": "8.4", "original_word_count": 20, "revised_word_count": 18, "information_removed": "chronology word", "where_available": "same evidence sentence", "claim_change": "NONE", "reason": "remove overflow"},
+    {"section": "9.5", "original_word_count": 20, "revised_word_count": 19, "information_removed": "none; expanded same-realization wording", "where_available": "same sentence", "claim_change": "SCOPE PRESERVED", "reason": "remove overflow"},
+    {"section": "9.6", "original_word_count": 13, "revised_word_count": 12, "information_removed": "implementation-detail modifiers", "where_available": "Section 4", "claim_change": "NONE", "reason": "remove overflow"},
+    {"section": "10.3", "original_word_count": 69, "revised_word_count": 52, "information_removed": "duplicated layer description", "where_available": "Sections 5.3 and 6.2", "claim_change": "SCOPE PRESERVED", "reason": "remove overflow"},
+    {"section": "11", "original_word_count": 30, "revised_word_count": 30, "information_removed": "none; rephrased tolerance", "where_available": "same sentence", "claim_change": "SCOPE PRESERVED", "reason": "remove overflow"}
+  ],
+  "abstract_changed": false,
+  "rqs_changed": false,
+  "contributions_changed": false,
+  "status": "PASS"
+}

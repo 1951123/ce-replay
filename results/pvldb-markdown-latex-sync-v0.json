@@ -1,0 +1,16 @@
+{
+  "experiment": "PVLDB-Markdown-LaTeX-Sync-v0",
+  "markdown": "docs/paper-full-draft-v4-page-budget.md",
+  "latex": "paper/pvldb2027/main.tex",
+  "generation": "main.tex generated mechanically by paper/pvldb2027/convert_from_markdown.py",
+  "section_structure_aligned": true,
+  "claims_aligned": true,
+  "numbers_aligned": true,
+  "citations_aligned": true,
+  "tables_aligned": true,
+  "captions_aligned": true,
+  "markdown_math_double_dollar_only": true,
+  "accidental_scientific_statements_in_one_version": 0,
+  "formatting_differences_expected": true,
+  "status": "PASS"
+}

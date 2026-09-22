@@ -1,0 +1,22 @@
+{
+  "experiment": "PVLDB-Page-Budget-Claim-Audit-v0",
+  "baseline": "docs/paper-full-draft-v3-polished.md",
+  "optimized": "docs/paper-full-draft-v4-page-budget.md",
+  "regressions": {
+    "first_or_only": 0,
+    "general_postgresql_support": 0,
+    "general_dbms_support": 0,
+    "global_optimality": 0,
+    "runtime_improvement": 0,
+    "guaranteed_speedup": 0,
+    "end_to_end_advisor_completeness": 0,
+    "candidate_acquisition": 0,
+    "realization_robustness": 0,
+    "workload_generalization": 0,
+    "universal_maintenance_model": 0,
+    "complete_ce_replay": 0,
+    "prior_art_incapability": 0
+  },
+  "novelty_positioning_preserved": true,
+  "status": "PASS"
+}

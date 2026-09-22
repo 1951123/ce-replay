@@ -1,0 +1,26 @@
+{
+  "experiment": "PVLDB-Page-Budget-Visual-Audit-v0",
+  "pdf": "paper/pvldb2027/main.pdf",
+  "pages_inspected": [1,2,3,4,5,6,7,8,9,10,11,12],
+  "checks": {
+    "page_1": "PASS; author placeholders remain explicit and author-block uncertainty remains",
+    "f1_page": "PASS; conservative placeholder retained",
+    "methodology_evaluation_transition": "PASS",
+    "tables_t1_t5": "PASS; headers, values, and qualifiers readable at normal zoom",
+    "former_page_9_10_pressure_region": "PASS; T3-T5 have no clipping or horizontal overflow",
+    "final_non_reference_page": "PASS; conclusion and artifact statement complete on page 11",
+    "reference_transition": "PASS; references start cleanly at page 12",
+    "whitespace_balance": "PASS",
+    "float_ordering": "PASS; floats remain associated with the evaluation sequence",
+    "orphan_headings": "PASS",
+    "dense_captions": "PASS after compression",
+    "unreadable_cells": 0,
+    "equation_breaks": 0,
+    "visible_overfull_boxes": 0,
+    "submission_risk_overfull_boxes": 0,
+    "residual_overfull_vbox": "1.54099pt output-page balance event; visually harmless"
+  },
+  "strongest_remaining_page_pressure": "real author metadata and replacement of conservative F1-F4 placeholders",
+  "strongest_remaining_readability_issue": "T4 is information-dense but readable",
+  "status": "PASS"
+}

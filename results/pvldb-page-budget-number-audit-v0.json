@@ -1,0 +1,12 @@
+{
+  "experiment": "PVLDB-Page-Budget-Number-Audit-v0",
+  "baseline": "docs/paper-full-draft-v3-polished.md",
+  "optimized": "docs/paper-full-draft-v4-page-budget.md",
+  "numbers_removed_from_prose": [],
+  "numbers_still_present_in_table_figure_or_main_paper": "all frozen empirical values",
+  "numbers_moved_to_supplemental": [],
+  "numbers_changed": 0,
+  "new_derived_percentages": 0,
+  "schema_only_changes": ["T1 combined queries/rows and predicate columns/form", "T3 combined budget with cost/unused", "T4 combined audit count with exactness", "T5 combined selection/materialization and fidelity/error"],
+  "status": "PASS"
+}

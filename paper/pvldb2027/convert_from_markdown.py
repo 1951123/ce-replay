@@ -5,7 +5,7 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "docs/paper-full-draft-v3-polished.md"
+SOURCE = ROOT / "docs/paper-full-draft-v4-page-budget.md"
 OUTPUT = Path(__file__).resolve().parent / "main.tex"
 
 FIGURE_HEIGHTS = {"F1": "2.20in", "F2": "2.05in", "F3": "2.05in", "F4": "2.15in"}
@@ -35,20 +35,15 @@ def latex_escape(text: str) -> str:
 
 def table_latex(caption: str, rows: list[list[str]], label: str) -> str:
     cols = len(rows[0])
-    specs = {
-        5: r"p{0.19\textwidth}p{0.23\textwidth}p{0.12\textwidth}p{0.22\textwidth}p{0.13\textwidth}",
-        6: r"p{0.15\textwidth}p{0.14\textwidth}p{0.13\textwidth}p{0.20\textwidth}p{0.20\textwidth}p{0.12\textwidth}",
-        7: r"p{0.12\textwidth}p{0.15\textwidth}p{0.09\textwidth}p{0.17\textwidth}p{0.14\textwidth}p{0.12\textwidth}p{0.14\textwidth}",
-        8: r"p{0.10\textwidth}p{0.08\textwidth}p{0.08\textwidth}p{0.13\textwidth}p{0.10\textwidth}p{0.14\textwidth}p{0.12\textwidth}p{0.16\textwidth}",
-        9: r"p{0.075\textwidth}p{0.075\textwidth}p{0.06\textwidth}p{0.08\textwidth}p{0.14\textwidth}p{0.08\textwidth}p{0.14\textwidth}p{0.11\textwidth}p{0.16\textwidth}",
-    }[cols]
+    xcol = r">{\raggedright\arraybackslash}X"
+    specs = xcol * cols
     out = [r"\begin{table*}[t]", r"\centering", r"\small", f"\\caption{{{inline(caption)}}}",
-           f"\\label{{tab:{label.lower()}}}", f"\\begin{{tabular}}{{@{{}}{specs}@{{}}}}", r"\toprule"]
+           f"\\label{{tab:{label.lower()}}}", f"\\begin{{tabularx}}{{\\textwidth}}{{@{{}}{specs}@{{}}}}", r"\toprule"]
     for idx, row in enumerate(rows):
         out.append(" & ".join(inline(cell) for cell in row) + r" \\")
         if idx == 0:
             out.append(r"\midrule")
-    out.extend([r"\bottomrule", r"\end{tabular}", r"\end{table*}"])
+    out.extend([r"\bottomrule", r"\end{tabularx}", r"\end{table*}"])
     return "\n".join(out)
 
 
@@ -152,8 +147,8 @@ def convert() -> str:
     return "\n".join(out)
 
 
-PREAMBLE = r"""% Generated mechanically from docs/paper-full-draft-v3-polished.md.
-% Scientific content remains authoritative in that frozen Markdown manuscript.
+PREAMBLE = r"""% Generated mechanically from docs/paper-full-draft-v4-page-budget.md.
+% Scientific content remains synchronized with that page-budget Markdown manuscript.
 \documentclass[sigconf,nonacm]{acmart}
 
 %%% do not modify the following VLDB block %%
@@ -162,6 +157,7 @@ PREAMBLE = r"""% Generated mechanically from docs/paper-full-draft-v3-polished.m
 %%% VLDB block end %%%
 
 \usepackage{array}
+\usepackage{tabularx}
 \renewcommand\vldbdoi{XX.XX/XXX.XX}
 \renewcommand\vldbpages{XXX-XXX}
 \renewcommand\vldbavailabilityurl{https://github.com/1951123/ce-replay}

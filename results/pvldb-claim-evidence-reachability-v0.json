@@ -1,0 +1,14 @@
+{
+  "experiment": "PVLDB-Claim-Evidence-Reachability-v0",
+  "claims": [
+    {"claim": "Replay matches native CE in the supported fragment", "section": "8.1", "main_paper_evidence": "raw, controlled, workload, and fresh comparison counts/errors", "figure_table": "T2", "supplemental_evidence": "semantic fixtures and replay traces", "main_paper_evidence_independently_sufficient": true},
+    {"claim": "Statistics utility is contextual and non-monotone", "section": "8.2", "main_paper_evidence": "harmful additions, improving removals, and all-statistics comparison", "figure_table": "F2", "supplemental_evidence": "nonmonotonicity outputs", "main_paper_evidence_independently_sufficient": true},
+    {"claim": "Replay supports maintenance-constrained mixed design", "section": "8.2", "main_paper_evidence": "budgets, selected designs, costs, losses, terminal audits", "figure_table": "T3", "supplemental_evidence": "optimizer traces", "main_paper_evidence_independently_sufficient": true},
+    {"claim": "Semantic dependencies preserve audited moves while reducing work", "section": "8.3", "main_paper_evidence": "trajectory identity, move counts, work and runtime outcomes", "figure_table": "T4", "supplemental_evidence": "move-level audits", "main_paper_evidence_independently_sufficient": true},
+    {"claim": "Directed MCV-to-FD composition is operational", "section": "8.4", "main_paper_evidence": "suppression and selected-FD consumption", "figure_table": "F4", "supplemental_evidence": "composition traces", "main_paper_evidence_independently_sufficient": true},
+    {"claim": "Fresh deployment preserves same-realization fidelity", "section": "8.4", "main_paper_evidence": "materialization, consumption, native/replay equality, drift", "figure_table": "T5", "supplemental_evidence": "deployment diagnostics", "main_paper_evidence_independently_sufficient": true},
+    {"claim": "Evidence spans sparse Census and dense ScalarArray-heavy DMV", "section": "7 and 8", "main_paper_evidence": "workload topology and cross-workload results", "figure_table": "T1-T5", "supplemental_evidence": "workload artifacts", "main_paper_evidence_independently_sufficient": true}
+  ],
+  "core_claims_without_sufficient_main_paper_evidence": 0,
+  "status": "PASS"
+}

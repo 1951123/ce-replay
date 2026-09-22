@@ -1,0 +1,12 @@
+{
+  "experiment": "PVLDB-Page-Budget-Citation-Audit-v0",
+  "baseline_bibliography_entries": 15,
+  "optimized_bibliography_entries": 15,
+  "citations_added": 0,
+  "citations_removed": 0,
+  "unresolved_citations": 0,
+  "unsupported_literature_claims": 0,
+  "novelty_regressions": 0,
+  "bibtex_warnings_affecting_resolution": 0,
+  "status": "PASS"
+}

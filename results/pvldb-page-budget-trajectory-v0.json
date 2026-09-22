@@ -1,0 +1,13 @@
+{
+  "experiment": "PVLDB-Page-Budget-Trajectory-v0",
+  "checkpoints": [
+    {"checkpoint": "fallback baseline", "stage": "c27b411", "non_reference_extent": 12.25, "reference_start": "page 13", "total_pdf_pages": 13, "overfull_hboxes": 23, "underfull_issues": 41, "table_readability": "T1/T3/T4/T5 problematic", "scientific_changes": 0, "cumulative_approximate_page_relief": 0.0},
+    {"checkpoint": "A", "stage": "font-corrected unmodified baseline", "non_reference_extent": 11.20, "reference_start": "page 12 after artifact statement", "total_pdf_pages": 12, "overfull_hboxes": 16, "underfull_issues": 44, "table_readability": "unchanged; T1/T3/T4/T5 problematic", "scientific_changes": 0, "cumulative_approximate_page_relief": 1.05},
+    {"checkpoint": "B", "stage": "table and caption optimization", "non_reference_extent": 11.00, "reference_start": "page 12 top; anchor emitted at end of page 11", "total_pdf_pages": 12, "overfull_hboxes": 11, "underfull_issues": 14, "table_readability": "T1-T5 pass at normal zoom", "scientific_changes": 0, "cumulative_approximate_page_relief": 1.25},
+    {"checkpoint": "C", "stage": "not executed", "non_reference_extent": null, "reference_start": null, "total_pdf_pages": null, "overfull_hboxes": null, "underfull_issues": null, "table_readability": "not applicable", "scientific_changes": 0, "cumulative_approximate_page_relief": 1.25},
+    {"checkpoint": "D/final", "stage": "minimal overflow-removal wording", "non_reference_extent": 11.00, "reference_start": "page 12 top; anchor emitted at end of page 11", "total_pdf_pages": 12, "overfull_hboxes": 0, "overfull_vboxes": 1, "underfull_issues": 14, "table_readability": "T1-T5 pass at normal zoom", "scientific_changes": 0, "cumulative_approximate_page_relief": 1.25}
+  ],
+  "largest_relief_source": "official-font correction",
+  "largest_manuscript_edit_relief_source": "table information architecture and caption compression",
+  "status": "PASS"
+}

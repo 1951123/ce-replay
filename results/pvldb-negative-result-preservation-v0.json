@@ -1,0 +1,19 @@
+{
+  "experiment": "PVLDB-Negative-Result-Preservation-v0",
+  "checks": [
+    {"result": "all-statistics worse than optimized Census design", "section": "8.2", "preserved": true, "compressed": false, "moved": false, "main_paper_visibility": true},
+    {"result": "harmful singleton additions", "section": "8.2/F2", "preserved": true, "compressed": true, "moved": false, "main_paper_visibility": true},
+    {"result": "precedence/order sensitivity", "section": "3, 4, 5", "preserved": true, "compressed": false, "moved": false, "main_paper_visibility": true},
+    {"result": "lack of useful strict Census component decomposition", "section": "6.2, 8.3, 9.3", "preserved": true, "compressed": false, "moved": false, "main_paper_visibility": true},
+    {"result": "global budget-exchange channel", "section": "6.2, 9.3", "preserved": true, "compressed": false, "moved": false, "main_paper_visibility": true},
+    {"result": "mixed semantic optimizer wall-clock slowdown", "section": "8.3/T4", "preserved": true, "compressed": false, "moved": false, "main_paper_visibility": true},
+    {"result": "environment-specific maintenance coefficients", "section": "7/F3, 9.4", "preserved": true, "compressed": true, "moved": false, "main_paper_visibility": true},
+    {"result": "fresh-payload drift", "section": "8.4/T5, 9.5", "preserved": true, "compressed": false, "moved": false, "main_paper_visibility": true},
+    {"result": "DMV provenance limitation", "section": "8.4/T5, 9.7", "preserved": true, "compressed": false, "moved": false, "main_paper_visibility": true},
+    {"result": "DMV zero-truth caveat", "section": "7, 8.2, 9.7", "preserved": true, "compressed": false, "moved": false, "main_paper_visibility": true},
+    {"result": "candidate-payload acquisition boundary", "section": "5, 6.3, 9.5, 10", "preserved": true, "compressed": false, "moved": false, "main_paper_visibility": true},
+    {"result": "neighborhood-local optimum", "section": "6.1, 8.2/T3, 9.7", "preserved": true, "compressed": false, "moved": false, "main_paper_visibility": true}
+  ],
+  "all_preserved": true,
+  "status": "PASS"
+}
