@@ -1,0 +1,20 @@
+{
+  "artifact":"paper-negative-result-placement-v0",
+  "date":"2026-09-22",
+  "placements":[
+    {"result":"Giant component / no component decomposition","placement":"MAIN DISCUSSION","rationale":"It anchors the central distinction between global decomposition and local incremental evaluation; detailed graph statistics remain appendix material."},
+    {"result":"Restart-safe state compression failure","placement":"APPENDIX","rationale":"The counterexample justifies structural/counterfactual dependency, while full state details would interrupt the main narrative."},
+    {"result":"Commutativity does not reduce outer search","placement":"APPENDIX","rationale":"It bounds a rejected reduction path but is not necessary to understand the final method."},
+    {"result":"Semantic factorization failure","placement":"APPENDIX","rationale":"Exact reconstruction is diagnostic; the main text needs only the no-useful-global-factor conclusion."},
+    {"result":"Mixed evaluator wall-clock slowdown","placement":"MAIN DISCUSSION","rationale":"It is essential to qualify the central incremental-evaluation claim and distinguish semantic-work reduction from runtime."},
+    {"result":"Payload realization variability","placement":"MAIN DISCUSSION","rationale":"It motivates the semantic-fidelity versus realization-uncertainty boundary and future robust objectives."},
+    {"result":"DMV provenance gap","placement":"LIMITATIONS","rationale":"It directly restricts the deployment claim by preventing paired frozen-to-fresh per-query drift analysis."},
+    {"result":"Zero-truth objective pathology","placement":"LIMITATIONS","rationale":"It materially affects interpretation of DMV aggregate loss and must remain visible."}
+  ],
+  "additional":[
+    {"result":"Locality-only swap restriction is incomplete under a global budget","placement":"APPENDIX","rationale":"It clarifies why locality accelerates evaluation rather than safely restricting all moves."},
+    {"result":"First-applicable static proxy failure","placement":"APPENDIX","rationale":"It supports keeping design-dependent choice executable but is superseded as a main result."},
+    {"result":"Generalization experiments","placement":"OMIT","rationale":"They are outside the frozen supplied-workload core and remain future-work archive artifacts."}
+  ],
+  "status":"PASS"
+}

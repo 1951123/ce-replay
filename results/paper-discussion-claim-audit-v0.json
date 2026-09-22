@@ -1,0 +1,44 @@
+{
+  "artifact": "paper-discussion-claim-audit-v0",
+  "date": "2026-09-22",
+  "document": "docs/paper-section-9-discussion-limitations-v0.md",
+  "claims": [
+    {"id":"D1","section":"9.1","claim":"Extended-statistics design changes the optimizer's information state and is therefore semantic physical design.","classification":"INTERPRETATION","support":["C2","C7","Sections 3-4"],"scope":"Supported PostgreSQL statistics-sensitive base restrictions.","status":"SUPPORTED"},
+    {"id":"D2","section":"9.1","claim":"Selection has independent semantic and resource justifications.","classification":"SYNTHESIS","support":["C2","C3","C4"],"scope":"Empirical non-monotonicity and measured recurring maintenance in Census and DMV.","status":"SUPPORTED"},
+    {"id":"D3","section":"9.2","claim":"CE-Replay supplies objective and dependency interfaces.","classification":"ARCHITECTURAL","support":["C1","C9","TC19","TC20"],"scope":"Validated executable fragment and supplied frozen realization.","status":"SUPPORTED"},
+    {"id":"D4","section":"9.2","claim":"No separate learned subset-to-q-error model is needed inside the faithfully replayed boundary.","classification":"INTERPRETATION","support":["C1","TC4","TC19"],"scope":"Does not exclude learned or approximate components outside the boundary.","status":"SUPPORTED"},
+    {"id":"D5","section":"9.2","claim":"Execution-sufficient state need not be counterfactual-safe.","classification":"GENERAL SYSTEMS LESSON","support":["CE-Semantic-State-v0","TC20"],"scope":"Presented as an observed design lesson, not a theorem.","status":"SUPPORTED"},
+    {"id":"D6","section":"9.3","claim":"Census supports local incremental evaluation but not useful connected-component or tested semantic-factor decomposition.","classification":"NEGATIVE/POSITIVE SYNTHESIS","support":["Census locality analysis","MCV-Semantic-Factorization-v0","C9","C10"],"scope":"Census only; no universal decomposition claim.","status":"SUPPORTED"},
+    {"id":"D7","section":"9.3","claim":"Reduced semantic/control work does not guarantee wall-clock speedup.","classification":"QUALIFICATION","support":["C9","Compositional-Semantic-Optimizer-v0","Section 8.3"],"scope":"Mixed implementation measured slower; MCV-only measured faster.","status":"SUPPORTED"},
+    {"id":"D8","section":"9.3","claim":"Topology determines incremental-evaluation opportunity, not correctness.","classification":"CROSS-WORKLOAD INTERPRETATION","support":["C9","C10","C11"],"scope":"Two complementary workloads, not a scaling law.","status":"SUPPORTED"},
+    {"id":"D9","section":"9.4","claim":"Mechanism-weighted object count is a first-order environment-specific maintenance proxy.","classification":"RESOURCE INTERPRETATION","support":["C4","C5"],"scope":"Not a universal or per-candidate ANALYZE latency model.","status":"SUPPORTED"},
+    {"id":"D10","section":"9.4","claim":"Resource semantics can materially change the chosen design.","classification":"EMPIRICAL INTERPRETATION","support":["C6","Maintenance-Budget-Optimize-v0"],"scope":"Directly shown on Census only.","status":"SUPPORTED"},
+    {"id":"D11","section":"9.4","claim":"A locally optimal design may leave capacity unused.","classification":"OPTIMIZATION INTERPRETATION","support":["C3","C12","DMV-Maintenance-Budget-Optimize-v0"],"scope":"Audited neighborhood local optimality, not global optimality.","status":"SUPPORTED"},
+    {"id":"D12","section":"9.5","claim":"Same-realization semantic fidelity is distinct from frozen-to-fresh payload drift.","classification":"REALIZATION BOUNDARY","support":["C13","C14","TC21"],"scope":"DMV lacks full paired per-query drift provenance.","status":"SUPPORTED"},
+    {"id":"D13","section":"9.5","claim":"Repeated Census ANALYZE shows realization variability but not design-ranking instability or regret.","classification":"ROBUSTNESS QUALIFICATION","support":["Repeated-Analyze-Robustness-v0","C14"],"scope":"No paired multi-design realization study.","status":"SUPPORTED"},
+    {"id":"D14","section":"9.5","claim":"Candidate-payload acquisition is an offline boundary distinct from recurring deployed maintenance.","classification":"SYSTEMS BOUNDARY","support":["TC28","Section 5.3"],"scope":"Efficient general acquisition is unsolved.","status":"SUPPORTED"},
+    {"id":"D15","section":"9.6","claim":"CE-Replay is deliberately extensible but not automatically extensible.","classification":"EXTENSION INTERPRETATION","support":["C15","C16","TC16"],"scope":"ScalarArray is one bounded demonstrated extension.","status":"SUPPORTED"},
+    {"id":"D16","section":"9.6","claim":"Mechanisms should be integrated as explicit state transitions when upstream consumption changes downstream applicability.","classification":"ARCHITECTURAL PRINCIPLE","support":["C7","C8","TC15"],"scope":"Derived from PostgreSQL MCV-to-FD; not asserted for all DBMS mechanisms.","status":"SUPPORTED"}
+  ],
+  "claim_ladder": {
+    "level_A_central": ["D1","D2","D3","D4","D12","D15"],
+    "level_B_supporting": ["D5","D6","D7","D8","D9","D10","D11","D13","D14","D16"],
+    "level_C_appendix_diagnostic": ["exact precedence subexperiments","commutativity rates","state-compression counterexamples","individual query identifiers","maintenance regression residuals"]
+  },
+  "risky_word_audit": {
+    "exact":"Used only for audited incremental evaluation or explicit native comparison boundaries; never full PostgreSQL CE.",
+    "optimal":"Qualified as neighborhood local optimum; global only for small/restricted exhaustive audits.",
+    "general":"Used for unsolved general payload acquisition or denied universal claims.",
+    "scalable":"Not used as an affirmative claim.",
+    "robust":"Used only for future objectives or to deny current realization robustness.",
+    "efficient":"Used only as future payload-acquisition work, not a completed claim.",
+    "faithful":"Bound to same realization and supported fragment.",
+    "native":"Bound to PostgreSQL semantics and matched physical/payload realization.",
+    "replay":"Defined as CE-Replay or semantic/control replay, never full planner replay.",
+    "workload-specialized":"Used as the canonical architectural qualifier."
+  },
+  "unsupported_claims": [],
+  "technical_core_conflicts": [],
+  "evaluation_conflicts": [],
+  "status": "PASS"
+}

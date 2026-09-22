@@ -1,0 +1,33 @@
+{
+  "artifact": "paper-introduction-promise-audit-v0",
+  "date": "2026-09-22",
+  "introduction_blueprint": "docs/paper-introduction-blueprint-v0.md",
+  "abstract_blueprint": "docs/paper-abstract-blueprint-v0.md",
+  "introduction_promises": [
+    {"paragraph":1,"claim":"Extended-statistics selection is a physical-design problem for a supplied target workload.","technical_discharge":["Section 3"],"evaluation_support":["Section 8.2"],"qualifier":"CE loss, not runtime; workload supplied.","evidence":["C2","C4"]},
+    {"paragraph":2,"claim":"Statistics utility is contextual and inclusion can be non-monotone.","technical_discharge":["Section 4"],"evaluation_support":["Section 8.2","Figure F2"],"qualifier":"Observed in Census and DMV; not universal.","evidence":["C2","C7","Statistics-Nonmonotonicity-v0","DMV-Baseline-and-Nonmonotonicity-v0"]},
+    {"paragraph":3,"claim":"Recurring maintenance is an independent resource dimension.","technical_discharge":["Section 3.6"],"evaluation_support":["Section 7.5","Figure F3"],"qualifier":"First-order environment-specific calibration.","evidence":["C4","C5"]},
+    {"paragraph":4,"claim":"Independent scores are insufficient and full native evaluation does not expose incremental dependencies.","technical_discharge":["Sections 4-6"],"evaluation_support":["Sections 8.3-8.4"],"qualifier":"Does not deny existing what-if methods.","evidence":["C7","C9"]},
+    {"paragraph":5,"claim":"CE-Replay specializes workload-fixed context while keeping design-dependent semantics executable.","technical_discharge":["Sections 3.4","5.1-5.4"],"evaluation_support":["Section 8.1"],"qualifier":"Supported PostgreSQL 16.14 fragment only.","evidence":["C1","C15","C16"]},
+    {"paragraph":6,"claim":"CE-Replay provides objective and dependency oracles without a separate learned design-to-q-error model.","technical_discharge":["Sections 5.5-5.6","Section 6"],"evaluation_support":["Sections 8.1-8.3"],"qualifier":"Inside the faithfully replayed boundary.","evidence":["C1","C9"]},
+    {"paragraph":7,"claim":"The prototype covers bounded PostgreSQL 16.14 MCV, FD, ScalarArray, and directed composition semantics.","technical_discharge":["Sections 4-5"],"evaluation_support":["Sections 8.1","8.4"],"qualifier":"No joins, arbitrary predicates, full planner, or automatic compiler.","evidence":["C1","C7","C15","C16"]},
+    {"paragraph":8,"claim":"Evidence spans fidelity, maintenance-aware design, incremental evaluation, composition, and fresh deployment in two workloads.","technical_discharge":["Sections 4-7"],"evaluation_support":["Sections 8.1-8.4"],"qualifier":"Local optimization; topology-dependent opportunity; no runtime objective.","evidence":["C1","C2","C4","C8","C9","C12","C13"]},
+    {"paragraph":9,"claim":"The work contributes a representation/method and bounded optimizer use, not a new estimator or complete DBMS.","technical_discharge":["Sections 3-6"],"evaluation_support":["Section 8"],"qualifier":"Four frozen contributions only.","evidence":["C1","C9","C12","C16"]}
+  ],
+  "contribution_audit": [
+    {"id":1,"introduce_build_show":"Formulation plus design-parametric executable representation.","method_sections":["3","5"],"evidence_sections":["8.2"],"scope":"Supported PostgreSQL base restrictions.","status":"SUPPORTED"},
+    {"id":2,"introduce_build_show":"PostgreSQL MCV+FD CE-Replay with bounded ScalarArray and composition.","method_sections":["4","5"],"evidence_sections":["8.1","8.4"],"scope":"Explicit conjunctive fragment.","status":"SUPPORTED"},
+    {"id":3,"introduce_build_show":"Objective/dependency oracles for maintenance-constrained local search.","method_sections":["6"],"evidence_sections":["8.2","8.3"],"scope":"Neighborhood local optimality; no universal speedup.","status":"SUPPORTED"},
+    {"id":4,"introduce_build_show":"Cross-workload physical and fresh native validation.","method_sections":["7"],"evidence_sections":["8.1-8.4"],"scope":"Two workloads, PostgreSQL 16.14, no runtime claim.","status":"SUPPORTED"}
+  ],
+  "abstract_promises": [
+    {"sentence":1,"claim":"Maintenance-constrained statistics physical design for a supplied workload.","sections":["3"],"evidence":["C2","C4"],"qualifier":"CE loss only."},
+    {"sentence":2,"claim":"Stateful/compositional semantics create non-monotone contextual effects.","sections":["4","8.2"],"evidence":["C2","C7"],"qualifier":"Empirical in two workloads."},
+    {"sentence":3,"claim":"CE-Replay yields objective and dependency oracles.","sections":["5","6"],"evidence":["C1","C9"],"qualifier":"Supported fragment and fixed realization."},
+    {"sentence":4,"claim":"PostgreSQL 16.14 bounded MCV+FD implementation plus deterministic local search.","sections":["4-7"],"evidence":["C7","C12","C15"],"qualifier":"No joins, arbitrary predicates, or global guarantee."},
+    {"sentence":5,"claim":"Fresh fidelity and exact audited incremental evaluation across Census and DMV.","sections":["8.1-8.4"],"evidence":["C1","C9","C13"],"qualifier":"No universal speedup or paired DMV drift claim."},
+    {"sentence":6,"claim":"Executable semantics support bounded maintenance-aware design while extensions remain open.","sections":["9"],"evidence":["C5","C14","C16"],"qualifier":"No universal DBMS or robustness claim."}
+  ],
+  "unsupported_promises": [],
+  "status": "PASS"
+}
