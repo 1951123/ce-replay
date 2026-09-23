@@ -1,0 +1,101 @@
+{
+  "task": "Novelty-Boundary-Correction-v0",
+  "baseline_commit": "dc03ea11fe2903ed0a5d82882a47c3dd3fd76724",
+  "expected_earlier_baseline": "1f0456521ae01173d41503e1f7e0884cc33d36ea",
+  "research_freeze_commit": "22cf494f954cffff86080236473ca847064dca74",
+  "provenance": {
+    "gate": "PROVENANCE PASS — INTERVENING COMMITS UNDERSTOOD",
+    "intervening_commits": [
+      {
+        "sha": "dc03ea11fe2903ed0a5d82882a47c3dd3fd76724",
+        "author": "1951123 <19511238172@163.com>",
+        "date": "2026-09-22T22:26:41+08:00",
+        "message": "paper: correct constrained-design DOI",
+        "scientific_content_change": false,
+        "author_metadata_change": false,
+        "frozen_artifact_change": false
+      }
+    ]
+  },
+  "phase_a_gate": "PHASE A PASS — MINIMAL NOVELTY CORRECTION JUSTIFIED",
+  "primary_sources_verified": [
+    "Chaudhuri and Narasayya, Automating Statistics Management for Query Optimizers, TKDE 2001, DOI 10.1109/69.908978",
+    "Schnaitter, Polyzotis, and Getoor, Index Interactions in Physical Design Tuning: Modeling, Analysis, and Applications, PVLDB 2009, DOI 10.14778/1687627.1687766",
+    "Papadomanolakis, Dash, and Ailamaki, Efficient Use of the Query Optimizer for Automated Physical Design, VLDB 2007",
+    "Bruno and Nehme, Configuration-Parametric Query Optimization for Physical Design Tuning, SIGMOD 2008, DOI 10.1145/1376616.1376710",
+    "Liu, Ives, and Loo, Enabling Incremental Query Re-Optimization, SIGMOD 2016, DOI 10.1145/2882903.2915212",
+    "Acar et al., A Library for Self-Adjusting Computation, ENTCS 2006, DOI 10.1016/j.entcs.2005.11.043"
+  ],
+  "citations_added": [
+    "schnaitter2009interactions"
+  ],
+  "citations_modified": [
+    "chaudhuri2001statistics description",
+    "papadomanolakis2007inum description",
+    "bruno2008cpqo description",
+    "liu2016incremental description"
+  ],
+  "bibliography": {
+    "before": 15,
+    "after": 16,
+    "removed": 0,
+    "metadata_corrections": 0
+  },
+  "manuscript_files_modified": [
+    "docs/paper-full-draft-v6-evaluation-hierarchy.md",
+    "paper/pvldb2027/main.tex",
+    "paper/pvldb2027/main.pdf",
+    "paper/pvldb2027/paper.bib",
+    "docs/paper-bibliography-v0.bib"
+  ],
+  "sections_changed": [
+    "Introduction",
+    "Section 8.2",
+    "Section 8.6",
+    "Section 9.1",
+    "Section 9.2",
+    "Section 9.3",
+    "Section 9.5"
+  ],
+  "net_markdown_word_delta": -4,
+  "scientific_changes": 0,
+  "empirical_changes": 0,
+  "experiment_changes": 0,
+  "optimizer_changes": 0,
+  "frozen_artifact_changes": 0,
+  "regression": {
+    "top_level_sections": 10,
+    "rq_count": 4,
+    "rq_meanings_changed": 0,
+    "contribution_count": 4,
+    "contribution_architecture_changed": 0,
+    "figure_scientific_changes": 0,
+    "table_scientific_changes": 0,
+    "markdown_latex_sync": "PASS"
+  },
+  "pdf": {
+    "path": "paper/pvldb2027/main.pdf",
+    "pages": 12,
+    "approximate_non_reference_pages": 11.2,
+    "references_start_page": 12,
+    "overfull_hboxes": 0,
+    "overfull_vboxes": 0,
+    "undefined_citations": 0,
+    "undefined_references": 0,
+    "all_fonts_embedded": true,
+    "type3_fonts": 0,
+    "visual_regression": "PASS"
+  },
+  "novelty_tests": {
+    "generic_workload_specialization_claim": "NO",
+    "generic_exact_incremental_claim": "NO",
+    "generic_contextual_interaction_claim": "NO",
+    "native_postgresql_semantics_claim": "NO",
+    "remaining_distinction_clear": "YES",
+    "bounded_systems_contribution": "YES"
+  },
+  "strongest_remaining_reviewer_objection": "CE-Replay may be viewed as an expected composition of C-PQO-style specialization and Liu/self-adjusting dependency propagation at the estimator layer.",
+  "strongest_remaining_distinction": "The bounded native statistics-estimator state transitions that determine response also expose the statistics-semantic state requiring exact reconsideration under moves, including precedence, consumption, and downstream reachability.",
+  "resulting_working_tree_state": "Tracked manuscript/bibliography/PDF modifications plus untracked audit and correction outputs; no commit, push, or tag.",
+  "final_gate": "NOVELTY BOUNDARY CORRECTED — READY FOR HUMAN REVIEW"
+}

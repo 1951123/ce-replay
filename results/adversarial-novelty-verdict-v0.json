@@ -1,0 +1,54 @@
+{
+  "audit": "Adversarial-Novelty-Boundary-Audit-v0",
+  "search_date": "2026-09-23",
+  "baseline": {
+    "expected_origin_main": "1f0456521ae01173d41503e1f7e0884cc33d36ea",
+    "actual_head": "dc03ea11fe2903ed0a5d82882a47c3dd3fd76724",
+    "actual_main": "dc03ea11fe2903ed0a5d82882a47c3dd3fd76724",
+    "actual_origin_main": "dc03ea11fe2903ed0a5d82882a47c3dd3fd76724",
+    "research_freeze_v0_commit": "22cf494f954cffff86080236473ca847064dca74",
+    "bibliography_entry_count": 15
+  },
+  "primary_verdict": "NOVELTY AUDIT B — GENERAL PRIMITIVES KNOWN, COMBINATION/LAYER DEFENSIBLE",
+  "manuscript_action": "ACTION 2 — RELATED-WORK CORRECTION REQUIRED",
+  "reviewer_classification": "nontrivial domain specialization",
+  "confidence": "MEDIUM",
+  "strongest_prior_art_threat": "The composite argument from INUM/C-PQO (configuration-parametric reuse), Liu--Ives--Loo and self-adjusting computation (same represented computation plus dependencies and exact update), and Automatic Statistics Management/Index Interactions (contextual and latent physical-design interaction).",
+  "strongest_remaining_distinction": "A native statistics-estimator semantic representation simultaneously supplies hypothetical CE/objective response and counterfactual-safe exact move invalidation across applicability, precedence, clause consumption, and cross-mechanism reachability.",
+  "most_important_unresolved_uncertainty": "A statistics-advisor or optimizer-reuse work outside the searched citation neighborhoods may already expose estimator-internal configuration dependencies; reviewers may also disagree whether the remaining layer specialization is a substantial systems contribution.",
+  "decision_critical_papers": [],
+  "close_papers": [
+    "Automating Statistics Management for Query Optimizers",
+    "Efficient Use of the Query Optimizer for Automated Physical Design (INUM)",
+    "Configuration-Parametric Query Optimization for Physical Design Tuning",
+    "Enabling Incremental Query Re-Optimization",
+    "Index Interactions in Physical Design Tuning",
+    "A Library for Self-Adjusting Computation"
+  ],
+  "nonmonotonicity_classification": "KNOWN POSSIBILITY, NEW MAGNITUDE/SETTING",
+  "inum_cpqo_challenge": "PARTIALLY",
+  "incremental_computation_challenge": "plausible but domain-specific; defensibly distinct only at the statistics-semantic boundary",
+  "answers": {
+    "Q1": "No. It is not fairly characterized as merely a PostgreSQL CE emulator plus local search.",
+    "Q2": "No. Workload-specialized, design-parametric executable representation is established in general.",
+    "Q3": "No. Deriving result and dependency interfaces from represented computation is established in general.",
+    "Q4": "No inspected work materially anticipates the complete CE-Replay-specific conjunction, although its components are strongly anticipated separately.",
+    "Q5": "Partially. INUM/C-PQO anticipate the parametric representation and response side, but not the estimator-semantic dependency/invalidation consequence.",
+    "Q6": "Yes at the structural level, but not at the statistics-design semantic boundary.",
+    "Q7": "Yes. Generic incremental computation anticipates the abstract dependency and exact recomputation principle.",
+    "Q8": "The remainder is the executable native statistics-estimator semantic specialization that supplies both hypothetical CE/objective evaluation and conservative exact design-move invalidation, including cross-mechanism reachability.",
+    "Q9": "Yes, if presented as a nontrivial systems representation specialization/combination rather than a new general principle.",
+    "Q10": "ACTION 2: correct Related Work and narrow the positioning; no scientific restructuring is indicated."
+  },
+  "required_future_positioning_changes": [
+    "Add and compare Index Interactions in Physical Design Tuning.",
+    "Acknowledge Automatic Statistics Management's dependency discussion, g/h latent-interaction counterexample, and monotonicity caveat.",
+    "Explicitly credit INUM/C-PQO for configuration-parametric specialization and Liu/self-adjusting computation for exact dependency-driven maintenance.",
+    "Confine the claim to the statistics-estimator semantic specialization/combination and avoid first claims."
+  ],
+  "limitations": [
+    "Search absence is not historical-priority proof.",
+    "The frozen payload repository factors out candidate acquisition and payload construction.",
+    "No manuscript, bibliography, experiment, figure, table, or frozen artifact was modified."
+  ]
+}
