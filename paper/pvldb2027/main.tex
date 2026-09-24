@@ -215,11 +215,17 @@ FD processing is not another GreedyCover instance. PostgreSQL identifies depende
 
 The supported mechanisms compose in a directed order:
 
+\begin{samepage}
 \begin{verbatim}
 MCV applicability and GreedyCover
-        v residual estimated-clause state
+              |
+              v
+residual estimated-clause state
+              |
+              v
 FD applicability and dependency application
 \end{verbatim}
+\end{samepage}
 
 An MCV winner can therefore suppress an FD that would otherwise apply. Conversely, removing or replacing an MCV can restore FD reachability. This directed state boundary is both an optimization interaction and a dependency boundary for incremental evaluation.
 
