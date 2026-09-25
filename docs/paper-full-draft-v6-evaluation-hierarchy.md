@@ -276,20 +276,22 @@ The optimizer is one replaceable consumer of CE-Replay's two interfaces, not the
 
 The solver first builds a maintenance-feasible design by repeatedly recomputing contextual loss reduction per maintenance unit. It then enumerates all feasible ADD, DROP, and SWAP moves under the fixed recorded precedence defined in Section 3; when a move changes $Y$, replay uses its restriction to $Y$. Each round accepts the deterministic best strict improvement and terminates when none exists.
 
-```text
-design ← empty
+```algorithm
+Y ← empty
 while a feasible candidate has positive contextual benefit per maintenance unit:
-    add the deterministic best candidate and update replay state
+    choose the deterministic best feasible candidate s
+    Y ← Y union {s}
+    update replay state for Y
 
-repeat:
+loop:
     best ← none
-    for each feasible ADD, DROP, and SWAP:
-        affected ← dependency_oracle(design, move)
-        value ← objective_oracle.incremental(design, move, affected)
-        best ← deterministic_best_improvement(best, value)
+    for each feasible ADD, DROP, or SWAP move m:
+        Q_aff ← DependencyOracle(Y, m)
+        delta ← IncrementalObjective(Y, m, Q_aff)
+        best ← DeterministicBestImprovement(best, m, delta)
     if best is none or not a strict improvement:
-        return design
-    commit(best)
+        return Y
+    Y ← Commit(Y, best)
 ```
 
 The result is locally optimal only under this audited neighborhood, payload repository, budget, and fixed precedence. Exhaustive global agreement is established only on a five-candidate Census instance and four restricted DMV instances; no approximation guarantee is claimed.

@@ -68,6 +68,36 @@ def figure_latex(line: str) -> str:
         f"\\label{{fig:{fid.lower()}}}", r"\end{figure*}"])
 
 
+def algorithm_latex() -> str:
+    return "\n".join([
+        r"\begin{algorithm}[t]",
+        r"\caption{Fixed-precedence local search using CE-Replay interfaces}",
+        r"\label{alg:search}",
+        r"\small",
+        r"\begin{algorithmic}[1]",
+        r"\State $Y \gets \emptyset$",
+        r"\While{a feasible candidate has positive contextual benefit per maintenance unit}",
+        r"  \State choose the deterministic best feasible candidate $s$",
+        r"  \State $Y \gets Y \cup \{s\}$",
+        r"  \State \Call{UpdateReplayState}{$Y$}",
+        r"\EndWhile",
+        r"\Loop",
+        r"  \State $\mathit{best} \gets \varnothing$",
+        r"  \For{each feasible ADD, DROP, or SWAP move $m$}",
+        r"    \State $Q_{\mathrm{aff}} \gets \Call{DependencyOracle}{Y,m}$",
+        r"    \State $\Delta \gets \Call{IncrementalObjective}{Y,m,Q_{\mathrm{aff}}}$",
+        r"    \State $\mathit{best} \gets \Call{DeterministicBestImprovement}{\mathit{best},m,\Delta}$",
+        r"  \EndFor",
+        r"  \If{$\mathit{best}=\varnothing$ or is not a strict improvement}",
+        r"    \State \Return $Y$",
+        r"  \EndIf",
+        r"  \State $Y \gets \Call{Commit}{Y,\mathit{best}}$",
+        r"\EndLoop",
+        r"\end{algorithmic}",
+        r"\end{algorithm}",
+    ])
+
+
 def convert() -> str:
     lines = SOURCE.read_text().splitlines()
     out: list[str] = []
@@ -97,6 +127,12 @@ def convert() -> str:
             out.append(f"\\subsection{{{inline(title)}}}"); i += 1; continue
         if line == "$$":
             out.append(r"\[" if not in_math else r"\]"); in_math = not in_math; i += 1; continue
+        if line == "```algorithm":
+            i += 1
+            while i < len(lines) and not lines[i].startswith("```"):
+                i += 1
+            out.append(algorithm_latex())
+            i += 1; continue
         if line.startswith("```"):
             block = []
             i += 1
@@ -157,6 +193,8 @@ PREAMBLE = r"""% Generated mechanically from docs/paper-full-draft-v6-evaluation
 
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \renewcommand\vldbdoi{XX.XX/XXX.XX}
 \renewcommand\vldbpages{XXX-XXX}
 \renewcommand\vldbavailabilityurl{https://github.com/1951123/ce-replay}

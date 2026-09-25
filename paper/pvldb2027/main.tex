@@ -9,6 +9,8 @@
 
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \renewcommand\vldbdoi{XX.XX/XXX.XX}
 \renewcommand\vldbpages{XXX-XXX}
 \renewcommand\vldbavailabilityurl{https://github.com/1951123/ce-replay}
@@ -315,26 +317,31 @@ The optimizer is one replaceable consumer of CE-Replay's two interfaces, not the
 
 The solver first builds a maintenance-feasible design by repeatedly recomputing contextual loss reduction per maintenance unit. It then enumerates all feasible ADD, DROP, and SWAP moves under the fixed recorded precedence defined in Section 3; when a move changes $Y$, replay uses its restriction to $Y$. Each round accepts the deterministic best strict improvement and terminates when none exists.
 
-\begin{table*}[t]
-\centering
-\begin{minipage}{0.94\textwidth}
-\begin{verbatim}
-design <- empty
-while a feasible candidate has positive contextual benefit per maintenance unit:
-    add the deterministic best candidate and update replay state
-
-repeat:
-    best <- none
-    for each feasible ADD, DROP, and SWAP:
-        affected <- dependency_oracle(design, move)
-        value <- objective_oracle.incremental(design, move, affected)
-        best <- deterministic_best_improvement(best, value)
-    if best is none or not a strict improvement:
-        return design
-    commit(best)
-\end{verbatim}
-\end{minipage}
-\end{table*}
+\begin{algorithm}[t]
+\caption{Fixed-precedence local search using CE-Replay interfaces}
+\label{alg:search}
+\small
+\begin{algorithmic}[1]
+\State $Y \gets \emptyset$
+\While{a feasible candidate has positive contextual benefit per maintenance unit}
+  \State choose the deterministic best feasible candidate $s$
+  \State $Y \gets Y \cup \{s\}$
+  \State \Call{UpdateReplayState}{$Y$}
+\EndWhile
+\Loop
+  \State $\mathit{best} \gets \varnothing$
+  \For{each feasible ADD, DROP, or SWAP move $m$}
+    \State $Q_{\mathrm{aff}} \gets \Call{DependencyOracle}{Y,m}$
+    \State $\Delta \gets \Call{IncrementalObjective}{Y,m,Q_{\mathrm{aff}}}$
+    \State $\mathit{best} \gets \Call{DeterministicBestImprovement}{\mathit{best},m,\Delta}$
+  \EndFor
+  \If{$\mathit{best}=\varnothing$ or is not a strict improvement}
+    \State \Return $Y$
+  \EndIf
+  \State $Y \gets \Call{Commit}{Y,\mathit{best}}$
+\EndLoop
+\end{algorithmic}
+\end{algorithm}
 
 The result is locally optimal only under this audited neighborhood, payload repository, budget, and fixed precedence. Exhaustive global agreement is established only on a five-candidate Census instance and four restricted DMV instances; no approximation guarantee is claimed.
 
