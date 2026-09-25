@@ -261,11 +261,9 @@ Changing one candidate can alter applicability, MCV winners, consumed clauses, l
 
 \section{CE-Replay}\label{sec:5}
 
-CE-Replay is the conceptual center of the method. It turns the supported statistics-sensitive estimator fragment into an executable representation evaluated repeatedly under hypothetical selected definitions, effective precedence, and payload states. It is not the search algorithm, the complete DBMS, or the native estimator itself.
+CE-Replay is a workload-specialized executable representation of the supported statistics-sensitive estimator fragment, not the search algorithm, complete DBMS, or native estimator. It specializes workload-fixed context while leaving design-dependent applicability, winner selection, clause consumption, residual state, numerical updates, FD reachability, and relevant precedence executable across hypothetical designs. Those transitions drive both objective evaluation and counterfactual-safe dependency/invalidation; freezing one observed calculation would lose that structure.
 
-The representation contract combines three properties. First, workload-fixed estimator context is specialized for the supplied workload. Second, design-dependent applicability, winner selection, clause consumption, residual state, numerical updates, FD reachability, and relevant precedence remain executable across hypothetical designs rather than being resolved into one observed calculation. Third, those same state transitions supply both objective evaluation and statistics-semantic dependency/invalidation information. CE-Replay is therefore not merely a second implementation of one fixed cardinality calculation: its manually engineered, bounded representation retains the counterfactual structure needed to evaluate alternative statistics states and invalidate design moves safely.
-
-\textbf{Figure~\ref{fig:f1}} separates the two loops needed to interpret the method correctly. The upper loop combines frozen workload context and an offline frozen payload repository to evaluate hypothetical designs under recorded precedence and return objective values and semantic dependencies to search. Only the selected state enters the lower loop, where deployment creates definitions in recorded precedence order, fresh \texttt{ANALYZE} produces a new payload realization, and CE-Replay is compared with native PostgreSQL on that same payload realization.
+\textbf{Figure~\ref{fig:f1}} separates hypothetical evaluation using frozen workload/payload context from physical deployment. Only the selected state enters the lower loop: deployment follows recorded precedence, fresh \texttt{ANALYZE} realizes new payloads, and replay is compared with native PostgreSQL on that same realization.
 
 \begin{figure*}[t]
 \centering
@@ -286,6 +284,12 @@ The representation has four blocks:
 \item \textbf{Executable semantics:} applicability, GreedyCover, consumption, MCV numerical combination, FD application, and final row computation.
 \end{enumerate}
 Specialization fixes the first block and loads the second, while the third remains an input and the fourth executes for every hypothetical state. Freezing a winner observed under one design would violate design-parametric replay. A response table over complete designs would also discard the state transitions needed for counterfactual dependency analysis.
+
+\textbf{One move through CE-Replay.} For Section 4.1's query, start with \texttt{s2} and \texttt{s3}, then \texttt{ADD s1}. CE-Replay reuses specialized predicates, relation cardinality, ordinary selectivities, frozen candidate payloads and schemas, and recorded effective precedence. Loaded before search, these inputs remain fixed; payload acquisition stays outside the move loop.
+
+The move re-executes design-dependent semantics. Before it, \texttt{s2} may cover \texttt{A,B}, while disjoint \texttt{s3} remains available for \texttt{D,E}. Under Section 4.1's GreedyCover condition, adding \texttt{s1} makes it win and consume \texttt{A,B,C}; \texttt{s2} becomes ineligible, \texttt{s3} remains reachable, and downstream FD reachability may change because \texttt{C} was consumed. Applicability, selection, consumption, reachability, and numerical contribution can change without changing payloads.
+
+Repeated native evaluation invokes the DBMS planner/estimator path per design. Full Replay reuses frozen context and executes supported semantics for the complete workload; its cost relative to isolated native CE remains workload-dependent. Incremental Replay uses structural/counterfactual dependency scope---not only the realized trace---to revisit affected queries and avoid unchanged control, numerical, and objective contributions. CE-Replay separates design-invariant context from design-dependent transitions, which its semantic dependency oracle makes reusable across neighboring designs.
 
 \subsection{Supported boundary and validation model}
 
