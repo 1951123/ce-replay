@@ -26,7 +26,7 @@
 \email{EMAIL-METADATA-PENDING@example.invalid}
 
 \begin{abstract}
-Selecting extended statistics for a supplied target workload is a physical-design problem with two distinct constraints: statistics can interact non-monotonically through the estimator, and deployed objects consume recurring maintenance capacity. Independent candidate scores are therefore insufficient because native applicability, winner selection, clause consumption, and mechanism composition make each candidate's effect contextual. We introduce CE-Replay, a workload-specialized, design-parametric representation that keeps the supported statistics-sensitive estimator semantics executable and exposes both an objective oracle and a semantic dependency oracle. We instantiate CE-Replay for PostgreSQL 16.14 conjunctive base-relation restrictions with MCV, functional-dependency, and constant \texttt{IN}/\texttt{= ANY} MCV semantics, and use it with deterministic maintenance-constrained local search. CE-Replay matches fresh native estimates on all 468 Census and 1,965 DMV queries. Census supplies a maintenance-constrained mixed design and local-optimum certificate; across both workloads, exact incremental replay is faster than full replay in every tested move/scope cell, while full Replay versus isolated native CE remains workload-dependent. These results establish that executable native semantics can support statistics physical design within a validated fragment, while broader CE coverage, hypothetical-payload acquisition, payload-robust selection, and runtime objectives remain open.
+Selecting extended statistics for a supplied target workload is a physical-design problem with two distinct constraints: statistics can interact non-monotonically through the estimator, and deployed objects consume recurring maintenance capacity. Independent candidate scores are therefore insufficient because native applicability, winner selection, clause consumption, and mechanism composition make each candidate's effect contextual. We introduce CE-Replay, a workload-specialized, design-parametric representation that keeps the supported statistics-sensitive estimator semantics executable and exposes both an objective oracle and a semantic dependency oracle. We instantiate CE-Replay for PostgreSQL 16.14 conjunctive base-relation restrictions with MCV, functional-dependency, and constant \texttt{IN}/\texttt{= ANY} MCV semantics, and use it with deterministic constrained local search. CE-Replay matches fresh native estimates on all 468 Census and 1,965 DMV queries. Census supplies a mixed design under a calibrated maintenance-capacity proxy and a local-optimum certificate; across both workloads, exact incremental replay is faster than full replay in every tested move/scope cell, while full Replay versus isolated native CE remains workload-dependent. These results establish that executable native semantics can support statistics physical design within a validated fragment, while broader CE coverage, hypothetical-payload acquisition, payload-robust selection, and runtime objectives remain open.
 \end{abstract}
 \maketitle
 
@@ -39,27 +39,27 @@ Selecting extended statistics for a supplied target workload is a physical-desig
 
 Cost-based query optimization depends on estimates of how many tuples flow through candidate plans. Ordinary per-column statistics can be inadequate when predicates are correlated, so DBMSs provide extended statistics that expose multivariate information to the estimator. Deciding which extended statistics to maintain changes the information available during optimization and is therefore a physical-design decision, not merely a statistics-collection setting. This paper studies that decision for a supplied target workload.
 
-Selection is semantically necessary because a DBMS may choose among overlapping statistics, consume clauses after using one statistic, compose statistics over disjoint dimensions, and suppress a downstream mechanism after an upstream mechanism changes the residual state. A candidate's effect therefore depends on the other selected objects, their effective precedence, and their payloads. In both Census and DMV, some additions worsen the target-workload cardinality-estimation objective; even with loose capacity, selecting every statistic is not a valid default in these settings.
+Selection can remain necessary even without a tight capacity constraint because a DBMS may choose among overlapping statistics, consume clauses after using one statistic, compose statistics over disjoint dimensions, and suppress a downstream mechanism after an upstream mechanism changes the residual state. A candidate's effect therefore depends on the other selected objects, their effective precedence, and their payloads. In both evaluated realizations, some additions worsen the target-workload cardinality-estimation objective; selecting every statistic is therefore not a valid default in these settings.
 
 Selection also has an independent resource justification. PostgreSQL must collect and refresh deployed statistics, and this recurring \texttt{ANALYZE} work depends on the mechanism and environment. A practical design must balance estimator utility against maintenance capacity: a statistic may be affordable yet harmful, or beneficial yet infeasible.
 
-Automatic statistics management already considers dependencies among statistics, while physical-design research establishes contextual interactions among design objects; what-if interfaces and reusable configuration-parametric optimizer representations are also established ~\cite{chaudhuri2001statistics,schnaitter2009interactions,chaudhuri1998whatif,papadomanolakis2007inum,bruno2008cpqo}. Dependency-aware exact recomputation is likewise a general and database precedent ~\cite{liu2016incremental}. The challenge addressed here is narrower: preserve the native estimator state transitions through which a statistics design changes applicability, clause consumption, numerical contribution, and downstream mechanism reachability, then use that state both for hypothetical CE and statistics-semantic move invalidation.
+Automatic statistics management already considers dependencies among statistics, while prior work establishes contextual design-object interactions, hypothetical and configuration-parametric evaluation, and dependency-aware exact recomputation ~\cite{chaudhuri2001statistics,schnaitter2009interactions,chaudhuri1998whatif,papadomanolakis2007inum,bruno2008cpqo,liu2016incremental}. CE-Replay's narrower contribution is the represented computation: the statistics-sensitive estimator transition system itself. Executing it under a hypothetical statistics state simultaneously produces the CE objective and the semantic dependencies needed for exact safe invalidation after a design move; generic configuration-parametric or incremental computation is not claimed.
 
-Our key idea is to specialize the DBMS's supported statistics-sensitive estimator semantics to the supplied workload while leaving statistics-design-dependent behavior executable. Workload-fixed clauses, relation context, and ordinary selectivities become fixed context; candidate payloads remain explicit inputs; and applicability, winner selection, clause consumption, mechanism composition, and numerical updates execute for each hypothetical design. The result, CE-Replay, produces the DBMS-style cardinality estimate. Ground truth enters only at the design layer, where the estimate is converted into q-error and a workload objective.
+Our key idea is to specialize the DBMS's supported statistics-sensitive estimator semantics to the supplied workload while leaving statistics-design-dependent behavior executable. Workload-fixed clauses, relation context, and ordinary selectivities become fixed context; candidate payloads remain explicit inputs; and applicability, winner selection, clause consumption, mechanism composition, and numerical updates execute for each hypothetical design. The result, CE-Replay, produces the DBMS-style cardinality estimate. Ground truth enters only at the design layer, where the estimate is converted into q-error and a workload objective. Candidate definitions and hypothetical payloads are assumed to have been acquired offline before search: CE-Replay operates over this supplied frozen repository, and payload acquisition itself is outside the paper.
 
 Executable semantics provide two interfaces. The \textbf{objective oracle} evaluates the estimate and loss induced by a hypothetical physical statistics state without learning a separate subset-to-q-error response model inside the supported fragment. The \textbf{dependency oracle} identifies the queries, semantic dimensions, and downstream mechanisms that a design move can affect. Because both interfaces arise from the same executable state transitions, the optimizer can avoid semantically irrelevant recomputation while preserving audited move values.
 
 We instantiate CE-Replay for the supported PostgreSQL 16.14 statistics-sensitive fragment of conjunctive base-relation restrictions. The implementation covers validated scalar predicates, constant \texttt{IN} and \texttt{= ANY} MCV predicates, multicolumn most-common-values statistics, functional dependencies, PostgreSQL precedence relevant to MCV ties, and directed MCV-to-FD composition. It is source-informed and validated against native instrumentation; it is not a complete PostgreSQL CE emulator or an automatic source compiler.
 
-We evaluate two structurally contrasting workloads: Census has a large candidate universe with sparse candidate-query incidence, while DMV has a small, dense, high-reuse universe dominated by constant \texttt{IN} predicates. Within the supported semantic boundary, replay matches native raw estimates to floating-point tolerance, including all 468 fresh Census queries and all 1,965 fresh DMV queries after deployment. Census provides the complete maintenance-budget design study; DMV provides corrected cross-workload semantic, non-monotonicity, physical-fidelity, and replay-performance validation. The evidence does not make the workloads representative or the workload-scale search globally optimal.
+We evaluate two structurally contrasting workloads: Census has a large candidate universe with sparse candidate-query incidence, while DMV has a small, dense, high-reuse universe dominated by constant \texttt{IN} predicates. Within the supported semantic boundary, replay matches native raw estimates to floating-point tolerance, including all 468 fresh Census queries and all 1,965 fresh DMV queries after deployment. Census provides the complete design study under a calibrated maintenance-capacity proxy; DMV provides cross-workload semantic, non-monotonicity, physical-fidelity, and replay-performance validation. The evidence does not make the workloads representative or the workload-scale search globally optimal.
 
 This paper makes four contributions:
 
 \begin{enumerate}
-\item \textbf{Problem and representation.} We formulate statistics design under a maintenance constraint over the supported native CE state transitions. Applicability, consumption, precedence, and downstream reachability remain executable design semantics. The formulation separates selected definitions, effective precedence, and frozen versus fresh payload realizations.
+\item \textbf{Problem and representation.} We formulate statistics design under a maintenance constraint over the supported native CE state transitions. Applicability, consumption, precedence, and downstream reachability remain executable design semantics. The formulation separates selected definitions, effective precedence, and frozen versus fresh payload realizations; the evaluated search fixes recorded precedence.
 \item \textbf{PostgreSQL CE-Replay.} We implement and validate CE-Replay for the supported PostgreSQL 16.14 base-restriction MCV+FD fragment, including bounded constant ScalarArray semantics and directed mechanism composition. The scope is explicit and excludes arbitrary PostgreSQL CE.
 \item \textbf{Semantics-guided optimization.} We use CE-Replay as a validated objective oracle and a statistics-semantic dependency oracle for deterministic maintenance-constrained ADD/DROP/SWAP search. Exact incremental move evaluation reproduces audited full replay and reduces controlled move-evaluation wall clock within the tested setting; workload-scale guarantees remain neighborhood-local rather than global.
-\item \textbf{Cross-workload physical validation.} Census supplies a complete maintenance-constrained design and deployment case, while dense IN-heavy DMV supplies corrected semantic, non-monotonicity, physical-fidelity, and evaluator-performance validation. The evidence concerns CE loss and evaluator cost, not query-runtime improvement.
+\item \textbf{Cross-workload physical validation.} Census supplies a complete design and deployment case under a calibrated maintenance-capacity proxy, while dense IN-heavy DMV supplies semantic, non-monotonicity, physical-fidelity, and evaluator-performance validation. The evidence concerns CE loss and evaluator cost, not query-runtime improvement.
 \end{enumerate}
 \section{Background and Motivation}\label{sec:2}
 
@@ -85,7 +85,7 @@ The problem calls for six properties. Hypothetical evaluation must match native 
 
 \section{Problem Formulation}\label{sec:3}
 
-We consider offline physical design for a supplied target workload. The inputs are a database instance, queries with ground-truth cardinalities, candidate-statistic definitions with a frozen payload repository, and a recurring maintenance budget. The output is a realizable physical statistical state minimizing cardinality-estimation loss on that workload. The workload is a direct input to physical design rather than data for fitting a learned estimator.
+\textbf{General formulation.} We consider offline physical design for a supplied target workload. The inputs are a database instance, queries with ground-truth cardinalities, candidate-statistic definitions with a frozen payload repository, and a recurring maintenance budget. The output is a realizable physical statistical state minimizing cardinality-estimation loss on that workload. The workload is a direct input to physical design rather than data for fitting a learned estimator.
 
 Let the target workload, one query, and its true cardinality be denoted by
 
@@ -177,13 +177,13 @@ The constrained physical-design problem is
 C(Y) \le B.
 \]
 
-This notation defines the general supported joint design space, not a global-optimality guarantee for the workload-scale algorithm. Precedence can affect the objective and selection marginals, but the primary evaluated solver does not optimize it: it fixes a recorded precedence, denoted by
+\textbf{Evaluated fixed-precedence problem.} The general formulation exposes selection and deployable effective precedence as parts of the physical state. The evaluated optimizer does not jointly optimize them: it fixes a recorded precedence, denoted by
 
 \[
 \pi_0 \in \Pi(S),
 \]
 
-For each selected subset $Y$, it uses that order restricted to $Y$. Search terminates at a local optimum of the audited neighborhood. The objective is CE loss, not query latency, plan quality, or throughput.
+For each selected subset $Y$, it uses that order restricted to $Y$. All workload-scale local-optimum claims are for subset selection under this fixed effective precedence and the audited neighborhood; they do not solve the general joint problem. The objective is CE loss, not query latency, plan quality, or throughput.
 
 CE loss is the direct objective for the computation represented here: extended statistics change the estimator's information state, and CE-Replay executes that statistics-sensitive CE layer. A plan-quality or runtime objective would additionally couple replay to planner search, the cost model, and execution effects outside the current representation. Those objectives remain important, but this paper neither treats q-error as a latency surrogate nor claims that reducing it improves runtime.
 
@@ -342,11 +342,11 @@ DMV & 1,965 / 11,591,877 & 9; categorical equality and constant \texttt{IN}/\tex
 \end{tabularx}
 \end{table*}
 
-Census stresses a large pair universe, mixed-mechanism selection, sparse invalidation, maintenance-constrained design, and payload realization. DMV's 1,913 IN-bearing queries stress bounded ScalarArray semantics, dense reuse, physical fidelity, and replay timing. Its small universe does not establish Census-scale search scalability.
+Census stresses a large pair universe, mixed-mechanism selection, sparse invalidation, design under a calibrated maintenance-capacity proxy, and payload realization. DMV's 1,913 IN-bearing queries stress bounded ScalarArray semantics, dense reuse, physical fidelity, and replay timing. Its small universe does not establish Census-scale search scalability.
 
-Structural pairs induce mechanism-specific MCV and FD definitions. Census has 2,253 pair MCV definitions and 758 usable query-applicable FD payloads in the mixed payload realization. The corrected DMV realization has 36 usable MCV and 35 usable FD payloads, or 71 usable candidates. Candidate definitions, selection, payload availability, payload values, effective precedence, and maintenance cost remain distinct.
+Structural pairs induce mechanism-specific MCV and FD definitions. Census has 2,253 pair MCV definitions and 758 usable query-applicable FD payloads in the mixed payload realization. The DMV realization has 36 usable MCV and 35 usable FD payloads, or 71 usable candidates. Candidate definitions, selection, payload availability, payload values, effective precedence, and maintenance cost remain distinct.
 
-Ground-truth rows score replayed estimates using the q-error in Section 3. DMV queries \texttt{dmv.173} and \texttt{dmv.943} have zero truth: all 1,965 queries remain in semantic validation, while the objective aggregates only the 1,963 positive-truth queries. The historical floor-based DMV objective and optimization results derived from it are retired.
+Ground-truth rows score replayed estimates using the q-error in Section 3. DMV queries \texttt{dmv.173} and \texttt{dmv.943} have zero truth: all 1,965 queries remain in semantic validation, while the objective aggregates only the 1,963 positive-truth queries. No DMV objective or design result that aggregates the zero-truth queries is used.
 
 For the complete Census design study, recurring maintenance is instantiated with mechanism-weighted object counts calibrated from aggregate \texttt{ANALYZE} latency. The measured Census slopes are 1.874997 ms/MCV and 2.717261 ms/FD, yielding normalized costs 1 and 1.449. This first-order resource proxy is specific to the environment; it is neither a PostgreSQL constant nor a per-candidate latency predictor.
 
@@ -369,9 +369,9 @@ Validation setting & Semantic fragment & Comparisons & Result & Maximum relative
 Census MCV raw oracle & Scalar MCV & Four targets $\times$ 32 designs & All matched & 5.55e-16 \\
 Controlled FD scenarios & FD selection, application, order & 13 scenarios & All matched & 0 \\
 Synthetic ScalarArray & Constant \texttt{IN}/\texttt{= ANY} MCV & 29 cases & 29/29; scalar regression 128/128 & 4.38e-15 \\
-DMV corrected baseline realization & Real equality/IN MCV+FD & 27,510 & 27,510/27,510 & 2.69e-14 \\
+DMV baseline realization & Real equality/IN MCV+FD & 27,510 & 27,510/27,510 & 2.69e-14 \\
 Census fresh deployment & Fresh mixed MCV+FD & 468 & 468/468 & 6.92e-16 \\
-DMV corrected deployment & Fresh mixed MCV+FD & 1,965 & 1,965/1,965 & 2.94e-14 \\
+DMV deployment & Fresh mixed MCV+FD & 1,965 & 1,965/1,965 & 2.94e-14 \\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -382,17 +382,17 @@ Raw instrumentation removes rounded plan rows as an observation artifact. Scalar
 
 \subsection{RQ2 --- Can replay drive resource-constrained statistics design?}
 
-RQ2 first asks whether selection remains necessary before capacity becomes binding. \textbf{Figure~\ref{fig:f2}} answers that question by separating semantic harm from maintenance scarcity.
+RQ2 first asks whether selection can remain necessary before capacity becomes binding. \textbf{Figure~\ref{fig:f2}} answers that question by separating semantic harm from maintenance scarcity.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth,height=1.90in,keepaspectratio]{figures/f2-cross-workload-nonmonotonicity.pdf}
-\caption{\textbf{Cross-workload non-monotonicity.} Separate, independently scaled panels compare empty and complete states. Census has 1,444 beneficial, seven neutral, and 1,560 harmful singleton additions among 3,011 candidates, plus 317 improving removals. Corrected DMV has 30 beneficial and 41 harmful additions among 71 candidates, plus 20 improving removals. This is contextual evidence from two frozen payload realizations, not a universal workload property.}
+\includegraphics[width=\textwidth,height=1.86in,keepaspectratio]{figures/f2-cross-workload-nonmonotonicity.pdf}
+\caption{\textbf{Cross-workload non-monotonicity.} Independently scaled panels compare empty and complete states. Census has 1,444 beneficial, seven neutral, and 1,560 harmful additions among 3,011 candidates, plus 317 improving removals; DMV has 30 beneficial and 41 harmful additions among 71 candidates, plus 20 improving removals. This is contextual evidence from two frozen payload realizations, not a universal property.}
 \Description{Final vector figure F2; its visual content is described by the caption and repository figure plan.}
 \label{fig:f2}
 \end{figure*}
 
-In Census, empty, all-statistics, and optimized-subset losses are 11,808.960379, 10,932.295550, and 805.316472 in one frozen realization. Corrected DMV losses are 88,414.724832 empty, 95,562.954655 all-MCV/all-mixed, and 96,951.199966 all-FD. All-mixed equals all-MCV because MCV consumption suppresses every usable FD. These results establish semantic necessity; the Census calibration above separately establishes resource demand.
+In Census, empty, all-statistics, and optimized-subset losses are 11,808.960379, 10,932.295550, and 805.316472 in one frozen realization. DMV losses are 88,414.724832 empty, 95,562.954655 all-MCV/all-mixed, and 96,951.199966 all-FD. All-mixed equals all-MCV because MCV consumption suppresses every usable FD. In both realizations, selection remains useful for semantic reasons independently of capacity; the Census calibration above separately establishes resource demand.
 
 Having established semantic need, \textbf{Table~\ref{tab:t3}} asks what the optimizer selects under the validated Census maintenance constraint.
 
@@ -400,7 +400,7 @@ Having established semantic need, \textbf{Table~\ref{tab:t3}} asks what the opti
 \begin{table*}[t]
 \centering
 \small
-\caption{Census maintenance-budget design outcome. Local optimality is limited to the audited ADD/DROP/SWAP neighborhood under fixed payload and recorded effective precedence.}
+\caption{Census calibrated maintenance-proxy design outcome. Local optimality is limited to the audited ADD/DROP/SWAP neighborhood under fixed payload and recorded effective precedence.}
 \label{tab:t3}
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
 \toprule
@@ -411,19 +411,21 @@ Census & 2,253 MCV + 758 FD & 276 MCV + 7 FD & 286.144; 286.143 / 0.001 & 787.80
 \end{tabularx}
 \end{table*}
 
-Changing Census's resource from bytes to maintenance changes 205 MCV plus 56 FD to 276 MCV plus seven FD. Loss falls from 805.316472 to 787.809381; cost 286.143 fits budget 286.144, and all seven FDs are consumed. Auditing 565,031 terminal moves certifies a fixed-precedence ADD/DROP/SWAP local optimum. Corrected DMV supplies no budget design: 12-FD subset CV is 17.49\% versus a 15\% gate, and candidate-specific estimates are repeatable for only 27/71 candidates before additivity testing. Thus DMV budget accounting is not established; general additive candidate costs are not falsified.
+Under the calibrated Census proxy, the design changes from 205 MCV plus 56 FD to 276 MCV plus seven FD. Loss falls from 805.316472 to 787.809381; proxy cost 286.143 fits budget 286.144, and all seven FDs are consumed. Auditing 565,031 terminal moves certifies an ADD/DROP/SWAP local optimum under fixed precedence. DMV's calibration misses its preregistered stability criterion, so no DMV budgeted-design result is reported; general additive candidate costs are not falsified.
 
-\textbf{Answer to RQ2.} On Census, CE-Replay drives maintenance-constrained mixed statistics design without a learned design-to-q-error response model. The reported workload-scale state is an audited fixed-precedence neighborhood local optimum, not a global optimum.
+\textbf{Answer to RQ2.} On Census, CE-Replay drives mixed statistics design under a calibrated maintenance-capacity proxy without a learned design-to-q-error response model. The state is an audited neighborhood local optimum under fixed precedence, not a global optimum.
 
 \subsection{RQ3 --- Do semantic dependencies reduce move-evaluation work?}
 
 RQ3 asks whether counterfactual-safe invalidation preserves exact move values, reduces replay work, and lowers evaluator cost. \textbf{Table~\ref{tab:t4}} separates black-box planner/oracle cost, isolated native CE, full Replay, and incremental Replay.
 
+Timing uses PostgreSQL 16.14 on the same host and environment with warm long-lived processes, five warm-up batches, 30 measured batches, and the smallest power-of-two batch exceeding 100 ms. Boundaries are client-observed estimate acquisition (native planner), the instrumented clause-selectivity routine (native CE), complete in-memory evaluation (full Replay), and a supplied move over persistent state (incremental Replay); the artifact contains the full protocol and raw timings.
+
 
 \begin{table*}[t]
 \centering
 \small
-\caption{Full-workload and exact incremental wall-clock results. Times are warm medians. Native planner is a black-box estimate-acquisition path, not isolated estimator time; native CE times only \texttt{clauselist\textbackslash{}\_selectivity()} inside \texttt{set\textbackslash{}\_baserel\textbackslash{}\_size\textbackslash{}\_estimates()}.}
+\caption{Full-workload and exact incremental wall-clock results. Times are warm medians. Native planner is a black-box estimate-acquisition path, not isolated estimator time; native CE times only the clause-selectivity routine inside base-relation sizing.}
 \label{tab:t4}
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
 \toprule
@@ -451,12 +453,12 @@ RQ4 asks whether replay preserves the directed MCV-to-FD interaction through com
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth,height=2.00in,keepaspectratio]{figures/f4-mcv-fd-composition.pdf}
-\caption{\textbf{Directed MCV-to-FD composition and FD consumption.} MCV clause consumption feeds FD residual state. Census independent mechanism selection chooses 97 FDs, 72 unused after composition, whereas fixed-precedence mixed selection chooses 54, all consumed. In corrected DMV, the all-statistics state consumes zero of 35 usable FDs; a fixed physical validation state contains 12 MCV and four FD objects. That state came from a diagnostic optimization whose maintenance-cost interpretation is retired; only its semantic fidelity is used.}
+\caption{\textbf{Directed MCV-to-FD composition and FD consumption.} MCV clause consumption feeds FD residual state. Census independent mechanism selection chooses 97 FDs, 72 unused after composition, whereas fixed-precedence mixed selection chooses 54, all consumed. In DMV, the all-statistics state consumes zero of 35 usable FDs; a fixed physical validation state contains 12 MCV and four FD objects and is used only for semantic fidelity, not RQ2.}
 \Description{Final vector figure F4; its visual content is described by the caption and repository figure plan.}
 \label{fig:f4}
 \end{figure*}
 
-Mixed-mechanism Census selection under fixed effective precedence improves over independently selected mechanisms and stops spending maintenance capacity on many suppressed FDs. Corrected DMV replicates all-statistics FD suppression under dense incidence. \textbf{Table~\ref{tab:t5}} then separates fresh matched-payload fidelity from frozen-to-fresh payload drift.
+Mixed-mechanism Census selection under fixed effective precedence improves over independently selected mechanisms and stops spending maintenance capacity on many suppressed FDs. DMV replicates all-statistics FD suppression under dense incidence. \textbf{Table~\ref{tab:t5}} then separates fresh matched-payload fidelity from frozen-to-fresh payload drift.
 
 
 \begin{table*}[t]
@@ -474,7 +476,7 @@ DMV diagnostic fixed state & 12 MCV + 4 FD; 12/12 MCV, 4/4 FD & Physical state v
 \end{tabularx}
 \end{table*}
 
-For the final Census maintenance design, all objects materialize and consume. Across 30 repeated \texttt{ANALYZE} payload realizations, 14,040/14,040 replay/native comparisons match while objective loss has 1.835\% coefficient of variation. This demonstrates matched-payload fidelity under measurable payload variation, not stability of design rankings. In corrected DMV, all 16 objects materialize and all fresh queries match native. The 12-MCV+4-FD state originated from a diagnostic optimization performed before the DMV maintenance-cost model failed its preregistered stability gate. Its optimization and budget interpretation are retired; the realized state is retained only as a fixed-state semantic-fidelity test.
+For the final Census proxy-constrained design, all objects materialize and consume. Across 30 repeated \texttt{ANALYZE} payload realizations, 14,040/14,040 replay/native comparisons match while objective loss has 1.835\% coefficient of variation. This demonstrates matched-payload fidelity under measurable payload variation, not stability of design rankings. In DMV, all 16 objects materialize and all fresh queries match native. Its maintenance calibration did not satisfy the preregistered stability criterion, so the 12-MCV+4-FD state is retained only as a fixed-state semantic-fidelity test and no DMV budgeted-design result is reported.
 
 \textbf{Answer to RQ4.} CE-Replay composes directed MCV and FD semantics and remains faithful after fresh physical deployment on both workloads. Fresh payload realization can change values and availability, so semantic replay error and payload realization drift must remain separate.
 
@@ -496,9 +498,9 @@ Census rejects a tempting but incorrect shortcut. Its graph is globally connecte
 
 The earlier mixed whole-optimizer slowdown identifies a boundary: once semantic control replay becomes rare, numerical aggregation and broader implementation overhead can dominate, so less replay work alone does not guarantee whole-optimizer acceleration. Under the final controlled operation contract, however, exact incremental Replay is faster than full Replay in every tested move/scope cell and on the fixed Census trajectory. DMV confirms this direction with smaller gains under dense incidence, but two workloads do not define a universal scaling law.
 
-\subsection{Maintenance cost and semantic utility}
+\subsection{Maintenance proxy and semantic utility}
 
-The final Census resource replaces bytes with mechanism-weighted counts fitted to aggregate \texttt{ANALYZE}. This first-order proxy is specific to the environment; it is neither a PostgreSQL constant nor a per-object latency predictor. Corrected DMV's equal-size FD subsets fail the stability gate, and its candidate protocol cannot establish a complete repeatable cost vector. This closes DMV budget optimization without falsifying the general additive formulation.
+The Census resource replaces bytes with mechanism-weighted counts fitted to aggregate \texttt{ANALYZE}. This calibrated first-order proxy is environment-specific, not a PostgreSQL constant or per-object latency predictor. DMV's calibration misses its preregistered stability criterion, so no DMV budgeted-design result is reported; the general additive formulation is not falsified.
 
 Changing resource semantics changes the physical-design problem: on Census it materially changes composition and frozen loss. A budget is a capacity constraint, not a target; a local optimum may leave capacity unused when no feasible neighborhood move improves the contextual objective.
 
@@ -520,7 +522,7 @@ The validated semantic scope is PostgreSQL 16.14 conjunctive base-relation restr
 
 Optimization assumes an offline frozen payload repository and returns an ADD/DROP/SWAP neighborhood local optimum under fixed precedence; it has no full-instance global or approximation guarantee. The maintenance model is environment-specific and first-order. The objective is q-error, not plan quality, latency, throughput, or a causal runtime improvement.
 
-Fresh \texttt{ANALYZE} can change payloads or availability, and the optimizer is not payload-robust. DMV excludes two zero-truth queries from q-error but retains all 1,965 for semantic validation. Its corrected physical state supports fidelity and positive-truth drift, not a maintenance-constrained optimized design.
+Fresh \texttt{ANALYZE} can change payloads or availability, and the optimizer is not payload-robust. DMV excludes two zero-truth queries from q-error but retains all 1,965 for semantic validation. Its fixed physical state supports fidelity and positive-truth drift, not a budgeted-design result.
 
 Finally, Census and DMV provide complementary sparse and dense evidence but do not establish universal workload generality. The target workload is supplied; unseen-workload generalization is outside the core problem.
 
@@ -562,11 +564,11 @@ This positioning is deliberately bounded. The literature categories overlap, and
 
 \section{Conclusion}\label{sec:10}
 
-This paper studies extended-statistics design for a supplied target workload under a recurring maintenance constraint. Selection is necessary both because deployed objects consume maintenance capacity and because native estimator control makes candidate utility contextual and non-monotone.
+This paper studies extended-statistics design for a supplied target workload under a recurring maintenance constraint. In the evaluated realizations, subset selection remains useful both because deployed objects consume maintenance capacity and because native estimator control makes candidate utility contextual and non-monotone.
 
 CE-Replay exposes the supported statistics-sensitive semantics as a workload-specialized, design-parametric executable representation. Workload-fixed context is specialized, while applicability, winner selection, clause consumption, MCV-to-FD composition, and numerical payload behavior remain executable. The resulting objective and dependency oracles allow a replaceable optimizer to evaluate hypothetical states and safely restrict recomputation.
 
-For the supported PostgreSQL 16.14 base-restriction fragment, both workloads establish matched-payload fidelity and exact incremental evaluation across sparse and dense regimes. Census supplies the maintenance-constrained mixed design, local-optimum certificate, and deployment closure; corrected DMV supplies cross-workload semantic, non-monotonicity, physical-fidelity, and replay-performance validation without a final maintenance-budget design. Controlled incremental Replay is faster than full Replay in every tested cell, while full Replay versus isolated native CE is workload-dependent and fresh payload drift remains distinct from semantic replay error.
+For the supported PostgreSQL 16.14 base-restriction fragment, both workloads establish matched-payload fidelity and exact incremental evaluation across sparse and dense regimes. Census supplies the mixed design under a calibrated maintenance-capacity proxy, local-optimum certificate, and deployment closure; DMV supplies cross-workload semantic, non-monotonicity, physical-fidelity, and replay-performance validation without a budgeted-design result. Controlled incremental Replay is faster than full Replay in every tested cell, while full Replay versus isolated native CE is workload-dependent and fresh payload drift remains distinct from semantic replay error.
 
 The current results remain conditional on a supplied workload, a frozen payload repository, manually supported MCV+FD semantics, and neighborhood-local search. Extending executable semantic representations to broader CE mechanisms, cheaper payload acquisition, payload-robust objectives, and additional DBMSs offers a path toward physical-design tools that use native estimator behavior as both an objective evaluator and a source of optimization structure.
 

@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "docs/paper-full-draft-v6-evaluation-hierarchy.md"
 OUTPUT = Path(__file__).resolve().parent / "main.tex"
 
-FIGURE_HEIGHTS = {"F1": "2.20in", "F2": "1.90in", "F3": "1.55in", "F4": "2.00in"}
+FIGURE_HEIGHTS = {"F1": "2.20in", "F2": "1.86in", "F3": "1.55in", "F4": "2.00in"}
 
 
 def inline(text: str) -> str:
