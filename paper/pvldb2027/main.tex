@@ -411,7 +411,7 @@ Census & 2,253 MCV + 758 FD & 276 MCV + 7 FD & 286.144; 286.143 / 0.001 & 787.80
 \end{tabularx}
 \end{table*}
 
-Under the calibrated Census proxy, the design changes from 205 MCV plus 56 FD to 276 MCV plus seven FD. Loss falls from 805.316472 to 787.809381; proxy cost 286.143 fits budget 286.144, and all seven FDs are consumed. Auditing 565,031 terminal moves certifies an ADD/DROP/SWAP local optimum under fixed precedence. DMV's calibration misses its preregistered stability criterion, so no DMV budgeted-design result is reported; general additive candidate costs are not falsified.
+The 205-MCV+56-FD state (loss 805.316472) is the earlier byte-budget mixed design, reevaluated under the maintenance proxy; the final proxy-constrained search instead selects 276 MCV plus seven FD (loss 787.809381). Its proxy cost 286.143 fits budget 286.144, and all seven FDs are consumed. Auditing 565,031 terminal moves certifies an ADD/DROP/SWAP local optimum under fixed precedence. DMV's calibration misses its preregistered stability criterion, so no DMV budgeted-design result is reported; general additive candidate costs are not falsified.
 
 \textbf{Answer to RQ2.} On Census, CE-Replay drives mixed statistics design under a calibrated maintenance-capacity proxy without a learned design-to-q-error response model. The state is an audited neighborhood local optimum under fixed precedence, not a global optimum.
 
@@ -453,12 +453,12 @@ RQ4 asks whether replay preserves the directed MCV-to-FD interaction through com
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth,height=2.00in,keepaspectratio]{figures/f4-mcv-fd-composition.pdf}
-\caption{\textbf{Directed MCV-to-FD composition and FD consumption.} MCV clause consumption feeds FD residual state. Census independent mechanism selection chooses 97 FDs, 72 unused after composition, whereas fixed-precedence mixed selection chooses 54, all consumed. In DMV, the all-statistics state consumes zero of 35 usable FDs; a fixed physical validation state contains 12 MCV and four FD objects and is used only for semantic fidelity, not RQ2.}
+\caption{\textbf{Directed MCV-to-FD composition and FD consumption.} MCV clause consumption feeds FD residual state. In the earlier 105,061-byte Census experiment, independent mechanism selection chooses 97 FDs, 72 unused after composition, whereas the joint-semantic configuration chooses 54, all consumed. This is distinct from the final RQ2 calibrated-proxy state with seven FDs. In DMV, the all-statistics state consumes zero of 35 usable FDs; a fixed physical validation state contains 12 MCV and four FD objects and is used only for semantic fidelity, not RQ2.}
 \Description{Final vector figure F4; its visual content is described by the caption and repository figure plan.}
 \label{fig:f4}
 \end{figure*}
 
-Mixed-mechanism Census selection under fixed effective precedence improves over independently selected mechanisms and stops spending maintenance capacity on many suppressed FDs. DMV replicates all-statistics FD suppression under dense incidence. \textbf{Table~\ref{tab:t5}} then separates fresh matched-payload fidelity from frozen-to-fresh payload drift.
+The earlier byte-budget Census comparison in Figure~\ref{fig:f4} shows mixed-mechanism selection under fixed effective precedence avoiding many suppressed FDs; it is not the final seven-FD calibrated-proxy design reported for RQ2. DMV replicates all-statistics FD suppression under dense incidence. \textbf{Table~\ref{tab:t5}} then separates fresh matched-payload fidelity from frozen-to-fresh payload drift.
 
 
 \begin{table*}[t]
@@ -476,7 +476,7 @@ DMV diagnostic fixed state & 12 MCV + 4 FD; 12/12 MCV, 4/4 FD & Physical state v
 \end{tabularx}
 \end{table*}
 
-For the final Census proxy-constrained design, all objects materialize and consume. Across 30 repeated \texttt{ANALYZE} payload realizations, 14,040/14,040 replay/native comparisons match while objective loss has 1.835\% coefficient of variation. This demonstrates matched-payload fidelity under measurable payload variation, not stability of design rankings. In DMV, all 16 objects materialize and all fresh queries match native. Its maintenance calibration did not satisfy the preregistered stability criterion, so the 12-MCV+4-FD state is retained only as a fixed-state semantic-fidelity test and no DMV budgeted-design result is reported.
+For the final Census proxy-constrained design, all objects materialize, and all seven selected FDs are consumed. Table~\ref{tab:t5}'s 7.20\% cost error is $|0.829417164-0.773681909|/0.773681909$, comparing measured complete \texttt{ANALYZE} latency with the mechanism-level model prediction. Across 30 repeated \texttt{ANALYZE} payload realizations, 14,040/14,040 replay/native comparisons match while objective loss has 1.835\% coefficient of variation. This demonstrates matched-payload fidelity under measurable payload variation, not stability of design rankings. In DMV, all 16 objects materialize and all fresh queries match native. Its maintenance calibration did not satisfy the preregistered stability criterion, so the 12-MCV+4-FD state is retained only as a fixed-state semantic-fidelity test and no DMV budgeted-design result is reported.
 
 \textbf{Answer to RQ4.} CE-Replay composes directed MCV and FD semantics and remains faithful after fresh physical deployment on both workloads. Fresh payload realization can change values and availability, so semantic replay error and payload realization drift must remain separate.
 
