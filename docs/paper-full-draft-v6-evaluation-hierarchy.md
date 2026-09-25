@@ -378,15 +378,23 @@ RQ3 asks whether counterfactual-safe invalidation preserves exact move values, r
 
 Timing uses PostgreSQL 16.14 on the same host and environment with warm long-lived processes, five warm-up batches, 30 measured batches, and the smallest power-of-two batch exceeding 100 ms. Boundaries are client-observed estimate acquisition (native planner), the instrumented clause-selectivity routine (native CE), complete in-memory evaluation (full Replay), and a supplied move over persistent state (incremental Replay); the artifact contains the full protocol and raw timings.
 
-**Table T4: Full-workload and exact incremental wall-clock results.** Times are warm medians. Native planner is a black-box estimate-acquisition path, not isolated estimator time; native CE times only the clause-selectivity routine inside base-relation sizing.
+**Table T4: Controlled evaluator-cost measurements.** Times are warm medians. Panel A compares full-workload evaluation across the black-box native planner estimate-acquisition path, isolated native CE clause-selectivity boundary inside base-relation sizing, and complete in-memory Full Replay. Panel B compares exact Incremental Replay with Full Replay for move evaluation. Measurement boundaries differ, so ratios apply only within the shown comparisons; values above one mean Replay is faster, and values below one mean Replay is slower.
 
-| Workload / operation | Native planner | Native CE | Full Replay | Incremental result |
-|---|---:|---:|---:|---|
-| Census full workload | 90.867 ms | 10.241 ms | 1.884 ms | Planner/Replay 48.24×; CE/Replay 5.44× |
-| DMV full workload | 294.542 ms | 47.603 ms | 85.472 ms | Planner/Replay 3.45×; Replay/CE 1.80× |
-| Census sampled moves | — | — | Control | ADD 61.28×; DROP 44.08×; SWAP 31.49× |
-| DMV sampled moves | — | — | Control | ADD 3.22×; DROP 2.98×; SWAP 1.92× |
-| Fixed Census trajectory | — | — | 45.093 ms | 8.031 ms; 5.615× |
+**Panel A: Full-workload evaluator cost.**
+
+| Workload | Native planner | Native CE | Full Replay | Planner / Replay | Native CE / Replay |
+|---|---:|---:|---:|---:|---:|
+| Census | 90.867 ms | 10.241 ms | 1.884 ms | 48.24× | 5.44× |
+| DMV | 294.542 ms | 47.603 ms | 85.472 ms | 3.45× | 0.557× |
+
+**Panel B: Incremental move-evaluation cost.** Sampled-move entries are speedups over Full Replay.
+
+| Setting | ADD | DROP | SWAP |
+|---|---:|---:|---:|
+| Census sampled moves | 61.28× | 44.08× | 31.49× |
+| DMV sampled moves | 3.22× | 2.98× | 1.92× |
+
+**Fixed Census trajectory:** Full Replay 45.093 ms; Incremental Replay 8.031 ms; speedup 5.615×.
 
 Census contains a giant component despite sparse degree, so connected-component decomposition is ineffective. Counterfactual-safe structural scope remains useful because a typical move touches few queries, while currently consumed winners alone are insufficient: latent candidates can become eligible after a move. The timing patch preserves representative raw rows in 4/4 trace-on/off checks. Full Replay matches native on 468/468 Census and 1,965/1,965 DMV queries; 192/192 sampled full/incremental moves match, and incremental replay is faster in all 24 workload × move-family × affected-scope cells.
 

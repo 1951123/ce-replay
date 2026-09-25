@@ -46,6 +46,37 @@ def table_latex(caption: str, rows: list[list[str]], label: str) -> str:
     return "\n".join(out)
 
 
+def parse_markdown_table(lines: list[str], i: int) -> tuple[list[list[str]], int]:
+    rows = [[cell.strip() for cell in lines[i].strip("|").split("|")]]
+    i += 2
+    while i < len(lines) and lines[i].startswith("|"):
+        rows.append([cell.strip() for cell in lines[i].strip("|").split("|")])
+        i += 1
+    return rows, i
+
+
+def table4_latex(caption: str, panel_a: str, rows_a: list[list[str]],
+                 panel_b: str, rows_b: list[list[str]], trajectory: str) -> str:
+    out = [r"\begin{table*}[t]", r"\centering", r"\small",
+           f"\\caption{{{inline(caption)}}}", r"\label{tab:t4}",
+           f"\\textbf{{{inline(panel_a)}}}\\par\\smallskip",
+           r"\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xrrrrr@{}}",
+           r"\toprule",
+           r"Workload & Native planner & Native CE & Full Replay & Planner / Replay & Native CE / Replay \\",
+           r"\midrule"]
+    for row in rows_a[1:]:
+        out.append(" & ".join(inline(cell) for cell in row) + r" \\")
+    out.extend([r"\bottomrule", r"\end{tabularx}", r"\medskip",
+                f"\\textbf{{{inline(panel_b)}}}\\par\\smallskip",
+                r"\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xrrr@{}}",
+                r"\toprule", r"Setting & ADD & DROP & SWAP \\", r"\midrule"])
+    for row in rows_b[1:]:
+        out.append(" & ".join(inline(cell) for cell in row) + r" \\")
+    out.extend([r"\bottomrule", r"\end{tabularx}", r"\smallskip",
+                inline(trajectory), r"\end{table*}"])
+    return "\n".join(out)
+
+
 def figure_latex(line: str) -> str:
     match = re.match(r"> \*\*Figure (F\d): ([^*]+)\*\* (.*)", line)
     if not match:
@@ -155,6 +186,25 @@ def convert() -> str:
         if table_cap:
             tid, title = table_cap.groups()
             rest = line[table_cap.end():].strip()
+            if tid == "T4":
+                caption = title + (" " + rest if rest else "")
+                i += 1
+                while not lines[i].strip(): i += 1
+                panel_a = re.match(r"\*\*(.+)\*\*", lines[i]).group(1)
+                i += 1
+                while not lines[i].strip(): i += 1
+                rows_a, i = parse_markdown_table(lines, i)
+                while not lines[i].strip(): i += 1
+                panel_b_match = re.match(r"\*\*(.+)\*\*\s*(.*)", lines[i])
+                panel_b = panel_b_match.group(1) + " " + panel_b_match.group(2)
+                i += 1
+                while not lines[i].strip(): i += 1
+                rows_b, i = parse_markdown_table(lines, i)
+                while not lines[i].strip(): i += 1
+                trajectory = lines[i]
+                out.append(table4_latex(caption, panel_a, rows_a,
+                                        panel_b, rows_b, trajectory))
+                i += 1; continue
             pending_table_caption = (tid, title + (" " + rest if rest else ""))
             i += 1; continue
         if line.startswith("|") and i + 1 < len(lines) and re.match(r"^\|[-:| ]+\|$", lines[i + 1]):
