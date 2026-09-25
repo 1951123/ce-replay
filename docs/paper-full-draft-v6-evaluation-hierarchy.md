@@ -362,7 +362,7 @@ The fixed 19-move Census trajectory was not re-searched; every objective state m
 
 RQ4 asks whether replay preserves the directed MCV-to-FD interaction through complete design and physical deployment. **Figure F4** links that mechanism to observed FD reachability.
 
-> **Figure F4: Directed MCV-to-FD composition and FD consumption.** MCV clause consumption feeds FD residual state. Census independent mechanism selection chooses 97 FDs, 72 unused after composition, whereas fixed-precedence mixed selection chooses 54, all consumed. In corrected DMV, the all-statistics state consumes zero of 35 usable FDs; the corrected physical validation state contains 12 MCV and four FD objects. The latter is semantic validation, not a maintenance-constrained optimum. *(Production note: render the frozen F4 specification.)*
+> **Figure F4: Directed MCV-to-FD composition and FD consumption.** MCV clause consumption feeds FD residual state. Census independent mechanism selection chooses 97 FDs, 72 unused after composition, whereas fixed-precedence mixed selection chooses 54, all consumed. In corrected DMV, the all-statistics state consumes zero of 35 usable FDs; a fixed physical validation state contains 12 MCV and four FD objects. That state came from a diagnostic optimization whose maintenance-cost interpretation is retired; only its semantic fidelity is used. *(Production note: render the frozen F4 specification.)*
 
 Mixed-mechanism Census selection under fixed effective precedence improves over independently selected mechanisms and stops spending maintenance capacity on many suppressed FDs. Corrected DMV replicates all-statistics FD suppression under dense incidence. **Table T5** then separates fresh matched-payload fidelity from frozen-to-fresh payload drift.
 
@@ -371,9 +371,9 @@ Mixed-mechanism Census selection under fixed effective precedence improves over 
 | Workload | Selected / fresh materialized | FD consumption | Fresh replay/native; max relative error | Frozen→fresh drift | Cost error |
 |---|---|---|---|---|---:|
 | Census | 276 MCV + 7 FD; 276/276 MCV, 7/7 FD | 7/7 | 811.553725 / 811.553725; 468/468; 6.92e-16 | 787.809381 → 811.553725; +3.0140% | 7.20% |
-| DMV corrected validation state | 12 MCV + 4 FD; 12/12 MCV, 4/4 FD | Physical state validated | 1,965/1,965; 2.94e-14 | 46,034.243090 → 45,259.901254; -1.6821% | Not a budget model |
+| DMV diagnostic fixed state | 12 MCV + 4 FD; 12/12 MCV, 4/4 FD | Physical state validated | 1,965/1,965; 2.94e-14 | 46,034.243090 → 45,259.901254; -1.6821% | Not a budget model |
 
-For the final Census maintenance design, all objects materialize and consume. Across 30 repeated `ANALYZE` payload realizations, 14,040/14,040 replay/native comparisons match while objective loss has 1.835% coefficient of variation. This demonstrates matched-payload fidelity under measurable payload variation, not stability of design rankings. In corrected DMV, all 16 objects materialize and all fresh queries match native; its 12-MCV+4-FD state is a physical semantic-validation state, not a corrected maintenance-constrained optimum.
+For the final Census maintenance design, all objects materialize and consume. Across 30 repeated `ANALYZE` payload realizations, 14,040/14,040 replay/native comparisons match while objective loss has 1.835% coefficient of variation. This demonstrates matched-payload fidelity under measurable payload variation, not stability of design rankings. In corrected DMV, all 16 objects materialize and all fresh queries match native. The 12-MCV+4-FD state originated from a diagnostic optimization performed before the DMV maintenance-cost model failed its preregistered stability gate. Its optimization and budget interpretation are retired; the realized state is retained only as a fixed-state semantic-fidelity test.
 
 **Answer to RQ4.** CE-Replay composes directed MCV and FD semantics and remains faithful after fresh physical deployment on both workloads. Fresh payload realization can change values and availability, so semantic replay error and payload realization drift must remain separate.
 

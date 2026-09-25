@@ -395,8 +395,8 @@ L 468.072 125.388
     <text style="font: 6.2px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="374.065043" y="75.399522" transform="rotate(-0 374.065043 75.399522)">0/35 consumed</text>
    </g>
    <g id="text_24">
-    <text style="fill: #666666; font: 6px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif" transform="translate(297.606762 141.299796)">Corrected physical validation: 12 MCV + 4 FD, all materialized</text>
-    <text style="fill: #666666; font: 6px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif" transform="translate(337.690043 147.801546)">(not a maintenance optimum)</text>
+    <text style="fill: #666666; font: 6px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif" transform="translate(307.228325 141.299796)">Fixed-state validation: 12 MCV + 4 FD, all materialized</text>
+    <text style="fill: #666666; font: 6px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif" transform="translate(315.004887 147.801546)">(diagnostic selection; cost interpretation retired)</text>
    </g>
    <g id="text_25">
     <text style="font: 700 8px 'Linux Libertine O', 'Linux Libertine', 'Libertine', 'DejaVu Serif', serif; text-anchor: middle" x="374.065043" y="64.768084" transform="rotate(-0 374.065043 64.768084)">DMV</text>

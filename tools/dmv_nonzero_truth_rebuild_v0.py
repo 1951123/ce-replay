@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Optimize and preserve one positive-truth DMV replay realization."""
+"""Preserve the diagnostic DMV optimization that supplied a validation state.
+
+Its maintenance-cost and budget interpretation is retired; see the result
+package's PROVENANCE.md.  The output remains an input to fixed-state physical
+semantic-fidelity validation, not an authoritative DMV RQ2 result.
+"""
 
 from __future__ import annotations
 

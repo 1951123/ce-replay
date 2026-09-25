@@ -79,16 +79,16 @@
         "Census": {"independent_loss":813.942274,"joint_loss":806.443575,"relative_improvement_percent":0.9213,"independent_selected_fd":97,"independent_never_consumed_fd":72,"joint_selected_fd":54,"joint_consumed_fd":54},
         "DMV": {"all_state_consumed_mcv":36,"all_state_usable_fd":35,"all_state_consumed_fd":0,"validation_selected_mcv":12,"validation_selected_fd":4,"fresh_materialized_mcv":12,"fresh_materialized_fd":4}
       },
-      "caption": "MCV executes first and changes the clause state visible to FD. Census mixed selection restores FD reachability; corrected DMV supplies all-statistics suppression and a separate physical semantic-validation state, not a maintenance optimum.",
+      "caption": "MCV executes first and changes the clause state visible to FD. Census mixed selection restores FD reachability; corrected DMV supplies all-statistics suppression and a fixed physical state from a diagnostic optimization whose maintenance-cost interpretation is retired.",
       "sources": ["results/census_ce_replay_optimize_v4.json", "results/dmv_nonzero_truth_rebuild_v0/baseline.json", "results/dmv_nonzero_truth_rebuild_v0/deployment.json"]
     },
     {
       "id": "T5",
       "title": "Physical deployment and fresh native validation",
-      "takeaway": "Both physical states match fresh native CE; DMV uses the corrected positive-truth objective and is not a maintenance-constrained optimum.",
+      "takeaway": "Both physical states match fresh native CE; the DMV state's diagnostic optimization and budget interpretation are retired, and only its fixed-state semantic fidelity is used.",
       "rows": [
         {"workload":"Census","selected":"276 MCV + 7 FD","fresh_analyze":"exactly one","materialization":"276/276 MCV; 7/7 FD","fd_consumption":"7/7","fresh_replay_native":"811.553725117865 / 811.553725117865; 468/468","max_relative_error":6.92e-16,"frozen_to_fresh":"787.809381279634 to 811.553725117865; +3.0140%","cost_prediction_error":"7.20%","provenance":"complete paired deployment evidence"},
-        {"workload":"DMV corrected validation state","selected":"12 MCV + 4 FD","fresh_analyze":"same corrected realization","materialization":"12/12 MCV; 4/4 FD","fd_consumption":"not used as a budget claim","fresh_replay_native":"1965/1965","max_relative_error":2.9427323753695856e-14,"frozen_to_fresh":"46034.24309025076 to 45259.90125405444; -1.6821% over truth>0","cost_prediction_error":"not a budget model","provenance":"corrected semantic and physical evidence"}
+        {"workload":"DMV diagnostic fixed state","selected":"12 MCV + 4 FD","fresh_analyze":"same corrected realization","materialization":"12/12 MCV; 4/4 FD","fd_consumption":"not used as a budget claim","fresh_replay_native":"1965/1965","max_relative_error":2.9427323753695856e-14,"frozen_to_fresh":"46034.24309025076 to 45259.90125405444; -1.6821% over truth>0","cost_prediction_error":"not a budget model","provenance":"selected by a diagnostic optimization whose maintenance-cost and budget interpretation are retired; retained only for fixed-state semantic fidelity"}
       ],
       "sources": ["results/census_maintenance_design_deploy_v0.json", "results/dmv_nonzero_truth_rebuild_v0/deployment.json"]
     }

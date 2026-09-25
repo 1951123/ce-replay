@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Deploy and validate the frozen DMV nonzero-truth design."""
+"""Deploy and semantically validate a fixed DMV state.
+
+The input state came from a diagnostic optimization whose maintenance-cost
+interpretation is retired; deployment does not validate that cost model.
+"""
 
 from __future__ import annotations
 

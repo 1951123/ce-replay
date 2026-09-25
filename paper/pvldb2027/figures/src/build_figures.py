@@ -203,7 +203,7 @@ def build_f4():
         ax.set_xticks(list(x),labels); ax.set_ylabel("Selected or usable FD objects"); ax.set_ylim(0,max(selected)*1.25)
         ax.set_title(title,weight="bold",pad=2); ax.grid(axis="y",color="#ddd",lw=.45); ax.set_axisbelow(True); ax.spines[["top","right"]].set_visible(False)
     axes[0].legend(frameon=False,loc="upper right",ncol=2,bbox_to_anchor=(2.05,-.31),handlelength=1.6)
-    axes[1].text(.5,-.20,"Corrected physical validation: 12 MCV + 4 FD, all materialized\n(not a maintenance optimum)",
+    axes[1].text(.5,-.20,"Fixed-state validation: 12 MCV + 4 FD, all materialized\n(diagnostic selection; cost interpretation retired)",
                  transform=axes[1].transAxes,ha="center",va="top",fontsize=6.0,color=GRAY)
     save(fig,"f4-mcv-fd-composition")
 
