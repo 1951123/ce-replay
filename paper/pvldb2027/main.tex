@@ -191,9 +191,37 @@ CE loss is the direct objective for the computation represented here: extended s
 
 \subsection{Running example}
 
-Consider a conjunctive query with predicates over four attributes. A design contains an MCV object over three attributes, an overlapping MCV object over two of them, a disjoint MCV object, and an FD whose applicability depends on residual predicates. At the start, both overlapping MCV objects may be applicable. GreedyCover selects the object covering more currently unestimated semantic dimensions, and the selected object consumes its covered clauses. The smaller overlap may then cease to apply, while the disjoint object remains available in a later round. The FD stage receives this residual state and may be suppressed if its required predicate was consumed.
+Consider the conjunctive query
 
-The example shows why candidate utility cannot be assigned independently. The selected subset determines a sequence of native state transitions rather than a sum of fixed corrections.
+\[
+A=a \;\land\; B=b \;\land\; C=c \;\land\; D=d \;\land\; E=e,
+\]
+
+and a design containing
+
+\[
+s_1=\operatorname{MCV}(A,B,C),\qquad
+s_2=\operatorname{MCV}(A,B),\qquad
+s_3=\operatorname{MCV}(D,E),
+\]
+
+together with an FD whose useful direction is
+
+\[
+C\rightarrow D.
+\]
+
+Initially, all five predicates are unestimated, and both overlapping candidates \texttt{s1} and \texttt{s2} are applicable. GreedyCover prefers the statistic covering more currently unestimated semantic dimensions, so \texttt{s1} wins. Applying it jointly estimates and consumes the clauses on \texttt{A}, \texttt{B}, and \texttt{C}, leaving the explicit residual MCV state
+
+\[
+\{A,B,C,D,E\}\xrightarrow{s_1}\{D,E\}.
+\]
+
+The overlapping candidate \texttt{s2} was initially applicable but is no longer eligible after its clauses on \texttt{A} and \texttt{B} have been consumed. In contrast, the genuinely disjoint candidate \texttt{s3} remains reachable and can be selected in a later MCV round because \texttt{D} and \texttt{E} remain residual.
+
+The FD stage runs after MCV processing and therefore observes this residual clause state. For the stated direction, \texttt{s1} has consumed the predicate on \texttt{C}. The FD stage no longer sees the original predicate configuration that supported the dependency's applicability, so the correction may be suppressed under the validated semantics.
+
+The example exposes two interaction types. \textbf{Overlap competition:} \texttt{s1} can make the initially applicable \texttt{s2} ineligible. \textbf{Cross-mechanism state propagation:} MCV consumption changes the residual clauses observed by the downstream FD stage. Candidate utility is therefore not a fixed independent score; a selected design induces a sequence of native estimator state transitions.
 
 \subsection{MCV applicability, selection, and consumption}
 
