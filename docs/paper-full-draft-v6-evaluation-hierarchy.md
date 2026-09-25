@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Selecting extended statistics for a supplied target workload is a physical-design problem with two distinct constraints: statistics can interact non-monotonically through the estimator, and deployed objects consume recurring maintenance capacity. Independent candidate scores are therefore insufficient because native applicability, winner selection, clause consumption, and mechanism composition make each candidate's effect contextual. We introduce CE-Replay, a workload-specialized, design-parametric representation that keeps the supported statistics-sensitive estimator semantics executable and exposes both an objective oracle and a semantic dependency oracle. We instantiate CE-Replay for PostgreSQL 16.14 conjunctive base-relation restrictions with MCV, functional-dependency, and constant `IN`/`= ANY` MCV semantics, and use it with deterministic maintenance-constrained local search. Across sparse Census and dense IN-heavy DMV, CE-Replay matches fresh native PostgreSQL estimates on 468/468 and 1,965/1,965 queries, supports mixed-mechanism designs, and preserves audited incremental move decisions while reducing semantic replay work; the mixed evaluator also shows that less semantic work need not yield lower wall-clock time. These results establish that executable native semantics can support statistics physical design within a validated fragment, while broader CE coverage, hypothetical-payload acquisition, payload-robust selection, and runtime objectives remain open.
+Selecting extended statistics for a supplied target workload is a physical-design problem with two distinct constraints: statistics can interact non-monotonically through the estimator, and deployed objects consume recurring maintenance capacity. Independent candidate scores are therefore insufficient because native applicability, winner selection, clause consumption, and mechanism composition make each candidate's effect contextual. We introduce CE-Replay, a workload-specialized, design-parametric representation that keeps the supported statistics-sensitive estimator semantics executable and exposes both an objective oracle and a semantic dependency oracle. We instantiate CE-Replay for PostgreSQL 16.14 conjunctive base-relation restrictions with MCV, functional-dependency, and constant `IN`/`= ANY` MCV semantics, and use it with deterministic maintenance-constrained local search. CE-Replay matches fresh native estimates on all 468 Census and 1,965 DMV queries. Census supplies a maintenance-constrained mixed design and local-optimum certificate; across both workloads, exact incremental replay is faster than full replay in every tested move/scope cell, while full Replay versus isolated native CE remains workload-dependent. These results establish that executable native semantics can support statistics physical design within a validated fragment, while broader CE coverage, hypothetical-payload acquisition, payload-robust selection, and runtime objectives remain open.
 
 ## 1. Introduction
 
@@ -20,14 +20,14 @@ Executable semantics provide two interfaces. The **objective oracle** evaluates 
 
 We instantiate CE-Replay for the supported PostgreSQL 16.14 statistics-sensitive fragment of conjunctive base-relation restrictions. The implementation covers validated scalar predicates, constant `IN` and `= ANY` MCV predicates, multicolumn most-common-values statistics, functional dependencies, PostgreSQL precedence relevant to MCV ties, and directed MCV-to-FD composition. It is source-informed and validated against native instrumentation; it is not a complete PostgreSQL CE emulator or an automatic source compiler.
 
-We evaluate two structurally contrasting workloads: Census has a large candidate universe with sparse candidate-query incidence, while DMV has a small, dense, high-reuse universe dominated by constant `IN` predicates. Within the supported semantic boundary, replay matches native raw estimates to floating-point tolerance, including all 468 fresh Census queries and all 1,965 fresh DMV queries after deployment. The experiments establish non-monotone utility, mechanism-dependent maintenance cost, mixed MCV+FD selection, and audited incremental equivalence. The evidence does not make the workloads representative, the workload-scale search globally optimal, or reduced semantic work a guarantee of lower runtime.
+We evaluate two structurally contrasting workloads: Census has a large candidate universe with sparse candidate-query incidence, while DMV has a small, dense, high-reuse universe dominated by constant `IN` predicates. Within the supported semantic boundary, replay matches native raw estimates to floating-point tolerance, including all 468 fresh Census queries and all 1,965 fresh DMV queries after deployment. Census provides the complete maintenance-budget design study; DMV provides corrected cross-workload semantic, non-monotonicity, physical-fidelity, and replay-performance validation. The evidence does not make the workloads representative or the workload-scale search globally optimal.
 
 This paper makes four contributions:
 
 1. **Problem and representation.** We formulate statistics design under a maintenance constraint over the supported native CE state transitions. Applicability, consumption, precedence, and downstream reachability remain executable design semantics. The formulation separates selected definitions, effective precedence, and frozen versus fresh payload realizations.
 2. **PostgreSQL CE-Replay.** We implement and validate CE-Replay for the supported PostgreSQL 16.14 base-restriction MCV+FD fragment, including bounded constant ScalarArray semantics and directed mechanism composition. The scope is explicit and excludes arbitrary PostgreSQL CE.
-3. **Semantics-guided optimization.** We use CE-Replay as a validated objective oracle and a statistics-semantic dependency oracle for deterministic maintenance-constrained ADD/DROP/SWAP search, including incremental move evaluation that reproduces audited full-replay move values within the supported setting. Workload-scale guarantees are neighborhood-local rather than global.
-4. **Cross-workload physical validation.** We demonstrate contextual non-monotonicity, maintenance-aware mixed designs, dependency-aware evaluation, and fresh physical deployment on sparse Census and dense IN-heavy DMV. The evidence concerns CE loss and semantic fidelity, not query-runtime improvement.
+3. **Semantics-guided optimization.** We use CE-Replay as a validated objective oracle and a statistics-semantic dependency oracle for deterministic maintenance-constrained ADD/DROP/SWAP search. Exact incremental move evaluation reproduces audited full replay and reduces controlled move-evaluation wall clock within the tested setting; workload-scale guarantees remain neighborhood-local rather than global.
+4. **Cross-workload physical validation.** Census supplies a complete maintenance-constrained design and deployment case, while dense IN-heavy DMV supplies corrected semantic, non-monotonicity, physical-fidelity, and evaluator-performance validation. The evidence concerns CE loss and evaluator cost, not query-runtime improvement.
 
 ## 2. Background and Motivation
 
@@ -122,12 +122,12 @@ $$
 \right),
 $$
 
-with the implementation's documented positive floor for zero values. The unweighted target-workload objective is
+for $N>0$. Estimate-side numerical protection floors $\widehat{N}$ at $10^{-300}$. Queries with zero ground truth remain in semantic-fidelity validation but are outside multiplicative q-error aggregation. Let $Q^+=\{q\in Q:N_q>0\}$. The unweighted target-workload objective is
 
 $$
 L(Y,\pi;P)
 =
-\sum_{q\in Q}
+\sum_{q\in Q^+}
 \ell\!\left(\widehat{N}_q(Y,\pi;P),N_q\right).
 $$
 
@@ -185,7 +185,11 @@ The supported mechanisms compose in a directed order:
 
 ```text
 MCV applicability and GreedyCover
-        ↓ residual estimated-clause state
+              |
+              v
+residual estimated-clause state
+              |
+              v
 FD applicability and dependency application
 ```
 
@@ -285,17 +289,15 @@ The evaluation asks four questions: whether replay matches native semantics, sup
 | Census | 468 / 2,458,285 | 68; numeric equality/range | 2,253 | Mean 4.44; max 13 | Sparse, giant component | Large universe; sparse incremental evaluation |
 | DMV | 1,965 / 11,591,877 | 9; categorical equality and constant `IN`/`= ANY` | 36 | Mean 497.08; median 498; max 546 | Dense/high reuse | ScalarArray semantics; dense incremental evaluation |
 
-Census stresses a large pair universe, mixed-mechanism selection, sparse invalidation, and payload-realization analysis. DMV contains 1,913 IN-bearing queries and stresses bounded ScalarArray semantics, dense candidate reuse, independent maintenance calibration, and second-workload deployment. Its small candidate universe does not establish Census-scale search scalability.
+Census stresses a large pair universe, mixed-mechanism selection, sparse invalidation, maintenance-constrained design, and payload realization. DMV's 1,913 IN-bearing queries stress bounded ScalarArray semantics, dense reuse, physical fidelity, and replay timing. Its small universe does not establish Census-scale search scalability.
 
-Structural pairs induce mechanism-specific MCV and FD definitions. Census has 2,253 pair MCV definitions and 758 usable query-applicable FD payloads in the mixed payload realization. DMV has 36 pairs; its optimization payload realization has 36 usable MCV and 34 usable FD payloads. Baseline, optimization, and fresh DMV payload realizations are kept separate; absolute losses are compared only within their originating realization.
+Structural pairs induce mechanism-specific MCV and FD definitions. Census has 2,253 pair MCV definitions and 758 usable query-applicable FD payloads in the mixed payload realization. The corrected DMV realization has 36 usable MCV and 35 usable FD payloads, or 71 usable candidates. Candidate definitions, selection, payload availability, payload values, effective precedence, and maintenance cost remain distinct.
 
-Ground-truth rows score replayed estimates using the q-error in Section 3. Two DMV queries have zero true cardinality, and the frozen positive floor makes them dominate raw aggregate DMV loss. We preserve the completed objective, use nonzero-truth loss only diagnostically, and never compare raw Census and DMV loss magnitudes.
+Ground-truth rows score replayed estimates using the q-error in Section 3. DMV queries `dmv.173` and `dmv.943` have zero truth: all 1,965 queries remain in semantic validation, while the objective aggregates only the 1,963 positive-truth queries. The historical floor-based DMV objective and optimization results derived from it are retired.
 
-Recurring maintenance is instantiated with mechanism-weighted object counts fitted independently to aggregate `ANALYZE` latency. **Figure F3** uses separate workload panels because absolute costs and fitted coefficients are environment-specific.
+For the complete Census design study, recurring maintenance is instantiated with mechanism-weighted object counts calibrated from aggregate `ANALYZE` latency. The measured Census slopes are 1.874997 ms/MCV and 2.717261 ms/FD, yielding normalized costs 1 and 1.449. This first-order resource proxy is specific to the environment; it is neither a PostgreSQL constant nor a per-candidate latency predictor.
 
-> **Figure F3: Mechanism-aware recurring ANALYZE cost.** Separate workload panels relate deployed mechanism composition to aggregate `ANALYZE` latency. Census slopes are 1.874997 ms/MCV and 2.717261 ms/FD; the DMV combined model estimates 3.903845 ms/MCV and 5.907345 ms/FD. Fits and deployment errors are environment-specific, not portable PostgreSQL constants. *(Production note: render from the frozen F3 data specification.)*
-
-The controls align with those questions. Raw native comparisons test semantic fidelity; exhaustive five-candidate Census and four restricted DMV searches test small-instance optimization; complete terminal ADD/DROP/SWAP audits establish neighborhood-local termination; and incremental-versus-control trajectories test move equivalence. Deployment then evaluates fresh matched-payload fidelity separately from frozen-to-fresh drift.
+The controls align with those questions. Raw native comparisons test semantic fidelity; exhaustive five-candidate Census search tests small-instance optimization; complete terminal ADD/DROP/SWAP audits establish neighborhood-local termination; and full-versus-incremental checks test move equivalence. Deployment evaluates fresh matched-payload fidelity separately from frozen-to-fresh drift.
 
 ### 7.2 RQ1 — Does replay match native PostgreSQL?
 
@@ -308,9 +310,9 @@ RQ1 asks whether CE-Replay reproduces native PostgreSQL estimates inside the sup
 | Census MCV raw oracle | Scalar MCV | Four targets × 32 designs | All matched | 5.55e-16 |
 | Controlled FD scenarios | FD selection, application, order | 13 scenarios | All matched | 0 |
 | Synthetic ScalarArray | Constant `IN`/`= ANY` MCV | 29 cases | 29/29; scalar regression 128/128 | 4.38e-15 |
-| DMV baseline payload realization | Real equality/IN MCV+FD | 27,510 | 27,510/27,510 | 1.40286e-14 |
+| DMV corrected baseline realization | Real equality/IN MCV+FD | 27,510 | 27,510/27,510 | 2.69e-14 |
 | Census fresh deployment | Fresh mixed MCV+FD | 468 | 468/468 | 6.92e-16 |
-| DMV fresh deployment | Fresh mixed MCV+FD | 1,965 | 1,965/1,965 | 2.43422e-14 |
+| DMV corrected deployment | Fresh mixed MCV+FD | 1,965 | 1,965/1,965 | 2.94e-14 |
 
 Raw instrumentation removes rounded plan rows as an observation artifact. ScalarArray support retains all 128 scalar regression cases while covering the canonical DMV workload. Fresh deployment is the strongest closure because new payloads are generated: CE-Replay matches native estimates for every fresh query in both workloads.
 
@@ -320,55 +322,58 @@ Raw instrumentation removes rounded plan rows as an observation artifact. Scalar
 
 RQ2 first asks whether selection remains necessary before capacity becomes binding. **Figure F2** answers that question by separating semantic harm from maintenance scarcity.
 
-> **Figure F2: Cross-workload non-monotonicity.** Separate, independently scaled panels compare empty and complete states. Census has 1,560 harmful singleton additions among 3,011 candidates and 317 improving removals; DMV has 45 harmful additions among 70 usable candidates and 17 improving removals. This is contextual evidence from two frozen payload realizations, not a universal workload property. *(Production note: render from the frozen F2 plan.)*
+> **Figure F2: Cross-workload non-monotonicity.** Separate, independently scaled panels compare empty and complete states. Census has 1,444 beneficial, seven neutral, and 1,560 harmful singleton additions among 3,011 candidates, plus 317 improving removals. Corrected DMV has 30 beneficial and 41 harmful additions among 71 candidates, plus 20 improving removals. This is contextual evidence from two frozen payload realizations, not a universal workload property. *(Production note: render from the frozen F2 plan.)*
 
-In Census, empty, all-statistics, and optimized-subset losses are 11,808.960379, 10,932.295550, and 805.316472 within the shared frozen payload realization. In the DMV baseline payload realization, all-mixed equals all-MCV because MCV consumption suppresses every usable FD. These results establish semantic necessity; Figure F3 independently establishes recurring resource demand.
+In Census, empty, all-statistics, and optimized-subset losses are 11,808.960379, 10,932.295550, and 805.316472 in one frozen realization. Corrected DMV losses are 88,414.724832 empty, 95,562.954655 all-MCV/all-mixed, and 96,951.199966 all-FD. All-mixed equals all-MCV because MCV consumption suppresses every usable FD. These results establish semantic necessity; the Census calibration above separately establishes resource demand.
 
-Having established semantic need, **Table T3** asks what the optimizer selects under the maintenance constraint. DMV raw loss is retained for consistency but is dominated by the two zero-truth queries.
+Having established semantic need, **Table T3** asks what the optimizer selects under the validated Census maintenance constraint.
 
-**Table T3: Maintenance-budget design outcomes.** Local optimum is limited to the audited ADD/DROP/SWAP neighborhood under fixed payload and precedence. DMV [ZT] is the preserved raw objective, dominated by two zero-truth queries under the positive floor; optimization used it, while nonzero-truth loss is diagnostic only.
+**Table T3: Census maintenance-budget design outcome.** Local optimality is limited to the audited ADD/DROP/SWAP neighborhood under fixed payload and recorded effective precedence.
 
 | Workload | Usable universe | Selected design | Budget; cost / unused | Frozen loss | Terminal audit |
 |---|---|---|---|---:|---|
 | Census | 2,253 MCV + 758 FD | 276 MCV + 7 FD | 286.144; 286.143 / 0.001 | 787.809381 | 565,031 moves; local optimum |
-| DMV optimization payload realization | 36 MCV + 34 FD | 11 MCV + 12 FD | 43.724603; 29.158543 / 14.566060 | 7.83651388676e298 [ZT] | 47 ADD, 23 DROP, 1,081 SWAP; local optimum |
 
-For Census, changing only the resource semantics from the earlier byte proxy to the maintenance model changes the design from 205 MCV plus 56 FD to 276 MCV plus seven FD. In the shared context, loss falls from 805.316472 to 787.809381, and all seven selected FDs are consumed. For DMV, the 50%, 75%, and 100% budget levels return the same 11-MCV plus 12-FD state, leaving capacity unused because no accepted move improves the objective. Four restricted exhaustive instances recover their exact restricted optima.
+Changing Census's resource from bytes to maintenance changes 205 MCV plus 56 FD to 276 MCV plus seven FD. Loss falls from 805.316472 to 787.809381; cost 286.143 fits budget 286.144, and all seven FDs are consumed. Auditing 565,031 terminal moves certifies a fixed-precedence ADD/DROP/SWAP local optimum. Corrected DMV supplies no budget design: 12-FD subset CV is 17.49% versus a 15% gate, and candidate-specific estimates are repeatable for only 27/71 candidates before additivity testing. Thus DMV budget accounting is not established; general additive candidate costs are not falsified.
 
-**Answer to RQ2.** CE-Replay drives maintenance-constrained mixed statistics design without a learned design-to-q-error response model. The workload-scale states are audited neighborhood local optima, not global optima.
+**Answer to RQ2.** On Census, CE-Replay drives maintenance-constrained mixed statistics design without a learned design-to-q-error response model. The reported workload-scale state is an audited fixed-precedence neighborhood local optimum, not a global optimum.
 
 ### 7.4 RQ3 — Do semantic dependencies reduce move-evaluation work?
 
-RQ3 asks both whether incremental evaluation preserves decisions and whether less semantic work becomes lower runtime. **Table T4** keeps exactness, semantic/control-work reduction, and wall-clock behavior separate across sparse and dense incidence.
+RQ3 asks whether counterfactual-safe invalidation preserves exact move values, reduces replay work, and lowers evaluator cost. **Table T4** separates black-box planner/oracle cost, isolated native CE, full Replay, and incremental Replay.
 
-**Table T4: Exact incremental evaluation across incidence regimes.** Semantic work and wall-clock outcomes remain separate.
+**Table T4: Full-workload and exact incremental wall-clock results.** Times are warm medians. Native planner is a black-box estimate-acquisition path, not isolated estimator time; native CE times only `clauselist_selectivity()` inside `set_baserel_size_estimates()`.
 
-| Setting | Incidence | Audited exactness | Semantic-work reduction | Wall clock |
-|---|---|---|---|---|
-| Census MCV local search | Sparse; mean degree 4.44 | 5,639,186 moves; 17 accepted and final state identical | 171.31× fewer query control replays; 95.28% no control replay | 82.422 s vs 289.013 s; 3.51× |
-| Census mixed local search | Sparse; directed MCV→FD | 9,107,766 moves; 19 accepted and final state identical | 95.13% numerical-only; 154.61× control reduction | 145.68 s vs 45.05 s; 3.23× slower |
-| DMV mixed optimization | Dense; mean degree 497.13 | 1,151 terminal moves; four restricted exact recoveries | 67.91% full-workload query replay operations avoided | No comparable speedup claim |
+| Workload / operation | Native planner | Native CE | Full Replay | Incremental result |
+|---|---:|---:|---:|---|
+| Census full workload | 90.867 ms | 10.241 ms | 1.884 ms | Planner/Replay 48.24×; CE/Replay 5.44× |
+| DMV full workload | 294.542 ms | 47.603 ms | 85.472 ms | Planner/Replay 3.45×; Replay/CE 1.80× |
+| Census sampled moves | — | — | Control | ADD 61.28×; DROP 44.08×; SWAP 31.49× |
+| DMV sampled moves | — | — | Control | ADD 3.22×; DROP 2.98×; SWAP 1.92× |
+| Fixed Census trajectory | — | — | 45.093 ms | 8.031 ms; 5.615× |
 
-Census contains a giant component despite sparse degree, so connected-component decomposition is ineffective. Local invalidation remains useful because a typical move touches few queries. The MCV-only evaluator preserves its complete accepted trajectory and improves measured phase time. The mixed evaluator also preserves its trajectory and sharply reduces control work, yet it is slower because numerical aggregation and Python move-loop overhead dominate. DMV shows that dependency-aware evaluation still avoids work under dense incidence, although the opportunity is smaller.
+Census contains a giant component despite sparse degree, so connected-component decomposition is ineffective. Counterfactual-safe structural scope remains useful because a typical move touches few queries, while currently consumed winners alone are insufficient: latent candidates can become eligible after a move. The timing patch preserves representative raw rows in 4/4 trace-on/off checks. Full Replay matches native on 468/468 Census and 1,965/1,965 DMV queries; 192/192 sampled full/incremental moves match, and incremental replay is faster in all 24 workload × move-family × affected-scope cells.
 
-**Answer to RQ3.** Realized and structural/counterfactual dependencies enable exact audited incremental move evaluation in sparse and dense regimes. Topology controls the opportunity, and semantic-work reduction does not guarantee wall-clock improvement.
+The fixed 19-move Census trajectory was not re-searched; every objective state matches, and incremental time includes commit and invalidation. Earlier whole-optimizer measurements remain informative: MCV-only used 171.31× fewer control replays but improved wall clock by 3.51×, not 171×. Mixed evaluation reduced controls yet took 145.678 s versus 45.045 s because numerical aggregation and broader bookkeeping dominated. The final benchmark isolates evaluator operations, so its positive result and the earlier whole-implementation slowdown measure different boundaries.
+
+**Answer to RQ3.** Structural/counterfactual dependencies enable exact audited incremental move evaluation in the tested sparse and dense regimes. They reduce controlled evaluator wall clock in every tested cell and on the fixed Census trajectory; primitive native-CE versus full-Replay cost remains workload-dependent.
 
 ### 7.5 RQ4 — Does replay preserve interacting semantics after physical deployment?
 
 RQ4 asks whether replay preserves the directed MCV-to-FD interaction through complete design and physical deployment. **Figure F4** links that mechanism to observed FD reachability.
 
-> **Figure F4: Directed MCV-to-FD composition and FD consumption.** MCV clause consumption feeds FD residual state. Census independent optimization selects 97 FDs, 72 unused after composition; joint optimization selects 54, all consumed. DMV all-statistics consumes zero of 34 usable FDs; optimization consumes all 12 selected frozen FDs and all 11 materialized fresh FDs. *(Production note: render the frozen F4 specification.)*
+> **Figure F4: Directed MCV-to-FD composition and FD consumption.** MCV clause consumption feeds FD residual state. Census independent mechanism selection chooses 97 FDs, 72 unused after composition, whereas fixed-precedence mixed selection chooses 54, all consumed. In corrected DMV, the all-statistics state consumes zero of 35 usable FDs; the corrected physical validation state contains 12 MCV and four FD objects. The latter is semantic validation, not a maintenance-constrained optimum. *(Production note: render the frozen F4 specification.)*
 
-Joint Census optimization improves over independently optimized mechanisms and stops spending maintenance capacity on many suppressed FDs. DMV replicates the interaction under dense incidence. **Table T5** then separates precedence deployment, fresh matched-payload fidelity, and frozen-to-fresh payload drift.
+Mixed-mechanism Census selection under fixed effective precedence improves over independently selected mechanisms and stops spending maintenance capacity on many suppressed FDs. Corrected DMV replicates all-statistics FD suppression under dense incidence. **Table T5** then separates fresh matched-payload fidelity from frozen-to-fresh payload drift.
 
-**Table T5: Physical deployment and fresh validation.** Unavailable DMV drift reflects missing frozen provenance, not assumed zero drift.
+**Table T5: Physical deployment and fresh validation.** Replay/native fidelity uses all queries; DMV q-error drift uses only its 1,963 positive-truth queries.
 
 | Workload | Selected / fresh materialized | FD consumption | Fresh replay/native; max relative error | Frozen→fresh drift | Cost error |
 |---|---|---|---|---|---:|
 | Census | 276 MCV + 7 FD; 276/276 MCV, 7/7 FD | 7/7 | 811.553725 / 811.553725; 468/468; 6.92e-16 | 787.809381 → 811.553725; +3.0140% | 7.20% |
-| DMV | 11 MCV + 12 FD; 11/11 MCV, 11/12 FD | 11/11 materialized; 389 queries | 1,965/1,965; aggregate equal; 2.43422e-14 | Unavailable: frozen per-query provenance not persisted | 21.4295% |
+| DMV corrected validation state | 12 MCV + 4 FD; 12/12 MCV, 4/4 FD | Physical state validated | 1,965/1,965; 2.94e-14 | 46,034.243090 → 45,259.901254; -1.6821% | Not a budget model |
 
-For Census, all objects materialize and consume. Across 30 repeated `ANALYZE` payload realizations, 14,040/14,040 replay/native comparisons match while payloads and objective values vary. This demonstrates matched-payload fidelity under payload variation, not stability of design rankings. For DMV, one selected FD payload does not materialize, but every materialized FD consumes and all fresh queries match native. The original optimization artifact lacks sufficient frozen per-query state for a paired DMV drift distribution; this provenance gap does not invalidate fresh semantic fidelity or physical composition.
+For the final Census maintenance design, all objects materialize and consume. Across 30 repeated `ANALYZE` payload realizations, 14,040/14,040 replay/native comparisons match while objective loss has 1.835% coefficient of variation. This demonstrates matched-payload fidelity under measurable payload variation, not stability of design rankings. In corrected DMV, all 16 objects materialize and all fresh queries match native; its 12-MCV+4-FD state is a physical semantic-validation state, not a corrected maintenance-constrained optimum.
 
 **Answer to RQ4.** CE-Replay composes directed MCV and FD semantics and remains faithful after fresh physical deployment on both workloads. Fresh payload realization can change values and availability, so semantic replay error and payload realization drift must remain separate.
 
@@ -388,11 +393,11 @@ Execution-sufficient state is not necessarily counterfactual-safe state. A curre
 
 Census rejects a tempting but incorrect shortcut. Its graph is globally connected and tested factorization does not yield independent subproblems, yet sparse candidate degree permits local recomputation. The semantic representation reduces exact move-evaluation work; it does not decompose away the global budget or combinatorial search.
 
-The mixed-evaluator slowdown identifies the limit of that opportunity. Once semantic control replay becomes rare, numerical aggregation and implementation overhead dominate; less replay work does not guarantee end-to-end acceleration. DMV confirms correctness in a dense regime while exposing less locality, but two workloads do not define a universal scaling law.
+The earlier mixed whole-optimizer slowdown identifies a boundary: once semantic control replay becomes rare, numerical aggregation and broader implementation overhead can dominate, so less replay work alone does not guarantee whole-optimizer acceleration. Under the final controlled operation contract, however, exact incremental Replay is faster than full Replay in every tested move/scope cell and on the fixed Census trajectory. DMV confirms this direction with smaller gains under dense incidence, but two workloads do not define a universal scaling law.
 
 ### 8.4 Maintenance cost and semantic utility
 
-Payload bytes were an early controlled proxy. The final resource is recurring maintenance, instantiated through mechanism-weighted object counts calibrated from aggregate `ANALYZE` latency. Coefficients differ across Census and DMV and deployment prediction errors remain visible. The model is a first-order environment-specific resource proxy, not a PostgreSQL constant or a per-object latency predictor.
+The final Census resource replaces bytes with mechanism-weighted counts fitted to aggregate `ANALYZE`. This first-order proxy is specific to the environment; it is neither a PostgreSQL constant nor a per-object latency predictor. Corrected DMV's equal-size FD subsets fail the stability gate, and its candidate protocol cannot establish a complete repeatable cost vector. This closes DMV budget optimization without falsifying the general additive formulation.
 
 Changing resource semantics changes the physical-design problem: on Census it materially changes composition and frozen loss. A budget is a capacity constraint, not a target; a local optimum may leave capacity unused when no feasible neighborhood move improves the contextual objective.
 
@@ -414,7 +419,7 @@ The validated semantic scope is PostgreSQL 16.14 conjunctive base-relation restr
 
 Optimization assumes an offline frozen payload repository and returns an ADD/DROP/SWAP neighborhood local optimum under fixed precedence; it has no full-instance global or approximation guarantee. The maintenance model is environment-specific and first-order. The objective is q-error, not plan quality, latency, throughput, or a causal runtime improvement.
 
-Fresh `ANALYZE` can change payloads or availability, and the optimizer is not payload-robust. DMV raw aggregate loss is dominated by two zero-truth queries under the preserved positive floor. DMV also lacks sufficient frozen per-query provenance for complete paired drift reconstruction, although fresh fidelity and composition remain supported.
+Fresh `ANALYZE` can change payloads or availability, and the optimizer is not payload-robust. DMV excludes two zero-truth queries from q-error but retains all 1,965 for semantic validation. Its corrected physical state supports fidelity and positive-truth drift, not a maintenance-constrained optimized design.
 
 Finally, Census and DMV provide complementary sparse and dense evidence but do not establish universal workload generality. The target workload is supplied; unseen-workload generalization is outside the core problem.
 
@@ -460,7 +465,7 @@ This paper studies extended-statistics design for a supplied target workload und
 
 CE-Replay exposes the supported statistics-sensitive semantics as a workload-specialized, design-parametric executable representation. Workload-fixed context is specialized, while applicability, winner selection, clause consumption, MCV-to-FD composition, and numerical payload behavior remain executable. The resulting objective and dependency oracles allow a replaceable optimizer to evaluate hypothetical states and safely restrict recomputation.
 
-For the supported PostgreSQL 16.14 base-restriction fragment, Census and DMV establish matched-payload fidelity within floating-point tolerance, maintenance-aware mixed designs, audited incremental equivalence in sparse and dense regimes, and fresh physical deployment. The negative results delimit the method: global connectivity need not eliminate local invalidation, less semantic replay does not guarantee faster optimization, and fresh payload drift remains distinct from semantic replay error.
+For the supported PostgreSQL 16.14 base-restriction fragment, both workloads establish matched-payload fidelity and exact incremental evaluation across sparse and dense regimes. Census supplies the maintenance-constrained mixed design, local-optimum certificate, and deployment closure; corrected DMV supplies cross-workload semantic, non-monotonicity, physical-fidelity, and replay-performance validation without a final maintenance-budget design. Controlled incremental Replay is faster than full Replay in every tested cell, while full Replay versus isolated native CE is workload-dependent and fresh payload drift remains distinct from semantic replay error.
 
 The current results remain conditional on a supplied workload, a frozen payload repository, manually supported MCV+FD semantics, and neighborhood-local search. Extending executable semantic representations to broader CE mechanisms, cheaper payload acquisition, payload-robust objectives, and additional DBMSs offers a path toward physical-design tools that use native estimator behavior as both an objective evaluator and a source of optimization structure.
 

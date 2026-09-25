@@ -1,0 +1,50 @@
+[
+  {
+    "table": "climate",
+    "trace_rows": 385906.7802152612,
+    "timing_rows": 385906.7802152612,
+    "relative_error": 0.0,
+    "trace_decision_messages": [
+      "CE_REPLAY_MCV oid=23266 simple=0.30233048753721903 mcv=0.16400000000000001 base=0.30233050666666667 total=0.99796666666666678 stat=0.16400000000000001"
+    ],
+    "semantic_trace_notices_in_timing_mode": 0,
+    "pass": true
+  },
+  {
+    "table": "climate",
+    "trace_rows": 2052.673186384552,
+    "timing_rows": 2052.673186384552,
+    "relative_error": 0.0,
+    "trace_decision_messages": [
+      "CE_REPLAY_MCV oid=23330 simple=0.23803283497492345 mcv=0.0047000000000000002 base=0.23803283444444445 total=0.99660000000000004 stat=0.0047000005304789942"
+    ],
+    "semantic_trace_notices_in_timing_mode": 0,
+    "pass": true
+  },
+  {
+    "table": "dmv",
+    "trace_rows": 2399.626926449677,
+    "timing_rows": 2399.626926449677,
+    "relative_error": 0.0,
+    "trace_decision_messages": [
+      "CE_REPLAY_MCV oid=19547 simple=0.0021107576870864897 mcv=0 base=0 total=0.97406666666666675 stat=0.0021107576870864897",
+      "CE_REPLAY_MCV oid=19551 simple=0.98953789769191025 mcv=0.98503333333333343 base=0.98438708111111117 total=0.99253333333333338 stat=0.99018414991413251",
+      "CE_REPLAY_MCV oid=19556 simple=0.99130174621539169 mcv=0.99136666666666662 base=0.99130170000000006 total=0.99979999999999991 stat=0.99136671288205824"
+    ],
+    "semantic_trace_notices_in_timing_mode": 0,
+    "pass": true
+  },
+  {
+    "table": "dmv",
+    "trace_rows": 0.0,
+    "timing_rows": 0.0,
+    "relative_error": 0.0,
+    "trace_decision_messages": [
+      "CE_REPLAY_MCV oid=19546 simple=0.89478808233485696 mcv=0.89769999999999994 base=0.81462804333333327 total=0.99243333333333317 stat=0.90526666666666677",
+      "CE_REPLAY_MCV oid=19549 simple=0 mcv=0 base=0 total=0.99773333333333325 stat=0",
+      "CE_REPLAY_MCV oid=19551 simple=0.89575462367243119 mcv=0.89783333333333337 base=0.89575464000000005 total=0.99253333333333338 stat=0.89783333333333337"
+    ],
+    "semantic_trace_notices_in_timing_mode": 0,
+    "pass": true
+  }
+]

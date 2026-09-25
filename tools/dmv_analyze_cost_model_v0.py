@@ -87,7 +87,9 @@ def main():
     pairs=[tuple(x.split(":")) for x in baseline["candidate_universe"]["pair_ids"]]
     unavailable={tuple(x[3:].split(":")) for x in baseline["payload_acquisition"]["unusable_fd"]}
     fd_pairs=[x for x in pairs if x not in unavailable]
-    if len(pairs)!=36 or len(fd_pairs)!=34: raise RuntimeError((len(pairs),len(fd_pairs)))
+    nfd=len(fd_pairs)
+    if len(pairs)!=36 or len(fd_pairs)!=len(pairs)-len(unavailable):
+        raise RuntimeError((len(pairs),len(fd_pairs),len(unavailable)))
 
     configs=[]
     def add(cid,family,mids=(),fids=(),seed=None):
@@ -99,13 +101,15 @@ def main():
         add(f"mcv_{count:02d}_s0","mcv_only",deterministic_subset(count,36,1000+count),seed=0)
     for count in (12,24):
         for seed in (1,2): add(f"mcv_{count:02d}_s{seed}","mcv_only",deterministic_subset(count,36,1000+count+100*seed),seed=seed)
-    for count in (4,8,12,16,20,24,28,32,34):
-        add(f"fd_{count:02d}_s0","fd_only",(),deterministic_subset(count,34,2000+count),seed=0)
+    for count in tuple(x for x in (4,8,12,16,20,24,28,32) if x<nfd)+(nfd,):
+        add(f"fd_{count:02d}_s0","fd_only",(),deterministic_subset(count,nfd,2000+count),seed=0)
     for count in (12,24):
-        for seed in (1,2): add(f"fd_{count:02d}_s{seed}","fd_only",(),deterministic_subset(count,34,2000+count+100*seed),seed=seed)
-    for pos,(mc,fc) in enumerate(((4,4),(16,4),(4,16),(16,16),(32,16),(16,32),(32,32),(36,34))):
+        if count<=nfd:
+            for seed in (1,2): add(f"fd_{count:02d}_s{seed}","fd_only",(),deterministic_subset(count,nfd,2000+count+100*seed),seed=seed)
+    mixed=((4,4),(16,4),(4,16),(16,16),(32,16),(16,min(32,nfd)),(32,min(32,nfd)),(36,nfd))
+    for pos,(mc,fc) in enumerate(mixed):
         add(f"mixed_{mc:02d}_{fc:02d}","mixed",deterministic_subset(mc,36,3000+pos),
-            deterministic_subset(fc,34,4000+pos),seed=pos)
+            deterministic_subset(fc,nfd,4000+pos),seed=pos)
     order=list(range(len(configs))); random.Random(20260921).shuffle(order)
     for run_order,index in enumerate(order): configs[index]["run_order"]=run_order
 
@@ -194,7 +198,7 @@ def main():
         mixed_ids={x["id"] for x in rows if x["family"]=="mixed"}
         mixed_res=[x for x in mechanism["residuals"] if x["configuration"] in mixed_ids]
         full_checks={}
-        for label,cid in (("full_mcv","mcv_36_s0"),("full_fd","fd_34_s0"),("full_mixed","mixed_36_34")):
+        for label,cid in (("full_mcv","mcv_36_s0"),("full_fd",f"fd_{nfd:02d}_s0"),("full_mixed",f"mixed_36_{nfd:02d}")):
             row=next(x for x in rows if x["id"]==cid); pred=mechanism["intercept_seconds"]+alpha_m*row["mcv_count"]+alpha_f*row["fd_count"]
             full_checks[label]={"configuration":cid,"observed_seconds":row["mean_seconds"],"predicted_seconds":pred,
                                 "error_seconds":pred-row["mean_seconds"],"relative_error":abs(pred-row["mean_seconds"])/row["mean_seconds"]}
@@ -213,7 +217,7 @@ def main():
         result={"experiment":"DMV-Analyze-Cost-Model-v0",
                 "environment":{"postgres_version":pg_version,"database":args.database,"isolated":True,
                                "row_count":row_count,"schema":schema,"statistics_target":args.target,
-                               "candidate_universe":{"mcv":36,"usable_fd":34},"unrelated_databases_modified":False},
+                               "candidate_universe":{"mcv":36,"usable_fd":nfd},"unrelated_databases_modified":False},
                 "protocol":{"command":"ANALYZE dmv","warmups_per_configuration":1,
                             "measured_repetitions_per_configuration":args.repetitions,
                             "configurations":len(rows),"measured_analyze_executions":len(rows)*args.repetitions,
@@ -251,7 +255,7 @@ def main():
 
 ## Measurement and interpretation
 
-This experiment measures recurring PostgreSQL 16.14 statistics collection/refresh work: aggregate wall-clock latency of `ANALYZE dmv`. It does not measure synchronous DML cost, one-time candidate acquisition, catalog bytes, or optimizer runtime. A disposable {row_count:,}-row DMV database, target {args.target}, 36 pair-MCV and 34 usable pair-FD definitions were used.
+This experiment measures recurring PostgreSQL 16.14 statistics collection/refresh work: aggregate wall-clock latency of `ANALYZE dmv`. It does not measure synchronous DML cost, one-time candidate acquisition, catalog bytes, or optimizer runtime. A disposable {row_count:,}-row DMV database, target {args.target}, 36 pair-MCV and {nfd} usable pair-FD definitions were used.
 
 We measured {len(rows)} deterministic configurations spanning empty, full mechanism-specific ranges, same-count subset variants, and eight mixed designs. Every configuration used one unmeasured warm-up followed by {args.repetitions} measured complete `ANALYZE` executions; object creation was outside the timed interval. Total measured executions: {len(rows)*args.repetitions}.
 

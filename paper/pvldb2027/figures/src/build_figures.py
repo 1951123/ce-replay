@@ -45,8 +45,12 @@ plt.rcParams.update({
 def save(fig: plt.Figure, stem: str) -> None:
     fig.savefig(OUT / f"{stem}.pdf", format="pdf",
                 metadata={"Creator": "build_figures.py", "CreationDate": None, "ModDate": None})
-    fig.savefig(OUT / f"{stem}.svg", format="svg",
+    svg_path = OUT / f"{stem}.svg"
+    fig.savefig(svg_path, format="svg",
                 metadata={"Creator": "build_figures.py", "Date": None})
+    # Matplotlib emits trailing spaces in multiline SVG path data. Normalize
+    # them so regenerated manuscript assets pass repository whitespace checks.
+    svg_path.write_text("\n".join(line.rstrip() for line in svg_path.read_text().splitlines()) + "\n")
     plt.close(fig)
 
 
@@ -121,7 +125,7 @@ def build_f2():
          "1,560 / 3,011 harmful additions\n317 improving removals from all"),
         (axes[1], "DMV · frozen baseline realization", ["Empty","All MCV","All FD","All statistics"],
          [d["DMV_baseline_realization"][k] for k in ("empty","all_mcv","all_fd","all_statistics")],
-         "45 / 70 harmful additions\n17 improving removals from all"),
+         "30 beneficial / 41 harmful additions\n20 improving removals from all"),
     ]
     for ax,title,labels,vals,note in specs:
         colors=[LIGHT_GRAY, LIGHT_BLUE, LIGHT_ORANGE, "#D8D8D8"][:len(vals)]
@@ -153,15 +157,11 @@ def read_means(path, count_mcv, count_fd, family=None):
 def build_f3():
     meta=ITEM["F3"]["panels"]
     census=read_means(ROOT/"results/census_analyze_cost_model_v0.csv","n_mcv","n_fd","kind")
-    dmv=read_means(ROOT/"results/dmv_analyze_cost_model_v0.csv","mcv_count","fd_count","family")
-    fig,axes=plt.subplots(1,2,figsize=(6.6,2.05)); fig.subplots_adjust(left=.075,right=.985,bottom=.22,top=.80,wspace=.30)
+    fig,ax=plt.subplots(1,1,figsize=(6.6,2.05)); fig.subplots_adjust(left=.09,right=.985,bottom=.22,top=.80)
     for ax,title,rows,base,slopes,note in [
-        (axes[0],"Census environment",census,meta["Census"]["empty_mean_seconds"]*1000,
+        (ax,"Census environment",census,meta["Census"]["empty_mean_seconds"]*1000,
          (meta["Census"]["mcv_only_slope_ms"],meta["Census"]["fd_only_slope_ms"]),
-         "MCV $R^2$=.995 · FD $R^2$=.996"),
-        (axes[1],"DMV environment",dmv,meta["DMV"]["empty_mean_seconds"]*1000,
-         (meta["DMV"]["mcv_only_slope_ms"],meta["DMV"]["fd_only_slope_ms"]),
-         "combined: 3.904 ms/MCV + 5.907 ms/FD\n$R^2$=.975")]:
+         "normalized recurring cost: 1 MCV + 1.449 FD   ·   MCV $R^2$=.995   ·   FD $R^2$=.996")]:
         for mech,color,marker,hatch,slope in [("MCV",BLUE,"o","///",slopes[0]),("FD",ORANGE,"s","\\\\",slopes[1])]:
             pts=[]
             for m,f,fam,y in rows:
@@ -175,8 +175,8 @@ def build_f3():
         ax.grid(color="#dddddd",lw=.45); ax.set_axisbelow(True); ax.spines[["top","right"]].set_visible(False)
         ax.legend(frameon=False,loc="upper left",ncol=1,handlelength=2.0)
         ax.text(.98,.04,note,transform=ax.transAxes,ha="right",va="bottom",fontsize=6.1,color=GRAY)
-    fig.text(.5,.96,"First-order maintenance proxies differ by mechanism and environment",ha="center",va="top",fontsize=8.2,weight="bold")
-    fig.text(.5,.035,"Aggregate environment-specific fits; not universal PostgreSQL constants or per-candidate costs.",ha="center",fontsize=6.1,color=GRAY)
+    fig.text(.5,.96,"Census first-order recurring maintenance proxy",ha="center",va="top",fontsize=8.2,weight="bold")
+    fig.text(.5,.035,"Aggregate environment-specific fit used by the final Census budget; not a universal constant or per-candidate predictor.",ha="center",fontsize=6.1,color=GRAY)
     save(fig,"f3-analyze-maintenance-cost")
 
 
@@ -192,8 +192,8 @@ def build_f4():
     flow.text(.5,.98,"MCV executes before FD",ha="center",va="top",fontsize=8.0,weight="bold")
     axes=[fig.add_subplot(gs[1,0]),fig.add_subplot(gs[1,1])]
     panels=[
-        (axes[0],"Census",["Independent","Joint"],[97,54],[25,54]),
-        (axes[1],"DMV",["All statistics","Optimized frozen","Fresh deployed"],[34,12,11],[0,12,11])]
+        (axes[0],"Census",["Independent","Mixed, fixed order"],[97,54],[25,54]),
+        (axes[1],"DMV",["All statistics"],[35],[0])]
     for ax,title,labels,selected,consumed in panels:
         suppressed=[s-c for s,c in zip(selected,consumed)]; x=range(len(labels))
         ax.bar(x,consumed,color=LIGHT_BLUE,edgecolor=BLUE,hatch="///",linewidth=.8,label="Consumed FD")
@@ -203,6 +203,8 @@ def build_f4():
         ax.set_xticks(list(x),labels); ax.set_ylabel("Selected or usable FD objects"); ax.set_ylim(0,max(selected)*1.25)
         ax.set_title(title,weight="bold",pad=2); ax.grid(axis="y",color="#ddd",lw=.45); ax.set_axisbelow(True); ax.spines[["top","right"]].set_visible(False)
     axes[0].legend(frameon=False,loc="upper right",ncol=2,bbox_to_anchor=(2.05,-.31),handlelength=1.6)
+    axes[1].text(.5,-.20,"Corrected physical validation: 12 MCV + 4 FD, all materialized\n(not a maintenance optimum)",
+                 transform=axes[1].transAxes,ha="center",va="top",fontsize=6.0,color=GRAY)
     save(fig,"f4-mcv-fd-composition")
 
 

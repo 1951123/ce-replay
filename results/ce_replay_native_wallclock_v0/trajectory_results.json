@@ -1,0 +1,272 @@
+{
+  "accepted_moves": 19,
+  "objective_sequence_full": [
+    806.2508005257298,
+    805.9390456588194,
+    805.8329257763551,
+    805.7607506912958,
+    805.6510480946995,
+    805.5898979398887,
+    805.5347441689044,
+    805.5019360263619,
+    805.4961599656077,
+    805.4914853594487,
+    805.4875747829341,
+    805.4860317982586,
+    805.484733778319,
+    805.3492572373221,
+    805.3383840935082,
+    805.3305110774396,
+    805.3297072064033,
+    805.3199320223206,
+    805.3164717666307
+  ],
+  "objective_sequence_incremental": [
+    806.2508005257298,
+    805.9390456588194,
+    805.8329257763551,
+    805.7607506912958,
+    805.6510480946995,
+    805.5898979398887,
+    805.5347441689044,
+    805.5019360263619,
+    805.4961599656077,
+    805.4914853594487,
+    805.4875747829341,
+    805.4860317982586,
+    805.484733778319,
+    805.3492572373221,
+    805.3383840935082,
+    805.3305110774396,
+    805.3297072064033,
+    805.3199320223206,
+    805.3164717666307
+  ],
+  "equivalent": true,
+  "full": {
+    "median_ns": 45093417.875,
+    "p25_ns": 44766690.6875,
+    "p75_ns": 45742191.4375,
+    "p95_ns": 50209319.512499996,
+    "mean_ns": 45892568.11666667,
+    "stddev_ns": 1908070.4170994202,
+    "batch_size": 4,
+    "measured_batches": 30,
+    "total_batch_ns": 5507108174,
+    "raw_batch_ns": [
+      179230023,
+      178308837,
+      179229878,
+      181358321,
+      179838498,
+      178736237,
+      181133373,
+      181349842,
+      177173301,
+      178566000,
+      181967431,
+      179012391,
+      177197815,
+      180063229,
+      181174102,
+      180588371,
+      180729328,
+      179979835,
+      179345805,
+      177514395,
+      178554986,
+      180158972,
+      183302544,
+      203585628,
+      199137398,
+      196754288,
+      191017049,
+      202228089,
+      189543327,
+      190328881
+    ]
+  },
+  "incremental": {
+    "median_ns": 8030638.4375,
+    "p25_ns": 7980042.640625,
+    "p75_ns": 8201483.078125,
+    "p95_ns": 8501443.33125,
+    "mean_ns": 8124973.485416667,
+    "stddev_ns": 234070.5705022501,
+    "batch_size": 16,
+    "measured_batches": 30,
+    "total_batch_ns": 3899987273,
+    "raw_batch_ns": [
+      131293609,
+      128821812,
+      141582656,
+      135087644,
+      129155398,
+      129611819,
+      128084300,
+      127268380,
+      126581648,
+      128179754,
+      131014090,
+      130103994,
+      128841435,
+      127428696,
+      128358729,
+      127757747,
+      134983411,
+      136323399,
+      132433606,
+      127769936,
+      127654994,
+      127516420,
+      126348731,
+      127853224,
+      127840178,
+      128621701,
+      135272735,
+      135656053,
+      126741893,
+      125799281
+    ]
+  },
+  "median_ratio": 5.615172221480056,
+  "semantic_counts": {
+    "mcv_fd": 109,
+    "fd_only": 33
+  },
+  "invalidations": [
+    {
+      "queries": 19,
+      "entries": 17,
+      "preserved": 0,
+      "mcv_boundary_changed": 9,
+      "fd_trace_changed": 1
+    },
+    {
+      "queries": 11,
+      "entries": 11,
+      "preserved": 0,
+      "mcv_boundary_changed": 5,
+      "fd_trace_changed": 0
+    },
+    {
+      "queries": 8,
+      "entries": 8,
+      "preserved": 0,
+      "mcv_boundary_changed": 2,
+      "fd_trace_changed": 0
+    },
+    {
+      "queries": 5,
+      "entries": 4,
+      "preserved": 0,
+      "mcv_boundary_changed": 5,
+      "fd_trace_changed": 1
+    },
+    {
+      "queries": 6,
+      "entries": 5,
+      "preserved": 0,
+      "mcv_boundary_changed": 5,
+      "fd_trace_changed": 0
+    },
+    {
+      "queries": 10,
+      "entries": 10,
+      "preserved": 0,
+      "mcv_boundary_changed": 7,
+      "fd_trace_changed": 0
+    },
+    {
+      "queries": 10,
+      "entries": 10,
+      "preserved": 0,
+      "mcv_boundary_changed": 5,
+      "fd_trace_changed": 0
+    },
+    {
+      "queries": 10,
+      "entries": 10,
+      "preserved": 0,
+      "mcv_boundary_changed": 4,
+      "fd_trace_changed": 0
+    },
+    {
+      "queries": 3,
+      "entries": 3,
+      "preserved": 0,
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 1
+    },
+    {
+      "queries": 5,
+      "entries": 4,
+      "preserved": 0,
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 2
+    },
+    {
+      "queries": 7,
+      "entries": 7,
+      "preserved": 0,
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 2
+    },
+    {
+      "queries": 5,
+      "entries": 5,
+      "preserved": 0,
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 3
+    },
+    {
+      "queries": 3,
+      "entries": 2,
+      "preserved": 0,
+      "mcv_boundary_changed": 1,
+      "fd_trace_changed": 1
+    },
+    {
+      "queries": 7,
+      "entries": 5,
+      "preserved": 0,
+      "mcv_boundary_changed": 5,
+      "fd_trace_changed": 0
+    },
+    {
+      "queries": 7,
+      "entries": 6,
+      "preserved": 0,
+      "mcv_boundary_changed": 3,
+      "fd_trace_changed": 0
+    },
+    {
+      "queries": 1,
+      "entries": 0,
+      "preserved": 0,
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 1
+    },
+    {
+      "queries": 10,
+      "entries": 10,
+      "preserved": 0,
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 5
+    },
+    {
+      "queries": 13,
+      "entries": 13,
+      "preserved": 0,
+      "mcv_boundary_changed": 9,
+      "fd_trace_changed": 1
+    },
+    {
+      "queries": 2,
+      "entries": 2,
+      "preserved": 0,
+      "mcv_boundary_changed": 0,
+      "fd_trace_changed": 1
+    }
+  ]
+}

@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "docs/paper-full-draft-v6-evaluation-hierarchy.md"
 OUTPUT = Path(__file__).resolve().parent / "main.tex"
 
-FIGURE_HEIGHTS = {"F1": "2.20in", "F2": "2.05in", "F3": "2.05in", "F4": "2.15in"}
+FIGURE_HEIGHTS = {"F1": "2.20in", "F2": "1.90in", "F3": "1.55in", "F4": "2.00in"}
 
 
 def inline(text: str) -> str:
@@ -27,10 +27,9 @@ def inline(text: str) -> str:
 
 
 def latex_escape(text: str) -> str:
-    for old, new in [("\\", r"\textbackslash{}"), ("&", r"\&"), ("%", r"\%"),
-                     ("#", r"\#"), ("_", r"\_"), ("{", r"\{"), ("}", r"\}")]:
-        text = text.replace(old, new)
-    return text
+    replacements = {"\\": r"\textbackslash{}", "&": r"\&", "%": r"\%",
+                    "#": r"\#", "_": r"\_", "{": r"\{", "}": r"\}"}
+    return "".join(replacements.get(char, char) for char in text)
 
 
 def table_latex(caption: str, rows: list[list[str]], label: str) -> str:

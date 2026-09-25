@@ -1,0 +1,1949 @@
+{
+  "native_replay": {
+    "census": {
+      "queries": 468,
+      "matches": 468,
+      "max_relative_error": 5.834504986054766e-16,
+      "objective": 794.7703408947079,
+      "pass": true
+    },
+    "dmv": {
+      "queries": 1965,
+      "matches": 1965,
+      "max_relative_error": 2.9427323753695856e-14,
+      "objective": 45259.901254054384,
+      "zero_truth_ids": [
+        "dmv.173",
+        "dmv.943"
+      ],
+      "objective_queries": 1963,
+      "pass": true
+    }
+  },
+  "moves": [
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('toggle', ('fd', 419), None)",
+      "affected": 1,
+      "full_delta": -0.00012051593500927993,
+      "incremental_delta": -0.00012051593495066015,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('toggle', ('fd', 457), None)",
+      "affected": 1,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('toggle', ('fd', 690), None)",
+      "affected": 1,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('toggle', ('mcv', 1667), None)",
+      "affected": 3,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('toggle', ('fd', 207), None)",
+      "affected": 3,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('toggle', ('mcv', 2183), None)",
+      "affected": 1,
+      "full_delta": -0.0018747171734503354,
+      "incremental_delta": -0.001874717173363294,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('toggle', ('mcv', 1891), None)",
+      "affected": 2,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('toggle', ('mcv', 1659), None)",
+      "affected": 3,
+      "full_delta": 0.08201515468010712,
+      "incremental_delta": 0.08201515468018172,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 798), None)",
+      "affected": 5,
+      "full_delta": -0.01610718538756828,
+      "incremental_delta": -0.016107185387563838,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 742), None)",
+      "affected": 5,
+      "full_delta": 0.10211940879844406,
+      "incremental_delta": 0.1021194087984656,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 1398), None)",
+      "affected": 4,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 708), None)",
+      "affected": 5,
+      "full_delta": 0.7890291134411882,
+      "incremental_delta": 0.7890291134412093,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 854), None)",
+      "affected": 5,
+      "full_delta": 0.08578306524998425,
+      "incremental_delta": 0.0857830652500009,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 1304), None)",
+      "affected": 4,
+      "full_delta": -0.009714152749438654,
+      "incremental_delta": -0.009714152749352278,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 791), None)",
+      "affected": 5,
+      "full_delta": 0.05127615366632199,
+      "incremental_delta": 0.05127615366638505,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 1088), None)",
+      "affected": 4,
+      "full_delta": -5.626543497783132e-08,
+      "incremental_delta": -5.6265338388428177e-08,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 46), None)",
+      "affected": 9,
+      "full_delta": 0.5066117571578843,
+      "incremental_delta": 0.5066117571579831,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 539), None)",
+      "affected": 6,
+      "full_delta": 19.855626085256063,
+      "incremental_delta": 19.85562608525611,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 130), None)",
+      "affected": 8,
+      "full_delta": 0.7634014559300795,
+      "incremental_delta": 0.7634014559300899,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 265), None)",
+      "affected": 7,
+      "full_delta": 0.3496463760294546,
+      "incremental_delta": 0.3496463760295625,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 121), None)",
+      "affected": 8,
+      "full_delta": 0.08588219578916778,
+      "incremental_delta": 0.08588219578916911,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 320), None)",
+      "affected": 7,
+      "full_delta": 0.28011623198517555,
+      "incremental_delta": 0.2801162319852395,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 236), None)",
+      "affected": 7,
+      "full_delta": 0.004160864570167178,
+      "incremental_delta": 0.004160864570243783,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 472), None)",
+      "affected": 6,
+      "full_delta": 1.3747697862525001,
+      "incremental_delta": 1.3747697862525432,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 798), None)",
+      "affected": 5,
+      "full_delta": -0.01610718538756828,
+      "incremental_delta": -0.016107185387563838,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('toggle', ('fd', 419), None)",
+      "affected": 1,
+      "full_delta": -0.00012051593500927993,
+      "incremental_delta": -0.00012051593495066015,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 46), None)",
+      "affected": 9,
+      "full_delta": 0.5066117571578843,
+      "incremental_delta": 0.5066117571579831,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('toggle', ('fd', 457), None)",
+      "affected": 1,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 742), None)",
+      "affected": 5,
+      "full_delta": 0.10211940879844406,
+      "incremental_delta": 0.1021194087984656,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 539), None)",
+      "affected": 6,
+      "full_delta": 19.855626085256063,
+      "incremental_delta": 19.85562608525611,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('toggle', ('fd', 690), None)",
+      "affected": 1,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 1667), None)",
+      "affected": 3,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('toggle', ('mcv', 2088), None)",
+      "affected": 2,
+      "full_delta": 0.7840340522762972,
+      "incremental_delta": 0.784034052276301,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('toggle', ('mcv', 2107), None)",
+      "affected": 2,
+      "full_delta": 6.1511771639084145,
+      "incremental_delta": 6.151177163908442,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('toggle', ('mcv', 1558), None)",
+      "affected": 3,
+      "full_delta": 1.033161374180736,
+      "incremental_delta": 1.0331613741808463,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('toggle', ('fd', 683), None)",
+      "affected": 1,
+      "full_delta": 0.019455668980867813,
+      "incremental_delta": 0.019455668980927765,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('toggle', ('mcv', 1918), None)",
+      "affected": 2,
+      "full_delta": 0.09278185354298785,
+      "incremental_delta": 0.09278185354305779,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('toggle', ('fd', 679), None)",
+      "affected": 1,
+      "full_delta": 0.0052205611533509,
+      "incremental_delta": 0.005220561153399972,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('toggle', ('fd', 443), None)",
+      "affected": 2,
+      "full_delta": 0.015260517120168515,
+      "incremental_delta": 0.015260517120169848,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('toggle', ('mcv', 1676), None)",
+      "affected": 3,
+      "full_delta": 0.5990623771156152,
+      "incremental_delta": 0.59906237711563,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 1025), None)",
+      "affected": 4,
+      "full_delta": 0.27336286504271357,
+      "incremental_delta": 0.2733628650427222,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 628), None)",
+      "affected": 5,
+      "full_delta": 2.070865330480956,
+      "incremental_delta": 2.0708653304809843,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 1045), None)",
+      "affected": 4,
+      "full_delta": 0.5389527870985376,
+      "incremental_delta": 0.5389527870985455,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 941), None)",
+      "affected": 5,
+      "full_delta": 1.3276283074802677,
+      "incremental_delta": 1.327628307480361,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 1203), None)",
+      "affected": 4,
+      "full_delta": 0.3572683306858835,
+      "incremental_delta": 0.3572683306859934,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 1412), None)",
+      "affected": 4,
+      "full_delta": 4.3760222752239315,
+      "incremental_delta": 4.3760222752239475,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 1351), None)",
+      "affected": 4,
+      "full_delta": 0.38086094437664997,
+      "incremental_delta": 0.38086094437675966,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('toggle', ('mcv', 799), None)",
+      "affected": 5,
+      "full_delta": 0.401356220608136,
+      "incremental_delta": 0.4013562206081407,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 16), None)",
+      "affected": 10,
+      "full_delta": 0.9929797720611759,
+      "incremental_delta": 0.9929797720612379,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 7), None)",
+      "affected": 11,
+      "full_delta": 0.17854839223741692,
+      "incremental_delta": 0.1785483922374198,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 410), None)",
+      "affected": 6,
+      "full_delta": 0.6388196219285192,
+      "incremental_delta": 0.6388196219286149,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 544), None)",
+      "affected": 6,
+      "full_delta": 3.181135019010867,
+      "incremental_delta": 3.181135019010909,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 422), None)",
+      "affected": 6,
+      "full_delta": 5.592160112498391,
+      "incremental_delta": 5.592160112498478,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 126), None)",
+      "affected": 8,
+      "full_delta": 4.585677573921998,
+      "incremental_delta": 4.585677573922088,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 291), None)",
+      "affected": 7,
+      "full_delta": 1.2095937903804952,
+      "incremental_delta": 1.2095937903805636,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('toggle', ('mcv', 295), None)",
+      "affected": 7,
+      "full_delta": 0.8694443123449673,
+      "incremental_delta": 0.8694443123449971,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 1025), None)",
+      "affected": 4,
+      "full_delta": 0.27336286504271357,
+      "incremental_delta": 0.2733628650427222,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 2088), None)",
+      "affected": 2,
+      "full_delta": 0.7840340522762972,
+      "incremental_delta": 0.784034052276301,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 628), None)",
+      "affected": 5,
+      "full_delta": 2.070865330480956,
+      "incremental_delta": 2.0708653304809843,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 16), None)",
+      "affected": 10,
+      "full_delta": 0.9929797720611759,
+      "incremental_delta": 0.9929797720612379,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 7), None)",
+      "affected": 11,
+      "full_delta": 0.17854839223741692,
+      "incremental_delta": 0.1785483922374198,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 2107), None)",
+      "affected": 2,
+      "full_delta": 6.1511771639084145,
+      "incremental_delta": 6.151177163908442,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 1558), None)",
+      "affected": 3,
+      "full_delta": 1.033161374180736,
+      "incremental_delta": 1.0331613741808463,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('toggle', ('mcv', 410), None)",
+      "affected": 6,
+      "full_delta": 0.6388196219285192,
+      "incremental_delta": 0.6388196219286149,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 1875), ('mcv', 1398))",
+      "affected": 6,
+      "full_delta": 0.6987823952762255,
+      "incremental_delta": 0.6987823952763328,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('fd', 14), ('mcv', 1944))",
+      "affected": 4,
+      "full_delta": 0.020139910292641616,
+      "incremental_delta": 0.020139910292652496,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('fd', 488), ('mcv', 2070))",
+      "affected": 5,
+      "full_delta": 0.2981460049219322,
+      "incremental_delta": 0.298146004921932,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('fd', 97), ('mcv', 1349))",
+      "affected": 6,
+      "full_delta": 0.03603308616118284,
+      "incremental_delta": 0.03603308616120571,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('fd', 621), ('mcv', 2070))",
+      "affected": 5,
+      "full_delta": 0.1440103099891985,
+      "incremental_delta": 0.14401030998925335,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 751), ('mcv', 1932))",
+      "affected": 7,
+      "full_delta": 0.19385422751895476,
+      "incremental_delta": 0.1938542275190196,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 734), ('fd', 427))",
+      "affected": 6,
+      "full_delta": 0.001540289450531418,
+      "incremental_delta": 0.0015402894505351927,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 1558), ('fd', 632))",
+      "affected": 4,
+      "full_delta": 1.033161374180736,
+      "incremental_delta": 1.0331613741808463,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 1649), ('mcv', 535))",
+      "affected": 9,
+      "full_delta": 22.50843239606081,
+      "incremental_delta": 22.508432396060865,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 1561), ('mcv', 594))",
+      "affected": 9,
+      "full_delta": 0.8247428951410711,
+      "incremental_delta": 0.8247428951410789,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 1216), ('fd', 460))",
+      "affected": 8,
+      "full_delta": 0.8724028045666046,
+      "incremental_delta": 0.8724028045666448,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 703), ('mcv', 1105))",
+      "affected": 9,
+      "full_delta": 2.1131447355645605,
+      "incremental_delta": 2.113144735564606,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 1263), ('mcv', 762))",
+      "affected": 9,
+      "full_delta": 0.521301647216319,
+      "incremental_delta": 0.5213016472164056,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 976), ('mcv', 1164))",
+      "affected": 9,
+      "full_delta": 0.7976278695932706,
+      "incremental_delta": 0.7976278695932779,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 538), ('mcv', 1687))",
+      "affected": 9,
+      "full_delta": 0.38970090859481843,
+      "incremental_delta": 0.3897009085949259,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 2201), ('mcv', 199))",
+      "affected": 8,
+      "full_delta": 5.406912765079483,
+      "incremental_delta": 5.406912765079587,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 357), ('mcv', 536))",
+      "affected": 12,
+      "full_delta": 5.863489578213716,
+      "incremental_delta": 5.863489578213763,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 1075), ('mcv', 184))",
+      "affected": 12,
+      "full_delta": 2038.021290202346,
+      "incremental_delta": 2038.0212902023463,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 16), ('fd', 605))",
+      "affected": 12,
+      "full_delta": 0.9930950146634814,
+      "incremental_delta": 0.9930950146635646,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 173), ('fd', 184))",
+      "affected": 12,
+      "full_delta": 3.4900994674039794,
+      "incremental_delta": 3.490099467404053,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 1000), ('mcv', 9))",
+      "affected": 16,
+      "full_delta": 0.25681650209526197,
+      "incremental_delta": 0.2568165020953239,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 469), ('fd', 382))",
+      "affected": 11,
+      "full_delta": 0.19500316575829402,
+      "incremental_delta": 0.19500316575831111,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 1351), ('mcv', 122))",
+      "affected": 12,
+      "full_delta": 0.3541054385763118,
+      "incremental_delta": 0.35410543857632404,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 990), ('mcv', 730))",
+      "affected": 10,
+      "full_delta": 2090.3837525744657,
+      "incremental_delta": 2090.3837525744657,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('mcv', 357), ('mcv', 536))",
+      "affected": 12,
+      "full_delta": 5.863489578213716,
+      "incremental_delta": 5.863489578213763,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('mcv', 1875), ('mcv', 1398))",
+      "affected": 6,
+      "full_delta": 0.6987823952762255,
+      "incremental_delta": 0.6987823952763328,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('fd', 14), ('mcv', 1944))",
+      "affected": 4,
+      "full_delta": 0.020139910292641616,
+      "incremental_delta": 0.020139910292652496,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('mcv', 1075), ('mcv', 184))",
+      "affected": 12,
+      "full_delta": 2038.021290202346,
+      "incremental_delta": 2038.0212902023463,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('mcv', 1649), ('mcv', 535))",
+      "affected": 9,
+      "full_delta": 22.50843239606081,
+      "incremental_delta": 22.508432396060865,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('fd', 488), ('mcv', 2070))",
+      "affected": 5,
+      "full_delta": 0.2981460049219322,
+      "incremental_delta": 0.298146004921932,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('mcv', 1561), ('mcv', 594))",
+      "affected": 9,
+      "full_delta": 0.8247428951410711,
+      "incremental_delta": 0.8247428951410789,
+      "pass": true
+    },
+    {
+      "workload": "census",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('fd', 97), ('mcv', 1349))",
+      "affected": 6,
+      "full_delta": 0.03603308616118284,
+      "incremental_delta": 0.03603308616120571,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('add', None, ('mcv', 13))",
+      "affected": 462,
+      "full_delta": 0.06910991256881971,
+      "incremental_delta": 0.06910991256834742,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('add', None, ('fd', 31))",
+      "affected": 497,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('add', None, ('mcv', 3))",
+      "affected": 467,
+      "full_delta": -273.33690118271625,
+      "incremental_delta": -273.3369011827181,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('add', None, ('mcv', 35))",
+      "affected": 472,
+      "full_delta": -0.0350268726106151,
+      "incremental_delta": -0.035026872610389725,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('add', None, ('fd', 3))",
+      "affected": 467,
+      "full_delta": -0.008153146714903414,
+      "incremental_delta": -0.008153146714757087,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('add', None, ('fd', 17))",
+      "affected": 498,
+      "full_delta": -0.00024259355996036902,
+      "incremental_delta": -0.00024259356100597707,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('add', None, ('fd', 1))",
+      "affected": 485,
+      "full_delta": 0.006264695468416903,
+      "incremental_delta": 0.0062646954705991575,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "lower",
+      "move": "('add', None, ('mcv', 29))",
+      "affected": 493,
+      "full_delta": 21.852132801497646,
+      "incremental_delta": 21.85213280150117,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('add', None, ('mcv', 7))",
+      "affected": 499,
+      "full_delta": 0.0013924407248850912,
+      "incremental_delta": 0.0013924407247807302,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('add', None, ('mcv', 31))",
+      "affected": 507,
+      "full_delta": -0.8754638994141715,
+      "incremental_delta": -0.8754638994144899,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('add', None, ('mcv', 5))",
+      "affected": 499,
+      "full_delta": -0.03676890859787818,
+      "incremental_delta": -0.03676890859832738,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('add', None, ('mcv', 33))",
+      "affected": 505,
+      "full_delta": 0.12759544292202918,
+      "incremental_delta": 0.12759544292268132,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('add', None, ('mcv', 21))",
+      "affected": 505,
+      "full_delta": -602.6355831734036,
+      "incremental_delta": -602.6355831734055,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('add', None, ('fd', 9))",
+      "affected": 499,
+      "full_delta": 0.006379294929502066,
+      "incremental_delta": 0.006379294933444912,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('add', None, ('fd', 29))",
+      "affected": 507,
+      "full_delta": 0.023932330368552357,
+      "incremental_delta": 0.023932330371947197,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "middle",
+      "move": "('add', None, ('fd', 5))",
+      "affected": 499,
+      "full_delta": 3.1023024348542094e-05,
+      "incremental_delta": 3.102302616175834e-05,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('add', None, ('fd', 23))",
+      "affected": 529,
+      "full_delta": 0.30370224817306735,
+      "incremental_delta": 0.3037022481716465,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('add', None, ('mcv', 27))",
+      "affected": 512,
+      "full_delta": 0.54935738772474,
+      "incremental_delta": 0.5493573877273881,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('add', None, ('fd', 15))",
+      "affected": 508,
+      "full_delta": 0.002642875704623293,
+      "incremental_delta": 0.002642875704955472,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('add', None, ('fd', 21))",
+      "affected": 524,
+      "full_delta": -1.4353063306771219e-06,
+      "incremental_delta": -1.4353069159867005e-06,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('add', None, ('mcv', 15))",
+      "affected": 516,
+      "full_delta": -24.52819749977789,
+      "incremental_delta": -24.52819749977505,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('add', None, ('fd', 13))",
+      "affected": 516,
+      "full_delta": 0.0005774997334810905,
+      "incremental_delta": 0.0005774997333423126,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('add', None, ('mcv', 23))",
+      "affected": 524,
+      "full_delta": -2.5376513346418506,
+      "incremental_delta": -2.5376513346386176,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "upper",
+      "move": "('add', None, ('mcv', 17))",
+      "affected": 508,
+      "full_delta": 0.15314253161341185,
+      "incremental_delta": 0.15314253161707003,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('add', None, ('mcv', 13))",
+      "affected": 462,
+      "full_delta": 0.06910991256881971,
+      "incremental_delta": 0.06910991256834742,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('add', None, ('mcv', 7))",
+      "affected": 499,
+      "full_delta": 0.0013924407248850912,
+      "incremental_delta": 0.0013924407247807302,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('add', None, ('fd', 31))",
+      "affected": 497,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('add', None, ('fd', 23))",
+      "affected": 529,
+      "full_delta": 0.30370224817306735,
+      "incremental_delta": 0.3037022481716465,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('add', None, ('mcv', 31))",
+      "affected": 507,
+      "full_delta": -0.8754638994141715,
+      "incremental_delta": -0.8754638994144899,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('add', None, ('mcv', 27))",
+      "affected": 512,
+      "full_delta": 0.54935738772474,
+      "incremental_delta": 0.5493573877273881,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('add', None, ('mcv', 5))",
+      "affected": 499,
+      "full_delta": -0.03676890859787818,
+      "incremental_delta": -0.03676890859832738,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "ADD",
+      "group": "pooled",
+      "move": "('add', None, ('mcv', 33))",
+      "affected": 505,
+      "full_delta": 0.12759544292202918,
+      "incremental_delta": 0.12759544292268132,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('drop', ('fd', 26), None)",
+      "affected": 486,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('drop', ('fd', 14), None)",
+      "affected": 476,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('drop', ('mcv', 12), None)",
+      "affected": 486,
+      "full_delta": -0.001758957798301708,
+      "incremental_delta": -0.001758957801502925,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('drop', ('mcv', 26), None)",
+      "affected": 476,
+      "full_delta": -185.77180691187823,
+      "incremental_delta": -185.77180691188065,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('drop', ('fd', 10), None)",
+      "affected": 486,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('drop', ('mcv', 6), None)",
+      "affected": 461,
+      "full_delta": -0.18061523910000687,
+      "incremental_delta": -0.18061523909866972,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('drop', ('fd', 8), None)",
+      "affected": 481,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "lower",
+      "move": "('drop', ('mcv', 16), None)",
+      "affected": 476,
+      "full_delta": -265.56690976528625,
+      "incremental_delta": -265.5669097652821,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('drop', ('fd', 2), None)",
+      "affected": 491,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('drop', ('mcv', 0), None)",
+      "affected": 497,
+      "full_delta": -2954.870205493171,
+      "incremental_delta": -2954.8702054931605,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('drop', ('fd', 28), None)",
+      "affected": 490,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('drop', ('mcv', 8), None)",
+      "affected": 491,
+      "full_delta": 4.04153275918361,
+      "incremental_delta": 4.041532759183456,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('drop', ('mcv', 34), None)",
+      "affected": 497,
+      "full_delta": 0.0003552916459739208,
+      "incremental_delta": 0.00035529164778047573,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('drop', ('mcv', 14), None)",
+      "affected": 497,
+      "full_delta": -0.02868248512095306,
+      "incremental_delta": -0.028682485121412693,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('drop', ('fd', 12), None)",
+      "affected": 497,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "middle",
+      "move": "('drop', ('fd', 0), None)",
+      "affected": 497,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('drop', ('mcv', 20), None)",
+      "affected": 498,
+      "full_delta": 0.005504091794136912,
+      "incremental_delta": 0.005504091796960431,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('drop', ('mcv', 24), None)",
+      "affected": 520,
+      "full_delta": -2.1706066228289274,
+      "incremental_delta": -2.170606622827999,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('drop', ('mcv', 18), None)",
+      "affected": 502,
+      "full_delta": 0.032981517651933245,
+      "incremental_delta": 0.03298151765398183,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('drop', ('fd', 30), None)",
+      "affected": 505,
+      "full_delta": 5.739514745073393e-05,
+      "incremental_delta": 5.7395150445893606e-05,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('drop', ('fd', 16), None)",
+      "affected": 502,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('drop', ('mcv', 32), None)",
+      "affected": 502,
+      "full_delta": -6.780906551284716e-05,
+      "incremental_delta": -6.780906763426131e-05,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('drop', ('fd', 4), None)",
+      "affected": 518,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "upper",
+      "move": "('drop', ('mcv', 22), None)",
+      "affected": 546,
+      "full_delta": 0.2386178361994098,
+      "incremental_delta": 0.23861783619834664,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('drop', ('mcv', 20), None)",
+      "affected": 498,
+      "full_delta": 0.005504091794136912,
+      "incremental_delta": 0.005504091796960431,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('drop', ('mcv', 24), None)",
+      "affected": 520,
+      "full_delta": -2.1706066228289274,
+      "incremental_delta": -2.170606622827999,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('drop', ('fd', 26), None)",
+      "affected": 486,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('drop', ('fd', 14), None)",
+      "affected": 476,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('drop', ('fd', 2), None)",
+      "affected": 491,
+      "full_delta": 0.0,
+      "incremental_delta": 0.0,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('drop', ('mcv', 0), None)",
+      "affected": 497,
+      "full_delta": -2954.870205493171,
+      "incremental_delta": -2954.8702054931605,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('drop', ('mcv', 18), None)",
+      "affected": 502,
+      "full_delta": 0.032981517651933245,
+      "incremental_delta": 0.03298151765398183,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "DROP",
+      "group": "pooled",
+      "move": "('drop', ('mcv', 12), None)",
+      "affected": 486,
+      "full_delta": -0.001758957798301708,
+      "incremental_delta": -0.001758957801502925,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 2), ('fd', 3))",
+      "affected": 715,
+      "full_delta": 38198.37775509772,
+      "incremental_delta": 38198.37775509771,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 10), ('fd', 11))",
+      "affected": 714,
+      "full_delta": -6.092143010573636,
+      "incremental_delta": -6.0921430105738406,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 10), ('fd', 3))",
+      "affected": 712,
+      "full_delta": -6.0835604868334485,
+      "incremental_delta": -6.083560486836344,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 16), ('fd', 15))",
+      "affected": 746,
+      "full_delta": -265.56426688957436,
+      "incremental_delta": -265.56426688957725,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 6), ('mcv', 1))",
+      "affected": 714,
+      "full_delta": 42445.66812520056,
+      "incremental_delta": 42445.66812520055,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 12), ('mcv', 11))",
+      "affected": 739,
+      "full_delta": -0.023953788819198962,
+      "incremental_delta": -0.023953788816284405,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('mcv', 18), ('mcv', 1))",
+      "affected": 738,
+      "full_delta": 42445.792229533596,
+      "incremental_delta": 42445.7922295336,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "lower",
+      "move": "('swap', ('fd', 28), ('fd', 5))",
+      "affected": 722,
+      "full_delta": 3.1023024348542094e-05,
+      "incremental_delta": 3.102302616175834e-05,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('fd', 2), ('mcv', 15))",
+      "affected": 759,
+      "full_delta": -24.52819749977789,
+      "incremental_delta": -24.52819749977505,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 6), ('mcv', 15))",
+      "affected": 852,
+      "full_delta": -24.70881273887062,
+      "incremental_delta": -24.708812738873718,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 16), ('fd', 29))",
+      "affected": 860,
+      "full_delta": -265.56641757756734,
+      "incremental_delta": -265.5664175775663,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('mcv', 26), ('fd', 1))",
+      "affected": 833,
+      "full_delta": -185.7655422164098,
+      "incremental_delta": -185.7655422164101,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('fd', 32), ('mcv', 11))",
+      "affected": 860,
+      "full_delta": -0.6613179667547229,
+      "incremental_delta": -0.6613179667580089,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('fd', 2), ('fd', 11))",
+      "affected": 842,
+      "full_delta": -0.014981929460191168,
+      "incremental_delta": -0.014981929461140409,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('fd', 2), ('mcv', 25))",
+      "affected": 755,
+      "full_delta": -3.674408199811296,
+      "incremental_delta": -3.674408199814258,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "middle",
+      "move": "('swap', ('fd', 24), ('mcv', 19))",
+      "affected": 851,
+      "full_delta": 0.09529376451246208,
+      "incremental_delta": 0.09529376451435034,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 28), ('mcv', 11))",
+      "affected": 874,
+      "full_delta": 0.6810318751595332,
+      "incremental_delta": 0.6810318751594437,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 20), ('mcv', 21))",
+      "affected": 867,
+      "full_delta": -602.6300790816094,
+      "incremental_delta": -602.6300790816081,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('fd', 12), ('fd', 17))",
+      "affected": 883,
+      "full_delta": -0.00024259355996036902,
+      "incremental_delta": -0.00024259356100597707,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 24), ('fd', 1))",
+      "affected": 880,
+      "full_delta": -2.1643419273605105,
+      "incremental_delta": -2.164341927357399,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 0), ('mcv', 31))",
+      "affected": 887,
+      "full_delta": -2955.153406671321,
+      "incremental_delta": -2955.153406671322,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 22), ('mcv', 5))",
+      "affected": 893,
+      "full_delta": 0.2018489276015316,
+      "incremental_delta": 0.20184892760001927,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 4), ('fd', 19))",
+      "affected": 886,
+      "full_delta": 435.56629173526017,
+      "incremental_delta": 435.56629173526267,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "upper",
+      "move": "('swap', ('mcv', 14), ('mcv', 15))",
+      "affected": 888,
+      "full_delta": -24.556879984898842,
+      "incremental_delta": -24.556879984896458,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('fd', 2), ('mcv', 15))",
+      "affected": 759,
+      "full_delta": -24.52819749977789,
+      "incremental_delta": -24.52819749977505,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('mcv', 6), ('mcv', 15))",
+      "affected": 852,
+      "full_delta": -24.70881273887062,
+      "incremental_delta": -24.708812738873718,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('mcv', 16), ('fd', 29))",
+      "affected": 860,
+      "full_delta": -265.56641757756734,
+      "incremental_delta": -265.5664175775663,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('mcv', 2), ('fd', 3))",
+      "affected": 715,
+      "full_delta": 38198.37775509772,
+      "incremental_delta": 38198.37775509771,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('mcv', 26), ('fd', 1))",
+      "affected": 833,
+      "full_delta": -185.7655422164098,
+      "incremental_delta": -185.7655422164101,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('mcv', 28), ('mcv', 11))",
+      "affected": 874,
+      "full_delta": 0.6810318751595332,
+      "incremental_delta": 0.6810318751594437,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('fd', 32), ('mcv', 11))",
+      "affected": 860,
+      "full_delta": -0.6613179667547229,
+      "incremental_delta": -0.6613179667580089,
+      "pass": true
+    },
+    {
+      "workload": "dmv",
+      "family": "SWAP",
+      "group": "pooled",
+      "move": "('swap', ('fd', 2), ('fd', 11))",
+      "affected": 842,
+      "full_delta": -0.014981929460191168,
+      "incremental_delta": -0.014981929461140409,
+      "pass": true
+    }
+  ],
+  "trajectory": {
+    "equivalent": true,
+    "accepted_moves": 19
+  }
+}

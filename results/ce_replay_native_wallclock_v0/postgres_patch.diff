@@ -1,0 +1,191 @@
+--- postgresql-16.14-pristine/src/include/optimizer/cost.h
++++ ce-replay-wallclock/src/include/optimizer/cost.h
+@@ -70,6 +70,7 @@
+ extern PGDLLIMPORT bool enable_partition_pruning;
+ extern PGDLLIMPORT bool enable_presorted_aggregate;
+ extern PGDLLIMPORT bool enable_async_append;
++extern PGDLLIMPORT bool ce_replay_measure_timing;
+ extern PGDLLIMPORT int constraint_exclusion;
+ 
+ extern double index_pages_fetched(double tuples_fetched, BlockNumber pages,
+--- postgresql-16.14-pristine/src/backend/utils/misc/guc_tables.c
++++ ce-replay-wallclock/src/backend/utils/misc/guc_tables.c
+@@ -911,6 +911,15 @@
+ 		NULL, NULL, NULL
+ 	},
+ 	{
++		{"ce_replay_measure_timing", PGC_USERSET, DEVELOPER_OPTIONS,
++			gettext_noop("Measures base-restriction clause selectivity for CE-Replay experiments."),
++			NULL
++		},
++		&ce_replay_measure_timing,
++		false,
++		NULL, NULL, NULL
++	},
++	{
+ 		{"enable_nestloop", PGC_USERSET, QUERY_TUNING_METHOD,
+ 			gettext_noop("Enables the planner's use of nested-loop join plans."),
+ 			NULL,
+--- postgresql-16.14-pristine/src/backend/optimizer/path/costsize.c
++++ ce-replay-wallclock/src/backend/optimizer/path/costsize.c
+@@ -94,6 +94,7 @@
+ #include "optimizer/planmain.h"
+ #include "optimizer/restrictinfo.h"
+ #include "parser/parsetree.h"
++#include "portability/instr_time.h"
+ #include "utils/lsyscache.h"
+ #include "utils/selfuncs.h"
+ #include "utils/spccache.h"
+@@ -127,6 +128,9 @@
+ double		recursive_worktable_factor = DEFAULT_RECURSIVE_WORKTABLE_FACTOR;
+ 
+ int			effective_cache_size = DEFAULT_EFFECTIVE_CACHE_SIZE;
++bool		ce_replay_measure_timing = false;
++static uint64 ce_replay_ce_elapsed_ns = 0;
++static uint64 ce_replay_ce_invocations = 0;
+ 
+ Cost		disable_cost = 1.0e10;
+ 
+@@ -5014,16 +5018,45 @@
+ set_baserel_size_estimates(PlannerInfo *root, RelOptInfo *rel)
+ {
+ 	double		nrows;
++	Selectivity selectivity;
++	instr_time	start_time;
++	instr_time	elapsed_time;
++	uint64		elapsed_ns = 0;
+ 
+ 	/* Should only be applied to base relations */
+ 	Assert(rel->relid > 0);
+ 
+-	nrows = rel->tuples *
+-		clauselist_selectivity(root,
+-							   rel->baserestrictinfo,
+-							   0,
+-							   JOIN_INNER,
+-							   NULL);
++	if (ce_replay_measure_timing)
++		INSTR_TIME_SET_CURRENT(start_time);
++
++	selectivity = clauselist_selectivity(root,
++								   rel->baserestrictinfo,
++								   0,
++								   JOIN_INNER,
++								   NULL);
++
++	if (ce_replay_measure_timing)
++	{
++		INSTR_TIME_SET_CURRENT(elapsed_time);
++		INSTR_TIME_SUBTRACT(elapsed_time, start_time);
++		elapsed_ns = INSTR_TIME_GET_NANOSEC(elapsed_time);
++		ce_replay_ce_elapsed_ns += elapsed_ns;
++		ce_replay_ce_invocations++;
++	}
++
++	nrows = rel->tuples * selectivity;
++
++	/* CE-Replay-v1-B experiment: observe the value before clamp_row_est(). */
++	if (!ce_replay_measure_timing)
++		ereport(NOTICE,
++			(errmsg("CE_REPLAY_RAW_ROWS relid=%u tuples=%.17g rows=%.17g selectivity=%.17g",
++					rel->relid, rel->tuples, nrows,
++					rel->tuples > 0 ? nrows / rel->tuples : 0.0)));
++	else
++		ereport(NOTICE,
++			(errmsg("CE_REPLAY_TIMING relid=%u elapsed_ns=" UINT64_FORMAT " cumulative_ns=" UINT64_FORMAT " invocation_count=" UINT64_FORMAT " rows=%.17g selectivity=%.17g",
++					rel->relid, elapsed_ns, ce_replay_ce_elapsed_ns,
++					ce_replay_ce_invocations, nrows, selectivity)));
+ 
+ 	rel->rows = clamp_row_est(nrows);
+ 
+--- postgresql-16.14-pristine/src/backend/statistics/extended_stats.c
++++ ce-replay-wallclock/src/backend/statistics/extended_stats.c
+@@ -31,6 +31,7 @@
+ #include "nodes/nodeFuncs.h"
+ #include "optimizer/clauses.h"
+ #include "optimizer/optimizer.h"
++#include "optimizer/cost.h"
+ #include "parser/parsetree.h"
+ #include "pgstat.h"
+ #include "postmaster/autovacuum.h"
+@@ -2000,7 +2001,14 @@
+ 			stat_sel = mcv_combine_selectivities(simple_sel,
+ 												 mcv_sel,
+ 												 mcv_basesel,
+-												 mcv_totalsel);
++								 mcv_totalsel);
++
++			/* CE-Replay-v1-B experiment: native MCV node reference values. */
++			if (!ce_replay_measure_timing)
++				ereport(NOTICE,
++					(errmsg("CE_REPLAY_MCV oid=%u simple=%.17g mcv=%.17g base=%.17g total=%.17g stat=%.17g",
++							stat->statOid, simple_sel, mcv_sel, mcv_basesel,
++							mcv_totalsel, stat_sel)));
+ 
+ 			/* Factor this into the overall result */
+ 			sel *= stat_sel;
+--- postgresql-16.14-pristine/src/backend/statistics/dependencies.c
++++ ce-replay-wallclock/src/backend/statistics/dependencies.c
+@@ -24,6 +24,7 @@
+ #include "nodes/pathnodes.h"
+ #include "optimizer/clauses.h"
+ #include "optimizer/optimizer.h"
++#include "optimizer/cost.h"
+ #include "parser/parsetree.h"
+ #include "statistics/extended_stats_internal.h"
+ #include "statistics/statistics.h"
+@@ -1139,6 +1140,13 @@
+ 			attr_sel[attidx] = f + (1 - f) * s2;
+ 		else
+ 			attr_sel[attidx] = f * s2 / s1 + (1 - f) * s2;
++
++		/* FD-Semantics-v0: expose the native conditional update. */
++		if (!ce_replay_measure_timing)
++			ereport(NOTICE,
++				(errmsg("CE_REPLAY_FD_APPLY nattrs=%d implied=%d degree=%.17g determinant_sel=%.17g implied_sel=%.17g conditional_sel=%.17g",
++						dependency->nattributes, attnum, f, s1, s2,
++						attr_sel[attidx])));
+ 	}
+ 
+ 	/*
+@@ -1152,6 +1160,12 @@
+ 
+ 	CLAMP_PROBABILITY(s1);
+ 
++	/* FD-Semantics-v0: native selectivity before the caller's multiplication. */
++	if (!ce_replay_measure_timing)
++		ereport(NOTICE,
++			(errmsg("CE_REPLAY_FD_RESULT ndeps=%d nattrs=%d selectivity=%.17g",
++					ndependencies, nattrs, s1)));
++
+ 	pfree(attr_sel);
+ 	bms_free(attnums);
+ 
+@@ -1630,6 +1644,12 @@
+ 
+ 		deps = statext_dependencies_load(stat->statOid, rte->inh);
+ 
++		/* FD-Semantics-v0: identify every contributing statistics payload. */
++		if (!ce_replay_measure_timing)
++			ereport(NOTICE,
++				(errmsg("CE_REPLAY_FD_LOAD oid=%u matched=%d payload_ndeps=%d",
++						stat->statOid, nmatched + nexprs, deps->ndeps)));
++
+ 		/*
+ 		 * The expressions may be represented by different attnums in the
+ 		 * stats, we need to remap them to be consistent with the clauses.
+@@ -1803,6 +1823,14 @@
+ 
+ 		dependencies[ndependencies++] = dependency;
+ 
++		/* FD-Semantics-v0: expose greedy choice and tie resolution. */
++		if (!ce_replay_measure_timing)
++			ereport(NOTICE,
++				(errmsg("CE_REPLAY_FD_CHOOSE step=%d nattrs=%d implied=%d degree=%.17g",
++						ndependencies - 1, dependency->nattributes,
++						dependency->attributes[dependency->nattributes - 1],
++						dependency->degree)));
++
+ 		/* Ignore dependencies using this implied attribute in later loops */
+ 		attnum = dependency->attributes[dependency->nattributes - 1];
+ 		clauses_attnums = bms_del_member(clauses_attnums, attnum);

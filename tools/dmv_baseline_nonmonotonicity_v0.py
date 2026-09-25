@@ -33,9 +33,14 @@ def relerr(a, b):
 
 
 def qerror(estimate, truth):
-    # Exact zero handling from ce_replay_optimize_v1.qerror.
+    # Multiplicative q-error is defined only on the positive-truth domain.
+    # Zero-truth queries remain in replay/native semantic validation but have
+    # exactly zero objective weight.
+    if truth == 0:
+        return 0.0
+    if truth < 0:
+        raise ValueError(f"negative truth cardinality: {truth}")
     estimate = max(estimate, 1e-300)
-    truth = max(truth, 1e-300)
     return max(estimate / truth, truth / estimate)
 
 
@@ -282,7 +287,7 @@ def main():
     try:
         cur.execute("SELECT to_regclass('dmv')")
         if cur.fetchone()[0] is None:
-            cur.execute("CREATE UNLOGGED TABLE dmv(record_type text,registration_class text,state text,county text,body_type text,fuel_type text,reg_valid_date text,color text,scofflaw_indicator text,suspension_indicator text,revocation_indicator text)")
+            cur.execute("CREATE UNLOGGED TABLE dmv(record_type text,registration_class text,state text,county text,body_type text,fuel_type text,reg_valid_date text,color text,scofflaw_indicator text,suspension_indicator text,revocation_indicator text) WITH (autovacuum_enabled=false)")
         cur.execute("SELECT count(*) FROM dmv")
         if int(cur.fetchone()[0]) == 0:
             with cur.copy("COPY dmv FROM STDIN WITH (FORMAT csv, HEADER true)") as copy:
@@ -460,9 +465,12 @@ def main():
                                    "unusable_mcv":[mcv[i]["id"] for i in set(range(36))-usable_mcv],
                                    "unusable_fd":[fd[i]["id"] for i in set(range(36))-usable_fd],
                                    "offline_not_recurring_cost":True},
-            "objective":{"definition":"sum of Census-compatible q-errors after independently flooring estimate and truth at 1e-300",
+            "objective":{"definition":"sum of multiplicative q-errors over truth > 0; estimate floored at 1e-300; zero-truth queries retained for semantic validation with zero objective weight",
                          "empty_loss":empty_loss,"all_mcv_loss":all_mcv_loss,
                          "all_fd_loss":all_fd_loss,"all_mixed_loss":all_loss},
+            "replay_inputs":{"queries":[{**q,"zero_truth":q["truth"]==0,
+                                           "objective_member":q["truth"]>0} for q in queries],
+                             "simple_selectivity_cache":clause_cache},
             "empty_design":{"loss":empty_loss,"queries":[
                 {"query":q["id"],"where":q["where"],"truth":q["truth"],
                  "replay_estimate":q["baseline_rows"],"native_estimate":q["baseline_rows"],

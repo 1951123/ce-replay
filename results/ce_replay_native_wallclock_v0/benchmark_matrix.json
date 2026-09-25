@@ -1,0 +1,65 @@
+[
+  {
+    "case": "Census realized full workload",
+    "T_PG-plan": "COMPLETE",
+    "T_PG-CE": "COMPLETE",
+    "T_Replay-full": "COMPLETE",
+    "T_Replay-inc": "NOT APPLICABLE"
+  },
+  {
+    "case": "DMV realized full workload",
+    "T_PG-plan": "COMPLETE",
+    "T_PG-CE": "COMPLETE",
+    "T_Replay-full": "COMPLETE",
+    "T_Replay-inc": "NOT APPLICABLE"
+  },
+  {
+    "case": "Census ADD",
+    "T_PG-plan": "INVALID",
+    "T_PG-CE": "INVALID",
+    "T_Replay-full": "COMPLETE",
+    "T_Replay-inc": "COMPLETE"
+  },
+  {
+    "case": "Census DROP",
+    "T_PG-plan": "INVALID",
+    "T_PG-CE": "INVALID",
+    "T_Replay-full": "COMPLETE",
+    "T_Replay-inc": "COMPLETE"
+  },
+  {
+    "case": "Census SWAP",
+    "T_PG-plan": "INVALID",
+    "T_PG-CE": "INVALID",
+    "T_Replay-full": "COMPLETE",
+    "T_Replay-inc": "COMPLETE"
+  },
+  {
+    "case": "DMV ADD",
+    "T_PG-plan": "INVALID",
+    "T_PG-CE": "INVALID",
+    "T_Replay-full": "COMPLETE",
+    "T_Replay-inc": "COMPLETE"
+  },
+  {
+    "case": "DMV DROP",
+    "T_PG-plan": "INVALID",
+    "T_PG-CE": "INVALID",
+    "T_Replay-full": "COMPLETE",
+    "T_Replay-inc": "COMPLETE"
+  },
+  {
+    "case": "DMV SWAP",
+    "T_PG-plan": "INVALID",
+    "T_PG-CE": "INVALID",
+    "T_Replay-full": "COMPLETE",
+    "T_Replay-inc": "COMPLETE"
+  },
+  {
+    "case": "Census trajectory",
+    "T_PG-plan": "INVALID",
+    "T_PG-CE": "INVALID",
+    "T_Replay-full": "COMPLETE",
+    "T_Replay-inc": "COMPLETE"
+  }
+]
